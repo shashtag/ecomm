@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { ThemeProvider } from "@material-ui/core";
+import SubHeader from "./components/SubHeader";
+import theme from "./ui/Theme";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Categories from "./components/Categories";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <SubHeader />
+        <Header />
+        <Categories />
+        <Switch>
+          <Route exact path='/' component={LandingPage} />
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
