@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   Grid,
   makeStyles,
@@ -10,19 +12,22 @@ import {
   // CardContent,
 } from "@material-ui/core";
 // import { Link } from "react-router-dom";
-import heroImage1 from "../assets/heroImgs/heroImage1.png";
-import heroImage2 from "../assets/heroImgs/heroImage2.png";
-import heroImage3 from "../assets/heroImgs/heroImage3.png";
-import heroImage4 from "../assets/heroImgs/heroImage4.png";
-import heroImage5 from "../assets/heroImgs/heroImage5.png";
-import heroImage6 from "../assets/heroImgs/heroImage6.png";
-import heroBg from "../assets/heroBg.png";
+import heroImage1 from "../../assets/heroImgs/heroImage1.png";
+import heroImage2 from "../../assets/heroImgs/heroImage2.png";
+import heroImage3 from "../../assets/heroImgs/heroImage3.png";
+import heroImage4 from "../../assets/heroImgs/heroImage4.png";
+import heroImage5 from "../../assets/heroImgs/heroImage5.png";
+import heroImage6 from "../../assets/heroImgs/heroImage6.png";
+import heroBg from "../../assets/heroBg.png";
 
 const useStyles = makeStyles((theme) => ({
   hero: {
     background: `url(${heroBg}) no-repeat right 50px`,
     backgroundSize: "235px",
-    padding: "0 4%",
+    padding: "0 15px",
+    [theme.breakpoints.up("md")]: {
+      padding: "0 3.2%",
+    },
   },
   titleCont: {
     marginTop: theme.spacing(8),
@@ -79,7 +84,7 @@ const Hero = () => {
 
   return (
     <Grid container spacing={0} className={classes.hero}>
-      <Grid md={4} item direction='column'>
+      <Grid xs={12} md={4} item>
         <div className={classes.titleCont}>
           <Typography variant='h1' color='secondary'>
             SELL
@@ -95,6 +100,8 @@ const Hero = () => {
           Create your own brand identity and reach wider audience
         </Typography>
         <Button
+          component={Link}
+          to='/artist/signup'
           variant='contained'
           size='large'
           color='secondary'
@@ -103,7 +110,11 @@ const Hero = () => {
         </Button>
       </Grid>
 
-      <Grid md={8} item direction='column' style={{ position: "relative" }}>
+      <Grid
+        // xs={12}
+        md={8}
+        item
+        style={{ position: "relative" }}>
         <div className={[classes.heroImgs, classes.img1].join(" ")}>
           <img src={heroImage1} alt='hero image1' width='88%' />
         </div>

@@ -7,14 +7,15 @@ import {
   useTheme,
   Button,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar";
 import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import InputBase from "@material-ui/core/InputBase";
 import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
-import logoMain from "../assets/logoMain.png";
-import search from "../assets/search.png";
-import sellDes from "../assets/sellDes.png";
+import logoMain from "../../assets/logoMain.png";
+import search from "../../assets/search.png";
+import sellDes from "../../assets/sellDes.png";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
   inputRoot: {
     color: "inherit",
+    width: "100%",
   },
   inputInput: {
     ...theme.typography.caption,
@@ -69,10 +71,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   location: {
-    display: "flex",
     flexDirection: "column",
     alignItems: "center",
     marginLeft: theme.spacing(2),
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
   },
 }));
 
@@ -134,7 +139,7 @@ export default function Header() {
               />
               <div>
                 <img
-                  style={{ position: "absolute", right: 0 }}
+                  style={{ position: "absolute", right: 0, cursor: "pointer" }}
                   src={search}
                   alt='search'
                   height='100%'
@@ -164,7 +169,9 @@ export default function Header() {
               />
             </div>
             <div style={{ marginTop: "6px", marginRight: theme.spacing(2) }}>
-              <img src={sellDes} alt='kalafax logo' />
+              <Link to='/artist/signup'>
+                <img src={sellDes} alt='kalafax logo' />
+              </Link>
             </div>
             <div
               style={{
@@ -173,7 +180,12 @@ export default function Header() {
                 height: "36px",
               }}
             />
-            <Button variant='contained' size='medium' color='secondary'>
+            <Button
+              component={Link}
+              to='/login'
+              variant='contained'
+              size='large'
+              color='secondary'>
               <Typography variant='h6'>Login/Signup</Typography>
             </Button>
             <ShoppingCartOutlinedIcon

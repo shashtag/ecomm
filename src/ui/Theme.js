@@ -21,6 +21,7 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: darkBlue,
+      light: "#40567A",
     },
   },
   typography: {
@@ -38,6 +39,11 @@ const theme = createMuiTheme({
 
       lineHeight: "3.625rem",
     },
+    h3: {
+      fontSize: "2rem",
+      fontWeight: "700",
+      lineHeight: "150%",
+    },
     h4: {
       fontSize: "1.5rem",
       fontWeight: "600",
@@ -45,12 +51,12 @@ const theme = createMuiTheme({
     },
     h5: {
       fontSize: "1.25rem",
-      fontWeight: "600",
+      fontWeight: "400",
       lineHeight: "120%",
     },
     h6: {
       fontSize: "1rem",
-      fontWeight: "300",
+      fontWeight: "500",
       lineHeight: "150%",
     },
     caption: {
@@ -65,6 +71,52 @@ const theme = createMuiTheme({
   },
   shape: {
     borderRadius: 6,
+  },
+  overrides: {
+    MuiPickersToolbar: {
+      toolbar: {
+        backgroundColor: darkBlue,
+      },
+    },
+    MuiPickersToolbarText: {
+      toolbarTxt: {
+        color: white,
+      },
+      toolbarBtnSelected: { color: white },
+    },
+    MuiPickersCalendarHeader: {
+      switchHeader: {
+        // backgroundColor: lightBlue.A200,
+        color: darkBlue,
+      },
+    },
+    MuiPickersDay: {
+      day: {
+        color: "#40567A",
+      },
+      daySelected: {
+        backgroundColor: "#E1E1E1",
+        "&:hover": {
+          backgroundColor: "#D1D1D1",
+        },
+      },
+      dayDisabled: {
+        color: "#849ABE",
+      },
+      current: {
+        color: "#40567A",
+      },
+    },
+    MuiPickersModal: {
+      dialogAction: {
+        color: "red",
+      },
+    },
+    MuiPickersYear: {
+      yearSelected: {
+        color: darkBlue,
+      },
+    },
   },
 });
 console.log(theme);
