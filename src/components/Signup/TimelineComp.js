@@ -63,12 +63,16 @@ const TimelineComp = (props) => {
             <TimelineDot
               className={classes.timeDot}
               style={{
-                backgroundColor: i === props.step ? "#40567A" : "#E1E1E1",
+                backgroundColor: props.step >= i ? "#40567A" : "#E1E1E1",
               }}>
               {tDot[i](i, props.step)}
             </TimelineDot>
             {i === tDot.length - 1 ? null : (
-              <TimelineConnector style={{ backgroundColor: "#E4E4E4" }} />
+              <TimelineConnector
+                style={{
+                  backgroundColor: props.step > i ? "#40567A" : "#E4E4E4",
+                }}
+              />
             )}
           </TimelineSeparator>
           <TimelineContent>
