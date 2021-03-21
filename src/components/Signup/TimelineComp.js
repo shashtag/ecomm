@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TimelineComp = (props) => {
   const classes = useStyles();
-  const tDot = [basicDetailsIcon, verifyIcon, protectIcon];
+  const tDot = [basicDetailsIcon, protectIcon, verifyIcon];
 
   return (
     <Timeline
@@ -54,7 +54,7 @@ const TimelineComp = (props) => {
           // alignItems: "center",
         }
       }>
-      {["Basic Details", "Verify", "Protect"].map((content, i) => (
+      {["Basic Details", "Protect", "Verify"].map((content, i) => (
         <TimelineItem
           key={i}
           // style={{ width: "130px" }}

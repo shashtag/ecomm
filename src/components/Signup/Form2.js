@@ -49,19 +49,6 @@ const Form2 = (props) => {
 
   return (
     <>
-      <Grid item>
-        <Typography
-          variant='h3'
-          component='div'
-          style={{
-            marginTop: "15vh",
-            marginBottom: theme.spacing(1),
-            fontWeight: 400,
-          }}
-          color='secondary'>
-          Sign up as Artist
-        </Typography>
-      </Grid>
       <Grid container item direction='column'>
         <form className={classes.form} autoComplete='off'>
           <Grid item style={{ marginBottom: theme.spacing(2) }}>

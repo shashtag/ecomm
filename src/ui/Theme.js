@@ -27,6 +27,16 @@ const theme = createMuiTheme({
   typography: {
     fontSize: 16,
     fontFamily: "Lato",
+    body2: {
+      fontSize: "0.5rem",
+      fontWeight: "400",
+      lineHeight: "125%",
+    },
+    body1: {
+      fontSize: "1.25rem",
+      fontWeight: "600",
+      lineHeight: "125%",
+    },
     h1: {
       fontFamily: "Josefin Sans",
       fontSize: "4.5rem",

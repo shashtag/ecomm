@@ -125,6 +125,7 @@ const Usp = () => {
           variant='outlined'
           color='secondary'
           style={{
+            backgroundColor: "white",
             padding: theme.spacing(2, 4),
             margin: "12px auto",
           }}>

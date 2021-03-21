@@ -49,33 +49,33 @@ const useStyles = makeStyles((theme) => ({
   img1: {
     zIndex: 100,
     top: "20px",
-    left: "-3%",
+    left: "8%",
   },
   img2: {
     zIndex: 300,
 
     top: "100px",
-    left: "21%",
+    left: "32%",
   },
   img3: {
     zIndex: 200,
     top: "12px",
-    right: "-2%",
+    right: "-10%",
   },
   img4: {
     zIndex: 400,
     top: "235px",
-    left: "9%",
+    left: "20%",
   },
   img5: {
     zIndex: 600,
     top: "330px",
-    left: "27%",
+    left: "38%",
   },
   img6: {
     zIndex: 500,
     top: "180px",
-    right: "16.5%",
+    right: "9.5%",
   },
 }));
 
@@ -93,7 +93,7 @@ const Hero = () => {
             YOUR
           </Typography>
           <Typography variant='h1' color='secondary'>
-            ARTIST.
+            ARTWORK
           </Typography>
         </div>
         <Typography variant='h5' color='secondary'>

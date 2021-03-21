@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../ui/Logo";
 
 import {
   Grid,
@@ -11,12 +12,12 @@ import {
 import signupBg from "../assets/authImgs/signupBg.png";
 import signupBg2 from "../assets/authImgs/signupBg2.png";
 import signupBg3 from "../assets/authImgs/signupBg3.png";
-import logoLogin from "../assets/logoLogin.png";
 import TimelineComp from "../components/Signup/TimelineComp";
 import Form1A from "../components/Signup/Form1A";
-import Form1C from "../components/Signup/Form1C";
 import Form2 from "../components/Signup/Form2";
 import Form3 from "../components/Signup/Form3";
+import loginTxt from "../assets/authImgs/loginTxt.png";
+import { SignupProvider } from "../Context/SignupContext";
 
 const useStyles = makeStyles((theme) => ({
   login: {
@@ -41,99 +42,207 @@ const SignupArtist = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
+  const signupArtistHead = (
+    <Grid item>
+      <Typography
+        variant='h3'
+        component='div'
+        style={{
+          marginTop: "8vh",
+          marginBottom: theme.spacing(1),
+          fontWeight: 400,
+        }}
+        color='secondary'>
+        Sign up as Artist
+      </Typography>
+    </Grid>
+  );
+  const signupHead = (
+    <Grid item>
+      <Typography
+        variant='h3'
+        component='div'
+        style={{
+          marginTop: "2vh",
+          marginBottom: theme.spacing(1),
+          fontWeight: 400,
+        }}
+        color='secondary'>
+        Sign up
+      </Typography>
+    </Grid>
+  );
 
   const [step, setStep] = useState(0);
 
   return (
-    <Grid
-      container
-      // disableGutters
-      className={classes.login}>
+    <SignupProvider>
       <Grid
         container
-        md={6}
-        item
-        className={classes.left}
-        spacing={0}
-        style={{
-          backgroundBlendMode: "lighten",
-          backgroundPosition: "center",
-          background: md
-            ? null
-            : step === 0
-            ? `rgba(255,255,255,0.6) url(${signupBg}) center center / cover no-repeat `
-            : step === 1
-            ? `rgba(255,255,255,0.6) url(${signupBg2}) center center / cover no-repeat`
-            : ` rgba(255,255,255,0.6) url(${signupBg3}) center center / cover no-repeat`,
-        }}>
-        <Grid item container direction='column' md={8}>
-          <Grid item component={Link} to='/'>
-            <img src={logoLogin} alt='kalafax logo' />
-          </Grid>
-          {step === 0 ? (
-            props.type === "artist" ? (
-              <Form1A setStep={setStep} step={step} />
-            ) : (
-              <Form1C setStep={setStep} step={step} />
-            )
-          ) : step === 1 ? (
-            <Form2 setStep={setStep} step={step} />
-          ) : (
-            <Form3 setStep={setStep} step={step} />
-          )}
-        </Grid>
-        {md ? (
-          <Grid container item md={4} alignItems='center'>
-            <Grid container justify='flex-end'>
-              <TimelineComp step={step} />
-            </Grid>
-          </Grid>
-        ) : null}
-      </Grid>
-      <Grid
-        container
-        item
-        md={6}
-        className={classes.right}
-        justify='center'
-        alignItems='center'
-        style={{
-          background:
-            step === 0
-              ? `url(${signupBg}) no-repeat`
+        // disableGutters
+        className={classes.login}>
+        <Grid
+          container
+          md={6}
+          item
+          className={classes.left}
+          spacing={0}
+          style={{
+            backgroundBlendMode: "lighten",
+            backgroundPosition: "center",
+            background: md
+              ? null
+              : step === 0
+              ? `rgba(255,255,255,0.6) url(${signupBg}) center center / cover no-repeat `
               : step === 1
-              ? `url(${signupBg2}) no-repeat`
-              : `url(${signupBg3}) no-repeat`,
-          backgroundSize: "cover",
-        }}>
-        <div style={{ display: step === 0 ? null : "none" }}>
-          <Typography
-            variant='h5'
-            color='primary'
-            style={{ marginTop: theme.spacing(8) }}>
-            Get your product dellivered directly
-          </Typography>
-          <Typography
-            variant='h5'
-            color='primary'
-            style={{ marginTop: theme.spacing(4) }}>
-            Earn easy profit
-          </Typography>
-          <Typography
-            variant='h5'
-            color='primary'
-            style={{ marginTop: theme.spacing(4) }}>
-            Get your product dellivered directly
-          </Typography>
-          <Typography
-            variant='h5'
-            color='primary'
-            style={{ marginTop: theme.spacing(4) }}>
-            Get your product dellivered directly
-          </Typography>
-        </div>
+              ? `rgba(255,255,255,0.6) url(${signupBg2}) center center / cover no-repeat`
+              : ` rgba(255,255,255,0.6) url(${signupBg3}) center center / cover no-repeat`,
+          }}>
+          <Grid item container direction='column' md={8}>
+            <Logo />
+            {step === 0 ? (
+              props.type === "artist" ? (
+                <>
+                  {signupArtistHead}
+                  <Form1A setStep={setStep} step={step} />
+                  <Typography
+                    variant='h6'
+                    style={{ fontWeight: 500, display: "inline" }}>
+                    Already have an account.
+                    <Link
+                      to='/login'
+                      style={{ fontWeight: 500, display: "inline" }}>
+                      <img
+                        style={{
+                          display: "inline",
+                          marginBottom: "-3px",
+                          marginLeft: "6px",
+                        }}
+                        src={loginTxt}
+                        alt='Signup Text'
+                      />
+                    </Link>
+                  </Typography>
+                </>
+              ) : (
+                <>
+                  {signupHead}
+                  <Form1A setStep={setStep} step={step} />
+                  <Typography
+                    variant='h6'
+                    style={{ fontWeight: 500, display: "inline" }}>
+                    Already have an account.
+                    <Link
+                      to='/login'
+                      style={{ fontWeight: 500, display: "inline" }}>
+                      <img
+                        style={{
+                          display: "inline",
+                          marginBottom: "-3px",
+                          marginLeft: "6px",
+                        }}
+                        src={loginTxt}
+                        alt='Signup Text'
+                      />
+                    </Link>
+                  </Typography>
+                  <div
+                    style={{
+                      border: "1px solid #E1E1E1",
+                      width: "200px",
+                      margin: theme.spacing(1.5, 0.5),
+                    }}></div>
+                  <Typography
+                    variant='h6'
+                    style={{ fontWeight: 500, display: "inline" }}>
+                    Want to sell your art?{" "}
+                    <Typography
+                      variant='h6'
+                      component={Link}
+                      to='/artist/signup'
+                      style={{ fontWeight: 500, display: "inline" }}>
+                      Register here
+                    </Typography>
+                  </Typography>
+                </>
+              )
+            ) : step === 1 ? (
+              props.type === "artist" ? (
+                <>
+                  {signupArtistHead}
+                  <Form3 setStep={setStep} step={step} type={props.type} />
+                </>
+              ) : (
+                <>
+                  {signupHead}
+                  <Form3 setStep={setStep} step={step} type={props.type} />
+                </>
+              )
+            ) : props.type === "artist" ? (
+              <>
+                {signupArtistHead}
+                <Form2 setStep={setStep} step={step} />
+              </>
+            ) : (
+              <>
+                {signupHead}
+                <Form2 setStep={setStep} step={step} />
+              </>
+            )}
+          </Grid>
+          {md ? (
+            <Grid container item md={4} alignItems='center'>
+              <Grid container justify='flex-end'>
+                <TimelineComp step={step} />
+              </Grid>
+            </Grid>
+          ) : null}
+        </Grid>
+        <Grid
+          container
+          item
+          md={6}
+          className={classes.right}
+          justify='center'
+          alignItems='center'
+          style={{
+            background:
+              step === 0
+                ? `url(${signupBg}) no-repeat`
+                : step === 1
+                ? `url(${signupBg2}) no-repeat`
+                : `url(${signupBg3}) no-repeat`,
+            backgroundSize: "cover",
+          }}>
+          <div style={{ display: step === 0 ? null : "none" }}>
+            <Typography
+              variant='h5'
+              color='primary'
+              style={{ marginTop: theme.spacing(8) }}>
+              Get your product dellivered directly
+            </Typography>
+            <Typography
+              variant='h5'
+              color='primary'
+              style={{ marginTop: theme.spacing(4) }}>
+              Earn easy profit
+            </Typography>
+            <Typography
+              variant='h5'
+              color='primary'
+              style={{ marginTop: theme.spacing(4) }}>
+              Get your product delivered directly
+            </Typography>
+            <Typography
+              variant='h5'
+              color='primary'
+              style={{ marginTop: theme.spacing(4) }}>
+              Get your product dellivered directly
+            </Typography>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
+    </SignupProvider>
   );
 };
 

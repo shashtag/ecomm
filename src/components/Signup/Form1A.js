@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 import {
   Grid,
@@ -9,9 +10,7 @@ import {
   useTheme,
   TextField,
 } from "@material-ui/core";
-
-import loginTxt from "../../assets/authImgs/loginTxt.png";
-
+import { SignupContext } from "../../Context/SignupContext";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,28 +46,31 @@ const useStyles = makeStyles((theme) => ({
 const Form1 = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [selectedDate, handleDateChange] = useState(new Date(2001, 0, 1));
+  const { register, handleSubmit, errors } = useForm();
+  const {
+    selectedDate,
+    handleDateChange,
+    name,
+    setName,
+    email,
+    setEmail,
+  } = useContext(SignupContext);
+
+  // const [selectedDate, handleDateChange] = useState(new Date(2001, 0, 1));
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
   const sendOtpClickHandler = () => {
     props.setStep(props.step + 1);
+    console.log("sssw");
   };
 
   return (
     <>
-      <Grid item>
-        <Typography
-          variant='h3'
-          component='div'
-          style={{
-            marginTop: "8vh",
-            marginBottom: theme.spacing(1),
-            fontWeight: 400,
-          }}
-          color='secondary'>
-          Sign up as Artist
-        </Typography>
-      </Grid>
       <Grid container item direction='column'>
-        <form className={classes.form} autoComplete='off'>
+        <form
+          className={classes.form}
+          autoComplete='off'
+          onSubmit={handleSubmit(sendOtpClickHandler)}>
           <Grid item>
             <TextField
               className={classes.input}
@@ -76,10 +78,17 @@ const Form1 = (props) => {
               name='name'
               variant='outlined'
               color='secondary'
+              defaultValue={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
               InputLabelProps={{
                 shrink: true,
               }}
               placeholder='Enter your name'
+              inputRef={register({ required: "Name is required" })}
+              error={Boolean(errors.name)}
+              helperText={errors.name?.message}
             />
           </Grid>
           <Grid item>
@@ -93,25 +102,42 @@ const Form1 = (props) => {
               InputLabelProps={{
                 shrink: true,
               }}
+              name='date'
               format='dd/MM/yyyy'
               label='Date of Birth'
               className={[classes.input, classes.dateInp].join(" ")}
               inputVariant='outlined'
               value={selectedDate}
               onChange={(date) => handleDateChange(date)}
+              inputRef={register({ required: "Date of Birth is required" })}
+              error={Boolean(errors.date)}
+              helperText={errors.date?.message}
             />
           </Grid>
           <Grid item style={{ marginBottom: theme.spacing(2) }}>
             <TextField
               className={classes.input}
-              label='Phone'
-              name='phone'
+              label='Email'
+              name='email'
               variant='outlined'
               color='secondary'
+              defaultValue={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               InputLabelProps={{
                 shrink: true,
               }}
-              placeholder='Enter your Phone number'
+              placeholder='Enter your Email id'
+              inputRef={register({
+                required: "Email ID is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "invalid email address",
+                },
+              })}
+              error={Boolean(errors.email)}
+              helperText={errors.email?.message}
             />
           </Grid>
           <Grid
@@ -121,7 +147,7 @@ const Form1 = (props) => {
               marginTop: -theme.spacing(1.5),
             }}>
             <Typography variant='caption' style={{ fontWeight: "400" }}>
-              We will send you code for verification :)
+              We will send you code for verification :{")"}
             </Typography>
           </Grid>
           <Grid item style={{}}>
@@ -129,28 +155,14 @@ const Form1 = (props) => {
               style={{ padding: "20px 40px", borderRadius: "4px" }}
               variant='contained'
               size='large'
+              type='submit'
               color='secondary'
-              className={classes.loginButton}
-              onClick={sendOtpClickHandler}>
-              <Typography variant='h5'>Send OTP</Typography>
+              className={classes.loginButton}>
+              <Typography variant='h5'>Continue</Typography>
             </Button>
           </Grid>
         </form>
       </Grid>
-      <Typography variant='h6' style={{ fontWeight: 500, display: "inline" }}>
-        Already have an account.
-        <Link to='/login' style={{ fontWeight: 500, display: "inline" }}>
-          <img
-            style={{
-              display: "inline",
-              marginBottom: "-3px",
-              marginLeft: "6px",
-            }}
-            src={loginTxt}
-            alt='Signup Text'
-          />
-        </Link>
-      </Typography>
     </>
   );
 };
