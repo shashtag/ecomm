@@ -4,51 +4,56 @@ import {
   makeStyles,
   Typography,
   useTheme,
-  Button,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
+  IconButton,
 } from "@material-ui/core";
+import { Favorite, Share } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+  },
+}));
 
 const Product = (props) => {
   const classes = useStyles();
   const theme = useTheme();
+  const history = useHistory();
+
+  const cardClickHandler = () => {
+    history.push(`/product/${props.pid}`);
+  };
+
   return (
     <Grid item md={3} sm={6} xs={12}>
-      <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia
-            component='img'
-            alt='Contemplative Reptile'
-            height='210'
-            image='/static/images/cards/contemplative-reptile.jpg'
-            title='Contemplative Reptile'
-          />
-          <CardContent style={{ textAlign: "center" }}>
-            <Typography gutterBottom variant='body2' component='h2'>
-              canvas
-            </Typography>
-            <Typography gutterBottom variant='body1' component='h2'>
-              Lizard
-            </Typography>
-            <Typography gutterBottom variant='body2' component='h2'>
-              by sdjasdjk
-            </Typography>
-          </CardContent>
-
-          <CardActions>
-            <Button size='small' color='secondary'>
-              Share
-            </Button>
-            <Button size='small' color='secondary'>
-              Learn More
-            </Button>
-          </CardActions>
-        </CardActionArea>
+      <Card className={classes.root} onClick={cardClickHandler}>
+        <CardMedia
+          className={classes.media}
+          image={props?.img}
+          title='Paella dish'
+        />
+        <CardContent>
+          <Typography variant='h5' color='textSecondary' component='p'>
+            {props?.name}
+          </Typography>
+        </CardContent>
+        {/* <CardActions disableSpacing>
+          <IconButton aria-label='add to favorites'>
+            <Favorite />
+          </IconButton>
+          <IconButton aria-label='share'>
+            <Share />
+          </IconButton>
+        </CardActions> */}
       </Card>
     </Grid>
   );

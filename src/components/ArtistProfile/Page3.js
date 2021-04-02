@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   Grid,
   makeStyles,
@@ -9,6 +9,10 @@ import {
   TextField,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import { APContext } from "../../Context/APContext";
+import { UIContext } from "../../Context/UIContext";
+import { patchArtistDetails } from "../../API/Patch";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -22,15 +26,44 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Page3 = (props) => {
+  const history = useHistory();
+
   const classes = useStyles();
   const theme = useTheme();
-  const [aadhar, setAadhar] = useState("");
-  const [GST, setGST] = useState("");
-  const [PAN, setPAN] = useState("");
-  const [payment, setPayment] = useState("");
-  const { register, handleSubmit, errors } = useForm();
-  const handlePageChange = () => props.setPage(props.page + 1);
 
+  const { register, handleSubmit, errors } = useForm();
+
+  const [
+    ,
+    ,
+    aadhar,
+    setAadhar,
+    GST,
+    setGST,
+    PAN,
+    setPAN,
+    payment,
+    setPayment,
+  ] = useContext(APContext);
+  const { setLoading } = useContext(UIContext);
+  const handlePageChange = () => {
+    const data = {
+      aadhar_card_no: aadhar,
+      pan_card_no: GST,
+      gst_no: setPAN,
+    };
+    patchArtistDetails(
+      data,
+      props.setPage,
+      props.page,
+      setLoading,
+      history,
+      () => {},
+      () => {},
+      () => {},
+      () => {},
+    );
+  };
   return (
     <>
       <Grid item>
@@ -118,7 +151,7 @@ const Page3 = (props) => {
               helperText={errors.PAN?.message}
             />
           </Grid>
-          <Grid item xs={12} md={6} style={{ marginTop: "10vh" }}>
+          {/* <Grid item xs={12} md={6} style={{ marginTop: "10vh" }}>
             <TextField
               className={classes.input}
               label='Payment method'
@@ -139,7 +172,7 @@ const Page3 = (props) => {
               error={Boolean(errors.payment)}
               helperText={errors.payment?.message}
             />
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item container style={{}} justify='flex-end'>
           <Button

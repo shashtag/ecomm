@@ -12,6 +12,7 @@ import Page1 from "../components/ArtistProfile/Page1";
 import Page2 from "../components/ArtistProfile/Page2";
 import Page3 from "../components/ArtistProfile/Page3";
 import { APProvider } from "../Context/APContext";
+import { UIContext } from "../Context/UIContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,8 @@ const ArtistProfile = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [page, setPage] = useState(1);
+  const { setLayout } = useContext(UIContext);
+  setLayout(true);
   return (
     <APProvider>
       <Grid container direction='column' className={classes.root}>

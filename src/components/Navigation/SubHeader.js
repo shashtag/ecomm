@@ -113,7 +113,7 @@ const SubHeader = () => {
         style={{
           fontWeight: "600",
         }}>
-        Signup now and get 10% off on your first five orders
+        Signup to get 10% off on your first five orders
       </Typography>
       <Typography
         onClick={handleClose}

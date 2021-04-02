@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Grid,
   makeStyles,
@@ -9,6 +9,8 @@ import {
   TextField,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import { addAddress } from "../../API/Post";
+import { UIContext } from "../../Context/UIContext";
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -22,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Page2 = (props) => {
+  const { setLoading } = useContext(UIContext);
   const classes = useStyles();
   const theme = useTheme();
   const [flat, setFlat] = useState("");
@@ -29,7 +32,16 @@ const Page2 = (props) => {
   const [state, setState] = useState("");
   const [pinCode, setPinCode] = useState("");
   const { register, handleSubmit, errors } = useForm();
-  const handlePageChange = () => props.setPage(props.page + 1);
+  const handlePageChange = () => {
+    const data = {
+      address_type: "Pickup",
+      street: flat,
+      city: city,
+      state: state,
+      pin_code: pinCode,
+    };
+    addAddress(data, setLoading, props.setPage, props.page);
+  };
 
   return (
     <>
@@ -59,7 +71,7 @@ const Page2 = (props) => {
               name='flat'
               variant='outlined'
               color='secondary'
-              defaultValue={flat}
+              value={flat}
               onChange={(e) => {
                 setFlat(e.target.value);
               }}
@@ -81,7 +93,7 @@ const Page2 = (props) => {
               name='city'
               variant='outlined'
               color='secondary'
-              defaultValue={city}
+              value={city}
               onChange={(e) => {
                 setCity(e.target.value);
               }}
@@ -103,7 +115,7 @@ const Page2 = (props) => {
               name='state'
               variant='outlined'
               color='secondary'
-              defaultValue={state}
+              value={state}
               onChange={(e) => {
                 setState(e.target.value);
               }}
@@ -125,7 +137,7 @@ const Page2 = (props) => {
               name='pincode'
               variant='outlined'
               color='secondary'
-              defaultValue={pinCode}
+              value={pinCode}
               onChange={(e) => {
                 setPinCode(e.target.value);
               }}

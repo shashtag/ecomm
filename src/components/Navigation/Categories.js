@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   AppBar,
   Toolbar,
@@ -8,7 +10,7 @@ import {
   useTheme,
   Button,
 } from "@material-ui/core";
-import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
+// import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
 
 const useStyles = makeStyles((theme) => ({
   category: {
@@ -21,6 +23,47 @@ const useStyles = makeStyles((theme) => ({
 const Categories = () => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const cat = [
+    {
+      value: "Paintings & Artwork",
+      // subCat: [
+      //   { value: "Earrings" },
+      //   { value: "Necklaces" },
+      //   { value: "Jewellery" },
+      // ],
+    },
+    {
+      value: "Lifestyle & Home",
+      // subCat: [{ value: "Posters" }, { value: "Apparel " }],
+    },
+    {
+      value: "Jewellery & Accessories",
+      // subCat: [{ value: "Canvas" }, { value: "Paper" }],
+    },
+    {
+      value: "Collectibles",
+      // subCat: [{ value: "Pottery" }],
+    },
+    // {
+    //   value: "Lifestyle",
+    //   // subCat: [{ value: "Coasters" }],
+    // },
+  ].map((cate, key) => (
+    <div className={classes.category} key={key}>
+      <Button component={Link} to='/'>
+        <Typography
+          variant='h6'
+          color='secondary'
+          noWrap
+          style={{ fontWeight: "600" }}>
+          {cate.value}
+        </Typography>
+        {/* <ArrowDropDownSharpIcon style={{ color: theme.palette.secondary.main }} /> */}
+      </Button>
+    </div>
+  ));
+
   return (
     <AppBar
       position='static'
@@ -29,78 +72,7 @@ const Categories = () => {
         borderBottom: `1px solid ${theme.palette.grey[300]}`,
       }}>
       <Toolbar style={{ minHeight: "48px ", justifyContent: "center" }}>
-        <div className={classes.category}>
-          <Typography
-            variant='h6'
-            color='secondary'
-            noWrap
-            style={{ fontWeight: "600" }}>
-            Clothing
-          </Typography>
-          <ArrowDropDownSharpIcon
-            style={{ color: theme.palette.secondary.main }}
-          />
-        </div>
-        <div className={classes.category}>
-          <Typography
-            variant='h6'
-            color='secondary'
-            noWrap
-            style={{ fontWeight: "600" }}>
-            Gifts
-          </Typography>
-          <ArrowDropDownSharpIcon
-            style={{ color: theme.palette.secondary.main }}
-          />
-        </div>
-        <div className={classes.category}>
-          <Typography
-            variant='h6'
-            color='secondary'
-            noWrap
-            style={{ fontWeight: "600" }}>
-            Stickers
-          </Typography>
-          <ArrowDropDownSharpIcon
-            style={{ color: theme.palette.secondary.main }}
-          />
-        </div>
-        <div className={classes.category}>
-          <Typography
-            variant='h6'
-            color='secondary'
-            noWrap
-            style={{ fontWeight: "600" }}>
-            Mugs
-          </Typography>
-          <ArrowDropDownSharpIcon
-            style={{ color: theme.palette.secondary.main }}
-          />
-        </div>
-        <div className={classes.category}>
-          <Typography
-            variant='h6'
-            color='secondary'
-            noWrap
-            style={{ fontWeight: "600" }}>
-            Accessories
-          </Typography>
-          <ArrowDropDownSharpIcon
-            style={{ color: theme.palette.secondary.main }}
-          />
-        </div>
-        <div className={classes.category}>
-          <Typography
-            variant='h6'
-            color='secondary'
-            noWrap
-            style={{ fontWeight: "600" }}>
-            Posters
-          </Typography>
-          <ArrowDropDownSharpIcon
-            style={{ color: theme.palette.secondary.main }}
-          />
-        </div>
+        {cat}
       </Toolbar>
     </AppBar>
   );

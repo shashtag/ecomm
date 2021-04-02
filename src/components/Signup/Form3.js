@@ -1,8 +1,6 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import { SignupContext } from "../../Context/SignupContext";
 import { signup1 } from "../../API/Post";
-import Loading from "../../ui/Loading";
 import { useForm } from "react-hook-form";
 import { UIContext } from "../../Context/UIContext";
 import SignupDialog from "../../ui/SignupDialog";
@@ -53,7 +51,7 @@ const Form3 = (props) => {
   const [open, setOpen] = React.useState(false);
 
   const { register, handleSubmit, errors } = useForm();
-  const { setLoading } = useContext(UIContext);
+  const { setLoading, setSnackbar } = useContext(UIContext);
   const {
     selectedDate,
     name,
@@ -77,12 +75,11 @@ const Form3 = (props) => {
       phone_number: phone,
       ...type,
     };
-    signup1(data, setLoading, setOpen, props.setStep, props.step);
+    signup1(data, setLoading, setSnackbar, setOpen);
   };
 
   return (
     <>
-      <Loading />
       <Grid container item direction='column'>
         <form
           className={classes.form}

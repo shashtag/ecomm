@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   usp: {
     background: `url(${uspBg}) no-repeat `,
     backgroundSize: "cover",
-    marginTop: theme.spacing(11),
+    margin: theme.spacing(1, 0),
     padding: "0px 15px",
     [theme.breakpoints.up("md")]: {
       padding: " 0 3.2%",
@@ -59,19 +59,24 @@ const Usp = () => {
   return (
     <Grid container spacing={2} justify='center' className={classes.usp}>
       <Typography
-        variant={sm ? "h2" : "h3"}
+        variant={"h2"}
         align='center'
-        style={{ marginBottom: theme.spacing(2), width: "100%" }}>
+        style={{
+          marginBottom: theme.spacing(2),
+          padding: theme.spacing(0, 1),
+          background: "white",
+          fontWeight: sm ? "400" : "bold",
+        }}>
         See what we got
       </Typography>
       <Typography
         variant='h6'
         align='center'
         style={{
-          width: "100%",
           paddingLeft: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
           paddingRight: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
           marginBottom: theme.spacing(4),
+          background: "white",
         }}>
         From logos that define the very roots of a brand's success to t-shirts
         that speak of versatile yet engaging personalities, if you need a

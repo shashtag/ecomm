@@ -13,7 +13,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import lgnBg from "../assets/authImgs/lgnBg.png";
-import logoLogin from "../assets/logoLogin.png";
+// import logoLogin from "../assets/logoLogin.png";
 import signupTxt from "../assets/authImgs/signupTxt.png";
 import { login } from "../API/Post";
 import { UIContext } from "../Context/UIContext";
@@ -85,7 +85,7 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const { setLoading } = useContext(UIContext);
+  const { setLoading, setToken, setSnackbar } = useContext(UIContext);
 
   console.log(props);
 
@@ -94,7 +94,7 @@ const Login = (props) => {
       email: email,
       password: pass,
     };
-    login(data, setLoading, props.history);
+    login(data, setLoading, setToken, setSnackbar, props.history);
   };
 
   return (

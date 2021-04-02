@@ -89,7 +89,7 @@ const SignupArtist = (props) => {
           spacing={0}
           style={{
             backgroundBlendMode: "lighten",
-            backgroundPosition: "center",
+            // backgroundPosition: "center",
             background: md
               ? null
               : step === 0
@@ -208,11 +208,11 @@ const SignupArtist = (props) => {
           style={{
             background:
               step === 0
-                ? `url(${signupBg}) no-repeat`
+                ? `url(${signupBg}) center center / cover no-repeat `
                 : step === 1
-                ? `url(${signupBg2}) no-repeat`
-                : `url(${signupBg3}) no-repeat`,
-            backgroundSize: "cover",
+                ? `url(${signupBg2}) center center / cover no-repeat`
+                : ` url(${signupBg3}) center center / cover no-repeat`,
+            // backgroundSize: "cover",
           }}>
           <div style={{ display: step === 0 ? null : "none" }}>
             <Typography

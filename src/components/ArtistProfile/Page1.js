@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Grid,
   makeStyles,
@@ -10,7 +10,9 @@ import {
 } from "@material-ui/core";
 import defaultProfilePic from "../../assets/defaultProfilePic.png";
 import { APContext } from "../../Context/APContext";
+import { UIContext } from "../../Context/UIContext";
 import { useForm } from "react-hook-form";
+import { patchArtistDetails, patchUsrDetails } from "../../API/Patch";
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -26,10 +28,28 @@ const Page1 = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [customURL, setCustomURL] = useContext(APContext);
+  const { setLoading } = useContext(UIContext);
   const { register, handleSubmit, errors } = useForm();
-  const handlePageChange = () => props.setPage(props.page + 1);
 
-  console.log(errors);
+  const handlePageChange = () => {
+    const data = {
+      custom_url: customURL,
+    };
+    var data2 = JSON.stringify({ is_first_login: false });
+    patchUsrDetails(data2);
+
+    patchArtistDetails(
+      data,
+      props.setPage,
+      props.page,
+      setLoading,
+      null,
+      () => {},
+      () => {},
+      () => {},
+      () => {},
+    );
+  };
   return (
     <>
       <Grid item>
@@ -71,7 +91,7 @@ const Page1 = (props) => {
             name='curl'
             variant='outlined'
             color='secondary'
-            defaultValue={customURL}
+            value={customURL}
             onChange={(e) => {
               setCustomURL(e.target.value);
             }}

@@ -1,10 +1,10 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
 const darkBlue = "#152238",
   black = "#0a0a0a",
   white = "#FFF";
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette: {
     background: {
       gradient: {
@@ -23,6 +23,10 @@ const theme = createMuiTheme({
       main: darkBlue,
       light: "#40567A",
     },
+    text: {
+      primary: "#152238",
+      secondary: "#262626",
+    },
   },
   typography: {
     fontSize: 16,
@@ -30,58 +34,70 @@ const theme = createMuiTheme({
     body2: {
       fontSize: "0.5rem",
       fontWeight: "400",
-      lineHeight: "125%",
+      lineHeight: 1.25,
     },
     body1: {
       fontSize: "1.25rem",
       fontWeight: "600",
-      lineHeight: "125%",
+      lineHeight: 1.25,
     },
     h1: {
       fontFamily: "Josefin Sans",
       fontSize: "4.5rem",
       fontWeight: "bold",
-      lineHeight: "4.5rem",
+      lineHeight: "1",
     },
+
     h2: {
       fontSize: "3rem",
       fontWeight: "300",
 
-      lineHeight: "3.625rem",
+      lineHeight: "1.25",
     },
     h3: {
       fontSize: "2rem",
       fontWeight: "700",
-      lineHeight: "150%",
+      lineHeight: 1.5,
     },
     h4: {
       fontSize: "1.5rem",
       fontWeight: "600",
-      lineHeight: "120%",
+      lineHeight: 1.2,
     },
     h5: {
       fontSize: "1.25rem",
       fontWeight: "400",
-      lineHeight: "120%",
+      lineHeight: 1.2,
     },
     h6: {
       fontSize: "1rem",
       fontWeight: "500",
-      lineHeight: "150%",
+      lineHeight: "1.50",
     },
     caption: {
       fontSize: "0.875rem",
       fontWeight: "400",
 
-      lineHeight: "125%",
+      lineHeight: "1.25",
     },
     button: {
       textTransform: "none",
+    },
+    subtitle2: {
+      lineHeight: "1.25",
+      fontSize: "0.75rem",
+      fontWeight: "400",
+    },
+    subtitle1: {
+      lineHeight: "1.25",
+      fontSize: "0.625rem",
+      fontWeight: "400",
     },
   },
   shape: {
     borderRadius: 6,
   },
+
   overrides: {
     MuiPickersToolbar: {
       toolbar: {
@@ -129,6 +145,26 @@ const theme = createMuiTheme({
     },
   },
 });
+theme = responsiveFontSizes(theme);
+
+const {
+  breakpoints,
+  typography: { pxToRem },
+} = theme;
+
+theme = {
+  ...theme,
+  overrides: {
+    MuiTypography: {
+      h1: {
+        [breakpoints.down("xs")]: {
+          fontSize: "3.5rem",
+        },
+      },
+    },
+  },
+};
+
 console.log(theme);
 
 export default theme;
