@@ -3,10 +3,45 @@ import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import React from "react";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { ADashboardContext } from "../../Context/ADashboardContext";
+import { addProduct } from "../../API/Post";
+import { UIContext } from "../../Context/UIContext";
 
 const UploadProduct = () => {
   const theme = useTheme();
+  const { register, handleSubmit, errors } = useForm();
+  const { setLoading } = useContext(UIContext);
+
+  const {
+    category,
+    setCategory,
+    name,
+    setName,
+    desc,
+    setDesc,
+    price,
+    setPrice,
+    quantity,
+    setQuantity,
+  } = useContext(ADashboardContext);
+  const uploadClickHandler = () => {
+    var data = new FormData();
+    data.append("name", name);
+    data.append("category", category);
+    // data.append("subcategory", "bands");
+    data.append("description", desc);
+    // data.append(
+    //   "display_image",
+    //   fs.createReadStream("/C:/Users/Hari/Pictures/Saved Pictures/cc.jpg"),
+    // );
+    data.append("price", price);
+    data.append("stock_left", quantity);
+    addProduct(data, setLoading);
+  };
+  console.log(errors);
+
   return (
     <Grid container item>
       <Grid item xs={12} style={{ marginBottom: theme.spacing(3) }}>
@@ -18,11 +53,9 @@ const UploadProduct = () => {
         // className={classes.form}
         style={{ width: "100%" }}
         autoComplete='off'
-        // onSubmit={handleSubmit(loginClickHandler)}
-      >
+        onSubmit={handleSubmit(uploadClickHandler)}>
         <Grid item xs={12}>
           <Autocomplete
-            id='combo-box-demo'
             options={categoryList}
             getOptionLabel={(option) => option.title}
             renderInput={(params) => (
@@ -32,23 +65,19 @@ const UploadProduct = () => {
                 label='Product Category'
                 name='category'
                 color='secondary'
-                // defaultValue={email}
-                // onChange={(e) => {
-                //   setEmail(e.target.value);
-                // }}
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
                 InputLabelProps={{
                   shrink: true,
                 }}
                 placeholder='Enter Product Category'
-                // inputRef={register({
-                //   required: "Email/Phone number is required",
-                //   pattern: {
-                //     value: /^(?:\d{10}|\w+@\w+\.\w{2,3})$/,
-                //     message: "Invalid Email/Phone number ",
-                //   },
-                // })}
-                // error={Boolean(errors.id)}
-                // helperText={errors.id?.message}
+                inputRef={register({
+                  required: "Category is required",
+                })}
+                error={Boolean(errors.category)}
+                helperText={errors.category?.message}
                 variant='outlined'
               />
             )}
@@ -60,23 +89,19 @@ const UploadProduct = () => {
             label='Product Name'
             name='name'
             color='secondary'
-            // defaultValue={email}
-            // onChange={(e) => {
-            //   setEmail(e.target.value);
-            // }}
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
             InputLabelProps={{
               shrink: true,
             }}
             placeholder='Enter Product Name'
-            // inputRef={register({
-            //   required: "Email/Phone number is required",
-            //   pattern: {
-            //     value: /^(?:\d{10}|\w+@\w+\.\w{2,3})$/,
-            //     message: "Invalid Email/Phone number ",
-            //   },
-            // })}
-            // error={Boolean(errors.id)}
-            // helperText={errors.id?.message}
+            inputRef={register({
+              required: "Name is required",
+            })}
+            error={Boolean(errors.name)}
+            helperText={errors.name?.message}
             variant='outlined'
           />
         </Grid>
@@ -91,23 +116,19 @@ const UploadProduct = () => {
             label='Product Description'
             name='desc'
             color='secondary'
-            // defaultValue={email}
-            // onChange={(e) => {
-            //   setEmail(e.target.value);
-            // }}
+            value={desc}
+            onChange={(e) => {
+              setDesc(e.target.value);
+            }}
             InputLabelProps={{
               shrink: true,
             }}
             placeholder='Enter Product Description'
-            // inputRef={register({
-            //   required: "Email/Phone number is required",
-            //   pattern: {
-            //     value: /^(?:\d{10}|\w+@\w+\.\w{2,3})$/,
-            //     message: "Invalid Email/Phone number ",
-            //   },
-            // })}
-            // error={Boolean(errors.id)}
-            // helperText={errors.id?.message}
+            inputRef={register({
+              required: "Description is required",
+            })}
+            error={Boolean(errors.desc)}
+            helperText={errors.desc?.message}
             variant='outlined'
             multiline
             rows={4}
@@ -120,23 +141,19 @@ const UploadProduct = () => {
               label='Your Price'
               name='price'
               color='secondary'
-              // defaultValue={email}
-              // onChange={(e) => {
-              //   setEmail(e.target.value);
-              // }}
+              value={price}
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
               InputLabelProps={{
                 shrink: true,
               }}
               placeholder='Enter Product Price'
-              // inputRef={register({
-              //   required: "Email/Phone number is required",
-              //   pattern: {
-              //     value: /^(?:\d{10}|\w+@\w+\.\w{2,3})$/,
-              //     message: "Invalid Email/Phone number ",
-              //   },
-              // })}
-              // error={Boolean(errors.id)}
-              // helperText={errors.id?.message}
+              inputRef={register({
+                required: "Email/Phone number is required",
+              })}
+              error={Boolean(errors.price)}
+              helperText={errors.price?.message}
               variant='outlined'
             />
           </Grid>
@@ -147,23 +164,11 @@ const UploadProduct = () => {
               label='Price'
               name='kPrice'
               color='secondary'
-              // defaultValue={email}
-              // onChange={(e) => {
-              //   setEmail(e.target.value);
-              // }}
+              value={price * 1.05}
               InputLabelProps={{
                 shrink: true,
               }}
               placeholder='Kalafex Price '
-              // inputRef={register({
-              //   required: "Email/Phone number is required",
-              //   pattern: {
-              //     value: /^(?:\d{10}|\w+@\w+\.\w{2,3})$/,
-              //     message: "Invalid Email/Phone number ",
-              //   },
-              // })}
-              // error={Boolean(errors.id)}
-              // helperText={errors.id?.message}
               variant='outlined'
             />
           </Grid>
@@ -171,7 +176,6 @@ const UploadProduct = () => {
         <Grid item container xs={12} spacing={1}>
           <Grid item xs={6}>
             <Autocomplete
-              id='combo-box-demo'
               options={quantityList}
               getOptionLabel={(option) => option.title}
               renderInput={(params) => (
@@ -179,25 +183,21 @@ const UploadProduct = () => {
                   {...params}
                   style={{ marginTop: theme.spacing(1), width: "100%" }}
                   label='Quantity'
-                  name='category'
+                  name='quantity'
                   color='secondary'
-                  // defaultValue={email}
-                  // onChange={(e) => {
-                  //   setEmail(e.target.value);
-                  // }}
+                  value={quantity}
+                  onChange={(e) => {
+                    setQuantity(e.target.value);
+                  }}
                   // InputLabelProps={{
                   //   shrink: true,
                   // }}
                   placeholder=''
-                  // inputRef={register({
-                  //   required: "Email/Phone number is required",
-                  //   pattern: {
-                  //     value: /^(?:\d{10}|\w+@\w+\.\w{2,3})$/,
-                  //     message: "Invalid Email/Phone number ",
-                  //   },
-                  // })}
-                  // error={Boolean(errors.id)}
-                  // helperText={errors.id?.message}
+                  inputRef={register({
+                    required: "Quantity is required",
+                  })}
+                  error={Boolean(errors.quantity)}
+                  helperText={errors.quantity?.message}
                   variant='filled'
                 />
               )}
@@ -210,12 +210,14 @@ const UploadProduct = () => {
               variant='contained'
               size='large'
               color='secondary'
+              type='submit'
               style={{
                 ...theme.palette.background.gradient,
+                width: "100%",
                 marginTop: theme.spacing(1),
                 padding: "16px 24px",
               }}>
-              <Typography variant='h5'>Sell Your Design</Typography>
+              <Typography variant='h5'>Submit</Typography>
             </Button>
           </Grid>
         </Grid>

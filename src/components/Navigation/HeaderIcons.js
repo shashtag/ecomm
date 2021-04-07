@@ -4,12 +4,16 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { IconButton, useTheme } from "@material-ui/core";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import axios from "axios";
+import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import { UIContext } from "../../Context/UIContext";
 import { useHistory } from "react-router-dom";
+import { Link } from "@material-ui/core";
 
 const HeaderIcons = () => {
   const theme = useTheme();
-  const { setLoading, setUsrBaseInfo, setToken } = useContext(UIContext);
+  const { setLoading, setUsrBaseInfo, setToken, usrBaseInfo } = useContext(
+    UIContext,
+  );
   const history = useHistory();
   return (
     <div style={{ margin: theme.spacing(0, "auto") }}>
@@ -20,6 +24,21 @@ const HeaderIcons = () => {
           }}
         />
       </IconButton>
+
+      {usrBaseInfo?.is_artist ? (
+        <IconButton
+          onClick={() => {
+            history.push("/artist/dashboard");
+          }}
+          aria-label='cart'
+          style={{ marginLeft: theme.spacing(2) }}>
+          <DashboardOutlinedIcon
+            style={{
+              color: theme.palette.secondary.main,
+            }}
+          />
+        </IconButton>
+      ) : null}
 
       <IconButton aria-label='cart' style={{ marginLeft: theme.spacing(2) }}>
         <ShoppingCartOutlinedIcon

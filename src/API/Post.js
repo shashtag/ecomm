@@ -1,4 +1,5 @@
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 export const signup1 = (data, setLoading, setSnackbar, setOpen) => {
   setLoading(true);
@@ -72,6 +73,52 @@ export const addAddress = (data, setLoading, setPage, page) => {
       console.log(JSON.stringify(response.data));
       setPage(page + 1);
       setLoading(false);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const postArtistDetails = (setLoading) => {
+  setLoading(true);
+  console.log();
+  var data = new FormData();
+  data.append("custom_url", uuidv4());
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}accounts/artist/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+    data: data,
+  };
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      setLoading(false);
+
+      console.log(error);
+    });
+};
+
+export const addProduct = (data, setLoading) => {
+  setLoading(true);
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}store/create/product/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
       console.log(error);

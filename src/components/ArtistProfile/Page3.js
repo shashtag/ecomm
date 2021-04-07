@@ -11,7 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { APContext } from "../../Context/APContext";
 import { UIContext } from "../../Context/UIContext";
-import { patchArtistDetails } from "../../API/Patch";
+import { patchArtistDetails, patchUsrDetails } from "../../API/Patch";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,9 +33,7 @@ const Page3 = (props) => {
 
   const { register, handleSubmit, errors } = useForm();
 
-  const [
-    ,
-    ,
+  const {
     aadhar,
     setAadhar,
     GST,
@@ -44,9 +42,11 @@ const Page3 = (props) => {
     setPAN,
     payment,
     setPayment,
-  ] = useContext(APContext);
+  } = useContext(APContext);
   const { setLoading } = useContext(UIContext);
   const handlePageChange = () => {
+    var data2 = JSON.stringify({ is_first_login: false });
+    patchUsrDetails(data2);
     const data = {
       aadhar_card_no: aadhar,
       pan_card_no: GST,

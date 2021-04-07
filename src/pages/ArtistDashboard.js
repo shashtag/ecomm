@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
@@ -13,7 +13,11 @@ import {
 } from "../components/ArtistDashboard/ArtistDrawer";
 import TopListings from "../components/ArtistDashboard/TopListings";
 import UploadProduct from "../components/ArtistDashboard/UploadProduct";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
+import bannerImg from "../assets/bannerImg.png";
+import { Avatar } from "@material-ui/core";
+import { ADashboardProvider } from "../Context/ADashboardContext";
+import ArtistProfile from "./ArtistProfile";
 
 const drawerWidth = 250;
 
@@ -30,51 +34,82 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
-const ArtistDashboard = () => {
+const ArtistDashboard = (props) => {
+  const history = useHistory();
   const classes = useStyles();
-  const { usrBaseInfo } = useContext(UIContext);
+  const { usrBaseInfo, token } = useContext(UIContext);
   const theme = useTheme();
   let { path } = useRouteMatch();
   const md = useMediaQuery(theme.breakpoints.up("md"));
 
+  if (!localStorage.getItem("Token")) {
+    history.push("/login");
+  }
+  if (!token) {
+    return <div></div>;
+  }
+
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      {md ? <ArtistDrawer /> : <ArtistDrawerSM />}
-      <main className={classes.content}>
-        <Switch>
-          <Route
-            exact
-            path={path}
-            render={() => (
-              <>
+    <ADashboardProvider>
+      <div className={classes.root}>
+        <CssBaseline />
+        {md ? <ArtistDrawer /> : <ArtistDrawerSM />}
+        <main className={classes.content}>
+          <Switch>
+            <Route
+              exact
+              path={path}
+              render={() => (
+                <>
+                  <Grid container direction='column'>
+                    <Grid item style={{ marginBottom: theme.spacing(3) }}>
+                      <Typography variant='body1' style={{}}>
+                        <span style={{ fontWeight: "400" }}>
+                          Welcome aborad
+                        </span>{" "}
+                        {usrBaseInfo?.full_name?.split(" ")[0]},
+                      </Typography>
+                    </Grid>
+                    <Grid container item spacing={2}>
+                      <Grid container item md={7}>
+                        <DashboardCards />
+                        <TopListings />
+                      </Grid>
+                      <Grid item md={5}>
+                        <UploadProduct />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </>
+              )}
+            />
+            <Route
+              path={`${path}/myPage`}
+              render={() => (
                 <Grid container direction='column'>
-                  <Grid item style={{ marginBottom: theme.spacing(3) }}>
-                    <Typography variant='body1' style={{}}>
-                      <span style={{ fontWeight: "400" }}>Welcome aborad</span>{" "}
-                      {usrBaseInfo?.full_name?.split(" ")[0]},
-                    </Typography>
+                  <Grid
+                    item
+                    container
+                    style={{
+                      background: `url(${bannerImg}) center center / cover no-repeat `,
+                    }}
+                    xs='12'>
+                    <div style={{ height: "30vh" }}></div>
                   </Grid>
-                  <Grid container item spacing={2}>
-                    <Grid container item md={7}>
-                      <DashboardCards />
-                      <TopListings />
-                    </Grid>
-                    <Grid item md={5}>
-                      <UploadProduct />
-                    </Grid>
-                  </Grid>
+                  <Avatar></Avatar>
                 </Grid>
-              </>
-            )}
-          />
-          <Route exact path={`${path}/myProducts`}></Route>
-          <Route exact path={`${path}/trackProducts`}></Route>
-          <Route exact path={`${path}/faq`}></Route>
-          <Route exact path={`${path}/help`}></Route>
-        </Switch>
-      </main>
-    </div>
+              )}
+            />
+            <Route path={`${path}/profile`}>
+              <ArtistProfile />
+            </Route>
+            <Route path={`${path}/track`}>dasdsdf</Route>
+            <Route path={`${path}/faq`}>dadda</Route>
+            <Route path={`${path}/help`}>fgg</Route>
+          </Switch>
+        </main>
+      </div>
+    </ADashboardProvider>
   );
 };
 

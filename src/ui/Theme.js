@@ -99,6 +99,11 @@ let theme = createMuiTheme({
   },
 
   overrides: {
+    // MuiAlert: {
+    //   icon: {
+    //     fontSize: "24px",
+    //   },
+    // },
     MuiPickersToolbar: {
       toolbar: {
         backgroundColor: darkBlue,

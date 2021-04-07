@@ -12,7 +12,7 @@ export const UIProvider = (props) => {
   const [trendingProducts, setTrendingProducts] = useState(null);
   const [layout, setLayout] = useState(true);
 
-  const [usrBaseInfo, setUsrBaseInfo] = useState("eewew");
+  const [usrBaseInfo, setUsrBaseInfo] = useState("");
 
   useEffect(() => {
     if (!localStorage.getItem("Token")) {

@@ -92,7 +92,7 @@ const Form3 = (props) => {
               name='phone'
               variant='outlined'
               color='secondary'
-              defaultValue={phone}
+              value={phone}
               onChange={(e) => {
                 setPhone(e.target.value);
               }}

@@ -31,7 +31,6 @@ export const fetchBaseDetailsUser = (setUsrBaseInfo, history) => {
       console.log(JSON.stringify(response.data));
       setUsrBaseInfo(response.data);
       if (response.data.is_artist && response.data.is_first_login) {
-        console.log("abc");
         history.push("/artist/profile");
       }
     })

@@ -3,18 +3,15 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
 import { UIContext } from "../Context/UIContext";
+import { Typography } from "@material-ui/core";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    "& > * + *": {
-      marginTop: theme.spacing(2),
-    },
-  },
+  icon: { fontSize: "24px" },
+  message: { paddingTop: "5px" },
 }));
 
 export default function Notif(props) {
@@ -31,16 +28,17 @@ export default function Notif(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <Snackbar
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-        open={snackbar}
-        autoHideDuration={6000}
-        onClose={handleClose}>
-        <Alert onClose={handleClose} severity='error'>
-          This is a success message!
-        </Alert>
-      </Snackbar>
-    </div>
+    <Snackbar
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      open={snackbar}
+      autoHideDuration={6000}
+      onClose={handleClose}>
+      <Alert
+        onClose={handleClose}
+        severity='error'
+        classes={{ icon: classes.icon, message: classes.message }}>
+        <Typography variant='h5'>Request failed please try again</Typography>
+      </Alert>
+    </Snackbar>
   );
 }

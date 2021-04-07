@@ -8,16 +8,16 @@ import {
   Avatar,
   TextField,
 } from "@material-ui/core";
-import defaultProfilePic from "../../assets/defaultProfilePic.png";
 import { APContext } from "../../Context/APContext";
 import { UIContext } from "../../Context/UIContext";
 import { useForm } from "react-hook-form";
-import { patchArtistDetails, patchUsrDetails } from "../../API/Patch";
+import { patchArtistDetails } from "../../API/Patch";
 
 const useStyles = makeStyles((theme) => ({
   large: {
     width: "200px",
     height: "200px",
+    cursor: "pointer",
   },
   input: {
     width: "500px",
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const Page1 = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [customURL, setCustomURL] = useContext(APContext);
+  const { customURL, setCustomURL, avatar, setAvatar } = useContext(APContext);
   const { setLoading } = useContext(UIContext);
   const { register, handleSubmit, errors } = useForm();
 
@@ -35,8 +35,6 @@ const Page1 = (props) => {
     const data = {
       custom_url: customURL,
     };
-    var data2 = JSON.stringify({ is_first_login: false });
-    patchUsrDetails(data2);
 
     patchArtistDetails(
       data,
@@ -62,21 +60,46 @@ const Page1 = (props) => {
           Let us start by setting up your shop.
         </Typography>
       </Grid>
-      <Grid
-        item
-        container
-        justify='center'
-        style={{ paddingTop: theme.spacing(5) }}>
-        <Avatar
-          alt='default profile pic'
-          src={defaultProfilePic}
-          className={classes.large}
-        />
-      </Grid>
       <form
         className={classes.form}
         autoComplete='off'
         onSubmit={handleSubmit(handlePageChange)}>
+        <Grid
+          item
+          container
+          justify='center'
+          style={{ paddingTop: theme.spacing(5) }}>
+          <TextField
+            name='avatar'
+            accept='image/*'
+            className={classes.input}
+            id='contained-button-file'
+            multiple
+            type='file'
+            style={{ display: "none" }}
+            onChange={(e) => {
+              // const reader = new FileReader();
+              // var url = reader.readAsDataURL(e.target.value);
+
+              // setAvatar(url);
+              const reader = new FileReader();
+              reader.onload = () => {
+                if (reader.readyState === 2) {
+                  setAvatar(reader.result);
+                }
+              };
+              reader.readAsDataURL(e.target?.files?.[0]);
+            }}
+          />
+          <label htmlFor='contained-button-file'>
+            <Avatar
+              alt='default profile pic'
+              src={avatar}
+              className={classes.large}
+            />
+          </label>
+        </Grid>
+
         <Grid
           item
           container

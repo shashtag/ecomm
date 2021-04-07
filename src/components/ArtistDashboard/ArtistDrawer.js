@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
@@ -14,6 +15,7 @@ import { makeStyles, Typography } from "@material-ui/core";
 import theme from "../../ui/Theme";
 import { Button } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
+import PersonIcon from "@material-ui/icons/Person";
 
 const drawerWidth = 250;
 
@@ -37,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const ArtistDrawer = () => {
   const classes = useStyles();
+
   return (
     <Drawer
       className={classes.drawer}
@@ -45,71 +48,14 @@ export const ArtistDrawer = () => {
         paper: classes.drawerPaper,
       }}
       anchor='left'>
-      <List style={{ color: "white" }}>
-        <ListItem button>
-          <DashboardIcon
-            fontSize='large'
-            style={{
-              marginRight: theme.spacing(2),
-              marginLeft: theme.spacing(1),
-            }}
-          />
-
-          <Typography> Dashboard</Typography>
-        </ListItem>
-        <ListItem button>
-          <ArtTrackIcon
-            fontSize='large'
-            style={{
-              marginRight: theme.spacing(2),
-              marginLeft: theme.spacing(1),
-            }}
-          />
-
-          <Typography>My products</Typography>
-        </ListItem>
-        <ListItem button>
-          <DirectionsBikeIcon
-            fontSize='large'
-            style={{
-              marginRight: theme.spacing(2),
-              marginLeft: theme.spacing(1),
-            }}
-          />
-
-          <Typography>Track products</Typography>
-        </ListItem>
-
-        <ListItem button>
-          <QuestionAnswerIcon
-            fontSize='large'
-            style={{
-              marginRight: theme.spacing(2),
-              marginLeft: theme.spacing(1),
-            }}
-          />
-
-          <Typography>FAQs</Typography>
-        </ListItem>
-        <ListItem button>
-          <ContactSupportIcon
-            fontSize='large'
-            style={{
-              marginRight: theme.spacing(2),
-              marginLeft: theme.spacing(1),
-            }}
-          />
-
-          <Typography>Need help?</Typography>
-        </ListItem>
-      </List>
+      <List style={{ color: "white" }}>{artistDrawerIcons}</List>
       <Divider />
     </Drawer>
   );
 };
 
 export const ArtistDrawerSM = () => {
-  const [drawer, setDrawer] = useState(true);
+  const [drawer, setDrawer] = useState(false);
   const classes = useStyles();
 
   return (
@@ -134,66 +80,81 @@ export const ArtistDrawerSM = () => {
         classes={{
           paper: classes.drawerPaperSM,
         }}>
-        <List style={{ color: "white" }}>
-          <ListItem button>
-            <DashboardIcon
-              fontSize='large'
-              style={{
-                marginRight: theme.spacing(2),
-                marginLeft: theme.spacing(1),
-              }}
-            />
-
-            <Typography> Dashboard</Typography>
-          </ListItem>
-          <ListItem button>
-            <ArtTrackIcon
-              fontSize='large'
-              style={{
-                marginRight: theme.spacing(2),
-                marginLeft: theme.spacing(1),
-              }}
-            />
-
-            <Typography>My products</Typography>
-          </ListItem>
-          <ListItem button>
-            <DirectionsBikeIcon
-              fontSize='large'
-              style={{
-                marginRight: theme.spacing(2),
-                marginLeft: theme.spacing(1),
-              }}
-            />
-
-            <Typography>Track products</Typography>
-          </ListItem>
-
-          <ListItem button>
-            <QuestionAnswerIcon
-              fontSize='large'
-              style={{
-                marginRight: theme.spacing(2),
-                marginLeft: theme.spacing(1),
-              }}
-            />
-
-            <Typography>FAQs</Typography>
-          </ListItem>
-          <ListItem button>
-            <ContactSupportIcon
-              fontSize='large'
-              style={{
-                marginRight: theme.spacing(2),
-                marginLeft: theme.spacing(1),
-              }}
-            />
-
-            <Typography>Need help?</Typography>
-          </ListItem>
-        </List>
+        <List style={{ color: "white" }}>{artistDrawerIcons}</List>
         <Divider />
       </Drawer>
     </>
   );
 };
+
+const artistDrawerIcons = (
+  <>
+    <ListItem button component={Link} to='/artist/dashboard/'>
+      <DashboardIcon
+        fontSize='large'
+        style={{
+          marginRight: theme.spacing(2),
+          marginLeft: theme.spacing(1),
+        }}
+      />
+
+      <Typography> Dashboard</Typography>
+    </ListItem>
+    <ListItem button component={Link} to='/artist/dashboard/profile'>
+      <PersonIcon
+        fontSize='large'
+        style={{
+          marginRight: theme.spacing(2),
+          marginLeft: theme.spacing(1),
+        }}
+      />
+
+      <Typography> MY Profile</Typography>
+    </ListItem>
+    <ListItem button component={Link} to='/artist/dashboard/myPage'>
+      <ArtTrackIcon
+        fontSize='large'
+        style={{
+          marginRight: theme.spacing(2),
+          marginLeft: theme.spacing(1),
+        }}
+      />
+
+      <Typography>My page</Typography>
+    </ListItem>
+    <ListItem button component={Link} to='/artist/dashboard/track'>
+      <DirectionsBikeIcon
+        fontSize='large'
+        style={{
+          marginRight: theme.spacing(2),
+          marginLeft: theme.spacing(1),
+        }}
+      />
+
+      <Typography>Track products</Typography>
+    </ListItem>
+
+    <ListItem button component={Link} to='/artist/dashboard/faq'>
+      <QuestionAnswerIcon
+        fontSize='large'
+        style={{
+          marginRight: theme.spacing(2),
+          marginLeft: theme.spacing(1),
+        }}
+      />
+
+      <Typography>FAQs</Typography>
+    </ListItem>
+    <ListItem button component={Link} to='/artist/dashboard/help'>
+      <ContactSupportIcon
+        fontSize='large'
+        style={{
+          marginRight: theme.spacing(2),
+          marginLeft: theme.spacing(1),
+        }}
+      />
+
+      <Typography>Need help?</Typography>
+    </ListItem>
+  </>
+);

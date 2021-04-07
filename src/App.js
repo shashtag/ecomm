@@ -20,26 +20,10 @@ function App() {
       <Notif />
 
       <Switch>
+        <Route path='/login' component={Login} />
+        <Route path='/artist/signup' render={() => <Signup type='artist' />} />
+        <Route path='/artist/profile' render={() => <ArtistProfile />} />
         <Route
-          exact
-          path='/'
-          render={() => (
-            <>
-              <Navigation noCat={false} noSub={false} />
-              <LandingPage />
-              <Footer />
-            </>
-          )}
-        />
-        <Route exact path='/login' component={Login} />
-        <Route
-          exact
-          path='/artist/signup'
-          render={() => <Signup type='artist' />}
-        />
-        <Route exact path='/artist/profile' render={() => <ArtistProfile />} />
-        <Route
-          exact
           path='/artist/dashboard'
           render={() => (
             <>
@@ -48,13 +32,8 @@ function App() {
             </>
           )}
         />
+        <Route path='/user/signup' render={() => <Signup type='user' />} />
         <Route
-          exact
-          path='/user/signup'
-          render={() => <Signup type='user' />}
-        />
-        <Route
-          exact
           path='/product/:pid'
           render={() => (
             <>
@@ -64,7 +43,17 @@ function App() {
             </>
           )}
         />
-        <Route exact path='/temp' render={() => <Temp />} />
+        <Route path='/temp' render={() => <Temp />} />
+        <Route
+          path='/'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={false} />
+              <LandingPage />
+              <Footer />
+            </>
+          )}
+        />
       </Switch>
     </ThemeProvider>
   );

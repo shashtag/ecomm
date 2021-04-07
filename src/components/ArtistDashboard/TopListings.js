@@ -17,7 +17,7 @@ const TopListings = () => {
           </Grid>
           {[{ nama: "s" }, { nama: "st" }, { nama: "ss" }, { nama: "se" }].map(
             (data) => (
-              <TopListing key={data.name} />
+              <TopListing key={data.nama} />
             ),
           )}
         </Grid>
