@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  AppBar,
-  Toolbar,
+  // AppBar,
+  // Toolbar,
   fade,
   makeStyles,
   Typography,
   useTheme,
-  Button,
+  // Button,
   InputBase,
   Grid,
 } from "@material-ui/core";
@@ -14,7 +14,7 @@ import subscribe from "../assets/subscribe.png";
 import facebook from "../assets/socialIcons/facebook.png";
 import instagram from "../assets/socialIcons/instagram.png";
 import linkedIn from "../assets/socialIcons/linkedIn.png";
-import mail from "../assets/socialIcons/mail.png";
+// import mail from "../assets/socialIcons/mail.png";
 import twitter from "../assets/socialIcons/twitter.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -215,7 +215,7 @@ const Footer = () => {
               variant='caption'
               noWrap
               className={classes.link}>
-              Canvas Prints
+              Paintings & Artwork
             </Typography>
           </Grid>
           <Grid item>
@@ -224,7 +224,7 @@ const Footer = () => {
               variant='caption'
               noWrap
               className={classes.link}>
-              Art Prints & Framed Art Prints
+              Lifestyle & Home
             </Typography>
           </Grid>
           <Grid item>
@@ -233,7 +233,7 @@ const Footer = () => {
               variant='caption'
               noWrap
               className={classes.link}>
-              Comforters & Duvet Covers
+              Jewellery & Accessories
             </Typography>
           </Grid>
           <Grid item>
@@ -242,10 +242,10 @@ const Footer = () => {
               variant='caption'
               noWrap
               className={classes.link}>
-              Jewelries
+              Collectibles
             </Typography>
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Typography
               component='div'
               variant='caption'
@@ -253,7 +253,7 @@ const Footer = () => {
               className={classes.link}>
               Explore more categories
             </Typography>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Grid>
       <Grid md={1} item></Grid>
@@ -293,20 +293,21 @@ const Footer = () => {
           </Typography>
           <div style={{ display: "flex" }}>
             <div className={classes.icon}>
-              <img src={facebook} alt='facebook icon' />
-            </div>
-            <div className={classes.icon}>
               <img src={instagram} alt='instagram icon' />
             </div>
             <div className={classes.icon}>
-              <img src={linkedIn} alt='linkedIn icon' />
-            </div>
-            <div className={classes.icon}>
-              <img src={mail} alt='mail icon' />
+              <img src={facebook} alt='facebook icon' />
             </div>
             <div className={classes.icon}>
               <img src={twitter} alt='twitter icon' />
             </div>
+
+            <div className={classes.icon}>
+              <img src={linkedIn} alt='linkedIn icon' />
+            </div>
+            {/* <div className={classes.icon}>
+              <img src={mail} alt='mail icon' />
+            </div> */}
           </div>
         </Grid>
       </Grid>

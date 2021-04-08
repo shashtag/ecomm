@@ -6,10 +6,10 @@ const DashboardCards = () => {
   return (
     <Grid container spacing={3}>
       {[
-        { head: "total sales", value: "3000", color: "#0FAFE9" },
-        { head: "total sale", value: "3000", color: "#FFC209" },
-        { head: "total sals", value: "3000", color: "#FF5376" },
-        { head: "total saes", value: "3000", color: "#FD8623" },
+        { head: "Total Sales", value: "3000", color: "#0FAFE9" },
+        { head: "Total Insights", value: "3000", color: "#FFC209" },
+        { head: "Total Earning", value: "3000", color: "#FF5376" },
+        { head: "Total Orders", value: "3000", color: "#FD8623" },
       ].map((data) => (
         <DashboardCard
           key={data.head}

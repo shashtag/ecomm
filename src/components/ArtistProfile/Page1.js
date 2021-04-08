@@ -1,4 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, {
+  useContext,
+  // useEffect
+} from "react";
 import {
   Grid,
   makeStyles,
@@ -33,6 +36,7 @@ const Page1 = (props) => {
 
   const handlePageChange = () => {
     const data = {
+      profile_picture: avatar,
       custom_url: customURL,
     };
 
@@ -42,6 +46,7 @@ const Page1 = (props) => {
       props.page,
       setLoading,
       null,
+      () => {},
       () => {},
       () => {},
       () => {},

@@ -10,6 +10,7 @@ export const patchArtistDetails = (
   setAadhar,
   setGST,
   setPAN,
+  setAvatar,
 ) => {
   setLoading(true);
   var config = {
@@ -30,6 +31,16 @@ export const patchArtistDetails = (
       setAadhar(response.data.aadhar_card_no);
       setGST(response.data.gst_no);
       setPAN(response.data.pan_card_no);
+      setAvatar(response.data.profile_picture);
+
+      // const reader = new FileReader();
+      // reader.onload = () => {
+      //   if (reader?.readyState === 2) {
+      //     setAvatar(reader?.result);
+      //   }
+      // };
+      // reader?.readAsDataURL(response?.data?.profile_picture);
+
       if (Object.keys(data).length !== 0 && page !== 3) {
         setPage(page + 1);
       }

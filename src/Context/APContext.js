@@ -7,7 +7,11 @@ import defaultProfilePic from "../assets/defaultProfilePic.png";
 export const APContext = createContext();
 
 export const APProvider = (props) => {
-  const { setLoading, usrBaseInfo, setUsrBaseInfo } = useContext(UIContext);
+  const {
+    setLoading,
+    usrBaseInfo,
+    // setUsrBaseInfo
+  } = useContext(UIContext);
 
   const [customURL, setCustomURL] = useState("");
   const [aadhar, setAadhar] = useState("");
@@ -22,17 +26,21 @@ export const APProvider = (props) => {
     //   console.log("sss");
     //   postArtistDetails(setLoading);
     // }
-    patchArtistDetails(
-      {},
-      null,
-      null,
-      setLoading,
-      null,
-      setCustomURL,
-      setAadhar,
-      setGST,
-      setPAN,
-    );
+    if (!usrBaseInfo.is_first_login) {
+      patchArtistDetails(
+        {},
+        null,
+        null,
+        setLoading,
+        null,
+        setCustomURL,
+
+        setAadhar,
+        setGST,
+        setPAN,
+        setAvatar,
+      );
+    }
     return () => {};
   }, []);
   useEffect(() => {

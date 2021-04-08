@@ -5,7 +5,7 @@ import {
   Typography,
   useTheme,
   Button,
-  Avatar,
+  // Avatar,
   TextField,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";
@@ -40,8 +40,8 @@ const Page3 = (props) => {
     setGST,
     PAN,
     setPAN,
-    payment,
-    setPayment,
+    // payment,
+    // setPayment,
   } = useContext(APContext);
   const { setLoading } = useContext(UIContext);
   const handlePageChange = () => {
@@ -58,6 +58,7 @@ const Page3 = (props) => {
       props.page,
       setLoading,
       history,
+      () => {},
       () => {},
       () => {},
       () => {},

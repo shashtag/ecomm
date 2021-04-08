@@ -67,14 +67,28 @@ const Form3 = (props) => {
   const sendOtpClickHandler = () => {
     const type =
       props.type === "artist" ? { is_artist: true } : { is_customer: true };
+    function formatDate(date) {
+      var d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear();
+
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+
+      return [year, month, day].join("-");
+    }
+
     const data = {
       // selectedDate:selectedDate,
       email: email,
       full_name: name,
       password: pass,
       phone_number: phone,
+      date_of_birth: formatDate(selectedDate),
       ...type,
     };
+    console.log(data);
     signup1(data, setLoading, setSnackbar, setOpen);
   };
 
@@ -94,7 +108,7 @@ const Form3 = (props) => {
               color='secondary'
               value={phone}
               onChange={(e) => {
-                setPhone(e.target.value);
+                setPhone(e.target.value.trim());
               }}
               InputLabelProps={{
                 shrink: true,
@@ -103,7 +117,7 @@ const Form3 = (props) => {
               inputRef={register({
                 required: "Phone Number is required",
                 pattern: {
-                  value: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
+                  value: /([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}/,
                   message: "Invalid Phone Number",
                 },
               })}

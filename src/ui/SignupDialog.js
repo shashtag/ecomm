@@ -15,10 +15,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function SignupDialog(props) {
   const history = useHistory();
 
-  const handleClickOpen = () => {
-    props.setOpen(true);
-  };
-
   const handleClose = () => {
     props.setOpen(false);
     history.push("/login");
