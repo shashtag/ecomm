@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import Hero from "../components/Landing/Hero";
-import Featured from "../components/Landing/Featured";
+// import Featured from "../components/Landing/Featured";
 import Usp from "../components/Landing/Usp";
 import PaysArtist from "../components/Landing/PaysArtist";
 import Trending from "../components/Landing/Trending";
@@ -13,18 +13,18 @@ const LandingPage = () => {
       direction='column'
       // className={classes.mainContainer}
     >
-      <Grid item>
+      <Grid item container>
         <Hero />
       </Grid>
-      <Grid item>
+      <Grid item container>
         <Usp />
       </Grid>
-      <Grid item>
+      <Grid item container>
         <Trending />
       </Grid>
-      <Grid item>
+      {/* <Grid item container>
         <Featured />
-      </Grid>
+      </Grid> */}
 
       <Grid item>
         <PaysArtist />

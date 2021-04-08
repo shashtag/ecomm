@@ -17,12 +17,15 @@ import { Link } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar";
 // import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import { PersonOutline, Menu } from "@material-ui/icons";
+import {
+  // PersonOutline,
+  Menu,
+} from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
 // import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 import logoMain from "../../assets/logoMain.png";
 import logoDrawer from "../../assets/logoDrawer.png";
-import logoMainSm from "../../assets/logoMainSm.png";
+// import logoMainSm from "../../assets/logoMainSm.png";
 import search from "../../assets/search.png";
 import sellDes from "../../assets/sellDes.png";
 import { UIContext } from "../../Context/UIContext";

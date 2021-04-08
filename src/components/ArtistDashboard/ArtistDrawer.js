@@ -13,7 +13,7 @@ import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import { makeStyles, Typography } from "@material-ui/core";
 import theme from "../../ui/Theme";
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import PersonIcon from "@material-ui/icons/Person";
 
@@ -67,10 +67,11 @@ export const ArtistDrawerSM = () => {
           color: "white",
           position: "fixed",
           bottom: "-1px",
-          padding: theme.spacing(0.5),
-          fontSize: "60px",
-          width: "100%",
+          padding: theme.spacing(0.5, 0),
+          fontSize: "48px",
+          left: "15px",
           zIndex: "1100",
+          borderRadius: "4px",
         }}
       />
       <Drawer

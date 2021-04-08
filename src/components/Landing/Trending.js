@@ -5,7 +5,7 @@ import {
   makeStyles,
   Typography,
   useTheme,
-  Button,
+  // Button,
 } from "@material-ui/core";
 import Product from "../Product";
 import { UIContext } from "../../Context/UIContext";

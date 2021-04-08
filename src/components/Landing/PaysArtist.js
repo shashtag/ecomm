@@ -14,7 +14,15 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.secondary.light,
     color: theme.palette.primary.main,
     borderRadius: "12px",
+
+    padding: "0px 15px",
+    // marginTop: "150px",
+    // marginBottom: "50px",
+    [theme.breakpoints.up("md")]: {
+      padding: "0px 3.2%",
+    },
   },
+
   right: {
     padding: "60px 0",
     [theme.breakpoints.up("md")]: {

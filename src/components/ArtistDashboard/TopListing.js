@@ -5,7 +5,7 @@ import React from "react";
 const TopListing = () => {
   const theme = useTheme();
   return (
-    <Grid item container md={6}>
+    <Grid item container xs={12} md={6}>
       <Grid item md={5}>
         <img src={"ss"} alt='sss' />
       </Grid>

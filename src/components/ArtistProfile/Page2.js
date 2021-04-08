@@ -1,11 +1,15 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {
+  useContext,
+  useState,
+  // useEffect
+} from "react";
 import {
   Grid,
   makeStyles,
   Typography,
   useTheme,
   Button,
-  Avatar,
+  // Avatar,
   TextField,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";

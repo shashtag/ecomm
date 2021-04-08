@@ -18,8 +18,9 @@ import bannerImg from "../assets/bannerImg.png";
 import { Avatar } from "@material-ui/core";
 import { ADashboardProvider } from "../Context/ADashboardContext";
 import ArtistProfile from "./ArtistProfile";
+import Help from "./Help";
 
-const drawerWidth = 250;
+// const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +32,10 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
+    padding: `${theme.spacing(4)}px 15px`,
+    [theme.breakpoints.up("md")]: {
+      padding: `${theme.spacing(4)}px 3.2%`,
+    },
   },
 }));
 const ArtistDashboard = (props) => {
@@ -67,15 +71,17 @@ const ArtistDashboard = (props) => {
                         <span style={{ fontWeight: "400" }}>
                           Welcome aborad
                         </span>{" "}
-                        {usrBaseInfo?.full_name?.split(" ")[0]},
+                        <span style={{ textTransform: "capitalize" }}>
+                          {usrBaseInfo?.full_name?.split(" ")[0]},
+                        </span>
                       </Typography>
                     </Grid>
                     <Grid container item spacing={2}>
-                      <Grid container item md={7}>
+                      <Grid container item xs={12} md={7}>
                         <DashboardCards />
                         <TopListings />
                       </Grid>
-                      <Grid item md={5}>
+                      <Grid item xs={12} md={5}>
                         <UploadProduct />
                       </Grid>
                     </Grid>
@@ -105,7 +111,9 @@ const ArtistDashboard = (props) => {
             </Route>
             <Route path={`${path}/track`}>dasdsdf</Route>
             <Route path={`${path}/faq`}>dadda</Route>
-            <Route path={`${path}/help`}>fgg</Route>
+            <Route path={`${path}/help`}>
+              <Help />
+            </Route>
           </Switch>
         </main>
       </div>

@@ -1,5 +1,5 @@
-import { Typography, useTheme } from "@material-ui/core";
-import { TextField } from "@material-ui/core";
+import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
+import { TextField, makeStyles } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
@@ -9,10 +9,19 @@ import { ADashboardContext } from "../../Context/ADashboardContext";
 import { addProduct } from "../../API/Post";
 import { UIContext } from "../../Context/UIContext";
 
+const useStyles = makeStyles((theme) => ({
+  inproot: {
+    paddingTop: theme.spacing(2),
+  },
+}));
+
 const UploadProduct = () => {
+  const classes = useStyles();
+
   const theme = useTheme();
   const { register, handleSubmit, errors } = useForm();
   const { setLoading } = useContext(UIContext);
+  const sm = useMediaQuery(theme.breakpoints.up("sm"));
 
   const {
     category,
@@ -134,10 +143,13 @@ const UploadProduct = () => {
             rows={4}
           />
         </Grid>
-        <Grid container item xs={12} spacing={1}>
-          <Grid item md={6}>
+        <Grid container item xs={12} spacing={sm ? 1 : 0}>
+          <Grid item xs={12} sm={6}>
             <TextField
-              style={{ marginTop: theme.spacing(3), width: "100%" }}
+              style={{
+                marginTop: theme.spacing(3),
+                width: "100%",
+              }}
               label='Your Price'
               name='price'
               color='secondary'
@@ -157,7 +169,7 @@ const UploadProduct = () => {
               variant='outlined'
             />
           </Grid>
-          <Grid item md={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               disabled
               style={{ marginTop: theme.spacing(3), width: "100%" }}
@@ -178,6 +190,7 @@ const UploadProduct = () => {
             <Autocomplete
               options={quantityList}
               getOptionLabel={(option) => option.title}
+              classes={{ inputRoot: classes.inproot }}
               renderInput={(params) => (
                 <TextField
                   {...params}

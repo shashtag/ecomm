@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 
 export const signup1 = (data, setLoading, setSnackbar, setOpen) => {
   setLoading(true);
-  var axios = require("axios");
   data = JSON.stringify(data);
 
   var config = {
@@ -17,14 +16,20 @@ export const signup1 = (data, setLoading, setSnackbar, setOpen) => {
 
   axios(config)
     .then((response) => {
-      console.log(JSON.stringify(response.data));
       setLoading(false);
       setOpen(true);
     })
     .catch((error) => {
-      console.log(error);
       setLoading(false);
-      setSnackbar(true);
+      setSnackbar({
+        value: true,
+        message:
+          error.response.data.email?.[0] ||
+          error.response.data.password?.[0] ||
+          error.response.data.phone_number?.[0] ||
+          error.response.data.date_of_birth?.[0] ||
+          error.response.data.full_name?.[0],
+      });
     });
 };
 
@@ -42,17 +47,20 @@ export const login = (data, setLoading, setToken, setSnackbar, history) => {
 
   axios(config)
     .then(function (response) {
-      console.log(response.data);
       localStorage.setItem("Token", response.data.auth_token);
-      console.log(localStorage.getItem("Token"));
       setToken(true);
       setLoading(false);
       history.push("/");
     })
     .catch(function (error) {
-      console.log(error);
       setLoading(false);
-      setSnackbar(true);
+      setSnackbar({
+        value: true,
+        message:
+          error.response.data.email?.[0] ||
+          error.response.data.non_field_errors?.[0] ||
+          error.response.data.password?.[0],
+      });
     });
 };
 

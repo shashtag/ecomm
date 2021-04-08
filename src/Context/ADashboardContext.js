@@ -1,10 +1,15 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { UIContext } from "./UIContext";
+import React, {
+  createContext,
+  // useContext,
+  useState,
+  //  useEffect
+} from "react";
+// import { UIContext } from "./UIContext";
 
 export const ADashboardContext = createContext();
 
 export const ADashboardProvider = (props) => {
-  const { setLoading, usrBaseInfo, setUsrBaseInfo } = useContext(UIContext);
+  // const { setLoading, usrBaseInfo, setUsrBaseInfo } = useContext(UIContext);
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
