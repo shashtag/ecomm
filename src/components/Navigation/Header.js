@@ -23,7 +23,7 @@ import {
 } from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
 // import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
-import logoMain from "../../assets/logoMain.png";
+import logoMain from "../../assets/logoMain1.png";
 import logoDrawer from "../../assets/logoDrawer.png";
 // import logoMainSm from "../../assets/logoMainSm.png";
 import search from "../../assets/search.png";
@@ -213,9 +213,10 @@ export default function Header() {
     <>
       <AppBar
         position='static'
+        elevation='1'
         style={{
           paddingTop: "8px",
-          borderBottom: `1px solid ${theme.palette.grey[300]}`,
+          borderBottom: `0.5px solid ${theme.palette.grey[300]}`,
         }}>
         <Toolbar style={{ justifyContent: "space-between" }}>
           <div style={{ display: "flex" }} className={classes.grow2}>
