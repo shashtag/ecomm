@@ -6,9 +6,15 @@
   "description":"An art e-commerce site",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/",
+  "scope": "/git a",
   "start_url": ".",
   "icons": [
+    {
+      "src": "images/icons/maskable_icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "images/icons/icon-72x72.png",
       "sizes": "72x72",
