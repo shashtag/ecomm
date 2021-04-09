@@ -11,19 +11,25 @@ import { Link } from "@material-ui/core";
 
 const HeaderIcons = () => {
   const theme = useTheme();
-  const { setLoading, setUsrBaseInfo, setToken, usrBaseInfo } = useContext(
-    UIContext,
-  );
+  const {
+    setLoading,
+    setUsrBaseInfo,
+    setToken,
+    usrBaseInfo,
+    token,
+  } = useContext(UIContext);
   const history = useHistory();
   return (
     <div style={{ margin: theme.spacing(0, "auto") }}>
-      <IconButton aria-label='cart' style={{}}>
-        <PersonOutline
-          style={{
-            color: theme.palette.secondary.main,
-          }}
-        />
-      </IconButton>
+      {token ? (
+        <IconButton aria-label='cart' style={{}}>
+          <PersonOutline
+            style={{
+              color: theme.palette.secondary.main,
+            }}
+          />
+        </IconButton>
+      ) : null}
 
       {usrBaseInfo?.is_artist ? (
         <IconButton
@@ -47,38 +53,41 @@ const HeaderIcons = () => {
           }}
         />
       </IconButton>
-      <IconButton
-        aria-label='cart'
-        style={{ marginLeft: theme.spacing(2) }}
-        onClick={() => {
-          var config = {
-            method: "post",
-            url: `${process.env.REACT_APP_URL}auth/token/logout/`,
-            headers: {
-              Authorization: `Token ${localStorage.getItem("Token")}`,
-            },
-          };
-          setLoading(true);
 
-          axios(config)
-            .then(function (response) {
-              console.log(JSON.stringify(response.data));
-              localStorage.removeItem("Token");
-              setLoading(false);
-              setUsrBaseInfo(null);
-              setToken(false);
-              history.push("/");
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }}>
-        <ExitToAppIcon
-          style={{
-            color: theme.palette.secondary.main,
-          }}
-        />
-      </IconButton>
+      {token ? (
+        <IconButton
+          aria-label='cart'
+          style={{ marginLeft: theme.spacing(2) }}
+          onClick={() => {
+            var config = {
+              method: "post",
+              url: `${process.env.REACT_APP_URL}auth/token/logout/`,
+              headers: {
+                Authorization: `Token ${localStorage.getItem("Token")}`,
+              },
+            };
+            setLoading(true);
+
+            axios(config)
+              .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                localStorage.removeItem("Token");
+                setLoading(false);
+                setUsrBaseInfo(null);
+                setToken(false);
+                history.push("/");
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          }}>
+          <ExitToAppIcon
+            style={{
+              color: theme.palette.secondary.main,
+            }}
+          />
+        </IconButton>
+      ) : null}
     </div>
   );
 };
