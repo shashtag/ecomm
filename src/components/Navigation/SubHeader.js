@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
       background: `url(${subhead})`,
       backgroundPosition: "center",
+      [theme.breakpoints.down("sm")]: {
+        background: `transparent`,
+      },
     },
     [theme.breakpoints.up("sm")]: {
       height: "32px",
