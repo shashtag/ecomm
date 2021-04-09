@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     backgroundSize: "cover",
-    minHeight: "48px",
+    minHeight: "32px",
     padding: "0 48px 0 15px",
     position: "relative",
 
@@ -105,7 +105,7 @@ const SubHeader = () => {
     <AppBar
       className={classes.appBar}
       style={{
-        marginTop: close ? (sm ? "-32px" : "-48px") : undefined,
+        marginTop: close ? (sm ? "-32px" : "-32px") : undefined,
         transition: " margin 0.3s",
         fontWeight: "600",
       }}
