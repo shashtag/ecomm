@@ -89,7 +89,7 @@ const ProductDetails = () => {
                 <Paper
                   style={{
                     height: "125px",
-                    width: "29%",
+                    width: "28%",
                     margin: theme.spacing(0, 1),
                   }}>
                   <img src='n' alt=' Side img' />
@@ -98,7 +98,7 @@ const ProductDetails = () => {
                 <Paper
                   style={{
                     height: "125px",
-                    width: "29%",
+                    width: "28%",
                     margin: theme.spacing(0, 1),
                   }}>
                   <img src='n' alt=' Side img' />
@@ -107,7 +107,7 @@ const ProductDetails = () => {
                 <Paper
                   style={{
                     height: "125px",
-                    width: "29%",
+                    width: "28%",
                     margin: theme.spacing(0, 1),
                   }}>
                   <img src='n' alt=' Side img' />
@@ -135,17 +135,17 @@ const ProductDetails = () => {
               </Grid>
               <Grid item>
                 <Typography variant='h3'>
-                  {productDetails.results[0].name}
+                  {productDetails.results?.[0]?.name}
                 </Typography>
               </Grid>
               <Grid item style={{ marginBottom: theme.spacing(3) }}>
                 <Typography variant='caption' style={{ color: "#40567A" }}>
-                  {productDetails.results[0].category}
+                  {productDetails.results?.[0]?.category}
                 </Typography>
               </Grid>
               <Grid item style={{ marginBottom: theme.spacing(3) }}>
                 <Typography variant='caption' style={{ color: "#263957" }}>
-                  {productDetails.results[0].description}
+                  {productDetails.results?.[0]?.description}
                 </Typography>
               </Grid>
               <Grid
@@ -154,7 +154,7 @@ const ProductDetails = () => {
                 direction='row'
                 style={{ marginBottom: theme.spacing(3) }}>
                 <Typography variant='h4'>
-                  ₹{productDetails.results[0].kalafex_price}/-
+                  ₹{productDetails.results?.[0]?.kalafex_price}/-
                 </Typography>
                 {"  "}
                 <Typography
