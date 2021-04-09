@@ -5,14 +5,14 @@ import {
   Typography,
   useTheme,
   Card,
-  CardActions,
+  // CardActions,
   CardContent,
   CardMedia,
-  IconButton,
+  // IconButton,
 } from "@material-ui/core";
-import { Favorite, Share } from "@material-ui/icons";
+// import { Favorite, Share } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Product = (props) => {
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const history = useHistory();
 
   const cardClickHandler = () => {

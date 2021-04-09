@@ -153,7 +153,7 @@ export default function Header() {
     <div
       style={{ justifyContent: "flex-end" }}
       className={[classes.sectionDesktop, classes.grow].join(" ")}>
-      <div
+      {/* <div
         style={{
           display: "flex",
           justifyContent: "center",
@@ -168,11 +168,11 @@ export default function Header() {
             How we work
           </Typography>
 
-          {/* <ArrowDropDownSharpIcon
-        style={{ color: theme.palette.secondary.main }}
-      /> */}
+          <ArrowDropDownSharpIcon
+            style={{ color: theme.palette.secondary.main }}
+          />
         </Button>
-      </div>
+      </div> */}
       <Button
         component={Link}
         to='/artist/signup'
@@ -319,6 +319,32 @@ export default function Header() {
                   <ListItem>
                     <HeaderIcons />
                   </ListItem>
+                  {!token ? (
+                    <>
+                      <ListItem>
+                        <Button
+                          component={Link}
+                          to='/artist/signup'
+                          style={{
+                            padding: theme.spacing(1.3),
+                          }}>
+                          {/* <Link to='/artist/signup'> */}
+                          <img src={sellDes} alt='kalafax logo' />
+                          {/* </Link> */}
+                        </Button>
+                      </ListItem>
+                      <ListItem>
+                        <Button
+                          component={Link}
+                          to='/login'
+                          variant='contained'
+                          size='large'
+                          color='secondary'>
+                          <Typography variant='h6'>Login/Signup</Typography>
+                        </Button>
+                      </ListItem>
+                    </>
+                  ) : null}
                   <ListItem button>
                     <Typography variant='h6'>Paintings & Artwork</Typography>
                   </ListItem>

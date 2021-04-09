@@ -9,6 +9,7 @@ import {
   // Button,
   InputBase,
   Grid,
+  Button,
 } from "@material-ui/core";
 import subscribe from "../assets/subscribe.png";
 import facebook from "../assets/socialIcons/facebook.png";
@@ -265,7 +266,7 @@ const Footer = () => {
             Sign up to receive exclusive offers, decor tips and features about{" "}
             <b>Kalafex artists.</b>
           </Typography>
-          <div className={classes.search}>
+          <div className={classes.search} style={{ position: "relative" }}>
             <InputBase
               placeholder='Enter your email'
               classes={{
@@ -274,8 +275,21 @@ const Footer = () => {
               }}
               inputProps={{ "aria-label": "search" }}
             />
-            <div>
-              <img
+            <Button
+              style={{
+                position: "absolute",
+                width: "120px",
+                height: "62px",
+                right: "0",
+                top: "0",
+                borderRadius: "0 5px 5px 0",
+                background: "#40567A",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
+              <Typography style={{ color: "white" }}>Subscribe</Typography>
+              {/* <img
                 style={{
                   position: "absolute",
                   top: 0,
@@ -285,8 +299,8 @@ const Footer = () => {
                 src={subscribe}
                 alt='search'
                 height='100%'
-              />
-            </div>
+              /> */}
+            </Button>
           </div>
           <Typography variant='caption' color='secondary'>
             Follow @Kalafex at

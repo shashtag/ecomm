@@ -12,6 +12,7 @@ import Loading from "./ui/Loading";
 import Notif from "./ui/Notif";
 import ProductDetails from "./pages/ProductDetails";
 import ArtistDashboard from "./pages/ArtistDashboard";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -44,6 +45,16 @@ function App() {
           )}
         />
         <Route path='/temp' render={() => <Temp />} />
+        <Route
+          path='/search/:query'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={false} />
+              <Search />
+              <Footer />
+            </>
+          )}
+        />
         <Route
           path='/'
           render={() => (
