@@ -103,7 +103,7 @@ const Usp = () => {
                     marginTop: "20px",
                     marginBottom: "16px",
                   }}>
-                  <img src={usp.icon} alt={i} />
+                  <img width='18%' height='18%' src={usp.icon} alt={i} />
                 </div>
                 <Typography
                   variant='caption'
