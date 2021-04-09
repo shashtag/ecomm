@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "235px",
     padding: "0 15px",
     paddingBottom: theme.spacing(6),
-    marginBottom: "8vh",
+    marginBottom: "6vh",
     [theme.breakpoints.up("md")]: {
       padding: "0vh 3.2%",
       paddingBottom: theme.spacing(3),

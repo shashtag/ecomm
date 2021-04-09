@@ -221,6 +221,8 @@ export default function Header() {
           <div style={{ display: "flex" }} className={classes.grow2}>
             <Link to='/'>
               <img
+                height='50px'
+                widht='81.71px'
                 src={
                   // md ?
                   logoMain

@@ -20,10 +20,13 @@ const useStyles = makeStyles((theme) => ({
     background: `url(${uspBg}) no-repeat `,
     backgroundSize: "cover",
     margin: theme.spacing(1, 0),
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(20),
     padding: "0px 15px",
     [theme.breakpoints.up("md")]: {
       padding: " 0 3.2%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      background: `transparent`,
     },
   },
   card: {
@@ -65,7 +68,7 @@ const Usp = () => {
         style={{
           marginBottom: theme.spacing(2),
           padding: theme.spacing(0, 1),
-          background: "white",
+          // background: "white",
           fontWeight: sm ? "400" : "bold",
         }}>
         See what we got
@@ -77,7 +80,7 @@ const Usp = () => {
           paddingLeft: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
           paddingRight: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
           marginBottom: theme.spacing(4),
-          background: "white",
+          // background: "white",
         }}>
         From logos that define the very roots of a brand's success to t-shirts
         that speak of versatile yet engaging personalities, if you need a
