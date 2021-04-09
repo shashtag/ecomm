@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     background: `url(${uspBg}) no-repeat `,
     backgroundSize: "cover",
     margin: theme.spacing(1, 0),
+    marginTop: theme.spacing(20),
     padding: "0px 15px",
     [theme.breakpoints.up("md")]: {
       padding: " 0 3.2%",
