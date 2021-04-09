@@ -6,7 +6,7 @@
   "description":"An art e-commerce site",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/app/",
+  "scope": "/",
   "start_url": ".",
   "icons": [
     {
