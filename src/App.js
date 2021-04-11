@@ -13,6 +13,7 @@ import Notif from "./ui/Notif";
 import ProductDetails from "./pages/ProductDetails";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import Search from "./pages/Search";
+import Verification from "./pages/Verification";
 
 function App() {
   return (
