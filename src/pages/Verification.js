@@ -22,6 +22,7 @@ const Verification = (props) => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        props.history.push("/login");
       })
       .catch(function (error) {
         console.log(error);
