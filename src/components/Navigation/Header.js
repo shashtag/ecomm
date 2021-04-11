@@ -13,6 +13,8 @@ import {
   ListItem,
   Divider,
 } from "@material-ui/core";
+import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
+
 import { Link } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar";
 // import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
@@ -23,14 +25,17 @@ import {
 } from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
 // import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
-import logoMain from "../../assets/logoMain1.png";
+import logoMain from "../../assets/logoMain.png";
 import logoDrawer from "../../assets/logoDrawer.png";
 // import logoMainSm from "../../assets/logoMainSm.png";
 import search from "../../assets/search.png";
 import sellDes from "../../assets/sellDes.png";
 import { UIContext } from "../../Context/UIContext";
 import HeaderIcons from "./HeaderIcons";
-// import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import CreateIcon from "@material-ui/icons/Create";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { logout } from "../../API/Post";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -52,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(0.5),
     height: "36px",
     width: "100%",
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(4),
     marginRight: theme.spacing(1),
   },
 
@@ -98,11 +103,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header(props) {
   const classes = useStyles();
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
   const [drawer, setDrawer] = useState(false);
+  const { setLoading, setUsrBaseInfo, setToken } = useContext(UIContext);
 
   useEffect(() => {
     if (md) {
@@ -303,67 +309,144 @@ export default function Header() {
                 role='presentation'
                 onClick={() => setDrawer(false)}
                 onKeyDown={() => setDrawer(false)}>
-                <div
-                  style={{
-                    margin: theme.spacing(3, 0),
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}>
-                  <img src={logoDrawer} alt='kalafex logo' />
-                </div>
                 <List>
                   <ListItem>
-                    <Typography variant='h3'>
-                      <span style={{ fontWeight: 400 }}>Hello</span>{" "}
-                      {usrBaseInfo?.full_name?.split(" ")[0]} 👋
-                    </Typography>
-                  </ListItem>
-                  <ListItem>
-                    <HeaderIcons />
+                    <Link to='/'>
+                      <img
+                        height='50px'
+                        widht='81.71px'
+                        src={
+                          // md ?
+                          logoMain
+                          // : logoMainSm
+                        }
+                        alt='kalafax logo'
+                      />
+                    </Link>
                   </ListItem>
                   {!token ? (
                     <>
-                      <ListItem>
-                        <Button
-                          component={Link}
-                          to='/artist/signup'
+                      <ListItem component={Link} to='/login'>
+                        <LockOpenIcon
                           style={{
-                            padding: theme.spacing(1.3),
-                          }}>
-                          {/* <Link to='/artist/signup'> */}
-                          <img src={sellDes} alt='kalafax logo' />
-                          {/* </Link> */}
-                        </Button>
+                            color: theme.palette.secondary.main,
+                            fontSize: "20px",
+                          }}
+                        />
+                        {"  "}
+                        <Typography variant='h5' style={{ color: "#152238" }}>
+                          Login
+                        </Typography>
                       </ListItem>
-                      <ListItem>
-                        <Button
-                          component={Link}
-                          to='/login'
-                          variant='contained'
-                          size='large'
-                          color='secondary'>
-                          <Typography variant='h6'>Login/Signup</Typography>
-                        </Button>
+                      <ListItem component={Link} to='/artist/signup'>
+                        <CreateIcon
+                          style={{
+                            color: theme.palette.secondary.main,
+                            fontSize: "20px",
+                          }}
+                        />
+                        {"  "}
+                        <Typography variant='h5' style={{ color: "#152238" }}>
+                          Signup as artist
+                        </Typography>
+                      </ListItem>
+                      <ListItem component={Link} to='/user/signup'>
+                        <CreateIcon
+                          style={{
+                            color: theme.palette.secondary.main,
+                            fontSize: "20px",
+                          }}
+                        />
+                        {"  "}
+                        <Typography variant='h5' style={{ color: "#152238" }}>
+                          Signup as Customer
+                        </Typography>
                       </ListItem>
                     </>
                   ) : null}
-                  <ListItem button>
+                  {usrBaseInfo?.is_artist ? (
+                    <ListItem component={Link} to='/artist/dashboard'>
+                      <DashboardOutlinedIcon
+                        style={{
+                          color: theme.palette.secondary.main,
+                          fontSize: "20px",
+                        }}
+                      />
+                      {"  "}
+                      <Typography variant='h5' style={{ color: "#152238" }}>
+                        Dashboard
+                      </Typography>
+                    </ListItem>
+                  ) : null}
+                  <ListItem component={Link} to='/user/cart'>
+                    <ShoppingCartOutlinedIcon
+                      style={{
+                        color: theme.palette.secondary.main,
+                        fontSize: "20px",
+                      }}
+                    />
+                    {"  "}
+                    <Typography variant='h5' style={{ color: "#152238" }}>
+                      Cart
+                    </Typography>
+                  </ListItem>
+                  {token ? (
+                    <ListItem
+                      component={Link}
+                      onClick={() => {
+                        logout(
+                          setLoading,
+                          setUsrBaseInfo,
+                          setToken,
+                          props.history,
+                        );
+                      }}>
+                      <ExitToAppIcon
+                        style={{
+                          color: theme.palette.secondary.main,
+                          fontSize: "20px",
+                        }}
+                      />
+                      {"  "}
+                      <Typography variant='h5' style={{ color: "#152238" }}>
+                        Logout
+                      </Typography>
+                    </ListItem>
+                  ) : null}
+                </List>
+
+                <Divider style={{ height: "10px" }} />
+
+                <List>
+                  <ListItem>
+                    <Typography variant='h4'>Popular Categories</Typography>
+                  </ListItem>
+
+                  <ListItem button component={Link} to='Paintings & Artwork'>
                     <Typography variant='h6'>Paintings & Artwork</Typography>
                   </ListItem>
-                  <ListItem button>
+                  <ListItem button component={Link} to='Lifestyle & Home'>
                     <Typography variant='h6'>Lifestyle & Home</Typography>
                   </ListItem>
-                  <ListItem button>
+                  <ListItem
+                    button
+                    component={Link}
+                    to='Jewellery & Accessories'>
                     <Typography variant='h6'>
                       Jewellery & Accessories
                     </Typography>
                   </ListItem>
-                  <ListItem button>
+                  <ListItem button component={Link} to='Collectibles'>
                     <Typography variant='h6'>Collectibles</Typography>
                   </ListItem>
                 </List>
-                <Divider />
+                <Divider style={{ height: "10px" }} />
+                <List>
+                  <ListItem>sddsds</ListItem>
+                  <ListItem>sddsds</ListItem>
+                  <ListItem>sddsds</ListItem>
+                  <ListItem>sddsds</ListItem>
+                </List>
               </div>
             </Drawer>
           </div>

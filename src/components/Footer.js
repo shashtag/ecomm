@@ -17,6 +17,7 @@ import instagram from "../assets/socialIcons/instagram.png";
 import linkedIn from "../assets/socialIcons/linkedIn.png";
 // import mail from "../assets/socialIcons/mail.png";
 import twitter from "../assets/socialIcons/twitter.png";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
   link: {
     color: " #787777",
     margin: theme.spacing(0, 0, 1, 0),
+    display: "inline-block",
+    textDecoration: "none",
   },
   search: {
     position: "relative",
@@ -212,7 +215,8 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='div'
+              component={Link}
+              to='Paintings & Artwork'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -221,7 +225,8 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='div'
+              component={Link}
+              to='Lifestyle & Home'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -230,7 +235,8 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='div'
+              component={Link}
+              to='Jewellery & Accessories'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -239,7 +245,8 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='div'
+              component={Link}
+              to='Collectibles'
               variant='caption'
               noWrap
               className={classes.link}>

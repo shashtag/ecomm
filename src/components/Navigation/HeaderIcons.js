@@ -8,6 +8,7 @@ import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import { UIContext } from "../../Context/UIContext";
 import { useHistory } from "react-router-dom";
 import { Link } from "@material-ui/core";
+import { logout } from "../../API/Post";
 
 const HeaderIcons = () => {
   const theme = useTheme();
@@ -59,27 +60,7 @@ const HeaderIcons = () => {
           aria-label='cart'
           style={{ marginLeft: theme.spacing(2) }}
           onClick={() => {
-            var config = {
-              method: "post",
-              url: `${process.env.REACT_APP_URL}auth/token/logout/`,
-              headers: {
-                Authorization: `Token ${localStorage.getItem("Token")}`,
-              },
-            };
-            setLoading(true);
-
-            axios(config)
-              .then(function (response) {
-                console.log(JSON.stringify(response.data));
-                localStorage.removeItem("Token");
-                setLoading(false);
-                setUsrBaseInfo(null);
-                setToken(false);
-                history.push("/");
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+            logout(setLoading, setUsrBaseInfo, setToken, history);
           }}>
           <ExitToAppIcon
             style={{

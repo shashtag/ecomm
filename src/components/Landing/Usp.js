@@ -18,9 +18,9 @@ import four from "../../assets/uspIcons/4.svg";
 const useStyles = makeStyles((theme) => ({
   usp: {
     background: `url(${uspBg}) no-repeat `,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     margin: theme.spacing(1, 0),
-    marginTop: theme.spacing(20),
+    marginTop: theme.spacing(5),
     padding: "0px 15px",
     [theme.breakpoints.up("md")]: {
       padding: " 0 3.2%",

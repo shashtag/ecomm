@@ -64,6 +64,30 @@ export const login = (data, setLoading, setToken, setSnackbar, history) => {
     });
 };
 
+export const logout = (setLoading, setUsrBaseInfo, setToken, history) => {
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}auth/token/logout/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+  };
+  setLoading(true);
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      localStorage.removeItem("Token");
+      setLoading(false);
+      setUsrBaseInfo(null);
+      setToken(false);
+      history.push("/");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
 export const addAddress = (data, setLoading, setPage, page) => {
   setLoading(true);
   var config = {

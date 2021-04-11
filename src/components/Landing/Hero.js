@@ -23,13 +23,13 @@ import heroBg from "../../assets/heroBg.png";
 const useStyles = makeStyles((theme) => ({
   hero: {
     background: `url(${heroBg}) no-repeat right 50px`,
-    backgroundSize: "235px",
+    backgroundSize: "280px",
     padding: "0 15px",
-    paddingBottom: theme.spacing(6),
+    paddingBottom: theme.spacing(20),
     marginBottom: "6vh",
     [theme.breakpoints.up("md")]: {
       padding: "0vh 3.2%",
-      paddingBottom: theme.spacing(3),
+      paddingBottom: theme.spacing(20),
     },
   },
   titleCont: {

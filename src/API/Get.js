@@ -38,3 +38,18 @@ export const fetchBaseDetailsUser = (setUsrBaseInfo, history) => {
       console.log(error);
     });
 };
+
+export const search = (query) => {
+  var config = {
+    method: "get",
+    url: `${process.env.REACT_APP_URL}store/search/product/?search=${query}`,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

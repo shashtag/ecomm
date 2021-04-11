@@ -27,6 +27,7 @@ const Categories = () => {
   const cat = [
     {
       value: "Paintings & Artwork",
+      url: "search/Paintings & Artwork",
       // subCat: [
       //   { value: "Earrings" },
       //   { value: "Necklaces" },
@@ -35,14 +36,17 @@ const Categories = () => {
     },
     {
       value: "Lifestyle & Home",
+      url: "search/Lifestyle & Home",
       // subCat: [{ value: "Posters" }, { value: "Apparel " }],
     },
     {
       value: "Jewellery & Accessories",
+      url: "search/Jewellery & Accessories",
       // subCat: [{ value: "Canvas" }, { value: "Paper" }],
     },
     {
       value: "Collectibles",
+      url: "search/Collectibles",
       // subCat: [{ value: "Pottery" }],
     },
     // {
@@ -51,7 +55,7 @@ const Categories = () => {
     // },
   ].map((cate, key) => (
     <div className={classes.category} key={key}>
-      <Button component={Link} to='/'>
+      <Button component={Link} to={`/${cate.url}`}>
         <Typography
           variant='h6'
           color='secondary'
