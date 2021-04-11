@@ -335,31 +335,7 @@ export default function Header(props) {
                         />
                         {"  "}
                         <Typography variant='h5' style={{ color: "#152238" }}>
-                          Login
-                        </Typography>
-                      </ListItem>
-                      <ListItem component={Link} to='/artist/signup'>
-                        <CreateIcon
-                          style={{
-                            color: theme.palette.secondary.main,
-                            fontSize: "20px",
-                          }}
-                        />
-                        {"  "}
-                        <Typography variant='h5' style={{ color: "#152238" }}>
-                          Signup as artist
-                        </Typography>
-                      </ListItem>
-                      <ListItem component={Link} to='/user/signup'>
-                        <CreateIcon
-                          style={{
-                            color: theme.palette.secondary.main,
-                            fontSize: "20px",
-                          }}
-                        />
-                        {"  "}
-                        <Typography variant='h5' style={{ color: "#152238" }}>
-                          Signup as Customer
+                          Login/Signup
                         </Typography>
                       </ListItem>
                     </>
