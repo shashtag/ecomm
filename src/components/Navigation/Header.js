@@ -36,6 +36,7 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import CreateIcon from "@material-ui/icons/Create";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { logout } from "../../API/Post";
+import SearchIcon from "@material-ui/icons/Search";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -109,6 +110,7 @@ export default function Header(props) {
   const md = useMediaQuery(theme.breakpoints.up("md"));
   const [drawer, setDrawer] = useState(false);
   const { setLoading, setUsrBaseInfo, setToken } = useContext(UIContext);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (md) {
@@ -278,14 +280,34 @@ export default function Header(props) {
                   input: classes.inputInput,
                 }}
                 inputProps={{ "aria-label": "search" }}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
               />
               <div>
-                <img
+                <IconButton
+                  component={Link}
+                  to={`/search/${search}`}
+                  aria-label='cart'
+                  style={{
+                    height: "12px",
+                    width: "20px",
+                    borderRadius: "0 4px 4px 0",
+                    background: theme.palette.secondary.main,
+                  }}>
+                  <SearchIcon
+                    style={{
+                      color: "white",
+                    }}
+                  />
+                </IconButton>
+                {/* <img
                   style={{ position: "absolute", right: 0, cursor: "pointer" }}
                   src={search}
                   alt='search'
                   height='100%'
-                />
+                /> */}
               </div>
             </div>
           </div>
