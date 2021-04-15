@@ -49,8 +49,8 @@ const Page3 = (props) => {
     patchUsrDetails(data2);
     const data = {
       aadhar_card_no: aadhar,
-      pan_card_no: GST,
-      gst_no: setPAN,
+      pan_card_no: PAN,
+      gst_no: GST,
     };
     patchArtistDetails(
       data,

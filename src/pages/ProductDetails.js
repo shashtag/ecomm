@@ -7,6 +7,7 @@ import { Avatar } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { UIContext } from "../Context/UIContext";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import Carousel from "react-material-ui-carousel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,6 +51,12 @@ const ProductDetails = () => {
     return () => {};
   }, []);
 
+  const imgs = [productDetails?.[0]?.display_image];
+  for (let i = 0; i < productDetails?.[0]?.image_list.length; i++) {
+    imgs.push(productDetails?.[0]?.image_list?.[i].image);
+  }
+  console.log(imgs);
+
   if (!productDetails) {
     return <div style={{ height: "100vh" }}></div>;
   }
@@ -76,11 +83,19 @@ const ProductDetails = () => {
           <Grid container item spacing={10}>
             <Grid container item md={4} spacing={1}>
               <Grid item xs={12}>
-                <Paper style={{ height: "400px" }}>
-                  <img src='n' alt=' Main img' />
-                </Paper>
+                <Carousel>
+                  {imgs.map((img, i) => (
+                    <Paper
+                      style={{
+                        height: "400px",
+                        margin: theme.spacing(1),
+                        background: `#ffffff url("${img}")  no-repeat  center center `,
+                        backgroundSize: "contain",
+                      }}></Paper>
+                  ))}
+                </Carousel>
               </Grid>
-              <Grid
+              {/* <Grid
                 item
                 xs={12}
                 container
@@ -112,7 +127,7 @@ const ProductDetails = () => {
                   }}>
                   <img src='n' alt=' Side img' />
                 </Paper>
-              </Grid>
+              </Grid> */}
             </Grid>
             <Grid container md={8} item direction='column'>
               <Grid container direction='row' item>

@@ -31,7 +31,7 @@ export const patchArtistDetails = (
       setAadhar(response.data.aadhar_card_no);
       setGST(response.data.gst_no);
       setPAN(response.data.pan_card_no);
-      setAvatar(response.data.profile_picture);
+      setAvatar({ decode: undefined, encoded: response.data.profile_picture });
 
       // const reader = new FileReader();
       // reader.onload = () => {
@@ -41,15 +41,24 @@ export const patchArtistDetails = (
       // };
       // reader?.readAsDataURL(response?.data?.profile_picture);
 
-      if (Object.keys(data).length !== 0 && page !== 3) {
-        setPage(page + 1);
+      if (data.entries) {
+        var res = Array.from(data.entries(), ([key, prop]) => ({
+          [key]: {
+            ContentLength: typeof prop === "string" ? prop.length : prop.size,
+          },
+        }));
+      }
+
+      if (res !== 0 && page !== 3) {
+        setPage(page + 2);
       }
       if (page === 3) {
+        console.log("aa");
         history.push("/");
       }
     })
     .catch(function (error) {
-      setLoading(true);
+      setLoading(false);
       console.log(error);
     });
 };

@@ -18,7 +18,10 @@ export const APProvider = (props) => {
   const [GST, setGST] = useState("");
   const [PAN, setPAN] = useState("");
   const [payment, setPayment] = useState("");
-  const [avatar, setAvatar] = useState(defaultProfilePic);
+  const [avatar, setAvatar] = useState({
+    decode: {},
+    encoded: defaultProfilePic,
+  });
 
   useEffect(() => {
     // console.log("sss");
@@ -29,7 +32,7 @@ export const APProvider = (props) => {
     if (!usrBaseInfo.is_first_login) {
       patchArtistDetails(
         {},
-        null,
+        () => {},
         null,
         setLoading,
         null,

@@ -35,10 +35,15 @@ const Page1 = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
   const handlePageChange = () => {
-    const data = {
-      profile_picture: avatar,
-      custom_url: customURL,
-    };
+    var data = new FormData();
+    data.append("custom_url", customURL);
+    if (avatar.decoded) {
+      data.append("profile_picture", avatar.decoded);
+    }
+    // const data = {
+    //   profile_picture: avatar.decoded,
+    //   custom_url: customURL,
+    // };
 
     patchArtistDetails(
       data,
@@ -83,23 +88,23 @@ const Page1 = (props) => {
             type='file'
             style={{ display: "none" }}
             onChange={(e) => {
-              // const reader = new FileReader();
-              // var url = reader.readAsDataURL(e.target.value);
-
-              // setAvatar(url);
               const reader = new FileReader();
               reader.onload = () => {
                 if (reader.readyState === 2) {
-                  setAvatar(reader.result);
+                  setAvatar({
+                    decoded: e.target?.files?.[0],
+                    encoded: reader.result,
+                  });
                 }
               };
               reader.readAsDataURL(e.target?.files?.[0]);
+              // setAvatar({ ...avatar, decoded: e.target?.files?.[0] });
             }}
           />
           <label htmlFor='contained-button-file'>
             <Avatar
               alt='default profile pic'
-              src={avatar}
+              src={avatar.encoded}
               className={classes.large}
             />
           </label>
