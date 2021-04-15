@@ -3,17 +3,44 @@ import { TextField, makeStyles } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { ADashboardContext } from "../../Context/ADashboardContext";
 import { addProduct } from "../../API/Post";
 import { UIContext } from "../../Context/UIContext";
+import DropZone from "../../ui/DropZone";
+// import { useDropzone } from "react-dropzone";
 
 const useStyles = makeStyles((theme) => ({
   inproot: {
     paddingTop: theme.spacing(2),
   },
 }));
+
+// const baseStyle = {
+//   flex: 1,
+//   display: "flex",
+//   flexDirection: "column",
+//   alignItems: "center",
+//   padding: "20px",
+//   border: "2px solid red",
+//   backgroundColor: "#fafafa",
+//   color: "#bdbdbd",
+//   outline: "none",
+//   transition: "border .24s ease-in-out",
+// };
+
+// const activeStyle = {
+//   borderColor: "#2196f3",
+// };
+
+// const acceptStyle = {
+//   borderColor: "#00e676",
+// };
+
+// const rejectStyle = {
+//   borderColor: "#ff1744",
+// };
 
 const UploadProduct = () => {
   const classes = useStyles();
@@ -22,6 +49,21 @@ const UploadProduct = () => {
   const { register, handleSubmit, errors } = useForm();
   const { setLoading } = useContext(UIContext);
   const sm = useMediaQuery(theme.breakpoints.up("sm"));
+
+  // const {
+  //   acceptedFiles,
+  //   getRootProps,
+  //   getInputProps,
+  //   isDragActive,
+  //   isDragAccept,
+  //   isDragReject,
+  // } = useDropzone();
+
+  // const files = acceptedFiles.map((file) => (
+  //   <li key={file.path}>
+  //     {file.path} - {file.size} bytes
+  //   </li>
+  // ));
 
   const {
     category,
@@ -34,23 +76,35 @@ const UploadProduct = () => {
     setPrice,
     quantity,
     setQuantity,
+    img,
+    setImg,
   } = useContext(ADashboardContext);
   const uploadClickHandler = () => {
     var data = new FormData();
     data.append("name", name);
-    data.append("category", category);
-    // data.append("subcategory", "bands");
+    data.append(
+      "category",
+      // category
+      "mmm",
+    );
+    // data.append("subcategory", "mmm");
     data.append("description", desc);
-    // data.append(
-    //   "display_image",
-    //   fs.createReadStream("/C:/Users/Hari/Pictures/Saved Pictures/cc.jpg"),
-    // );
-    data.append("price", price);
+    data.append("display_image", img);
+    data.append("original_price", price);
     data.append("stock_left", quantity);
     addProduct(data, setLoading);
   };
   console.log(errors);
 
+  // const style = useMemo(
+  //   () => ({
+  //     ...baseStyle,
+  //     ...(isDragActive ? activeStyle : {}),
+  //     ...(isDragAccept ? acceptStyle : {}),
+  //     ...(isDragReject ? rejectStyle : {}),
+  //   }),
+  //   [isDragActive, isDragReject, isDragAccept],
+  // );
   return (
     <Grid container item>
       <Grid item xs={12} style={{ marginBottom: theme.spacing(3) }}>
@@ -115,9 +169,50 @@ const UploadProduct = () => {
           />
         </Grid>
         <Grid item xs={12} style={{ marginTop: theme.spacing(3) }}>
-          <Typography variant='h6' color='secondary'>
-            Upload product images
-          </Typography>
+          <DropZone />
+          {/* <section
+            className='container'
+            style={{
+              // background: "red",
+              border: "",
+              borderRadius: "6px",
+              padding: theme.spacing(2),
+            }}>
+            <div {...getRootProps(style)}>
+              <input {...getInputProps()} />
+              <input {...getInputProps()} />
+
+              <Typography variant='h6'>
+                Drag 'n' drop the product imag here, or click to select files
+              </Typography>
+            </div>
+            <aside>
+              <Typography variant='h6'>Files</Typography>
+              <Typography variant='h6'>{files}</Typography>
+            </aside>
+          </section> */}
+          {/* <TextField
+            style={{ marginTop: theme.spacing(3), width: "100%" }}
+            label='Product Image'
+            name='img'
+            color='secondary'
+            variant='standard'
+            value={img}
+            type='file'
+            // inputProps={{ type: "file" }}
+            onChange={(e) => {
+              setImg(e.target.files[0]);
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            placeholder='Enter Product Image'
+            inputRef={register({
+              required: "Image is required",
+            })}
+            error={Boolean(errors.name)}
+            helperText={errors.name?.message}
+          /> */}
         </Grid>
         <Grid item xs={12}>
           <TextField

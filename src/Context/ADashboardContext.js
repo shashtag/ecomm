@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useContext, useState } from "react";
-import { fetchArtistProducts } from "../API/Get";
+import { fetchArtistProducts, fetchArtistProfile } from "../API/Get";
 import { UIContext } from "./UIContext";
 
 export const ADashboardContext = createContext();
@@ -12,13 +12,19 @@ export const ADashboardProvider = (props) => {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [topListings, setTopListings] = useState("");
-
+  const [insights, setInsights] = useState("");
+  const [img, setImg] = useState("");
   useEffect(() => {
     if (usrBaseInfo) {
-      fetchArtistProducts(usrBaseInfo.id);
+      fetchArtistProducts(usrBaseInfo.id, setTopListings);
     }
     return () => {};
   }, [usrBaseInfo]);
+  useEffect(() => {
+    fetchArtistProfile(setInsights);
+    console.log(insights);
+    return () => {};
+  }, []);
   return (
     <ADashboardContext.Provider
       value={{
@@ -32,6 +38,10 @@ export const ADashboardProvider = (props) => {
         setPrice,
         quantity,
         setQuantity,
+        topListings,
+        setTopListings,
+        img,
+        setImg,
       }}>
       {props.children}
     </ADashboardContext.Provider>

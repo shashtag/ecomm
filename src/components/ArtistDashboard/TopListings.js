@@ -1,11 +1,14 @@
 import { Typography, useTheme } from "@material-ui/core";
 import { Paper } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
-import React from "react";
+import React, { useContext } from "react";
+import { ADashboardContext } from "../../Context/ADashboardContext";
 import TopListing from "./TopListing";
 
 const TopListings = () => {
   const theme = useTheme();
+  const { topListings } = useContext(ADashboardContext);
+  console.log(topListings);
   return (
     <Grid container style={{ marginTop: theme.spacing(3) }}>
       <Paper square style={{ width: "100%", padding: theme.spacing(4) }}>
@@ -15,11 +18,20 @@ const TopListings = () => {
               Your top listings
             </Typography>
           </Grid>
-          {[{ nama: "s" }, { nama: "st" }, { nama: "ss" }, { nama: "se" }].map(
-            (data) => (
-              <TopListing key={data.nama} />
-            ),
-          )}
+          {topListings?.results?.map((data, i) => {
+            console.log(data);
+            if (i > 3) {
+              return;
+            }
+            return (
+              <TopListing
+                img={data?.display_image}
+                category={data.category}
+                name={data.name}
+                key={i}
+              />
+            );
+          })}
         </Grid>
       </Paper>
     </Grid>

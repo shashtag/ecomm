@@ -109,7 +109,10 @@ const Form1 = (props) => {
               inputVariant='outlined'
               value={selectedDate}
               onChange={(date) => handleDateChange(date)}
-              inputRef={register({ required: "Date of Birth is required" })}
+              inputRef={register({
+                required: "Date of Birth is required",
+                type: "number",
+              })}
               error={Boolean(errors.date)}
               helperText={errors.date?.message}
             />

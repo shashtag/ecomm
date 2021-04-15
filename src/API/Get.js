@@ -55,7 +55,7 @@ export const search = (query) => {
     });
 };
 
-export const fetchArtistProducts = (id) => {
+export const fetchArtistProducts = (id, setTopListings) => {
   var config = {
     method: "get",
     url: `${process.env.REACT_APP_URL}store/view/product/artist/${id}/`,
@@ -65,6 +65,25 @@ export const fetchArtistProducts = (id) => {
   axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
+      setTopListings(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const fetchArtistProfile = (setInsights) => {
+  var config = {
+    method: "get",
+    url: `${process.env.REACT_APP_URL}accounts/view/my_profile/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      setInsights(response.data);
     })
     .catch(function (error) {
       console.log(error);
