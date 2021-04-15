@@ -111,7 +111,7 @@ const Form1 = (props) => {
               onChange={(date) => handleDateChange(date)}
               inputRef={register({
                 required: "Date of Birth is required",
-                type: "number",
+                type: "date",
               })}
               error={Boolean(errors.date)}
               helperText={errors.date?.message}
