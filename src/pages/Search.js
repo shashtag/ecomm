@@ -8,7 +8,7 @@ const Search = () => {
   useEffect(() => {
     search(query);
     return () => {};
-  }, []);
+  }, [query]);
 
   return <div>ssss</div>;
 };

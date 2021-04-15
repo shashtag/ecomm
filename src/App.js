@@ -14,6 +14,7 @@ import ProductDetails from "./pages/ProductDetails";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import Search from "./pages/Search";
 import Verification from "./pages/Verification";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         />
         <Route path='/temp' render={() => <Temp />} />
         <Route
+          exact
           path='/search/:query'
           render={() => (
             <>
@@ -61,6 +63,16 @@ function App() {
           render={() => (
             <>
               <Verification />
+            </>
+          )}
+        />
+        <Route
+          path='/about'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={false} />
+              <AboutUs />
+              <Footer />
             </>
           )}
         />

@@ -73,9 +73,9 @@ const ProductDetails = () => {
         <Typography
           variant='h6'
           style={{
-            padding: theme.spacing(0.75, 0),
+            padding: theme.spacing(0.5, 0),
           }}>
-          {productDetails?.results?.[0]?.category}
+          Home > {productDetails?.[0]?.category}
         </Typography>
       </Grid>
       <Grid container direction='column' className={classes.root}>
@@ -83,7 +83,7 @@ const ProductDetails = () => {
           <Grid container item spacing={10}>
             <Grid container item md={4} spacing={1}>
               <Grid item xs={12}>
-                <Carousel>
+                <Carousel animation='slide'>
                   {imgs.map((img, i) => (
                     <Paper
                       style={{
@@ -149,18 +149,16 @@ const ProductDetails = () => {
                 </Grid>
               </Grid>
               <Grid item>
-                <Typography variant='h3'>
-                  {productDetails.results?.[0]?.name}
-                </Typography>
+                <Typography variant='h3'>{productDetails[0]?.name}</Typography>
               </Grid>
               <Grid item style={{ marginBottom: theme.spacing(3) }}>
                 <Typography variant='caption' style={{ color: "#40567A" }}>
-                  {productDetails.results?.[0]?.category}
+                  {productDetails[0]?.category}
                 </Typography>
               </Grid>
               <Grid item style={{ marginBottom: theme.spacing(3) }}>
                 <Typography variant='caption' style={{ color: "#263957" }}>
-                  {productDetails.results?.[0]?.description}
+                  {productDetails[0]?.description}
                 </Typography>
               </Grid>
               <Grid
@@ -169,7 +167,7 @@ const ProductDetails = () => {
                 direction='row'
                 style={{ marginBottom: theme.spacing(3) }}>
                 <Typography variant='h4'>
-                  ₹{productDetails.results?.[0]?.kalafex_price}/-
+                  ₹{productDetails[0]?.kalafex_price}/-
                 </Typography>
                 {"  "}
                 <Typography
@@ -188,11 +186,11 @@ const ProductDetails = () => {
                   variant='contained'
                   style={{
                     ...theme.palette.background.gradient,
-                    padding: "16px 24px",
+                    padding: "16px 32px",
                     marginRight: theme.spacing(2.5),
                     color: "white",
                   }}>
-                  <Typography variant='h5'>Proceed to checkout</Typography>
+                  <Typography variant='h5'>Buy Now</Typography>
                 </Button>
                 <Button
                   variant='contained'
@@ -207,6 +205,7 @@ const ProductDetails = () => {
                       style={{
                         marginLeft: theme.spacing(2),
                         position: "relative",
+                        fontSize: "20px",
                         top: "4px",
                         color: theme.palette.secondary.main,
                       }}

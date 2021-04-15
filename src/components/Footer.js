@@ -86,14 +86,15 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='div'
+              component={Link}
+              to='/about'
               variant='caption'
               noWrap
               className={classes.link}>
               About Us
             </Typography>
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Typography
               component='div'
               variant='caption'
@@ -101,7 +102,7 @@ const Footer = () => {
               className={classes.link}>
               Newsletter
             </Typography>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item xs={6} md={3} container direction='column'>
           <Grid item>
@@ -113,31 +114,31 @@ const Footer = () => {
             </Typography>
           </Grid>
           <Grid item>
-            <Typography
+            {/* <Typography
               component='div'
               variant='caption'
               noWrap
               className={classes.link}>
               Guidelines
-            </Typography>
+            </Typography> */}
           </Grid>
           <Grid item>
-            <Typography
+            {/* <Typography
               component='div'
               variant='caption'
               noWrap
               className={classes.link}>
               How to promote
-            </Typography>
+            </Typography> */}
           </Grid>
           <Grid item>
-            <Typography
+            {/* <Typography
               component='div'
               variant='caption'
               noWrap
               className={classes.link}>
               Artist FAQs
-            </Typography>
+            </Typography> */}
           </Grid>
           <Grid item>
             <Typography
@@ -149,13 +150,13 @@ const Footer = () => {
             </Typography>
           </Grid>
           <Grid item>
-            <Typography
+            {/* <Typography
               component='div'
               variant='caption'
               noWrap
               className={classes.link}>
               Blog
-            </Typography>
+            </Typography> */}
           </Grid>
         </Grid>
         <Grid item xs={5} sm={6} md={3} container direction='column'>
@@ -167,7 +168,7 @@ const Footer = () => {
               Help
             </Typography>
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Typography
               component='div'
               variant='caption'
@@ -175,7 +176,7 @@ const Footer = () => {
               className={classes.link}>
               FAQ
             </Typography>
-          </Grid>
+          </Grid> */}
           <Grid item>
             <Typography
               component='div'
@@ -194,7 +195,7 @@ const Footer = () => {
               Track My Order
             </Typography>
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Typography
               component='div'
               variant='caption'
@@ -202,7 +203,7 @@ const Footer = () => {
               className={classes.link}>
               Contact Us
             </Typography>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item xs={6} md={3} container direction='column'>
           <Grid item>
