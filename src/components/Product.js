@@ -19,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
     // maxWidth: 345,
   },
   media: {
-    height: "150px",
+    aspectRatio: "3/4",
+
+    // height: "70%",
     backgroundSize: "contain",
-    paddingTop: "56.25%", // 16:9
   },
 }));
 

@@ -45,6 +45,16 @@ const DropZone = () => {
         maxFiles='1'
         // onSubmit={handleSubmit}
         accept='image/*,audio/*,video/*'></Dropzone>
+      <Typography
+        style={{
+          background: "#FAFAFA",
+          fontWeight: "400",
+          color: "#262626",
+          fontSize: "0.9rem",
+          padding: theme.spacing(0, 0.5),
+        }}>
+        ** Upload 3/4 aspect ratio images for best results
+      </Typography>
     </div>
   );
 };

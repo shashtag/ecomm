@@ -111,7 +111,6 @@ const Form1 = (props) => {
               onChange={(date) => handleDateChange(date)}
               inputRef={register({
                 required: "Date of Birth is required",
-                type: "date",
               })}
               error={Boolean(errors.date)}
               helperText={errors.date?.message}
@@ -119,6 +118,7 @@ const Form1 = (props) => {
           </Grid>
           <Grid item style={{ marginBottom: theme.spacing(2) }}>
             <TextField
+              type='email'
               className={classes.input}
               label='Email'
               name='email'

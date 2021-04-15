@@ -45,18 +45,23 @@ const Trending = () => {
       });
   }, []);
 
-  trending = trendingProducts?.results.map((product, i) => (
-    <Product
-      name={product.name}
-      img={product.display_image}
-      pid={product.pid}
-      artist={product.artist}
-      category={product.category}
-      subcategory={product.subcategory}
-      price={product.kalafex_price}
-      key={i}
-    />
-  ));
+  trending = trendingProducts?.results.map((product, i) => {
+    if (i > 3) {
+      return;
+    }
+    return (
+      <Product
+        name={product.name}
+        img={product.display_image}
+        pid={product.pid}
+        artist={product.artist}
+        category={product.category}
+        subcategory={product.subcategory}
+        price={product.kalafex_price}
+        key={i}
+      />
+    );
+  });
 
   return (
     <>

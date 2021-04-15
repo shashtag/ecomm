@@ -101,6 +101,7 @@ const Form3 = (props) => {
           onSubmit={handleSubmit(sendOtpClickHandler)}>
           <Grid item>
             <TextField
+              // type='tel'
               className={classes.input}
               label='Phone Number'
               name='phone'

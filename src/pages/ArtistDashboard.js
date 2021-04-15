@@ -77,7 +77,7 @@ const ArtistDashboard = (props) => {
                       </Typography>
                     </Grid>
                     <Grid container item spacing={2}>
-                      <Grid container item xs={12} md={7}>
+                      <Grid item xs={12} md={7}>
                         <DashboardCards />
                         <TopListings />
                       </Grid>

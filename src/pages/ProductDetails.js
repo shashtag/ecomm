@@ -87,7 +87,9 @@ const ProductDetails = () => {
                   {imgs.map((img, i) => (
                     <Paper
                       style={{
-                        height: "400px",
+                        width: "100%",
+                        aspectRatio: "3/4",
+
                         margin: theme.spacing(1),
                         background: `#ffffff url("${img}")  no-repeat  center center `,
                         backgroundSize: "contain",

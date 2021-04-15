@@ -10,14 +10,15 @@ const TopListing = (props) => {
       container
       xs={12}
       md={6}
+      spacing={2}
       style={{ paddingTop: theme.spacing(1) }}>
-      <Grid item md={5}>
+      <Grid item md={6}>
         <Paper
           elevation={0}
           square
           style={{
-            height: "120px",
-            width: "90px",
+            aspectRatio: "3/4",
+            width: "100%",
             marginBottom: theme.spacing(1),
             background: `#ffffff url("${props.img}")  no-repeat  center center `,
             backgroundSize: "contain",
