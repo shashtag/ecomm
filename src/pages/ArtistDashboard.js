@@ -112,7 +112,7 @@ const ArtistDashboard = (props) => {
             <Route path={`${path}/track`}>dasdsdf</Route>
             <Route path={`${path}/faq`}>dadda</Route>
             <Route path={`${path}/help`}>
-              <Help />
+              <Help standalone={false} />
             </Route>
           </Switch>
         </main>

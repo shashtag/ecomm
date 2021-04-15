@@ -221,7 +221,7 @@ export default function Header(props) {
     <>
       <AppBar
         position='static'
-        elevation='1'
+        elevation={1}
         style={{
           paddingTop: "8px",
           borderBottom: `0.5px solid ${theme.palette.grey[300]}`,
@@ -285,30 +285,29 @@ export default function Header(props) {
                   setSearch(e.target.value);
                 }}
               />
-              <div>
-                <IconButton
-                  component={Link}
-                  to={`/search/${search}`}
-                  aria-label='cart'
+
+              <IconButton
+                component={Link}
+                to={`/search/${search}`}
+                aria-label='cart'
+                style={{
+                  // height: "0.75rem",
+                  // width: "20px",
+                  borderRadius: "0 4px 4px 0",
+                  background: theme.palette.secondary.main,
+                }}>
+                <SearchIcon
                   style={{
-                    height: "12px",
-                    width: "20px",
-                    borderRadius: "0 4px 4px 0",
-                    background: theme.palette.secondary.main,
-                  }}>
-                  <SearchIcon
-                    style={{
-                      color: "white",
-                    }}
-                  />
-                </IconButton>
-                {/* <img
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+              {/* <img
                   style={{ position: "absolute", right: 0, cursor: "pointer" }}
                   src={search}
                   alt='search'
                   height='100%'
                 /> */}
-              </div>
             </div>
           </div>
           {/* <div className={classes.grow} /> */}

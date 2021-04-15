@@ -142,7 +142,8 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='div'
+              component={Link}
+              to='/artist/signup'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -179,7 +180,8 @@ const Footer = () => {
           </Grid> */}
           <Grid item>
             <Typography
-              component='div'
+              component={Link}
+              to='/contact'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -217,7 +219,7 @@ const Footer = () => {
           <Grid item>
             <Typography
               component={Link}
-              to='Paintings & Artwork'
+              to='/search/Paintings & Artwork'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -227,7 +229,7 @@ const Footer = () => {
           <Grid item>
             <Typography
               component={Link}
-              to='Lifestyle & Home'
+              to='/search/Lifestyle & Home'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -237,7 +239,7 @@ const Footer = () => {
           <Grid item>
             <Typography
               component={Link}
-              to='Jewellery & Accessories'
+              to='/search/Jewellery & Accessories'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -247,7 +249,7 @@ const Footer = () => {
           <Grid item>
             <Typography
               component={Link}
-              to='Collectibles'
+              to='/search/Collectibles'
               variant='caption'
               noWrap
               className={classes.link}>

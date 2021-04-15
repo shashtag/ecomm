@@ -1,4 +1,5 @@
 import axios from "axios";
+import React from "react";
 
 export const fetchTrendingProducts = (setTrendingProducts) => {
   var config = {
@@ -43,6 +44,22 @@ export const search = (query) => {
   var config = {
     method: "get",
     url: `${process.env.REACT_APP_URL}store/search/product/?search=${query}`,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const fetchArtistProducts = (id) => {
+  var config = {
+    method: "get",
+    url: `${process.env.REACT_APP_URL}store/view/product/artist/${id}/`,
+    headers: {},
   };
 
   axios(config)

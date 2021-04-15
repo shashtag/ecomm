@@ -15,6 +15,7 @@ import ArtistDashboard from "./pages/ArtistDashboard";
 import Search from "./pages/Search";
 import Verification from "./pages/Verification";
 import AboutUs from "./pages/AboutUs";
+import Help from "./pages/Help";
 
 function App() {
   return (
@@ -63,6 +64,16 @@ function App() {
           render={() => (
             <>
               <Verification />
+            </>
+          )}
+        />
+        <Route
+          path='/contact'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={false} />
+              <Help standalone={true} />
+              <Footer />
             </>
           )}
         />
