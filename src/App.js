@@ -11,9 +11,6 @@ import Temp from "./Temp";
 import Footer from "./components/Footer";
 import Loading from "./ui/Loading";
 import Notif from "./ui/Notif";
-import ProductDetails from "./pages/ProductDetails";
-import ArtistDashboard from "./pages/ArtistDashboard";
-import Search from "./pages/Search";
 import Verification from "./pages/Verification";
 import UnderConstruction from "./pages/UnderConstruction";
 import LoadingLazy from "./ui/LoadingLazy";
@@ -24,6 +21,9 @@ const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Login = lazy(() => import("./pages/Login"));
 const Help = lazy(() => import("./pages/Help"));
 const ArtistPage = lazy(() => import("./pages/ArtistPage"));
+const Search = lazy(() => import("./pages/Search"));
+const ArtistDashboard = lazy(() => import("./pages/ArtistDashboard"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 
 function App() {
   return (
@@ -59,7 +59,9 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={true} noSub={true} />
-              <ArtistDashboard />
+              <Suspense fallback={<LoadingLazy />}>
+                <ArtistDashboard />{" "}
+              </Suspense>
             </>
           )}
         />
@@ -81,7 +83,10 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-              <ProductDetails />
+              <Suspense fallback={<LoadingLazy />}>
+                <ProductDetails />{" "}
+              </Suspense>
+
               <Footer />
             </>
           )}
@@ -93,7 +98,10 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-              <Search trending={false} />
+              <Suspense fallback={<LoadingLazy />}>
+                <Search trending={false} />
+              </Suspense>
+
               <Footer />
             </>
           )}
@@ -103,7 +111,9 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-              <Search trending={true} />
+              <Suspense fallback={<LoadingLazy />}>
+                <Search trending={true} />
+              </Suspense>{" "}
               <Footer />
             </>
           )}
@@ -114,7 +124,9 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-              <Search trending={true} />
+              <Suspense fallback={<LoadingLazy />}>
+                <Search trending={true} />
+              </Suspense>
               <Footer />
             </>
           )}
