@@ -13,9 +13,8 @@ import {
 } from "@material-ui/core";
 import facebook from "../assets/socialIcons/facebook.png";
 import instagram from "../assets/socialIcons/instagram.png";
-import linkedIn from "../assets/socialIcons/LinkedIn.png";
-// import mail from "../assets/socialIcons/mail.png";
-import twitter from "../assets/socialIcons/Twitter.png";
+import linkedIn from "../assets/socialIcons/linkedIn.png";
+import twitter from "../assets/socialIcons/twitter.png";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({

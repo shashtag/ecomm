@@ -16,9 +16,9 @@ import {
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import facebook from "../../assets/socialIcons/facebook.png";
 import instagram from "../../assets/socialIcons/instagram.png";
-import linkedIn from "../../assets/socialIcons/LinkedIn.png";
+import linkedIn from "../../assets/socialIcons/linkedIn.png";
 // import mail from "../assets/socialIcons/mail.png";
-import twitter from "../../assets/socialIcons/Twitter.png";
+import twitter from "../../assets/socialIcons/twitter.png";
 import { Link } from "react-router-dom";
 
 import Toolbar from "@material-ui/core/Toolbar";
