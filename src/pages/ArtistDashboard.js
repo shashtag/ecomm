@@ -89,7 +89,7 @@ const ArtistDashboard = (props) => {
                 </>
               )}
             />
-            <Route path={`${path}/myPage`} render={() => <ArtistPage />} />
+            <Route path={`${path}/:url`} render={() => <ArtistPage />} />
             <Route path={`${path}/profile`}>
               <ArtistProfile />
             </Route>

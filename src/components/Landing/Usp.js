@@ -41,10 +41,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const usp = [
-  { icon: one, text: "Get 10% discount on your first signup" },
+  { icon: one, text: "Get cheapest prices for Quality products" },
   {
     icon: two,
-    text: "Fast and quick delivery, get your products within 48hrs",
+    text: "Fast and quick delivery",
   },
   { icon: three, text: "Support handmade made in India products" },
   {

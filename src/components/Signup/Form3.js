@@ -12,6 +12,7 @@ import {
   Typography,
   useTheme,
   TextField,
+  Checkbox,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,6 +50,10 @@ const Form3 = (props) => {
   const theme = useTheme();
 
   const [open, setOpen] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   const { register, handleSubmit, errors } = useForm();
   const { setLoading, setSnackbar } = useContext(UIContext);
@@ -91,7 +96,7 @@ const Form3 = (props) => {
     console.log(data);
     signup1(data, setLoading, setSnackbar, setOpen);
   };
-
+  console.log(phone);
   return (
     <>
       <Grid container item direction='column'>
@@ -101,13 +106,13 @@ const Form3 = (props) => {
           onSubmit={handleSubmit(sendOtpClickHandler)}>
           <Grid item>
             <TextField
-              // type='tel'
+              type='tel'
               className={classes.input}
               label='Phone Number'
               name='phone'
               variant='outlined'
               color='secondary'
-              value={phone}
+              defaultValue={phone}
               onChange={(e) => {
                 setPhone(e.target.value.trim());
               }}
@@ -148,7 +153,7 @@ const Form3 = (props) => {
               helperText={errors.password?.message}
             />
           </Grid>
-          <Grid item style={{ marginBottom: theme.spacing(4) }}>
+          <Grid item style={{ marginBottom: theme.spacing(1) }}>
             <TextField
               className={classes.input}
               label='Re-Enter Password'
@@ -171,6 +176,29 @@ const Form3 = (props) => {
               })}
               error={Boolean(errors.rePass)}
               helperText={errors.rePass?.message}
+            />
+          </Grid>
+          <Grid
+            container
+            alignItems='center'
+            item
+            style={{ marginBottom: theme.spacing(4) }}>
+            <Typography>
+              I have read the{" "}
+              <a
+                href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
+                target={`_blank`}>
+                Terms and Conditions
+              </a>
+            </Typography>
+            <Checkbox
+              name='terms'
+              checked={checked}
+              onChange={handleChange}
+              inputRef={register({
+                required: "Please Re-enter your Password",
+              })}
+              inputProps={{ "aria-label": "primary checkbox" }}
             />
           </Grid>
 

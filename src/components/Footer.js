@@ -94,6 +94,39 @@ const Footer = () => {
               About Us
             </Typography>
           </Grid>
+          <Grid item>
+            <Typography
+              component='a'
+              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
+              target='_blank'
+              variant='caption'
+              noWrap
+              className={classes.link}>
+              Disclaimer
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              component='a'
+              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
+              target='_blank'
+              variant='caption'
+              noWrap
+              className={classes.link}>
+              Privacy
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              component='a'
+              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
+              target='_blank'
+              variant='caption'
+              noWrap
+              className={classes.link}>
+              Returns
+            </Typography>
+          </Grid>
           {/* <Grid item>
             <Typography
               component='div'

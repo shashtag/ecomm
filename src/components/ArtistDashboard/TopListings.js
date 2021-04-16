@@ -8,7 +8,6 @@ import TopListing from "./TopListing";
 const TopListings = () => {
   const theme = useTheme();
   const { topListings } = useContext(ADashboardContext);
-  console.log(topListings);
   return (
     <Grid container style={{ marginTop: theme.spacing(3) }}>
       <Paper square style={{ width: "100%", padding: theme.spacing(4) }}>
@@ -19,7 +18,6 @@ const TopListings = () => {
             </Typography>
           </Grid>
           {topListings?.results?.map((data, i) => {
-            console.log(data);
             if (i > 3) {
               return;
             }

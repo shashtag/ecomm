@@ -28,6 +28,16 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/artist/signup' render={() => <Signup type='artist' />} />
         <Route path='/artist/profile' render={() => <ArtistProfile />} />
+
+        <Route
+          path='/artist/dashboard'
+          render={() => (
+            <>
+              <Navigation noCat={true} noSub={true} />
+              <ArtistDashboard />
+            </>
+          )}
+        />
         <Route
           path='/artist/:url'
           render={() => (
@@ -36,15 +46,6 @@ function App() {
 
               <ArtistPage />
               <Footer />
-            </>
-          )}
-        />
-        <Route
-          path='/artist/dashboard'
-          render={() => (
-            <>
-              <Navigation noCat={true} noSub={true} />
-              <ArtistDashboard />
             </>
           )}
         />

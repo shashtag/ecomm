@@ -60,7 +60,7 @@ const ArtistPage = (props) => {
     if (aData) {
       var config = {
         method: "get",
-        url: `${process.env.REACT_APP_URL}store/view/product/artist/${aData[0].user}/`,
+        url: `${process.env.REACT_APP_URL}store/view/product/artist/${aData?.[0]?.user}/`,
         headers: {},
       };
 
