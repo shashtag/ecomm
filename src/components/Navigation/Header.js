@@ -14,8 +14,13 @@ import {
   Divider,
 } from "@material-ui/core";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
-
+import facebook from "../../assets/socialIcons/facebook.png";
+import instagram from "../../assets/socialIcons/instagram.png";
+import linkedIn from "../../assets/socialIcons/LinkedIn.png";
+// import mail from "../assets/socialIcons/mail.png";
+import twitter from "../../assets/socialIcons/Twitter.png";
 import { Link } from "react-router-dom";
+
 import Toolbar from "@material-ui/core/Toolbar";
 // import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
@@ -101,6 +106,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       display: "flex",
     },
+  },
+  icon: {
+    padding: theme.spacing(1.5, 1.25, 1, 1.25),
   },
 }));
 
@@ -444,11 +452,88 @@ export default function Header(props) {
                 </List>
                 <Divider style={{ height: "10px" }} />
                 <List>
-                  <ListItem>sddsds</ListItem>
-                  <ListItem>sddsds</ListItem>
-                  <ListItem>sddsds</ListItem>
-                  <ListItem>sddsds</ListItem>
+                  <ListItem button component={Link} to='about'>
+                    <Typography variant='h6'>About Us</Typography>
+                  </ListItem>
+                  <ListItem
+                    button
+                    component='a'
+                    href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
+                    target='_blank'>
+                    <Typography variant='h6'>Disclaimer</Typography>
+                  </ListItem>
+                  <ListItem
+                    button
+                    component='a'
+                    href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
+                    target='_blank'>
+                    <Typography variant='h6'>Privacy</Typography>
+                  </ListItem>
+                  <ListItem
+                    button
+                    component='a'
+                    href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
+                    target='_blank'>
+                    <Typography variant='h6'>Returns</Typography>
+                  </ListItem>
+                  <ListItem button component={Link} to='/contact'>
+                    <Typography variant='h6'>Contact Us</Typography>
+                  </ListItem>
+                  <ListItem button component={Link} to='/user/trackOrder'>
+                    <Typography variant='h6'>Track My Order</Typography>
+                  </ListItem>
                 </List>
+                <Divider style={{ height: "10px" }} />
+                <div
+                  style={{ display: "flex", marginLeft: theme.spacing(0.75) }}>
+                  <div className={classes.icon}>
+                    <a
+                      width='100%'
+                      height='100%'
+                      href='https://www.instagram.com/kalafex_/'
+                      rel='noreferrer'
+                      target='_blank'>
+                      <img src={instagram} alt='instagram icon' />
+                    </a>
+                  </div>
+                  <div className={classes.icon}>
+                    <a
+                      width='100%'
+                      height='100%'
+                      href='https://www.facebook.com/kalafex/'
+                      rel='noreferrer'
+                      target='_blank'>
+                      <img src={facebook} alt='facebook icon' />
+                    </a>
+                  </div>
+                  <div className={classes.icon}>
+                    <a
+                      width='100%'
+                      height='100%'
+                      href='https://twitter.com/kalafex_'
+                      rel='noreferrer'
+                      target='_blank'>
+                      <img src={twitter} alt='twitter icon' />
+                    </a>
+                  </div>
+
+                  <div className={classes.icon}>
+                    <a
+                      href='https://www.linkedin.com/company/kalafex/'
+                      rel='noreferrer'
+                      target='_blank'>
+                      <img
+                        width='100%'
+                        height='31px'
+                        src={linkedIn}
+                        alt='linkedIn icon'
+                      />
+                    </a>
+                  </div>
+                  {/* <div className={classes.icon}>
+              <img src={mail} alt='mail icon' />
+            </div> */}
+                </div>
               </div>
             </Drawer>
           </div>

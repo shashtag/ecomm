@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import Product from "../Product";
 import { UIContext } from "../../Context/UIContext";
+import { Link } from "react-router-dom";
+
 // import { trending } from "../../API/Get";
 
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +74,11 @@ const Trending = () => {
           </Grid>
           <div style={{ flexGrow: 1 }}></div>
           <Grid item>
-            <Typography variant='h6' color='secondary'>
+            <Typography
+              component={Link}
+              to='/trending'
+              variant='h6'
+              color='secondary'>
               View more
             </Typography>
           </Grid>

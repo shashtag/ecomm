@@ -14,9 +14,9 @@ import {
 import subscribe from "../assets/subscribe.png";
 import facebook from "../assets/socialIcons/facebook.png";
 import instagram from "../assets/socialIcons/instagram.png";
-import linkedIn from "../assets/socialIcons/linkedIn.png";
+import linkedIn from "../assets/socialIcons/LinkedIn.png";
 // import mail from "../assets/socialIcons/mail.png";
-import twitter from "../assets/socialIcons/twitter.png";
+import twitter from "../assets/socialIcons/Twitter.png";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -351,17 +351,48 @@ const Footer = () => {
           </Typography>
           <div style={{ display: "flex" }}>
             <div className={classes.icon}>
-              <img src={instagram} alt='instagram icon' />
+              <a
+                href='https://www.instagram.com/kalafex_/'
+                rel='noreferrer'
+                target='_blank'>
+                <img
+                  width='100%'
+                  height='31px'
+                  src={instagram}
+                  alt='instagram icon'
+                />
+              </a>
             </div>
             <div className={classes.icon}>
-              <img src={facebook} alt='facebook icon' />
+              <a
+                width='100%'
+                height='100%'
+                href='https://www.facebook.com/kalafex/'
+                rel='noreferrer'
+                target='_blank'>
+                <img src={facebook} alt='facebook icon' />
+              </a>
             </div>
             <div className={classes.icon}>
-              <img src={twitter} alt='twitter icon' />
+              <a
+                width='100%'
+                height='100%'
+                href='https://twitter.com/kalafex_'
+                rel='noreferrer'
+                target='_blank'>
+                <img src={twitter} alt='twitter icon' />
+              </a>
             </div>
 
             <div className={classes.icon}>
-              <img src={linkedIn} alt='linkedIn icon' />
+              <a
+                width='100%'
+                height='100%'
+                href='https://www.linkedin.com/company/kalafex/'
+                rel='noreferrer'
+                target='_blank'>
+                <img src={linkedIn} alt='linkedIn icon' />
+              </a>
             </div>
             {/* <div className={classes.icon}>
               <img src={mail} alt='mail icon' />

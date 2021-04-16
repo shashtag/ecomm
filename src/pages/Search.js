@@ -45,9 +45,9 @@ const Search = (props) => {
       <Grid container item spacing={2} style={{ padding: theme.spacing(2, 0) }}>
         {props.trending ? (
           <Products data={trendingProducts?.results} />
-        ) : (
+        ) : products ? (
           <Products data={products?.results} />
-        )}
+        ) : null}
       </Grid>
     </Grid>
   );

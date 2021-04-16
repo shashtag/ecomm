@@ -74,8 +74,7 @@ function App() {
           )}
         />
         <Route
-          exact
-          path='/search/'
+          path='/search'
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
