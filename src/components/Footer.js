@@ -95,6 +95,7 @@ const Footer = () => {
           <Grid item>
             <Typography
               component='a'
+              rel='noreferrer'
               href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
               target='_blank'
               variant='caption'
@@ -106,6 +107,7 @@ const Footer = () => {
           <Grid item>
             <Typography
               component='a'
+              rel='noreferrer'
               href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
               target='_blank'
               variant='caption'
@@ -117,6 +119,7 @@ const Footer = () => {
           <Grid item>
             <Typography
               component='a'
+              rel='noreferrer'
               href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
               target='_blank'
               variant='caption'
