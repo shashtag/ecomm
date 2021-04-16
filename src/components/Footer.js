@@ -19,14 +19,14 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: "#F4F4F4",
+    background: "#F6F6F6",
     padding: "75px 15px",
     [theme.breakpoints.up("md")]: {
       padding: "75px 3.2%",
     },
   },
   link: {
-    color: " #787777",
+    color: " #232222",
     margin: theme.spacing(0, 0, 1, 0),
     display: "inline-block",
     textDecoration: "none",
