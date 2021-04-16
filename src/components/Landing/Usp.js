@@ -17,7 +17,7 @@ import four from "../../assets/uspIcons/4.svg";
 
 const useStyles = makeStyles((theme) => ({
   usp: {
-    background: `url(${uspBg}) no-repeat `,
+    // background: `url(${uspBg}) no-repeat `,
     backgroundSize: "contain",
     margin: theme.spacing(1, 0),
     marginTop: theme.spacing(5),
@@ -41,15 +41,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const usp = [
-  { icon: one, text: "Get cheapest prices for Quality products" },
+  { icon: one, text: "Get exciting offers on your first order" },
   {
     icon: two,
-    text: "Fast and quick delivery",
+    text: "Speedy delivery anywhere around India ",
   },
-  { icon: three, text: "Support handmade made in India products" },
+  { icon: three, text: "Support the Made in India movement" },
   {
     icon: four,
-    text: "Be assured of the quality of products,from our verified sellers",
+    text: "BQuality products from quality vendors",
   },
 ];
 

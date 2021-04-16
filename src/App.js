@@ -15,8 +15,6 @@ import ProductDetails from "./pages/ProductDetails";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import Search from "./pages/Search";
 import Verification from "./pages/Verification";
-import Help from "./pages/Help";
-import ArtistPage from "./pages/ArtistPage";
 import UnderConstruction from "./pages/UnderConstruction";
 import LoadingLazy from "./ui/LoadingLazy";
 
@@ -24,6 +22,8 @@ const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Login = lazy(() => import("./pages/Login"));
+const Help = lazy(() => import("./pages/Help"));
+const ArtistPage = lazy(() => import("./pages/ArtistPage"));
 
 function App() {
   return (
@@ -68,8 +68,9 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-
-              <ArtistPage />
+              <Suspense fallback={<LoadingLazy />}>
+                <ArtistPage />
+              </Suspense>
               <Footer />
             </>
           )}
@@ -131,7 +132,9 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-              <Help standalone={true} />
+              <Suspense fallback={<LoadingLazy />}>
+                <Help standalone={true} />
+              </Suspense>
               <Footer />
             </>
           )}

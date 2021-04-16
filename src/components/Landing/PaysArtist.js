@@ -83,10 +83,10 @@ const PaysArtist = () => {
             variant='h6'
             align={md ? "left" : "justify"}
             style={{ marginBottom: theme.spacing(4) }}>
-            Choose your favorite and pair it with our best-in-class selection of
-            wall art, home decor, bed and bath, apparel, tech accessories,
-            furniture and lifestyle goods for your everyday. Everything is made
-            to order{" "}
+            Choose your favourite amongst our wide range of creative handmade
+            products for your home and you. We offer the best-in-class artwork,
+            home decor, collectibles and more for your everyday life. Order now
+            and avail exciting offers!
           </Typography>
           <Button
             variant='outlined'
@@ -95,7 +95,7 @@ const PaysArtist = () => {
               backgroundColor: theme.palette.primary.main,
               borderRadius: "3px",
             }}>
-            <Typography variant='h5'>Learn How</Typography>
+            <Typography variant='h5'>Shop Now</Typography>
           </Button>
         </Grid>
       </Grid>

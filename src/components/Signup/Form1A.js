@@ -147,11 +147,11 @@ const Form1 = (props) => {
           <Grid
             item
             style={{
-              marginBottom: theme.spacing(4),
+              marginBottom: theme.spacing(2),
               marginTop: -theme.spacing(1.5),
             }}>
             <Typography variant='caption' style={{ fontWeight: "400" }}>
-              We will send you code for verification :{")"}
+              We will send you an email for verification
             </Typography>
           </Grid>
           <Grid item style={{}}>
