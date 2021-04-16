@@ -79,7 +79,7 @@ const Footer = () => {
               variant='h6'
               color='secondary'
               style={{ margin: theme.spacing(2, 0, 2, 0) }}>
-              About Us
+              Company
             </Typography>
           </Grid>
           <Grid item>
@@ -102,6 +102,18 @@ const Footer = () => {
               noWrap
               className={classes.link}>
               Disclaimer
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              component='a'
+              rel='noreferrer'
+              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
+              target='_blank'
+              variant='caption'
+              noWrap
+              className={classes.link}>
+              Terms of Use
             </Typography>
           </Grid>
           <Grid item>
@@ -357,7 +369,7 @@ const Footer = () => {
                 rel='noreferrer'
                 target='_blank'>
                 <img
-                  width='100%'
+                  width='31px'
                   height='31px'
                   src={instagram}
                   alt='instagram icon'
@@ -366,33 +378,42 @@ const Footer = () => {
             </div>
             <div className={classes.icon}>
               <a
-                width='100%'
-                height='100%'
                 href='https://www.facebook.com/kalafex/'
                 rel='noreferrer'
                 target='_blank'>
-                <img src={facebook} alt='facebook icon' />
+                <img
+                  width='31px'
+                  height='31px'
+                  src={facebook}
+                  alt='facebook icon'
+                />
               </a>
             </div>
             <div className={classes.icon}>
               <a
-                width='100%'
-                height='100%'
                 href='https://twitter.com/kalafex_'
                 rel='noreferrer'
                 target='_blank'>
-                <img src={twitter} alt='twitter icon' />
+                <img
+                  width='31px'
+                  height='31px'
+                  src={twitter}
+                  alt='twitter icon'
+                />
               </a>
             </div>
 
             <div className={classes.icon}>
               <a
-                width='100%'
-                height='100%'
                 href='https://www.linkedin.com/company/kalafex/'
                 rel='noreferrer'
                 target='_blank'>
-                <img src={linkedIn} alt='linkedIn icon' />
+                <img
+                  width='31px'
+                  height='31px'
+                  src={linkedIn}
+                  alt='linkedIn icon'
+                />
               </a>
             </div>
             {/* <div className={classes.icon}>

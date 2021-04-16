@@ -469,6 +469,13 @@ export default function Header(props) {
                   <ListItem
                     button
                     component='a'
+                    href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
+                    target='_blank'>
+                    <Typography variant='h6'>Terms of Use</Typography>
+                  </ListItem>
+                  <ListItem
+                    button
+                    component='a'
                     href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
                     target='_blank'>
                     <Typography variant='h6'>Privacy</Typography>
@@ -489,32 +496,41 @@ export default function Header(props) {
                   style={{ display: "flex", marginLeft: theme.spacing(0.75) }}>
                   <div className={classes.icon}>
                     <a
-                      width='100%'
-                      height='100%'
                       href='https://www.instagram.com/kalafex_/'
                       rel='noreferrer'
                       target='_blank'>
-                      <img src={instagram} alt='instagram icon' />
+                      <img
+                        width='31px'
+                        height='31px'
+                        src={instagram}
+                        alt='instagram icon'
+                      />
                     </a>
                   </div>
                   <div className={classes.icon}>
                     <a
-                      width='100%'
-                      height='100%'
                       href='https://www.facebook.com/kalafex/'
                       rel='noreferrer'
                       target='_blank'>
-                      <img src={facebook} alt='facebook icon' />
+                      <img
+                        width='31px'
+                        height='31px'
+                        src={facebook}
+                        alt='facebook icon'
+                      />
                     </a>
                   </div>
                   <div className={classes.icon}>
                     <a
-                      width='100%'
-                      height='100%'
                       href='https://twitter.com/kalafex_'
                       rel='noreferrer'
                       target='_blank'>
-                      <img src={twitter} alt='twitter icon' />
+                      <img
+                        width='31px'
+                        height='31px'
+                        src={twitter}
+                        alt='twitter icon'
+                      />
                     </a>
                   </div>
 
@@ -524,7 +540,7 @@ export default function Header(props) {
                       rel='noreferrer'
                       target='_blank'>
                       <img
-                        width='100%'
+                        width='31px'
                         height='31px'
                         src={linkedIn}
                         alt='linkedIn icon'

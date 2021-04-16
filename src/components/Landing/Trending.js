@@ -83,12 +83,7 @@ const Trending = () => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid
-          item
-          container
-          justify='space-around'
-          alignItems='center'
-          spacing={2}>
+        <Grid item container alignItems='center' spacing={2}>
           {trending}
         </Grid>
       </Grid>
