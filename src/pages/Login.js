@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Logo from "../ui/Logo";
 import Loading from "../ui/Loading";
@@ -78,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = (props) => {
   const classes = useStyles();
   const theme = useTheme();
+  const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -87,16 +88,16 @@ const Login = (props) => {
 
   const { setLoading, setToken, setSnackbar } = useContext(UIContext);
 
-  console.log(props);
-
   const loginClickHandler = () => {
     const data = {
       email: email,
       password: pass,
     };
-    login(data, setLoading, setToken, setSnackbar, props.history);
+    login(data, setLoading, setToken, setSnackbar, history);
   };
-
+  if (localStorage.getItem("Token")) {
+    return <Redirect to='/' />;
+  }
   return (
     <>
       <Loading />

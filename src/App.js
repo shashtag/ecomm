@@ -77,7 +77,14 @@ function App() {
             </>
           )}
         />
-        <Route path='/user/signup' render={() => <Signup type='user' />} />
+        <Route
+          path='/user/signup'
+          render={() => (
+            <Suspense fallback={<LoadingLazy />}>
+              <Signup type='user' />
+            </Suspense>
+          )}
+        />
         <Route
           path='/product/:pid'
           render={() => (
@@ -167,7 +174,17 @@ function App() {
           path='/user/trackOrder'
           render={() => (
             <>
-              <Navigation noCat={false} noSub={false} />
+              <Navigation noCat={false} noSub={true} />
+              <UnderConstruction />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          path='/cart'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={true} />
               <UnderConstruction />
               <Footer />
             </>

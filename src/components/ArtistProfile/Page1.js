@@ -60,102 +60,104 @@ const Page1 = (props) => {
   };
   return (
     <>
-      <Grid item>
+      <Grid container item>
         <Typography variant='h4' style={{ paddingTop: theme.spacing(4) }}>
           Congratulations, account created successfully!
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid container item>
         <Typography variant='h5' style={{ paddingTop: theme.spacing(1) }}>
           Let us start by setting up your shop.
         </Typography>
       </Grid>
-      <form
-        className={classes.form}
-        autoComplete='off'
-        onSubmit={handleSubmit(handlePageChange)}>
-        <Grid
-          item
-          container
-          justify='center'
-          style={{ paddingTop: theme.spacing(5) }}>
-          <TextField
-            name='avatar'
-            accept='image/*'
-            className={classes.input}
-            id='contained-button-file'
-            multiple
-            type='file'
-            style={{ display: "none" }}
-            onChange={(e) => {
-              const reader = new FileReader();
-              reader.onload = () => {
-                if (reader.readyState === 2) {
-                  setAvatar({
-                    decoded: e.target?.files?.[0],
-                    encoded: reader.result,
-                  });
-                }
-              };
-              reader.readAsDataURL(e.target?.files?.[0]);
-              // setAvatar({ ...avatar, decoded: e.target?.files?.[0] });
-            }}
-          />
-          <label htmlFor='contained-button-file'>
-            <Avatar
-              alt='default profile pic'
-              src={avatar.encoded}
-              className={classes.large}
+      <Grid container item justify='center'>
+        <form
+          style={{ width: "100%" }}
+          autoComplete='off'
+          onSubmit={handleSubmit(handlePageChange)}>
+          <Grid
+            justify='center'
+            item
+            container
+            style={{ paddingTop: theme.spacing(5) }}>
+            <TextField
+              name='avatar'
+              accept='image/*'
+              className={classes.input}
+              id='contained-button-file'
+              multiple
+              type='file'
+              style={{ display: "none" }}
+              onChange={(e) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                  if (reader.readyState === 2) {
+                    setAvatar({
+                      decoded: e.target?.files?.[0],
+                      encoded: reader.result,
+                    });
+                  }
+                };
+                reader.readAsDataURL(e.target?.files?.[0]);
+                // setAvatar({ ...avatar, decoded: e.target?.files?.[0] });
+              }}
             />
-          </label>
-        </Grid>
+            <label htmlFor='contained-button-file'>
+              <Avatar
+                alt='default profile pic'
+                src={avatar.encoded}
+                className={classes.large}
+              />
+            </label>
+          </Grid>
 
-        <Grid
-          item
-          container
-          justify='center'
-          style={{
-            marginBottom: theme.spacing(2),
-            marginTop: theme.spacing(4),
-          }}>
-          <TextField
-            className={classes.input}
-            label='Custom URL'
-            name='curl'
-            variant='outlined'
-            color='secondary'
-            value={customURL}
-            onChange={(e) => {
-              setCustomURL(e.target.value);
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            placeholder='Enter your custom URL'
-            inputRef={register({
-              required: "Please add a custom URl",
-            })}
-            error={Boolean(errors.curl)}
-            helperText={errors.curl?.message}
-          />
-        </Grid>
-        <Grid item container style={{}} justify='flex-end'>
-          <Button
+          <Grid
+            item
+            container
+            justify='center'
             style={{
-              padding: "12px 80px",
-              borderRadius: "4px",
-              background: theme.palette.secondary.light,
-              marginTop: theme.spacing(2),
-            }}
-            variant='contained'
-            size='large'
-            type='submit'
-            color='secondary'
-            className={classes.loginButton}>
-            <Typography variant='h5'>Next</Typography>
-          </Button>
-        </Grid>
-      </form>
+              marginBottom: theme.spacing(2),
+              marginTop: theme.spacing(4),
+            }}>
+            <TextField
+              className={classes.input}
+              label='Custom URL'
+              name='curl'
+              variant='outlined'
+              color='secondary'
+              value={customURL}
+              onChange={(e) => {
+                setCustomURL(e.target.value);
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              placeholder='Enter your custom URL'
+              inputRef={register({
+                required: "Please add a custom URl",
+              })}
+              error={Boolean(errors.curl)}
+              helperText={errors.curl?.message}
+            />
+          </Grid>
+          <Grid item container style={{}} justify='flex-end'>
+            <Button
+              style={{
+                padding: "12px 80px",
+                borderRadius: "4px",
+                background: theme.palette.secondary.light,
+                marginTop: theme.spacing(2),
+              }}
+              variant='contained'
+              size='large'
+              type='submit'
+              color='secondary'
+              className={classes.loginButton}>
+              <Typography variant='h5'>Next</Typography>
+            </Button>
+          </Grid>
+        </form>
+      </Grid>
     </>
   );
 };

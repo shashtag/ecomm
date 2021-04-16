@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Logo from "../ui/Logo";
 
 import {
@@ -42,6 +42,7 @@ const SignupArtist = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
+
   const signupArtistHead = (
     <Grid item>
       <Typography
@@ -74,7 +75,9 @@ const SignupArtist = (props) => {
   );
 
   const [step, setStep] = useState(0);
-
+  if (localStorage.getItem("Token")) {
+    return <Redirect to='/' />;
+  }
   return (
     <SignupProvider>
       <Grid

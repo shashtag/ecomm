@@ -13,7 +13,13 @@ import {
 } from "../components/ArtistDashboard/ArtistDrawer";
 import TopListings from "../components/ArtistDashboard/TopListings";
 import UploadProduct from "../components/ArtistDashboard/UploadProduct";
-import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  useRouteMatch,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import { ADashboardProvider } from "../Context/ADashboardContext";
 import ArtistProfile from "./ArtistProfile";
@@ -47,10 +53,7 @@ const ArtistDashboard = (props) => {
   const md = useMediaQuery(theme.breakpoints.up("md"));
 
   if (!localStorage.getItem("Token")) {
-    history.push("/login");
-  }
-  if (!token) {
-    return <div></div>;
+    return <Redirect to='/login' />;
   }
 
   return (

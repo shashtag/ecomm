@@ -9,6 +9,7 @@ import {
   Card,
   CardContent,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import uspBg from "../../assets/uspBg.png";
 import one from "../../assets/uspIcons/1.svg";
 import two from "../../assets/uspIcons/2.svg";
@@ -131,6 +132,8 @@ const Usp = () => {
         style={{ margin: theme.spacing(3, 0) }}
         xs={12}>
         <Button
+          component={Link}
+          to='trending'
           variant='outlined'
           color='secondary'
           style={{

@@ -67,92 +67,110 @@ const Page3 = (props) => {
   };
   return (
     <>
-      <Grid item>
+      <Grid container item>
         <Typography variant='h5' style={{ paddingTop: theme.spacing(6) }}>
           Let us start by setting up your shop.
         </Typography>
       </Grid>
-
-      <form
-        className={classes.form}
-        autoComplete='off'
-        onSubmit={handleSubmit(handlePageChange)}>
-        <Grid
-          item
-          container
-          justify='center'
-          spacing={4}
-          style={{
-            marginBottom: theme.spacing(4),
-            marginTop: theme.spacing(4),
-          }}>
-          <Grid item xs={12} md={6} style={{ marginTop: "10vh" }}>
-            <TextField
-              className={classes.input}
-              label='Aadhar card number'
-              name='aadhar'
-              variant='outlined'
-              color='secondary'
-              defaultValue={aadhar}
-              onChange={(e) => {
-                setAadhar(e.target.value);
-              }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              placeholder='Enter your aadhar card number '
-              inputRef={register({
-                required: "Aadhar number is required",
-              })}
-              error={Boolean(errors.aadhar)}
-              helperText={errors.aadhar?.message}
-            />
-          </Grid>
-          <Grid item xs={12} md={6} style={{ marginTop: "10vh" }}>
-            <TextField
-              className={classes.input}
-              label='GST number'
-              name='GST'
-              variant='outlined'
-              color='secondary'
-              defaultValue={GST}
-              onChange={(e) => {
-                setGST(e.target.value);
-              }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              placeholder='Enter your GST number'
-              inputRef={register({
-                required: "GST number is required",
-              })}
-              error={Boolean(errors.GST)}
-              helperText={errors.GST?.message}
-            />
-          </Grid>
-          <Grid item xs={12} md={6} style={{ marginTop: "10vh" }}>
-            <TextField
-              className={classes.input}
-              label='PAN Card number'
-              name='PAN'
-              variant='outlined'
-              color='secondary'
-              defaultValue={PAN}
-              onChange={(e) => {
-                setPAN(e.target.value);
-              }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              placeholder='Enter your PAN card number'
-              inputRef={register({
-                required: "PAN is required",
-              })}
-              error={Boolean(errors.PAN)}
-              helperText={errors.PAN?.message}
-            />
-          </Grid>
-          {/* <Grid item xs={12} md={6} style={{ marginTop: "10vh" }}>
+      <Grid item container justify='center'>
+        <form
+          style={{ width: "100%" }}
+          autoComplete='off'
+          onSubmit={handleSubmit(handlePageChange)}>
+          <Grid
+            item
+            container
+            justify='center'
+            spacing={4}
+            style={{
+              marginBottom: theme.spacing(4),
+              marginTop: theme.spacing(4),
+            }}>
+            <Grid
+              container
+              justify='center'
+              item
+              xs={12}
+              md={6}
+              style={{ marginTop: "10vh" }}>
+              <TextField
+                className={classes.input}
+                label='Aadhar card number'
+                name='aadhar'
+                variant='outlined'
+                color='secondary'
+                defaultValue={aadhar}
+                onChange={(e) => {
+                  setAadhar(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter your aadhar card number '
+                inputRef={register({
+                  required: "Aadhar number is required",
+                })}
+                error={Boolean(errors.aadhar)}
+                helperText={errors.aadhar?.message}
+              />
+            </Grid>
+            <Grid
+              container
+              justify='center'
+              item
+              xs={12}
+              md={6}
+              style={{ marginTop: "10vh" }}>
+              <TextField
+                className={classes.input}
+                label='GST number'
+                name='GST'
+                variant='outlined'
+                color='secondary'
+                defaultValue={GST}
+                onChange={(e) => {
+                  setGST(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter your GST number'
+                inputRef={register({
+                  required: "GST number is required",
+                })}
+                error={Boolean(errors.GST)}
+                helperText={errors.GST?.message}
+              />
+            </Grid>
+            <Grid
+              container
+              justify='center'
+              item
+              xs={12}
+              md={6}
+              style={{ marginTop: "10vh" }}>
+              <TextField
+                className={classes.input}
+                label='PAN Card number'
+                name='PAN'
+                variant='outlined'
+                color='secondary'
+                defaultValue={PAN}
+                onChange={(e) => {
+                  setPAN(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter your PAN card number'
+                inputRef={register({
+                  required: "PAN is required",
+                })}
+                error={Boolean(errors.PAN)}
+                helperText={errors.PAN?.message}
+              />
+            </Grid>
+            {/* <Grid item xs={12} md={6} style={{ marginTop: "10vh" }}>
             <TextField
               className={classes.input}
               label='Payment method'
@@ -174,24 +192,25 @@ const Page3 = (props) => {
               helperText={errors.payment?.message}
             />
           </Grid> */}
-        </Grid>
-        <Grid item container style={{}} justify='flex-end'>
-          <Button
-            style={{
-              padding: "12px 80px",
-              borderRadius: "4px",
-              background: theme.palette.secondary.light,
-              marginTop: theme.spacing(2),
-            }}
-            variant='contained'
-            size='large'
-            type='submit'
-            color='secondary'
-            className={classes.loginButton}>
-            <Typography variant='h5'>Save</Typography>
-          </Button>
-        </Grid>
-      </form>
+          </Grid>
+          <Grid item container style={{}} justify='flex-end'>
+            <Button
+              style={{
+                padding: "12px 80px",
+                borderRadius: "4px",
+                background: theme.palette.secondary.light,
+                marginTop: theme.spacing(2),
+              }}
+              variant='contained'
+              size='large'
+              type='submit'
+              color='secondary'
+              className={classes.loginButton}>
+              <Typography variant='h5'>Save</Typography>
+            </Button>
+          </Grid>
+        </form>
+      </Grid>
     </>
   );
 };

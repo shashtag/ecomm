@@ -50,7 +50,7 @@ export const patchArtistDetails = (
       }
 
       if (res !== 0 && page !== 3) {
-        setPage(page + 2);
+        setPage(page + 1);
       }
       if (page === 3) {
         console.log("aa");

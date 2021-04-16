@@ -7,6 +7,8 @@ import {
   Button,
   useMediaQuery,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
+
 import paysArtistBg from "../../assets/paysArtistBg.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -89,6 +91,8 @@ const PaysArtist = () => {
             and avail exciting offers!
           </Typography>
           <Button
+            component={Link}
+            to='/trending'
             variant='outlined'
             style={{
               padding: theme.spacing(1.2, 4),

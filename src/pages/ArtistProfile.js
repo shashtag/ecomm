@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Logo from "../ui/Logo";
 
 import {
@@ -13,6 +13,7 @@ import Page2 from "../components/ArtistProfile/Page2";
 import Page3 from "../components/ArtistProfile/Page3";
 import { APProvider } from "../Context/APContext";
 import { UIContext } from "../Context/UIContext";
+import { Redirect, useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,17 +29,29 @@ const ArtistProfile = () => {
   const theme = useTheme();
   const [page, setPage] = useState(1);
   const { setLayout } = useContext(UIContext);
+  const history = useHistory();
   setLayout(true);
+
+  if (!localStorage.getItem("Token")) {
+    return <Redirect to='/login' />;
+  }
+
   return (
     <APProvider>
       <Grid container direction='column' className={classes.root}>
         <Logo />
         {page === 1 ? (
-          <Page1 page={page} setPage={setPage} />
+          <Grid container item>
+            <Page1 page={page} setPage={setPage} />
+          </Grid>
         ) : page === 2 ? (
-          <Page2 page={page} setPage={setPage} />
+          <Grid container item>
+            <Page2 page={page} setPage={setPage} />
+          </Grid>
         ) : (
-          <Page3 page={page} setPage={setPage} />
+          <Grid container item>
+            <Page3 page={page} setPage={setPage} />
+          </Grid>
         )}
       </Grid>
     </APProvider>

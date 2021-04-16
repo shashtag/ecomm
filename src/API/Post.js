@@ -57,9 +57,9 @@ export const login = (data, setLoading, setToken, setSnackbar, history) => {
       setSnackbar({
         value: true,
         message:
-          error.response.data.email?.[0] ||
-          error.response.data.non_field_errors?.[0] ||
-          error.response.data.password?.[0],
+          error?.response?.data?.email?.[0] ||
+          error?.response?.data?.non_field_errors?.[0] ||
+          error?.response?.data?.password?.[0],
       });
     });
 };
