@@ -223,7 +223,8 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='div'
+              component={Link}
+              to='/user/trackOrder'
               variant='caption'
               noWrap
               className={classes.link}>

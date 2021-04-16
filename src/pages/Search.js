@@ -1,8 +1,9 @@
-import { Grid, makeStyles, useTheme } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import { Grid, makeStyles, Typography, useTheme } from "@material-ui/core";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { search } from "../API/Get";
+import { fetchSearch, fetchTrendingProducts } from "../API/Get";
 import Products from "../components/Products";
+import { UIContext } from "../Context/UIContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,25 +17,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Search = () => {
+const Search = (props) => {
   const classes = useStyles();
+
   const { query } = useParams();
-  const [products, setProducts] = useState("");
+  const [products, setProducts] = useState(null);
   const theme = useTheme();
+  const { search, setLoading, trendingProducts } = useContext(UIContext);
+  console.log(trendingProducts);
 
   useEffect(() => {
-    search(query, setProducts);
+    if (!props.trending) {
+      fetchSearch(query, setProducts, setLoading);
+    }
     return () => {};
   }, [query]);
-
+  if (!products && !trendingProducts) {
+    return <div style={{ height: "100vh" }}></div>;
+  }
   return (
     <Grid container className={classes.root}>
-      <Grid
-        container
-        item
-        spacing={2}
-        style={{ padding: theme.spacing(16, 0) }}>
-        {products ? <Products data={products?.results} /> : null}
+      <Grid item>
+        <Typography variant='h3'>
+          {!props.trending ? query : "Trending"}
+        </Typography>
+      </Grid>
+      <Grid container item spacing={2} style={{ padding: theme.spacing(2, 0) }}>
+        {props.trending ? (
+          <Products data={trendingProducts?.results} />
+        ) : (
+          <Products data={products?.results} />
+        )}
       </Grid>
     </Grid>
   );

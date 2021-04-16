@@ -109,8 +109,13 @@ export default function Header(props) {
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
   const [drawer, setDrawer] = useState(false);
-  const { setLoading, setUsrBaseInfo, setToken } = useContext(UIContext);
-  const [search, setSearch] = useState("");
+  const {
+    setLoading,
+    setUsrBaseInfo,
+    setToken,
+    search,
+    setSearch,
+  } = useContext(UIContext);
 
   useEffect(() => {
     if (md) {

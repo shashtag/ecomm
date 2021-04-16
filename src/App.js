@@ -17,6 +17,7 @@ import Verification from "./pages/Verification";
 import AboutUs from "./pages/AboutUs";
 import Help from "./pages/Help";
 import ArtistPage from "./pages/ArtistPage";
+import UnderConstruction from "./pages/UnderConstruction";
 
 function App() {
   return (
@@ -67,7 +68,29 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-              <Search />
+              <Search trending={false} />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          exact
+          path='/search/'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={false} />
+              <Search trending={true} />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          exact
+          path='/trending'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={false} />
+              <Search trending={true} />
               <Footer />
             </>
           )}
@@ -96,6 +119,16 @@ function App() {
             <>
               <Navigation noCat={false} noSub={false} />
               <AboutUs />
+              <Footer />
+            </>
+          )}
+        />
+        <Route
+          path='/user/trackOrder'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={false} />
+              <UnderConstruction />
               <Footer />
             </>
           )}

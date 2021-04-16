@@ -40,7 +40,8 @@ export const fetchBaseDetailsUser = (setUsrBaseInfo, history) => {
     });
 };
 
-export const search = (query, setProducts) => {
+export const fetchSearch = (query, setProducts, setLoading) => {
+  setLoading(true);
   var config = {
     method: "get",
     url: `${process.env.REACT_APP_URL}store/search/product/?search=${query}`,
@@ -50,6 +51,7 @@ export const search = (query, setProducts) => {
     .then(function (response) {
       setProducts(response.data);
       console.log(JSON.stringify(response.data));
+      setLoading(false);
     })
     .catch(function (error) {
       console.log(error);

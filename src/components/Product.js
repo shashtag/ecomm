@@ -44,7 +44,7 @@ const Product = (props) => {
           title='Paella dish'
         />
         <CardContent>
-          <Typography variant='h5' color='textSecondary' component='p'>
+          <Typography noWrap variant='h5' color='textSecondary' component='p'>
             {props?.name}
           </Typography>
         </CardContent>
