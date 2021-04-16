@@ -14,11 +14,11 @@ import {
 import TopListings from "../components/ArtistDashboard/TopListings";
 import UploadProduct from "../components/ArtistDashboard/UploadProduct";
 import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
-import bannerImg from "../assets/bannerImg.png";
 import { Avatar } from "@material-ui/core";
 import { ADashboardProvider } from "../Context/ADashboardContext";
 import ArtistProfile from "./ArtistProfile";
 import Help from "./Help";
+import ArtistPage from "./ArtistPage";
 
 // const drawerWidth = 250;
 
@@ -89,23 +89,7 @@ const ArtistDashboard = (props) => {
                 </>
               )}
             />
-            <Route
-              path={`${path}/myPage`}
-              render={() => (
-                <Grid container direction='column'>
-                  <Grid
-                    item
-                    container
-                    style={{
-                      background: `url(${bannerImg}) center center / cover no-repeat `,
-                    }}
-                    xs='12'>
-                    <div style={{ height: "30vh" }}></div>
-                  </Grid>
-                  <Avatar></Avatar>
-                </Grid>
-              )}
-            />
+            <Route path={`${path}/myPage`} render={() => <ArtistPage />} />
             <Route path={`${path}/profile`}>
               <ArtistProfile />
             </Route>

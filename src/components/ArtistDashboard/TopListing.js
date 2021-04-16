@@ -8,11 +8,11 @@ const TopListing = (props) => {
     <Grid
       item
       container
-      xs={12}
+      xs={6}
       md={6}
       spacing={2}
       style={{ paddingTop: theme.spacing(1) }}>
-      <Grid item md={6}>
+      <Grid item xs={6}>
         <Paper
           elevation={0}
           square

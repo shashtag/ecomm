@@ -40,7 +40,7 @@ export const fetchBaseDetailsUser = (setUsrBaseInfo, history) => {
     });
 };
 
-export const search = (query) => {
+export const search = (query, setProducts) => {
   var config = {
     method: "get",
     url: `${process.env.REACT_APP_URL}store/search/product/?search=${query}`,
@@ -48,6 +48,7 @@ export const search = (query) => {
 
   axios(config)
     .then(function (response) {
+      setProducts(response.data);
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {

@@ -1,7 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
-import { Grid, makeStyles, Paper, useTheme } from "@material-ui/core";
+import {
+  Grid,
+  IconButton,
+  Link,
+  makeStyles,
+  Paper,
+  useTheme,
+} from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
 import { Button } from "@material-ui/core";
@@ -23,14 +30,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const { pid } = useParams();
   const { setLoading } = useContext(UIContext);
 
   const [productDetails, setProductDetails] = useState(null);
-
+  const history = useHistory();
   useEffect(() => {
     setLoading(true);
     var config = {
@@ -75,7 +82,8 @@ const ProductDetails = () => {
           style={{
             padding: theme.spacing(0.5, 0),
           }}>
-          Home > {productDetails?.[0]?.category}
+          Home {"> "}
+          {productDetails?.[0]?.category}
         </Typography>
       </Grid>
       <Grid container direction='column' className={classes.root}>
@@ -133,20 +141,37 @@ const ProductDetails = () => {
             </Grid>
             <Grid container md={8} item direction='column'>
               <Grid container direction='row' item>
-                <Avatar
+                <IconButton
                   style={{
-                    width: "60px",
+                    padding: "0",
                     height: "60px",
+                    width: "60px",
                     marginRight: theme.spacing(1),
                   }}
-                />
+                  onClick={() => {
+                    history.push(
+                      `/artist/${productDetails[0]?.artist?.custom_url}`,
+                    );
+                  }}>
+                  <Avatar
+                    // component={Button}
+                    // to={`/artist/${productDetails[0]?.artist?.custom_url}`}
+                    src={productDetails[0]?.artist?.profile_picture}
+                    style={{
+                      width: "60px",
+                      height: "60px",
+                    }}
+                  />
+                </IconButton>
                 <Grid
                   item
                   style={{
                     paddingTop: theme.spacing(0.5),
                     marginBottom: theme.spacing(5),
                   }}>
-                  <Typography variant='h6'>Artist Name</Typography>
+                  <Typography variant='h6'>
+                    {productDetails[0]?.artist?.profile_picture}
+                  </Typography>
                   <Typography variant='h6'>Artist Category</Typography>
                 </Grid>
               </Grid>

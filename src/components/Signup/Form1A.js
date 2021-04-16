@@ -102,6 +102,7 @@ const Form1 = (props) => {
               InputLabelProps={{
                 shrink: true,
               }}
+              placeholder={"DD/MM/YYYY"}
               name='date'
               format='dd/MM/yyyy'
               label='Date of Birth'

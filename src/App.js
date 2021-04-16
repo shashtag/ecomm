@@ -16,6 +16,7 @@ import Search from "./pages/Search";
 import Verification from "./pages/Verification";
 import AboutUs from "./pages/AboutUs";
 import Help from "./pages/Help";
+import ArtistPage from "./pages/ArtistPage";
 
 function App() {
   return (
@@ -27,6 +28,17 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/artist/signup' render={() => <Signup type='artist' />} />
         <Route path='/artist/profile' render={() => <ArtistProfile />} />
+        <Route
+          path='/artist/:url'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={false} />
+
+              <ArtistPage />
+              <Footer />
+            </>
+          )}
+        />
         <Route
           path='/artist/dashboard'
           render={() => (
