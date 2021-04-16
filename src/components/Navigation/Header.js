@@ -33,7 +33,6 @@ import InputBase from "@material-ui/core/InputBase";
 import logoMain from "../../assets/logoMain.png";
 import logoDrawer from "../../assets/logoDrawer.png";
 // import logoMainSm from "../../assets/logoMainSm.png";
-import search from "../../assets/search.png";
 import sellDes from "../../assets/sellDes.png";
 import { UIContext } from "../../Context/UIContext";
 import HeaderIcons from "./HeaderIcons";

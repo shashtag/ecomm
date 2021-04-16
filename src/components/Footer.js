@@ -11,7 +11,6 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
-import subscribe from "../assets/subscribe.png";
 import facebook from "../assets/socialIcons/facebook.png";
 import instagram from "../assets/socialIcons/instagram.png";
 import linkedIn from "../assets/socialIcons/LinkedIn.png";
