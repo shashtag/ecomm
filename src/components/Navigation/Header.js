@@ -400,27 +400,32 @@ export default function Header(props) {
                     </Typography>
                   </ListItem>
                   {token ? (
-                    <ListItem
-                      component={Link}
-                      onClick={() => {
-                        logout(
-                          setLoading,
-                          setUsrBaseInfo,
-                          setToken,
-                          props.history,
-                        );
-                      }}>
-                      <ExitToAppIcon
-                        style={{
-                          color: theme.palette.secondary.main,
-                          fontSize: "20px",
-                        }}
-                      />
-                      {"  "}
-                      <Typography variant='h5' style={{ color: "#152238" }}>
-                        Logout
-                      </Typography>
-                    </ListItem>
+                    <>
+                      <ListItem
+                        component={Link}
+                        onClick={() => {
+                          logout(
+                            setLoading,
+                            setUsrBaseInfo,
+                            setToken,
+                            props.history,
+                          );
+                        }}>
+                        <ExitToAppIcon
+                          style={{
+                            color: theme.palette.secondary.main,
+                            fontSize: "20px",
+                          }}
+                        />
+                        {"  "}
+                        <Typography variant='h5' style={{ color: "#152238" }}>
+                          Logout
+                        </Typography>
+                      </ListItem>
+                      <ListItem button component={Link} to='/user/trackOrder'>
+                        <Typography variant='h6'>Track My Order</Typography>
+                      </ListItem>
+                    </>
                   ) : null}
                 </List>
 
@@ -477,9 +482,6 @@ export default function Header(props) {
                   </ListItem>
                   <ListItem button component={Link} to='/contact'>
                     <Typography variant='h6'>Contact Us</Typography>
-                  </ListItem>
-                  <ListItem button component={Link} to='/user/trackOrder'>
-                    <Typography variant='h6'>Track My Order</Typography>
                   </ListItem>
                 </List>
                 <Divider style={{ height: "10px" }} />

@@ -1,11 +1,12 @@
+import React, { lazy, Suspense } from "react";
+
 import { ThemeProvider } from "@material-ui/core";
 import theme from "./ui/Theme";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+
+// import Login from "./pages/Login";
 import Navigation from "./components/Navigation";
-import ArtistProfile from "./pages/ArtistProfile";
 import Temp from "./Temp";
 import Footer from "./components/Footer";
 import Loading from "./ui/Loading";
@@ -14,10 +15,15 @@ import ProductDetails from "./pages/ProductDetails";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import Search from "./pages/Search";
 import Verification from "./pages/Verification";
-import AboutUs from "./pages/AboutUs";
 import Help from "./pages/Help";
 import ArtistPage from "./pages/ArtistPage";
 import UnderConstruction from "./pages/UnderConstruction";
+import LoadingLazy from "./ui/LoadingLazy";
+
+const Signup = lazy(() => import("./pages/Signup"));
+const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Login = lazy(() => import("./pages/Login"));
 
 function App() {
   return (
@@ -26,9 +32,27 @@ function App() {
       <Notif />
 
       <Switch>
-        <Route path='/login' component={Login} />
-        <Route path='/artist/signup' render={() => <Signup type='artist' />} />
-        <Route path='/artist/profile' render={() => <ArtistProfile />} />
+        <Route path='/login'>
+          <Suspense fallback={<LoadingLazy />}>
+            <Login />
+          </Suspense>
+        </Route>
+        <Route
+          path='/artist/signup'
+          render={() => (
+            <Suspense fallback={<LoadingLazy />}>
+              <Signup type='artist' />{" "}
+            </Suspense>
+          )}
+        />
+        <Route
+          path='/artist/profile'
+          render={() => (
+            <Suspense fallback={<LoadingLazy />}>
+              <ArtistProfile />{" "}
+            </Suspense>
+          )}
+        />
 
         <Route
           path='/artist/dashboard'
@@ -117,7 +141,9 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-              <AboutUs />
+              <Suspense fallback={<LoadingLazy />}>
+                <AboutUs />
+              </Suspense>
               <Footer />
             </>
           )}
