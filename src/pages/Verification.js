@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 
 const Verification = (props) => {
+  const history = useHistory();
   const { id, code } = useParams();
   useEffect(() => {
     var data = JSON.stringify({
@@ -22,7 +23,7 @@ const Verification = (props) => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        props.history.push("/login");
+        history.push("/login");
       })
       .catch(function (error) {
         console.log(error);

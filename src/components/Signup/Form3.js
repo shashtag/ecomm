@@ -186,6 +186,7 @@ const Form3 = (props) => {
             <Typography>
               I have read the{" "}
               <a
+                rel='noreferrer'
                 href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
                 target={`_blank`}>
                 Terms and Conditions
