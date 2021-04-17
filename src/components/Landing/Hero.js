@@ -100,7 +100,7 @@ const Hero = () => {
           </Typography>
         </div>
         <Typography variant='h5' color='secondary'>
-          Create your own brand identity and reach wider audience
+          Create your own brand identity and reach a broader audience today
         </Typography>
         <Button
           component={Link}
@@ -109,7 +109,7 @@ const Hero = () => {
           size='large'
           color='secondary'
           className={classes.heroButton}>
-          <Typography variant='h5'>Sell Your Design</Typography>
+          <Typography variant='h5'>Start Selling</Typography>
         </Button>
       </Grid>
 

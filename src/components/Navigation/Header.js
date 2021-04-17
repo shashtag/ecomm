@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     height: "36px",
     width: "100%",
     marginLeft: theme.spacing(4),
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(4),
   },
 
   inputRoot: {
@@ -109,6 +109,11 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     padding: theme.spacing(1.5, 1.25, 1, 1.25),
   },
+  name: {
+    background: "linear-gradient(#FFB800, 100%, #FF4185)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  },
 }));
 
 export default function Header(props) {
@@ -139,7 +144,7 @@ export default function Header(props) {
   const desktop = token ? (
     <div
       style={{ justifyContent: "flex-end" }}
-      className={[classes.sectionDesktop, classes.grow].join(" ")}>
+      className={[classes.sectionDesktop].join(" ")}>
       <div
         style={{
           display: "flex",
@@ -165,6 +170,7 @@ export default function Header(props) {
         color='secondary'
         style={{ fontWeight: "600", marginRight: theme.spacing(2) }}>
         <span style={{ fontWeight: "500" }}>Hello</span>{" "}
+        <span className={classes.name}></span>
         {usrBaseInfo?.full_name?.split(" ")[0]}
       </Typography>
       <HeaderIcons />
@@ -228,7 +234,7 @@ export default function Header(props) {
       </IconButton>
     </div>
   );
-
+  
   return (
     <>
       <AppBar
@@ -300,7 +306,7 @@ export default function Header(props) {
 
               <IconButton
                 component={Link}
-                to={`/search/${search}`}
+                to={search.length !== 0 ? `/search/${search}` : null}
                 aria-label='cart'
                 style={{
                   // height: "0.75rem",

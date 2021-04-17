@@ -12,7 +12,7 @@ export const ADashboardProvider = (props) => {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [topListings, setTopListings] = useState("");
-  const [insights, setInsights] = useState("");
+  const [insights, setInsights] = useState(false);
   const [img, setImg] = useState("");
   useEffect(() => {
     if (usrBaseInfo) {
@@ -22,7 +22,6 @@ export const ADashboardProvider = (props) => {
   }, [usrBaseInfo]);
   useEffect(() => {
     fetchArtistProfile(setInsights);
-    console.log(insights);
     return () => {};
   }, []);
   return (
@@ -42,6 +41,8 @@ export const ADashboardProvider = (props) => {
         setTopListings,
         img,
         setImg,
+        insights,
+        setInsights,
       }}>
       {props.children}
     </ADashboardContext.Provider>

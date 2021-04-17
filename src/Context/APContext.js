@@ -50,7 +50,20 @@ export const APProvider = (props) => {
     console.log("sss");
     if (usrBaseInfo.is_first_login) {
       console.log("sss");
-      postArtistDetails(setLoading);
+      postArtistDetails(setLoading, () => {
+        patchArtistDetails(
+          {},
+          null,
+          null,
+          setLoading,
+          null,
+          setCustomURL,
+          setAadhar,
+          setGST,
+          setPAN,
+          setAvatar,
+        );
+      });
     }
 
     // patchArtistDetails(

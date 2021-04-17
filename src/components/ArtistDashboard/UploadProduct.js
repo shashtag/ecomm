@@ -82,19 +82,17 @@ const UploadProduct = () => {
   const uploadClickHandler = () => {
     var data = new FormData();
     data.append("name", name);
-    data.append(
-      "category",
-      // category
-      "mmm",
-    );
+    data.append("category", category);
     // data.append("subcategory", "mmm");
     data.append("description", desc);
     data.append("display_image", img);
     data.append("original_price", price);
     data.append("stock_left", quantity);
+    for (var pair of data.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
     addProduct(data, setLoading);
   };
-  console.log(errors);
 
   // const style = useMemo(
   //   () => ({
@@ -121,6 +119,9 @@ const UploadProduct = () => {
           <Autocomplete
             options={categoryList}
             getOptionLabel={(option) => option.title}
+            onChange={(e, value) => {
+              setCategory(value.title);
+            }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -129,9 +130,6 @@ const UploadProduct = () => {
                 name='category'
                 color='secondary'
                 value={category}
-                onChange={(e) => {
-                  setCategory(e.target.value);
-                }}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -152,7 +150,7 @@ const UploadProduct = () => {
             label='Product Name'
             name='name'
             color='secondary'
-            value={name}
+            defaultValue={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -162,6 +160,10 @@ const UploadProduct = () => {
             placeholder='Enter Product Name'
             inputRef={register({
               required: "Name is required",
+              minLength: {
+                value: 40,
+                message: "Please add a name longer than 40 characters ",
+              },
             })}
             error={Boolean(errors.name)}
             helperText={errors.name?.message}
@@ -169,7 +171,14 @@ const UploadProduct = () => {
           />
         </Grid>
         <Grid item xs={12} style={{ marginTop: theme.spacing(3) }}>
-          <DropZone />
+          <DropZone
+            name='name'
+            inputRef={register({
+              required: "Name is required",
+            })}
+            error={Boolean(errors.name)}
+            helperText={errors.name?.message}
+          />
           {/* <section
             className='container'
             style={{
@@ -220,7 +229,7 @@ const UploadProduct = () => {
             label='Product Description'
             name='desc'
             color='secondary'
-            value={desc}
+            defaultValue={desc}
             onChange={(e) => {
               setDesc(e.target.value);
             }}
@@ -230,6 +239,10 @@ const UploadProduct = () => {
             placeholder='Enter Product Description'
             inputRef={register({
               required: "Description is required",
+              minLength: {
+                value: 200,
+                message: "Please add a name longer than 200 characters ",
+              },
             })}
             error={Boolean(errors.desc)}
             helperText={errors.desc?.message}
@@ -257,7 +270,7 @@ const UploadProduct = () => {
               }}
               placeholder='Enter Product Price'
               inputRef={register({
-                required: "Email/Phone number is required",
+                required: "Price is required",
               })}
               error={Boolean(errors.price)}
               helperText={errors.price?.message}
@@ -286,6 +299,9 @@ const UploadProduct = () => {
               options={quantityList}
               getOptionLabel={(option) => option.title}
               classes={{ inputRoot: classes.inproot }}
+              onChange={(e, value) => {
+                setQuantity(value.title);
+              }}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -294,9 +310,6 @@ const UploadProduct = () => {
                   name='quantity'
                   color='secondary'
                   value={quantity}
-                  onChange={(e) => {
-                    setQuantity(e.target.value);
-                  }}
                   // InputLabelProps={{
                   //   shrink: true,
                   // }}

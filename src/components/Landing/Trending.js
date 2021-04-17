@@ -70,7 +70,7 @@ const Trending = () => {
       <Grid container spacing={4} direction='column' className={classes.root}>
         <Grid item container>
           <Grid item>
-            <Typography variant='h5'>Trending Designs this week</Typography>
+            <Typography variant='h5'>Trending Designs</Typography>
           </Grid>
           <div style={{ flexGrow: 1 }}></div>
           <Grid item>

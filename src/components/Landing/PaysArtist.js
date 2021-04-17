@@ -79,7 +79,7 @@ const PaysArtist = () => {
           <Typography
             variant={sm ? "h2" : "h3"}
             style={{ fontWeight: 600, marginBottom: theme.spacing(3) }}>
-            Every purchase pays an Artist
+            Every purchase pays an artist
           </Typography>
           <Typography
             variant='h6'
@@ -92,14 +92,14 @@ const PaysArtist = () => {
           </Typography>
           <Button
             component={Link}
-            to='/trending'
+            to='/about'
             variant='outlined'
             style={{
               padding: theme.spacing(1.2, 4),
               backgroundColor: theme.palette.primary.main,
               borderRadius: "3px",
             }}>
-            <Typography variant='h5'>Shop Now</Typography>
+            <Typography variant='h5'>Learn More</Typography>
           </Button>
         </Grid>
       </Grid>

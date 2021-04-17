@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { Redirect } from "react-router";
 
 export const fetchTrendingProducts = (setTrendingProducts) => {
   var config = {
@@ -67,7 +68,7 @@ export const fetchArtistProducts = (id, setTopListings) => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
+      console.log(response.data);
       setTopListings(response.data);
     })
     .catch(function (error) {
@@ -86,6 +87,8 @@ export const fetchArtistProfile = (setInsights) => {
 
   axios(config)
     .then(function (response) {
+      console.log(response.data);
+
       setInsights(response.data);
     })
     .catch(function (error) {

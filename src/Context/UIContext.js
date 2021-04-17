@@ -10,7 +10,6 @@ export const UIProvider = (props) => {
   const [token, setToken] = useState(false);
   const [snackbar, setSnackbar] = useState(false);
   const [trendingProducts, setTrendingProducts] = useState(null);
-  const [layout, setLayout] = useState(true);
   const [search, setSearch] = useState("");
 
   const [usrBaseInfo, setUsrBaseInfo] = useState("");
@@ -47,8 +46,7 @@ export const UIProvider = (props) => {
         setTrendingProducts,
         usrBaseInfo,
         setUsrBaseInfo,
-        layout,
-        setLayout,
+
         search,
         setSearch,
       }}>

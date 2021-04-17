@@ -111,7 +111,7 @@ export const addAddress = (data, setLoading, setPage, page) => {
     });
 };
 
-export const postArtistDetails = (setLoading) => {
+export const postArtistDetails = (setLoading, func) => {
   setLoading(true);
   console.log();
   var data = new FormData();
@@ -131,8 +131,7 @@ export const postArtistDetails = (setLoading) => {
     })
     .catch(function (error) {
       setLoading(false);
-
-      console.log(error);
+      func();
     });
 };
 

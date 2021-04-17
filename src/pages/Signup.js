@@ -111,7 +111,7 @@ const SignupArtist = (props) => {
                   <Typography
                     variant='h6'
                     style={{ fontWeight: 500, display: "inline" }}>
-                    Already have an account.
+                    Already have an account?
                     <Link
                       to='/login'
                       style={{ fontWeight: 500, display: "inline" }}>
@@ -222,25 +222,25 @@ const SignupArtist = (props) => {
               variant='h5'
               color='primary'
               style={{ marginTop: theme.spacing(8) }}>
-              Get your product dellivered directly
+              Be a part of the community{" "}
             </Typography>
             <Typography
               variant='h5'
               color='primary'
               style={{ marginTop: theme.spacing(4) }}>
-              Earn easy profit
+              Get door-to-door delivery
             </Typography>
             <Typography
               variant='h5'
               color='primary'
               style={{ marginTop: theme.spacing(4) }}>
-              Get your product delivered directly
+              Hassle-free earnings
             </Typography>
             <Typography
               variant='h5'
               color='primary'
               style={{ marginTop: theme.spacing(4) }}>
-              Get your product dellivered directly
+              Widen your outreach
             </Typography>
           </div>
         </Grid>

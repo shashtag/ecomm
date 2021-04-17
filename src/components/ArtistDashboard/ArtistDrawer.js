@@ -95,7 +95,7 @@ export const ArtistDrawerSM = () => {
 };
 
 const ArtistDrawerIcons = () => {
-  const { setLading } = useContext(UIContext);
+  const { setLoading } = useContext(UIContext);
   const { insights } = useContext(ADashboardContext);
   const [url, setUrl] = useState("");
   console.log(insights);
@@ -127,10 +127,10 @@ const ArtistDrawerIcons = () => {
 
         <Typography> MY Profile</Typography>
       </ListItem>
-      {/* <ListItem
+      <ListItem
         button
         component={Link}
-        to={`/artist/dashboard/${insights?.name}`}>
+        to={`/artist/dashboard/${insights?.details?.user?.full_name}`}>
         <ArtTrackIcon
           fontSize='large'
           style={{
@@ -140,7 +140,7 @@ const ArtistDrawerIcons = () => {
         />
 
         <Typography>My page</Typography>
-      </ListItem> */}
+      </ListItem>
       <ListItem button component={Link} to='/artist/dashboard/track'>
         <DirectionsBikeIcon
           fontSize='large'

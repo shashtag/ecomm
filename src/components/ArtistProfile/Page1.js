@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     width: "200px",
     height: "200px",
     cursor: "pointer",
+    "&:hover": {
+      filter: "brightness(110%)",
+    },
   },
   input: {
     width: "500px",

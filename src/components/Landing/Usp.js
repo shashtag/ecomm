@@ -50,7 +50,7 @@ const usp = [
   { icon: three, text: "Support the Made in India movement" },
   {
     icon: four,
-    text: "BQuality products from quality vendors",
+    text: "Quality products from quality vendors",
   },
 ];
 
@@ -72,7 +72,7 @@ const Usp = () => {
           // background: "white",
           fontWeight: sm ? "400" : "bold",
         }}>
-        See what we got
+        See what we’ve got
       </Typography>
       <Typography
         variant='h6'
@@ -83,9 +83,9 @@ const Usp = () => {
           marginBottom: theme.spacing(4),
           // background: "white",
         }}>
-        From logos that define the very roots of a brand's success to t-shirts
-        that speak of versatile yet engaging personalities, if you need a
-        design, we've got you covered.
+        Change the text to “From adding to your home's aesthetic to adding to
+        your personal versatile aesthetic, whatever it is you need, we've got
+        you covered.”
       </Typography>
 
       {usp.map((usp, i) => (

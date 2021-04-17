@@ -14,6 +14,7 @@ import Notif from "./ui/Notif";
 import Verification from "./pages/Verification";
 import UnderConstruction from "./pages/UnderConstruction";
 import LoadingLazy from "./ui/LoadingLazy";
+import ScrollTop from "./ui/ScrollTop";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
@@ -30,7 +31,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <Loading />
       <Notif />
-
       <Switch>
         <Route path='/login'>
           <Suspense fallback={<LoadingLazy />}>
@@ -71,7 +71,7 @@ function App() {
             <>
               <Navigation noCat={false} noSub={false} />
               <Suspense fallback={<LoadingLazy />}>
-                <ArtistPage />
+                <ArtistPage artist={false} />
               </Suspense>
               <Footer />
             </>

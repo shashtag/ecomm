@@ -23,7 +23,7 @@ const Search = (props) => {
   const { query } = useParams();
   const [products, setProducts] = useState(null);
   const theme = useTheme();
-  const { search, setLoading, trendingProducts } = useContext(UIContext);
+  const { setLoading, trendingProducts } = useContext(UIContext);
   console.log(trendingProducts);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Search = (props) => {
       fetchSearch(query, setProducts, setLoading);
     }
     return () => {};
-  }, [query]);
+  }, [query, props.trending]);
   if (!products && !trendingProducts) {
     return <div style={{ height: "100vh" }}></div>;
   }

@@ -9,8 +9,8 @@ const DashboardCard = (props) => {
     <Grid item xs={12} sm={6}>
       <Card
         style={{
-          padding: theme.spacing(3),
-          paddingLeft: theme.spacing(6),
+          padding: theme.spacing(3, 2),
+
           background: props.color,
           color: "white",
         }}>

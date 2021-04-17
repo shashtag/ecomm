@@ -51,8 +51,12 @@ const Form3 = (props) => {
 
   const [open, setOpen] = React.useState(false);
   const [checked, setChecked] = React.useState(true);
+  const [checked2, setChecked2] = React.useState(true);
   const handleChange = (event) => {
     setChecked(event.target.checked);
+  };
+  const handleChange2 = (event) => {
+    setChecked2(event.target.checked);
   };
 
   const { register, handleSubmit, errors } = useForm();
@@ -178,24 +182,44 @@ const Form3 = (props) => {
               helperText={errors.rePass?.message}
             />
           </Grid>
-          <Grid
-            container
-            alignItems='center'
-            item
-            style={{ marginBottom: theme.spacing(4) }}>
-            <Typography>
-              I have read the{" "}
+          <Grid container alignItems='center' item>
+            <Typography variant='h6'>
+              I accept the{" "}
               <a
                 rel='noreferrer'
                 href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
                 target={`_blank`}>
-                Terms and Conditions
+                Kalafex Terms and Conditions
               </a>
             </Typography>
             <Checkbox
               name='terms'
               checked={checked}
               onChange={handleChange}
+              inputRef={register({
+                required: "Please Re-enter your Password",
+              })}
+              inputProps={{ "aria-label": "primary checkbox" }}
+            />
+          </Grid>
+          <Grid
+            container
+            alignItems='center'
+            item
+            style={{ marginBottom: theme.spacing(4) }}>
+            <Typography variant='h6'>
+              I accept the{" "}
+              <a
+                rel='noreferrer'
+                href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
+                target={`_blank`}>
+                Kalafex Privacy Notice
+              </a>
+            </Typography>
+            <Checkbox
+              name='priv'
+              checked={checked2}
+              onChange={handleChange2}
               inputRef={register({
                 required: "Please Re-enter your Password",
               })}

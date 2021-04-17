@@ -25,6 +25,7 @@ import { ADashboardProvider } from "../Context/ADashboardContext";
 import ArtistProfile from "./ArtistProfile";
 import Help from "./Help";
 import ArtistPage from "./ArtistPage";
+import UnderConstruction from "./UnderConstruction";
 
 // const drawerWidth = 250;
 
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   content: {
+    width: "100%",
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: `${theme.spacing(4)}px 15px`,
@@ -69,7 +71,10 @@ const ArtistDashboard = (props) => {
               render={() => (
                 <>
                   <Grid container direction='column'>
-                    <Grid item style={{ marginBottom: theme.spacing(3) }}>
+                    <Grid
+                      container
+                      item
+                      style={{ marginBottom: theme.spacing(3) }}>
                       <Typography variant='body1' style={{}}>
                         <span style={{ fontWeight: "400" }}>
                           Welcome aborad
@@ -84,7 +89,7 @@ const ArtistDashboard = (props) => {
                         <DashboardCards />
                         <TopListings />
                       </Grid>
-                      <Grid item xs={12} md={5}>
+                      <Grid container item xs={12} md={5}>
                         <UploadProduct />
                       </Grid>
                     </Grid>
@@ -92,15 +97,23 @@ const ArtistDashboard = (props) => {
                 </>
               )}
             />
-            <Route path={`${path}/:url`} render={() => <ArtistPage />} />
+
             <Route path={`${path}/profile`}>
               <ArtistProfile />
             </Route>
-            <Route path={`${path}/track`}>dasdsdf</Route>
-            <Route path={`${path}/faq`}>dadda</Route>
+            <Route path={`${path}/track`}>
+              <UnderConstruction />
+            </Route>
+            <Route path={`${path}/faq`}>
+              <UnderConstruction />
+            </Route>
             <Route path={`${path}/help`}>
               <Help standalone={false} />
             </Route>
+            <Route
+              path={`${path}/:url`}
+              render={() => <ArtistPage artist={true} />}
+            />
           </Switch>
         </main>
       </div>

@@ -32,12 +32,14 @@ const useStyles = makeStyles((theme) => ({
 
 const ArtistPage = (props) => {
   const classes = useStyles();
-  const { url } = useParams();
+  let { url } = useParams();
   const theme = useTheme();
   const { setLoading } = useContext(UIContext);
 
-  const [aData, setAData] = useState("");
+  const [aData, setAData] = useState(false);
   const [products, setProducts] = useState("");
+  url.replace(/%20/g, " ");
+
   useEffect(() => {
     setLoading(true);
     var config = {
@@ -48,6 +50,8 @@ const ArtistPage = (props) => {
 
     axios(config)
       .then(function (response) {
+        setLoading(false);
+        console.log(response.data);
         setAData(response.data);
       })
       .catch(function (error) {
@@ -57,6 +61,7 @@ const ArtistPage = (props) => {
     return () => {};
   }, []);
   useEffect(() => {
+    console.log(aData);
     if (aData) {
       var config = {
         method: "get",
@@ -78,7 +83,10 @@ const ArtistPage = (props) => {
   }, [aData]);
   console.log(aData);
   return (
-    <Grid container direction='column' className={classes.root}>
+    <Grid
+      container
+      direction='column'
+      className={props.artist ? null : classes.root}>
       <Grid
         item
         container

@@ -28,9 +28,7 @@ const ArtistProfile = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [page, setPage] = useState(1);
-  const { setLayout } = useContext(UIContext);
   const history = useHistory();
-  setLayout(true);
 
   if (!localStorage.getItem("Token")) {
     return <Redirect to='/login' />;

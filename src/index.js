@@ -8,10 +8,12 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { BrowserRouter as Router } from "react-router-dom";
 import { UIProvider } from "./Context/UIContext";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import ScrollTop from "./ui/ScrollTop";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <ScrollTop />
       <UIProvider>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <App />
@@ -22,7 +24,7 @@ ReactDOM.render(
   document.getElementById("root"),
 );
 
-serviceWorkerRegistration.register();
+serviceWorkerRegistration.unregister();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

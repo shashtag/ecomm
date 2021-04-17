@@ -188,7 +188,7 @@ const Login = (props) => {
                 item
                 style={{ textAlign: "end", marginBottom: theme.spacing(1) }}>
                 <Typography variant='h6' style={{ fontWeight: "600" }}>
-                  Forgot password?
+                  {/* Forgot password? */}
                 </Typography>
               </Grid>
               <Grid item>

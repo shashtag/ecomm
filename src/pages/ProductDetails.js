@@ -36,6 +36,7 @@ const ProductDetails = (props) => {
   const { pid } = useParams();
   const { setLoading } = useContext(UIContext);
 
+  const [desc, setDesc] = useState(null);
   const [productDetails, setProductDetails] = useState(null);
   const history = useHistory();
   useEffect(() => {
@@ -47,7 +48,6 @@ const ProductDetails = (props) => {
 
     axios(config)
       .then(function (response) {
-        console.log(response.data);
         setProductDetails(response.data);
         setLoading(false);
       })
@@ -58,15 +58,15 @@ const ProductDetails = (props) => {
     return () => {};
   }, []);
 
-  const imgs = [productDetails?.[0]?.display_image];
-  for (let i = 0; i < productDetails?.[0]?.image_list.length; i++) {
-    imgs.push(productDetails?.[0]?.image_list?.[i].image);
+  const imgs = [productDetails?.display_image];
+  for (let i = 0; i < productDetails?.image_list.length; i++) {
+    imgs.push(productDetails?.image_list?.[i].image);
   }
-  console.log(imgs);
 
   if (!productDetails) {
     return <div style={{ height: "100vh" }}></div>;
   }
+
   return (
     <>
       <Grid
@@ -83,164 +83,137 @@ const ProductDetails = (props) => {
             padding: theme.spacing(0.5, 0),
           }}>
           Home {"> "}
-          {productDetails?.[0]?.category}
+          {productDetails?.category}
         </Typography>
       </Grid>
-      <Grid container direction='column' className={classes.root}>
-        <Grid item>
-          <Grid container item spacing={10}>
-            <Grid container item md={4} spacing={1}>
-              <Grid item xs={12}>
-                <Carousel animation='slide'>
-                  {imgs.map((img, i) => (
-                    <Paper
-                      style={{
-                        width: "100%",
-                        aspectRatio: "3/4",
-
-                        margin: theme.spacing(1),
-                        background: `#ffffff url("${img}")  no-repeat  center center `,
-                        backgroundSize: "contain",
-                      }}></Paper>
-                  ))}
-                </Carousel>
-              </Grid>
-              {/* <Grid
-                item
-                xs={12}
-                container
-                direction='row'
-                className={classes.smBanner}>
+      <Grid container className={classes.root} spacing={5}>
+        <Grid container item sm={4}>
+          <Grid item xs={12}>
+            <Carousel animation='slide'>
+              {imgs.map((img, i) => (
                 <Paper
+                  key={i}
                   style={{
-                    height: "125px",
-                    width: "28%",
-                    margin: theme.spacing(0, 1),
-                  }}>
-                  <img src='n' alt=' Side img' />
-                </Paper>
+                    width: "100%",
+                    aspectRatio: "3/4",
 
-                <Paper
-                  style={{
-                    height: "125px",
-                    width: "28%",
-                    margin: theme.spacing(0, 1),
-                  }}>
-                  <img src='n' alt=' Side img' />
-                </Paper>
-
-                <Paper
-                  style={{
-                    height: "125px",
-                    width: "28%",
-                    margin: theme.spacing(0, 1),
-                  }}>
-                  <img src='n' alt=' Side img' />
-                </Paper>
-              </Grid> */}
+                    margin: theme.spacing(1),
+                    background: `#ffffff url("${img}")  no-repeat  center center `,
+                    backgroundSize: "contain",
+                  }}></Paper>
+              ))}
+            </Carousel>
+          </Grid>
+        </Grid>
+        <Grid container sm={8} item direction='column'>
+          <Grid container direction='row' item>
+            <IconButton
+              style={{
+                padding: "0",
+                height: "60px",
+                width: "60px",
+                marginRight: theme.spacing(1),
+              }}
+              onClick={() => {
+                history.push(`/artist/${productDetails?.artist?.custom_url}`);
+              }}>
+              <Avatar
+                // component={Button}
+                // to={`/artist/${productDetails?.artist?.custom_url}`}
+                src={productDetails?.artist?.profile_picture}
+                style={{
+                  width: "60px",
+                  height: "60px",
+                }}
+              />
+            </IconButton>
+            <Grid
+              item
+              style={{
+                paddingTop: theme.spacing(0.5),
+                marginBottom: theme.spacing(5),
+              }}>
+              <Typography variant='h6'>{productDetails?.name}</Typography>
+              <Typography variant='h6'>
+                {productDetails?.artist?.custom_url}
+              </Typography>
             </Grid>
-            <Grid container md={8} item direction='column'>
-              <Grid container direction='row' item>
-                <IconButton
-                  style={{
-                    padding: "0",
-                    height: "60px",
-                    width: "60px",
-                    marginRight: theme.spacing(1),
-                  }}
-                  onClick={() => {
-                    history.push(
-                      `/artist/${productDetails[0]?.artist?.custom_url}`,
-                    );
-                  }}>
-                  <Avatar
-                    // component={Button}
-                    // to={`/artist/${productDetails[0]?.artist?.custom_url}`}
-                    src={productDetails[0]?.artist?.profile_picture}
-                    style={{
-                      width: "60px",
-                      height: "60px",
-                    }}
-                  />
-                </IconButton>
-                <Grid
-                  item
-                  style={{
-                    paddingTop: theme.spacing(0.5),
-                    marginBottom: theme.spacing(5),
-                  }}>
-                  <Typography variant='h6'>
-                    {productDetails[0]?.artist?.profile_picture}
-                  </Typography>
-                  <Typography variant='h6'>Artist Category</Typography>
-                </Grid>
-              </Grid>
-              <Grid item>
-                <Typography variant='h3'>{productDetails[0]?.name}</Typography>
-              </Grid>
-              <Grid item style={{ marginBottom: theme.spacing(3) }}>
-                <Typography variant='caption' style={{ color: "#40567A" }}>
-                  {productDetails[0]?.category}
-                </Typography>
-              </Grid>
-              <Grid item style={{ marginBottom: theme.spacing(3) }}>
-                <Typography variant='caption' style={{ color: "#263957" }}>
-                  {productDetails[0]?.description}
-                </Typography>
-              </Grid>
-              <Grid
-                item
-                container
-                direction='row'
-                style={{ marginBottom: theme.spacing(3) }}>
-                <Typography variant='h4'>
-                  ₹{productDetails[0]?.kalafex_price}/-
-                </Typography>
-                {"  "}
+          </Grid>
+          <Grid item>
+            <Typography variant='h3'>{productDetails?.name}</Typography>
+          </Grid>
+          <Grid item style={{ marginBottom: theme.spacing(3) }}>
+            <Typography variant='caption' style={{ color: "#40567A" }}>
+              {productDetails?.category}
+            </Typography>
+          </Grid>
+          <Grid
+            container
+            direction='column'
+            item
+            style={{ marginBottom: theme.spacing(3) }}>
+            {productDetails?.description?.split("\n")?.map((data, i) => (
+              <Grid container item key={i}>
                 <Typography
+                  component='div'
                   variant='caption'
-                  style={{ marginTop: theme.spacing(0.5) }}>
-                  including all taxes
+                  style={{ color: "#263957", width: "100%" }}>
+                  {data}
                 </Typography>
               </Grid>
-              <Grid item style={{ marginBottom: theme.spacing(3) }}>
-                <Typography variant='subtitle2'>
-                  Get you product delivered by 12th February 2021
-                </Typography>
-              </Grid>
-              <Grid item style={{ marginBottom: theme.spacing(3) }}>
-                <Button
-                  variant='contained'
+            ))}
+          </Grid>
+          <Grid
+            item
+            container
+            direction='row'
+            style={{ marginBottom: theme.spacing(3) }}>
+            <Typography variant='h4'>
+              ₹{productDetails?.kalafex_price}/-
+            </Typography>
+            {"  "}
+            <Typography
+              variant='caption'
+              style={{ marginTop: theme.spacing(0.5) }}>
+              including all taxes
+            </Typography>
+          </Grid>
+          <Grid item style={{ marginBottom: theme.spacing(3) }}>
+            <Typography variant='subtitle2'>
+              Get you product delivered by 12th February 2021
+            </Typography>
+          </Grid>
+          <Grid item style={{ marginBottom: theme.spacing(3) }}>
+            <Button
+              variant='contained'
+              style={{
+                ...theme.palette.background.gradient,
+                padding: "16px 32px",
+                marginRight: theme.spacing(2.5),
+                color: "white",
+              }}>
+              <Typography variant='h5'>Buy Now</Typography>
+            </Button>
+            <Button
+              variant='contained'
+              style={{
+                padding: "16px 24px",
+                marginLeft: "4px",
+                background: "white",
+              }}>
+              <Typography variant='h5'>
+                Add to cart
+                <ShoppingCartOutlinedIcon
                   style={{
-                    ...theme.palette.background.gradient,
-                    padding: "16px 32px",
-                    marginRight: theme.spacing(2.5),
-                    color: "white",
-                  }}>
-                  <Typography variant='h5'>Buy Now</Typography>
-                </Button>
-                <Button
-                  variant='contained'
-                  style={{
-                    padding: "16px 24px",
-                    marginLeft: "4px",
-                    background: "white",
-                  }}>
-                  <Typography variant='h5'>
-                    Add to cart
-                    <ShoppingCartOutlinedIcon
-                      style={{
-                        marginLeft: theme.spacing(2),
-                        position: "relative",
-                        fontSize: "20px",
-                        top: "4px",
-                        color: theme.palette.secondary.main,
-                      }}
-                    />
-                  </Typography>
-                </Button>
-              </Grid>
-            </Grid>
+                    marginLeft: theme.spacing(2),
+                    position: "relative",
+                    fontSize: "20px",
+                    top: "4px",
+                    color: theme.palette.secondary.main,
+                  }}
+                />
+              </Typography>
+            </Button>
           </Grid>
         </Grid>
       </Grid>

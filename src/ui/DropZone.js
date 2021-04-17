@@ -4,7 +4,7 @@ import Dropzone from "react-dropzone-uploader";
 import { ADashboardContext } from "../Context/ADashboardContext";
 import { Typography, useTheme } from "@material-ui/core";
 
-const DropZone = () => {
+const DropZone = (props) => {
   const theme = useTheme();
   const { img, setImg } = useContext(ADashboardContext);
 
@@ -40,6 +40,7 @@ const DropZone = () => {
         Product Image
       </Typography>
       <Dropzone
+        {...props}
         getUploadParams={getUploadParams}
         onChangeStatus={handleChangeStatus}
         maxFiles='1'
