@@ -61,7 +61,7 @@ const PaysArtist = () => {
   return (
     <Grid
       style={{
-        padding: sm ? "225px 3.2% 50px 3.2%" : "225 15px 50px 15px",
+        padding: sm ? "200px 3.2% 50px 3.2%" : "200 15px 50px 15px",
         // paddingTop: sm ? "200px" : "200px",
       }}>
       <Grid container className={classes.root}>

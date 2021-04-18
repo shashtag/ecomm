@@ -36,7 +36,7 @@ const Help = (props) => {
         </Typography>
       </Grid>
       <Grid item container justify='center' xs='12'>
-        <img src={helpImg} alt='help image' />>
+        <img src={helpImg} alt='help image' />
       </Grid>
       <Grid item container justify='center' xs='12'>
         <MailOutlineIcon />

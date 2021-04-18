@@ -197,7 +197,7 @@ function App() {
           path='/cart'
           render={() => (
             <>
-              <Navigation noCat={false} noSub={true} />
+              <Navigation noCat={false} noSub={false} />
               <UnderConstruction />
               <Footer />
             </>

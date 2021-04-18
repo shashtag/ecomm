@@ -208,7 +208,7 @@ export default function Header(props) {
           padding: theme.spacing(1.3),
         }}>
         {/* <Link to='/artist/signup'> */}
-        <img src={sellDes} alt='kalafax logo' />
+        <img height='auto' width='auto' src={sellDes} alt='kalafax logo' />
         {/* </Link> */}
       </Button>
       <div

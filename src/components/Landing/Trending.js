@@ -16,8 +16,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "0px 15px",
-    marginTop: "150px",
-    marginBottom: "50px",
+    marginTop: "100px",
     [theme.breakpoints.up("md")]: {
       padding: "0px 3.2%",
     },

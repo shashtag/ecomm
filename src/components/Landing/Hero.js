@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   img1: {
     zIndex: 100,
     top: "20px",
-    left: "8%",
+    left: "4%",
   },
   img2: {
     zIndex: 300,
@@ -63,12 +63,12 @@ const useStyles = makeStyles((theme) => ({
   img3: {
     zIndex: 200,
     top: "12px",
-    right: "-10%",
+    right: "-5%",
   },
   img4: {
     zIndex: 400,
     top: "235px",
-    left: "20%",
+    left: "18%",
   },
   img5: {
     zIndex: 600,
@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   img6: {
     zIndex: 500,
     top: "180px",
-    right: "9.5%",
+    right: "11.5%",
   },
 }));
 
@@ -123,8 +123,8 @@ const Hero = () => {
             src={heroImage1}
             loading='lazy'
             alt='hero image1'
-            width='88%'
-            height='88%'
+            width='100%'
+            height='100%'
           />
         </div>
         <div className={[classes.heroImgs, classes.img2].join(" ")}>
@@ -132,20 +132,20 @@ const Hero = () => {
             src={heroImage2}
             loading='lazy'
             alt='hero image2'
-            width='88%'
-            height='88%'
+            width='100%'
+            height='100%'
           />
         </div>
         <div className={[classes.heroImgs, classes.img3].join(" ")}>
-          <img src={heroImage3} alt='hero image3' width='88%' height='88%' />
+          <img src={heroImage3} alt='hero image3' width='100%' height='100%' />
         </div>
         <div className={[classes.heroImgs, classes.img4].join(" ")}>
           <img
             src={heroImage4}
             loading='lazy'
             alt='hero image4'
-            width='88%'
-            height='88%'
+            width='100%'
+            height='100%'
           />
         </div>
         <div className={[classes.heroImgs, classes.img5].join(" ")}>
@@ -153,8 +153,8 @@ const Hero = () => {
             src={heroImage5}
             loading='lazy'
             alt='hero image5'
-            width='88%'
-            height='88%'
+            width='100%'
+            height='100%'
           />
         </div>
         <div className={[classes.heroImgs, classes.img6].join(" ")}>
@@ -162,8 +162,8 @@ const Hero = () => {
             src={heroImage6}
             loading='lazy'
             alt='hero image6'
-            width='88%'
-            height='88%'
+            width='100%'
+            height='100%'
           />
         </div>
       </Grid>

@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 15px",
     paddingBottom: theme.spacing(20),
     marginTop: theme.spacing(4),
+    minHeight: "100vh",
     [theme.breakpoints.up("md")]: {
       padding: "0vh 3.2%",
       paddingBottom: theme.spacing(20),
@@ -32,8 +33,9 @@ const Search = (props) => {
     }
     return () => {};
   }, [query, props.trending]);
+
   if (!products && !trendingProducts) {
-    return <div style={{ height: "100vh" }}></div>;
+    return <div style={{ height: "80vh" }}></div>;
   }
   return (
     <Grid container className={classes.root}>
