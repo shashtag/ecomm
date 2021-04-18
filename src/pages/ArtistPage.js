@@ -38,7 +38,6 @@ const ArtistPage = (props) => {
 
   const [aData, setAData] = useState(false);
   const [products, setProducts] = useState("");
-  url.replace(/%20/g, " ");
 
   useEffect(() => {
     setLoading(true);

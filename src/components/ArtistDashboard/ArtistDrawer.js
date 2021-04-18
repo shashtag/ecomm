@@ -130,7 +130,7 @@ const ArtistDrawerIcons = () => {
       <ListItem
         button
         component={Link}
-        to={`/artist/dashboard/${insights?.details?.user?.full_name}`}>
+        to={`/artist/dashboard/${insights?.details?.custom_url}`}>
         <ArtTrackIcon
           fontSize='large'
           style={{
