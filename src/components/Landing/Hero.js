@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   img1: {
     zIndex: 100,
     top: "20px",
-    left: "4%",
+    left: "2%",
   },
   img2: {
     zIndex: 300,
@@ -67,18 +67,18 @@ const useStyles = makeStyles((theme) => ({
   },
   img4: {
     zIndex: 400,
-    top: "235px",
-    left: "18%",
+    top: "250px",
+    left: "16%",
   },
   img5: {
     zIndex: 600,
-    top: "330px",
+    top: "350px",
     left: "38%",
   },
   img6: {
     zIndex: 500,
-    top: "180px",
-    right: "11.5%",
+    top: "210px",
+    right: "11%",
   },
 }));
 
