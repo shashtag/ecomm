@@ -137,13 +137,7 @@ const Hero = () => {
           />
         </div>
         <div className={[classes.heroImgs, classes.img3].join(" ")}>
-          <img
-            src={heroImage3}
-            loading='lazy'
-            alt='hero image3'
-            width='88%'
-            height='88%'
-          />
+          <img src={heroImage3} alt='hero image3' width='88%' height='88%' />
         </div>
         <div className={[classes.heroImgs, classes.img4].join(" ")}>
           <img

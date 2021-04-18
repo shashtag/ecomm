@@ -85,7 +85,7 @@ const Footer = () => {
           <Grid item>
             <Typography
               component={Link}
-              to='/about'
+              to='/about-us'
               variant='caption'
               noWrap
               className={classes.link}>

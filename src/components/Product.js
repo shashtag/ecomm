@@ -39,6 +39,8 @@ const Product = (props) => {
     <Grid item md={3} sm={6} xs={12}>
       <Card className={classes.root} onClick={cardClickHandler}>
         <CardMedia
+          component='img'
+          loading='lazy'
           className={classes.media}
           image={props?.img}
           title='Paella dish'
