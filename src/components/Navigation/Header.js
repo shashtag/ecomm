@@ -19,7 +19,7 @@ import instagram from "../../assets/socialIcons/instagram.png";
 import linkedIn from "../../assets/socialIcons/linkedIn.png";
 // import mail from "../assets/socialIcons/mail.png";
 import twitter from "../../assets/socialIcons/twitter.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Toolbar from "@material-ui/core/Toolbar";
 // import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
@@ -117,6 +117,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header(props) {
+  const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
@@ -225,7 +226,11 @@ export default function Header(props) {
         color='secondary'>
         <Typography variant='h6'>Login/Signup</Typography>
       </Button>
-      <IconButton aria-label='cart' style={{ marginLeft: theme.spacing(2) }}>
+      <IconButton
+        onClick={() => {
+          history.push("/cart");
+        }}
+        style={{ marginLeft: theme.spacing(2) }}>
         <ShoppingCartOutlinedIcon
           style={{
             color: theme.palette.secondary.main,
@@ -249,7 +254,7 @@ export default function Header(props) {
             <Link to='/'>
               <img
                 height='50px'
-                widht='81.71px'
+                width='81.71px'
                 src={
                   // md ?
                   logoMain
@@ -307,7 +312,6 @@ export default function Header(props) {
               <IconButton
                 component={Link}
                 to={search.length !== 0 ? `/search/${search}` : "/"}
-                aria-label='cart'
                 style={{
                   // height: "0.75rem",
                   // width: "20px",
@@ -393,7 +397,7 @@ export default function Header(props) {
                       </Typography>
                     </ListItem>
                   ) : null}
-                  <ListItem component={Link} to='/user/cart'>
+                  <ListItem component={Link} to='/cart'>
                     <ShoppingCartOutlinedIcon
                       style={{
                         color: theme.palette.secondary.main,

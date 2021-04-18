@@ -109,6 +109,8 @@ const Usp = () => {
                     marginBottom: "16px",
                   }}>
                   <img
+                    height='100%'
+                    width='100%'
                     style={{
                       marginBottom: i === 1 ? theme.spacing(1.2) : null,
                     }}

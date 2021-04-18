@@ -41,6 +41,8 @@ const Product = (props) => {
         <CardMedia
           component='img'
           loading='lazy'
+          height='auto'
+          width='auto'
           className={classes.media}
           image={props?.img}
           title='Paella dish'
