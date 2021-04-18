@@ -1,25 +1,38 @@
 import axios from "axios";
-import React from "react";
-import { Redirect } from "react-router";
 
-export const fetchTrendingProducts = (setTrendingProducts) => {
+export const fetchTrendingProducts = (
+  setTrendingProducts,
+  setLoading,
+  setSnackbar,
+) => {
+  setLoading(true);
   var config = {
     method: "get",
     url: `${process.env.REACT_APP_URL}store/view/product/popular/`,
-    headers: {},
   };
 
   axios(config)
     .then(function (response) {
-      // console.log(JSON.stringify(response.data));
+      setLoading(false);
       setTrendingProducts(response.data);
     })
     .catch(function (error) {
       console.log(error);
+      setSnackbar({
+        value: true,
+        message: "Could not load trending products",
+        type: "red",
+      });
     });
 };
 
-export const fetchBaseDetailsUser = (setUsrBaseInfo, history) => {
+export const fetchBaseDetailsUser = (
+  setUsrBaseInfo,
+  setLoading,
+  history,
+  setSnackbar,
+) => {
+  setLoading(true);
   var config = {
     method: "get",
     url: `${process.env.REACT_APP_URL}auth/users/me/`,
@@ -30,7 +43,7 @@ export const fetchBaseDetailsUser = (setUsrBaseInfo, history) => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
+      setLoading(false);
       setUsrBaseInfo(response.data);
       if (response.data.is_artist && response.data.is_first_login) {
         history.push("/artist/profile");
@@ -38,6 +51,11 @@ export const fetchBaseDetailsUser = (setUsrBaseInfo, history) => {
     })
     .catch(function (error) {
       console.log(error);
+      setSnackbar({
+        value: true,
+        message: "Could not load user details",
+        type: "red",
+      });
     });
 };
 
@@ -59,7 +77,8 @@ export const fetchSearch = (query, setProducts, setLoading) => {
     });
 };
 
-export const fetchArtistProducts = (id, setTopListings) => {
+export const fetchArtistProducts = (id, setTopListings, setLoading) => {
+  setLoading(true);
   var config = {
     method: "get",
     url: `${process.env.REACT_APP_URL}store/view/product/artist/${id}/`,
@@ -68,6 +87,7 @@ export const fetchArtistProducts = (id, setTopListings) => {
 
   axios(config)
     .then(function (response) {
+      setLoading(false);
       console.log(response.data);
       setTopListings(response.data);
     })
@@ -76,7 +96,8 @@ export const fetchArtistProducts = (id, setTopListings) => {
     });
 };
 
-export const fetchArtistProfile = (setInsights) => {
+export const fetchArtistProfile = (setInsights, setLoading) => {
+  setLoading(true);
   var config = {
     method: "get",
     url: `${process.env.REACT_APP_URL}accounts/view/my_profile/`,
@@ -87,6 +108,7 @@ export const fetchArtistProfile = (setInsights) => {
 
   axios(config)
     .then(function (response) {
+      setLoading(false);
       console.log(response.data);
 
       setInsights(response.data);

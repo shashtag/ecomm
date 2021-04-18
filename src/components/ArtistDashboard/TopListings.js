@@ -24,7 +24,7 @@ const TopListings = () => {
           <Grid item container spacing={3}>
             {topListings?.results?.map((data, i) => {
               if (i > 3) {
-                return;
+                return <></>;
               }
               return (
                 <TopListing

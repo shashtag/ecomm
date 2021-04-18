@@ -14,7 +14,6 @@ import Notif from "./ui/Notif";
 import Verification from "./pages/Verification";
 import UnderConstruction from "./pages/UnderConstruction";
 import LoadingLazy from "./ui/LoadingLazy";
-import ScrollTop from "./ui/ScrollTop";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));

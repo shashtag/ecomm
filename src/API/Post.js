@@ -29,6 +29,7 @@ export const signup1 = (data, setLoading, setSnackbar, setOpen) => {
           error.response.data.phone_number?.[0] ||
           error.response.data.date_of_birth?.[0] ||
           error.response.data.full_name?.[0],
+        type: "red",
       });
     });
 };
@@ -60,6 +61,7 @@ export const login = (data, setLoading, setToken, setSnackbar, history) => {
           error?.response?.data?.email?.[0] ||
           error?.response?.data?.non_field_errors?.[0] ||
           error?.response?.data?.password?.[0],
+        type: "red",
       });
     });
 };

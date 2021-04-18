@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PersonOutline, Menu } from "@material-ui/icons";
+import { PersonOutline } from "@material-ui/icons";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { IconButton, useTheme } from "@material-ui/core";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";

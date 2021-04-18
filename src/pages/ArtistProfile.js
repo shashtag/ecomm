@@ -1,19 +1,12 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import Logo from "../ui/Logo";
 
-import {
-  Grid,
-  makeStyles,
-  Typography,
-  useTheme,
-  Button,
-} from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 import Page1 from "../components/ArtistProfile/Page1";
 import Page2 from "../components/ArtistProfile/Page2";
 import Page3 from "../components/ArtistProfile/Page3";
 import { APProvider } from "../Context/APContext";
-import { UIContext } from "../Context/UIContext";
-import { Redirect, useHistory } from "react-router";
+import { Redirect } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,9 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ArtistProfile = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const [page, setPage] = useState(1);
-  const history = useHistory();
 
   if (!localStorage.getItem("Token")) {
     return <Redirect to='/login' />;

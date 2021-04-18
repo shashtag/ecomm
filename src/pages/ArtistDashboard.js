@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
@@ -13,14 +13,7 @@ import {
 } from "../components/ArtistDashboard/ArtistDrawer";
 import TopListings from "../components/ArtistDashboard/TopListings";
 import UploadProduct from "../components/ArtistDashboard/UploadProduct";
-import {
-  Switch,
-  Route,
-  useRouteMatch,
-  useHistory,
-  Redirect,
-} from "react-router-dom";
-import { Avatar } from "@material-ui/core";
+import { Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
 import { ADashboardProvider } from "../Context/ADashboardContext";
 import ArtistProfile from "./ArtistProfile";
 import Help from "./Help";
@@ -47,9 +40,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const ArtistDashboard = (props) => {
-  const history = useHistory();
   const classes = useStyles();
-  const { usrBaseInfo, token } = useContext(UIContext);
+  const { usrBaseInfo } = useContext(UIContext);
   const theme = useTheme();
   let { path } = useRouteMatch();
   const md = useMediaQuery(theme.breakpoints.up("md"));

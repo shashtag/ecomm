@@ -5,7 +5,7 @@ import { UIContext } from "./UIContext";
 export const ADashboardContext = createContext();
 
 export const ADashboardProvider = (props) => {
-  const { setLoading, usrBaseInfo, setUsrBaseInfo } = useContext(UIContext);
+  const { setLoading, usrBaseInfo } = useContext(UIContext);
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
@@ -16,12 +16,12 @@ export const ADashboardProvider = (props) => {
   const [img, setImg] = useState("");
   useEffect(() => {
     if (usrBaseInfo) {
-      fetchArtistProducts(usrBaseInfo.id, setTopListings);
+      fetchArtistProducts(usrBaseInfo.id, setTopListings, setLoading);
     }
     return () => {};
   }, [usrBaseInfo]);
   useEffect(() => {
-    fetchArtistProfile(setInsights);
+    fetchArtistProfile(setInsights, setLoading);
     return () => {};
   }, []);
   return (

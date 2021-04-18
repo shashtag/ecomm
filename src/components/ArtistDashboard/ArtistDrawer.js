@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Divider from "@material-ui/core/Divider";
@@ -16,7 +16,6 @@ import theme from "../../ui/Theme";
 // import { Button } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import PersonIcon from "@material-ui/icons/Person";
-import { UIContext } from "../../Context/UIContext";
 import { ADashboardContext } from "../../Context/ADashboardContext";
 
 const drawerWidth = 250;
@@ -95,10 +94,7 @@ export const ArtistDrawerSM = () => {
 };
 
 const ArtistDrawerIcons = () => {
-  const { setLoading } = useContext(UIContext);
   const { insights } = useContext(ADashboardContext);
-  const [url, setUrl] = useState("");
-  console.log(insights);
   // useEffect(() => {
   //   setUrl(insights.name);
   //   return () => {};

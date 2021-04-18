@@ -3,14 +3,12 @@ import { TextField, makeStyles } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import React, { useContext, useMemo } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { ADashboardContext } from "../../Context/ADashboardContext";
 import { addProduct } from "../../API/Post";
 import { UIContext } from "../../Context/UIContext";
 import DropZone from "../../ui/DropZone";
-import { useHistory } from "react-router";
-// import { useDropzone } from "react-dropzone";
 
 const useStyles = makeStyles((theme) => ({
   inproot: {
@@ -78,7 +76,6 @@ const UploadProduct = () => {
     quantity,
     setQuantity,
     img,
-    setImg,
   } = useContext(ADashboardContext);
   const uploadClickHandler = () => {
     var data = new FormData();

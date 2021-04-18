@@ -7,11 +7,7 @@ import defaultProfilePic from "../assets/defaultProfilePic.png";
 export const APContext = createContext();
 
 export const APProvider = (props) => {
-  const {
-    setLoading,
-    usrBaseInfo,
-    // setUsrBaseInfo
-  } = useContext(UIContext);
+  const { setLoading, usrBaseInfo } = useContext(UIContext);
 
   const [customURL, setCustomURL] = useState("");
   const [aadhar, setAadhar] = useState("");
@@ -47,9 +43,7 @@ export const APProvider = (props) => {
     return () => {};
   }, []);
   useEffect(() => {
-    console.log("sss");
     if (usrBaseInfo.is_first_login) {
-      console.log("sss");
       postArtistDetails(setLoading, () => {
         patchArtistDetails(
           {},

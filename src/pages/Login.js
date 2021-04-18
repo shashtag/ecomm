@@ -13,7 +13,6 @@ import {
   TextField,
 } from "@material-ui/core";
 import lgnBg from "../assets/authImgs/lgnBg.png";
-// import logoLogin from "../assets/logoLogin.png";
 import signupTxt from "../assets/authImgs/signupTxt.png";
 import { login } from "../API/Post";
 import { UIContext } from "../Context/UIContext";
@@ -138,7 +137,7 @@ const Login = (props) => {
               <Grid item>
                 <TextField
                   className={classes.input}
-                  label='Email/Phone number'
+                  label='Email ID'
                   name='id'
                   variant='outlined'
                   color='secondary'

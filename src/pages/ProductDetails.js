@@ -4,7 +4,6 @@ import axios from "axios";
 import {
   Grid,
   IconButton,
-  Link,
   makeStyles,
   Paper,
   useTheme,
@@ -36,7 +35,6 @@ const ProductDetails = (props) => {
   const { pid } = useParams();
   const { setLoading } = useContext(UIContext);
 
-  const [desc, setDesc] = useState(null);
   const [productDetails, setProductDetails] = useState(null);
   const history = useHistory();
   useEffect(() => {

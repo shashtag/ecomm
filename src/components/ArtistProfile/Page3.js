@@ -5,7 +5,6 @@ import {
   Typography,
   useTheme,
   Button,
-  // Avatar,
   TextField,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";

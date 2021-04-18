@@ -17,27 +17,19 @@ import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import facebook from "../../assets/socialIcons/facebook.png";
 import instagram from "../../assets/socialIcons/instagram.png";
 import linkedIn from "../../assets/socialIcons/linkedIn.png";
-// import mail from "../assets/socialIcons/mail.png";
 import twitter from "../../assets/socialIcons/twitter.png";
 import { Link, useHistory } from "react-router-dom";
 
 import Toolbar from "@material-ui/core/Toolbar";
-// import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
+
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import {
-  // PersonOutline,
-  Menu,
-} from "@material-ui/icons";
+import { Menu } from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
-// import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 import logoMain from "../../assets/logoMain.png";
-import logoDrawer from "../../assets/logoDrawer.png";
-// import logoMainSm from "../../assets/logoMainSm.png";
 import sellDes from "../../assets/sellDes.png";
 import { UIContext } from "../../Context/UIContext";
 import HeaderIcons from "./HeaderIcons";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
-import CreateIcon from "@material-ui/icons/Create";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { logout } from "../../API/Post";
 import SearchIcon from "@material-ui/icons/Search";

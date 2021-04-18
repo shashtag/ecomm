@@ -1,17 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import {
-  Grid,
-  makeStyles,
-  Button,
-  Typography,
-  // useTheme,
-  // useMediaQuery,
-  // Card,
-  // CardContent,
-} from "@material-ui/core";
-// import { Link } from "react-router-dom";
+import { Grid, makeStyles, Button, Typography } from "@material-ui/core";
 import heroImage1 from "../../assets/heroImgs/heroImage1.png";
 import heroImage2 from "../../assets/heroImgs/heroImage2.png";
 import heroImage3 from "../../assets/heroImgs/heroImage3.png";
@@ -113,11 +103,7 @@ const Hero = () => {
         </Button>
       </Grid>
 
-      <Grid
-        // xs={12}
-        md={8}
-        item
-        style={{ position: "relative" }}>
+      <Grid md={8} item style={{ position: "relative" }}>
         <div className={[classes.heroImgs, classes.img1].join(" ")}>
           <img
             src={heroImage1}

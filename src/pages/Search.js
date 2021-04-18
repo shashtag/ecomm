@@ -1,7 +1,7 @@
 import { Grid, makeStyles, Typography, useTheme } from "@material-ui/core";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { fetchSearch, fetchTrendingProducts } from "../API/Get";
+import { fetchSearch } from "../API/Get";
 import Products from "../components/Products";
 import { UIContext } from "../Context/UIContext";
 

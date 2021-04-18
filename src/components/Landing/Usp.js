@@ -10,7 +10,6 @@ import {
   CardContent,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import uspBg from "../../assets/uspBg.png";
 import one from "../../assets/uspIcons/1.svg";
 import two from "../../assets/uspIcons/2.svg";
 import three from "../../assets/uspIcons/3.svg";
@@ -109,8 +108,6 @@ const Usp = () => {
                     marginBottom: "16px",
                   }}>
                   <img
-                    height='100%'
-                    width='100%'
                     style={{
                       marginBottom: i === 1 ? theme.spacing(1.2) : null,
                     }}

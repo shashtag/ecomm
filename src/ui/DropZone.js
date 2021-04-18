@@ -6,7 +6,7 @@ import { Typography, useTheme } from "@material-ui/core";
 
 const DropZone = (props) => {
   const theme = useTheme();
-  const { img, setImg } = useContext(ADashboardContext);
+  const { setImg } = useContext(ADashboardContext);
   const getUploadParams = ({ meta }) => {
     return { url: "https://httpbin.org/post" };
   };
@@ -15,12 +15,6 @@ const DropZone = (props) => {
   const handleChangeStatus = ({ meta, file }, status) => {
     console.log(status, meta, file);
     setImg(file);
-  };
-
-  // receives array of files that are done uploading when submit button is clicked
-  const handleSubmit = (files, allFiles) => {
-    console.log(files.map((f) => f.meta));
-    allFiles.forEach((f) => f.remove());
   };
 
   return (

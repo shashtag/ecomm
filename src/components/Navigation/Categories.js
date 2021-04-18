@@ -10,7 +10,6 @@ import {
   useTheme,
   Button,
 } from "@material-ui/core";
-// import ArrowDropDownSharpIcon from "@material-ui/icons/ArrowDropDownSharp";
 
 const useStyles = makeStyles((theme) => ({
   category: {

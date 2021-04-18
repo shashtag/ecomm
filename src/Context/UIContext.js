@@ -23,13 +23,13 @@ export const UIProvider = (props) => {
       setToken(true);
     }
     if (token) {
-      fetchBaseDetailsUser(setUsrBaseInfo, history);
+      fetchBaseDetailsUser(setUsrBaseInfo, setLoading, history, setSnackbar);
     }
     return () => {};
   }, [token]);
 
   useEffect(() => {
-    fetchTrendingProducts(setTrendingProducts);
+    fetchTrendingProducts(setTrendingProducts, setLoading, setSnackbar);
     return () => {};
   }, []);
 

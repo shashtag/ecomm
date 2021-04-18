@@ -1,12 +1,9 @@
 import React from "react";
 import {
-  // AppBar,
-  // Toolbar,
   fade,
   makeStyles,
   Typography,
   useTheme,
-  // Button,
   InputBase,
   Grid,
   Button,

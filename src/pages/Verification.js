@@ -1,11 +1,14 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory, useParams } from "react-router";
+import { UIContext } from "../Context/UIContext";
 
 const Verification = (props) => {
   const history = useHistory();
+  const { setLoading, setSnackbar } = useContext(UIContext);
   const { id, code } = useParams();
   useEffect(() => {
+    setLoading(true);
     var data = JSON.stringify({
       uid: id,
       token: code,
@@ -22,11 +25,20 @@ const Verification = (props) => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        setLoading(false);
         history.push("/login");
+        // setSnackbar({
+        //   value: true,
+        //   message: "Not verified please try again",
+        //   type: "green",
+        // });
       })
       .catch(function (error) {
-        console.log(error);
+        setSnackbar({
+          value: true,
+          message: "Not verified please try again",
+          type: "red",
+        });
       });
 
     return () => {};

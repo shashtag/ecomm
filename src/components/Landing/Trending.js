@@ -1,17 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import axios from "axios";
-import {
-  Grid,
-  makeStyles,
-  Typography,
-  useTheme,
-  // Button,
-} from "@material-ui/core";
+import { Grid, makeStyles, Typography } from "@material-ui/core";
 import Product from "../Product";
 import { UIContext } from "../../Context/UIContext";
 import { Link } from "react-router-dom";
-
-// import { trending } from "../../API/Get";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Trending = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const { trendingProducts, setTrendingProducts } = useContext(UIContext);
   const res = ["sdsd", "sdsd", "sdsd", "sdsd"];
   let trending = res.map((key, i) => <Product key={i} />);
@@ -48,7 +39,7 @@ const Trending = () => {
 
   trending = trendingProducts?.results.map((product, i) => {
     if (i > 3) {
-      return;
+      return <></>;
     }
     return (
       <Product

@@ -3,8 +3,6 @@ import { Grid, useTheme } from "@material-ui/core";
 import React from "react";
 import helpImg from "../assets/helpImg.png";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import { PinDropSharp } from "@material-ui/icons";
-import { Link } from "react-router-dom";
 
 const Help = (props) => {
   const theme = useTheme();
@@ -36,7 +34,7 @@ const Help = (props) => {
         </Typography>
       </Grid>
       <Grid item container justify='center' xs='12'>
-        <img src={helpImg} alt='help image' />
+        <img src={helpImg} alt='contact us' />
       </Grid>
       <Grid item container justify='center' xs='12'>
         <MailOutlineIcon />

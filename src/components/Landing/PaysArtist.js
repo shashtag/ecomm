@@ -67,10 +67,9 @@ const PaysArtist = () => {
       <Grid container className={classes.root}>
         <Grid xs={1} md={5} item className={classes.left}>
           <img
-            // width='90%'
-            // height='116%'
+            width='auto'
+            height='auto'
             className={classes.img}
-            style={{}}
             src={paysArtistBg}
             alt='girl making a drawing'
           />
