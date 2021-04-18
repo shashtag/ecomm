@@ -15,7 +15,9 @@ const UnderConstruction = () => {
               alt='construction img'></img>
           </Grid>
           <Grid item>
-            <Typography variant='h1'>Page Under Construction</Typography>
+            <Typography align='center' variant='h1'>
+              Page Under Construction
+            </Typography>
           </Grid>
         </Grid>
       </div>

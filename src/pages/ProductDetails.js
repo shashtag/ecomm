@@ -157,7 +157,11 @@ const ProductDetails = (props) => {
                 <Typography
                   component='div'
                   variant='caption'
-                  style={{ color: "#263957", width: "100%" }}>
+                  style={{
+                    color: "#263957",
+                    width: "100%",
+                    minHeight: "16px",
+                  }}>
                   {data}
                 </Typography>
               </Grid>

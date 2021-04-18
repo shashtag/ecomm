@@ -108,7 +108,15 @@ const Usp = () => {
                     marginTop: "20px",
                     marginBottom: "16px",
                   }}>
-                  <img width='18%' height='18%' src={usp.icon} alt={i} />
+                  <img
+                    style={{
+                      marginBottom: i === 1 ? theme.spacing(1.2) : null,
+                    }}
+                    width='18%'
+                    height='18%'
+                    src={usp.icon}
+                    alt={i}
+                  />
                 </div>
                 <Typography
                   variant='caption'

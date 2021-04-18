@@ -7,7 +7,6 @@ import { Typography, useTheme } from "@material-ui/core";
 const DropZone = (props) => {
   const theme = useTheme();
   const { img, setImg } = useContext(ADashboardContext);
-
   const getUploadParams = ({ meta }) => {
     return { url: "https://httpbin.org/post" };
   };
@@ -40,6 +39,7 @@ const DropZone = (props) => {
         Product Image
       </Typography>
       <Dropzone
+        styles={{ inputLabel: { textAlign: "center" } }}
         {...props}
         getUploadParams={getUploadParams}
         onChangeStatus={handleChangeStatus}

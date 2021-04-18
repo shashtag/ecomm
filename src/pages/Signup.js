@@ -8,6 +8,7 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
+  Button,
 } from "@material-ui/core";
 import signupBg from "../assets/authImgs/signupBg.png";
 import signupBg2 from "../assets/authImgs/signupBg2.png";
@@ -18,6 +19,7 @@ import Form2 from "../components/Signup/Form2";
 import Form3 from "../components/Signup/Form3";
 import loginTxt from "../assets/authImgs/loginTxt.png";
 import { SignupProvider } from "../Context/SignupContext";
+import registerNow from "../assets/authImgs/registerNow.png";
 
 const useStyles = makeStyles((theme) => ({
   login: {
@@ -159,13 +161,12 @@ const SignupArtist = (props) => {
                     variant='h6'
                     style={{ fontWeight: 500, display: "inline" }}>
                     Want to sell your art?{" "}
-                    <Typography
-                      variant='h6'
+                    <Button
                       component={Link}
                       to='/artist/signup'
-                      style={{ fontWeight: 500, display: "inline" }}>
-                      Register here
-                    </Typography>
+                      style={{ display: "inline" }}>
+                      <img src={registerNow} alt='register now' />
+                    </Button>
                   </Typography>
                 </>
               )
@@ -217,7 +218,11 @@ const SignupArtist = (props) => {
                 : ` url(${signupBg3}) center center / cover no-repeat`,
             // backgroundSize: "cover",
           }}>
-          <div style={{ display: step === 0 ? null : "none" }}>
+          <div
+            style={{
+              display:
+                props.type === "artist" ? (step === 0 ? null : "none") : "none",
+            }}>
             <Typography
               variant='h5'
               color='primary'

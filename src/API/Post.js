@@ -149,6 +149,8 @@ export const addProduct = (data, setLoading) => {
   axios(config)
     .then(function (response) {
       setLoading(false);
+      window.location.reload();
+
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {

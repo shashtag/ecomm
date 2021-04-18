@@ -9,6 +9,7 @@ import { ADashboardContext } from "../../Context/ADashboardContext";
 import { addProduct } from "../../API/Post";
 import { UIContext } from "../../Context/UIContext";
 import DropZone from "../../ui/DropZone";
+import { useHistory } from "react-router";
 // import { useDropzone } from "react-dropzone";
 
 const useStyles = makeStyles((theme) => ({
@@ -88,9 +89,7 @@ const UploadProduct = () => {
     data.append("display_image", img);
     data.append("original_price", price);
     data.append("stock_left", quantity);
-    for (var pair of data.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
+
     addProduct(data, setLoading);
   };
 
@@ -349,7 +348,9 @@ const UploadProduct = () => {
 
 const categoryList = [
   { title: "Paintings & Artwork" },
+
   { title: "Lifestyle & Home" },
+  { title: "Clothing" },
   { title: "Jewellery & Accessories" },
   { title: "Collectibles" },
 ];

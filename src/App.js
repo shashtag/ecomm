@@ -86,6 +86,19 @@ function App() {
           )}
         />
         <Route
+          path='/user/profile'
+          render={() => (
+            <>
+              <Navigation noCat={false} noSub={true} />
+
+              <Suspense fallback={<LoadingLazy />}>
+                <UnderConstruction />
+              </Suspense>
+              <Footer />
+            </>
+          )}
+        />
+        <Route
           path='/product/:pid'
           render={() => (
             <>

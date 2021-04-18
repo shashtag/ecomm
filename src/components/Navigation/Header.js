@@ -62,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(0.5),
     height: "36px",
     width: "100%",
-    marginLeft: theme.spacing(4),
-    marginRight: theme.spacing(4),
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
   },
 
   inputRoot: {

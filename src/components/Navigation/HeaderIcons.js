@@ -3,11 +3,9 @@ import { PersonOutline, Menu } from "@material-ui/icons";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { IconButton, useTheme } from "@material-ui/core";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import axios from "axios";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import { UIContext } from "../../Context/UIContext";
 import { useHistory } from "react-router-dom";
-import { Link } from "@material-ui/core";
 import { logout } from "../../API/Post";
 
 const HeaderIcons = () => {
@@ -23,7 +21,11 @@ const HeaderIcons = () => {
   return (
     <div style={{ margin: theme.spacing(0, "auto") }}>
       {token ? (
-        <IconButton aria-label='cart' style={{}}>
+        <IconButton
+          onClick={() => {
+            history.push("/user/profile");
+          }}
+          style={{}}>
           <PersonOutline
             style={{
               color: theme.palette.secondary.main,
@@ -37,7 +39,6 @@ const HeaderIcons = () => {
           onClick={() => {
             history.push("/artist/dashboard");
           }}
-          aria-label='cart'
           style={{ marginLeft: theme.spacing(2) }}>
           <DashboardOutlinedIcon
             style={{
@@ -47,7 +48,11 @@ const HeaderIcons = () => {
         </IconButton>
       ) : null}
 
-      <IconButton aria-label='cart' style={{ marginLeft: theme.spacing(2) }}>
+      <IconButton
+        onClick={() => {
+          history.push("/cart");
+        }}
+        style={{ marginLeft: theme.spacing(2) }}>
         <ShoppingCartOutlinedIcon
           style={{
             color: theme.palette.secondary.main,
@@ -57,7 +62,6 @@ const HeaderIcons = () => {
 
       {token ? (
         <IconButton
-          aria-label='cart'
           style={{ marginLeft: theme.spacing(2) }}
           onClick={() => {
             logout(setLoading, setUsrBaseInfo, setToken, history);
