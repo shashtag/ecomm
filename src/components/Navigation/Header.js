@@ -234,7 +234,7 @@ export default function Header(props) {
       </IconButton>
     </div>
   );
-  
+
   return (
     <>
       <AppBar
@@ -306,7 +306,7 @@ export default function Header(props) {
 
               <IconButton
                 component={Link}
-                to={search.length !== 0 ? `/search/${search}` : null}
+                to={search.length !== 0 ? `/search/${search}` : "/"}
                 aria-label='cart'
                 style={{
                   // height: "0.75rem",
@@ -462,7 +462,7 @@ export default function Header(props) {
                 </List>
                 <Divider style={{ height: "10px" }} />
                 <List>
-                  <ListItem button component={Link} to='about'>
+                  <ListItem button component={Link} to='about-us'>
                     <Typography variant='h6'>About Us</Typography>
                   </ListItem>
                   <ListItem

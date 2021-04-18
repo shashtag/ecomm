@@ -95,7 +95,7 @@ const ArtistPage = (props) => {
         xs={12}>
         <div style={{ height: "30vh" }}></div>
       </Grid>
-      <Grid item style={{ position: "relative" }}>
+      <Grid container item style={{ position: "relative" }}>
         <Avatar
           alt='profile pic'
           src={aData?.[0]?.profile_picture}

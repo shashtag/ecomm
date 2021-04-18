@@ -119,22 +119,58 @@ const Hero = () => {
         item
         style={{ position: "relative" }}>
         <div className={[classes.heroImgs, classes.img1].join(" ")}>
-          <img src={heroImage1} alt='hero image1' width='88%' height='88%' />
+          <img
+            src={heroImage1}
+            loading='lazy'
+            alt='hero image1'
+            width='88%'
+            height='88%'
+          />
         </div>
         <div className={[classes.heroImgs, classes.img2].join(" ")}>
-          <img src={heroImage2} alt='hero image2' width='88%' height='88%' />
+          <img
+            src={heroImage2}
+            loading='lazy'
+            alt='hero image2'
+            width='88%'
+            height='88%'
+          />
         </div>
         <div className={[classes.heroImgs, classes.img3].join(" ")}>
-          <img src={heroImage3} alt='hero image3' width='88%' height='88%' />
+          <img
+            src={heroImage3}
+            loading='lazy'
+            alt='hero image3'
+            width='88%'
+            height='88%'
+          />
         </div>
         <div className={[classes.heroImgs, classes.img4].join(" ")}>
-          <img src={heroImage4} alt='hero image4' width='88%' height='88%' />
+          <img
+            src={heroImage4}
+            loading='lazy'
+            alt='hero image4'
+            width='88%'
+            height='88%'
+          />
         </div>
         <div className={[classes.heroImgs, classes.img5].join(" ")}>
-          <img src={heroImage5} alt='hero image5' width='88%' height='88%' />
+          <img
+            src={heroImage5}
+            loading='lazy'
+            alt='hero image5'
+            width='88%'
+            height='88%'
+          />
         </div>
         <div className={[classes.heroImgs, classes.img6].join(" ")}>
-          <img src={heroImage6} alt='hero image6' width='88%' height='88%' />
+          <img
+            src={heroImage6}
+            loading='lazy'
+            alt='hero image6'
+            width='88%'
+            height='88%'
+          />
         </div>
       </Grid>
     </Grid>

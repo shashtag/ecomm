@@ -159,7 +159,7 @@ function App() {
           )}
         />
         <Route
-          path='/about'
+          path='/about-us'
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
