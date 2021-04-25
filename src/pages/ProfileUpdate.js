@@ -7,8 +7,10 @@ import {
   useTheme,
 } from "@material-ui/core";
 import axios from "axios";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { Redirect } from "react-router";
+import { fetchAddress } from "../API/Get";
 import { patchUsrDetails } from "../API/Patch";
 import { UIContext } from "../Context/UIContext";
 import Address from "../ui/Address";
@@ -43,9 +45,12 @@ const ProfileUpdate = () => {
     setCurPass,
     setLoading,
     setSnackbar,
+    usrAdresses,
+    setUsrAdresses,
   } = useContext(UIContext);
   const classes = useStyles();
   const theme = useTheme();
+
   const {
     register: register2,
     handleSubmit: handleSubmit2,
@@ -77,13 +82,34 @@ const ProfileUpdate = () => {
     axios(config)
       .then(function (response) {
         setLoading(false);
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         setLoading(false);
-        console.log(error);
+        setSnackbar({
+          value: true,
+          message:
+            error.response.data.email?.[0] ||
+            error.response.data.password?.[0] ||
+            error.response.data.phone_number?.[0] ||
+            error.response.data.date_of_birth?.[0] ||
+            error.response.data.full_name?.[0],
+          type: "error",
+        });
+        // console.log(error);
       });
   };
+
+  useEffect(() => {
+    if (!usrAdresses) {
+      fetchAddress(setLoading, setUsrAdresses);
+    }
+    return () => {};
+  }, []);
+
+  if (!localStorage.getItem("Token")) {
+    return <Redirect to='/login' />;
+  }
 
   return (
     <Grid container item direction='column' className={classes.root}>
@@ -277,9 +303,23 @@ const ProfileUpdate = () => {
         </Typography>
       </Grid>
       <Grid container item spacing={8}>
-        <Grid item xs={12} sm={6} md={4}>
-          <Address />
-        </Grid>
+        {usrAdresses
+          ? usrAdresses?.map((data, i) => {
+              return (
+                <Grid key={i} item xs={12} sm={6} md={4}>
+                  <Address
+                    name={usrBaseInfo?.full_name}
+                    id={data.a_id}
+                    city={data.city}
+                    pincode={data.pin_code}
+                    state={data.state}
+                    street={data.street}
+                  />
+                </Grid>
+              );
+            })
+          : null}
+
         <Grid item xs={12} sm={6} md={4}>
           <NewAddress />
         </Grid>

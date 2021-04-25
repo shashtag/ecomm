@@ -60,7 +60,6 @@ const ArtistPage = (props) => {
     return () => {};
   }, []);
   useEffect(() => {
-    console.log(aData);
     if (aData) {
       var config = {
         method: "get",
@@ -80,7 +79,6 @@ const ArtistPage = (props) => {
     }
     return () => {};
   }, [aData]);
-  console.log(aData);
   return (
     <Grid
       container

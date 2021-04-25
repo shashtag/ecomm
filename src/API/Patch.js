@@ -25,7 +25,7 @@ export const patchArtistDetails = (
 
   axios(config)
     .then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       setLoading(false);
       setCustomURL(response.data.custom_url);
       setAadhar(response.data.aadhar_card_no);
@@ -53,8 +53,7 @@ export const patchArtistDetails = (
         setPage(page + 1);
       }
       if (page === 3) {
-        console.log("aa");
-        history.push("/");
+        history.push("/artist/dashboard");
       }
     })
     .catch(function (error) {
@@ -78,14 +77,17 @@ export const patchUsrDetails = (data, setLoading, setSnackbar) => {
   axios(config)
     .then(function (response) {
       setLoading(false);
-      console.log(JSON.stringify(response.data));
-      setSnackbar({
-        value: true,
-        message: "Phone number changed successfully",
-        type: "success",
-      });
+      // console.log(JSON.stringify(response.data));
+      if (data.phone_number) {
+        setSnackbar({
+          value: true,
+          message: "Phone number changed successfully",
+          type: "success",
+        });
+      }
     })
     .catch(function (error) {
+      setLoading(false);
       setSnackbar({
         value: true,
         message:
@@ -96,6 +98,6 @@ export const patchUsrDetails = (data, setLoading, setSnackbar) => {
           error.response.data.full_name?.[0],
         type: "error",
       });
-      console.log(error);
+      // console.log(error);
     });
 };

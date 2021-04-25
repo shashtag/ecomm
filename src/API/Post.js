@@ -61,7 +61,7 @@ export const login = (data, setLoading, setToken, setSnackbar, history) => {
           error?.response?.data?.email?.[0] ||
           error?.response?.data?.non_field_errors?.[0] ||
           error?.response?.data?.password?.[0],
-        type: "red",
+        type: "error",
       });
     });
 };
@@ -90,7 +90,7 @@ export const logout = (setLoading, setUsrBaseInfo, setToken, history) => {
     });
 };
 
-export const addAddress = (data, setLoading, setPage, page) => {
+export const addAddress = (data, setLoading, setPage, page, usr) => {
   setLoading(true);
   var config = {
     method: "post",
@@ -107,6 +107,9 @@ export const addAddress = (data, setLoading, setPage, page) => {
       console.log(JSON.stringify(response.data));
       setPage(page + 1);
       setLoading(false);
+      if (usr) {
+        window.location.reload();
+      }
     })
     .catch(function (error) {
       console.log(error);

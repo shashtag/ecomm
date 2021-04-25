@@ -34,7 +34,7 @@ const ProductDetails = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const { pid } = useParams();
-  const { setLoading, setSnackbar } = useContext(UIContext);
+  const { setLoading, setSnackbar, token } = useContext(UIContext);
 
   const [productDetails, setProductDetails] = useState(null);
   const history = useHistory();
@@ -190,12 +190,20 @@ const ProductDetails = (props) => {
             <Button
               variant='contained'
               onClick={() => {
-                console.log({ product: productDetails.pid, quantity: 1 });
-                AddToCart(
-                  { product: productDetails.pid, quantity: "1" },
-                  setLoading,
-                  setSnackbar,
-                );
+                if (!token) {
+                  history.push("/user/signup");
+                  setSnackbar({
+                    value: true,
+                    message: "Please signup to make a purchase",
+                    type: "info",
+                  });
+                } else {
+                  AddToCart(
+                    { product: productDetails.pid, quantity: "1" },
+                    setLoading,
+                    setSnackbar,
+                  );
+                }
               }}
               style={{
                 marginRight: theme.spacing(2.5),
@@ -218,6 +226,22 @@ const ProductDetails = (props) => {
               </Typography>
             </Button>
             <Button
+              onClick={() => {
+                if (!token) {
+                  history.push("/user/signup");
+                  setSnackbar({
+                    value: true,
+                    message: "Please signup to make a purchase",
+                    type: "info",
+                  });
+                } else {
+                  // AddToCart(
+                  //   { product: productDetails.pid, quantity: "1" },
+                  //   setLoading,
+                  //   setSnackbar,
+                  // );
+                }
+              }}
               variant='contained'
               style={{
                 ...theme.palette.background.gradient,

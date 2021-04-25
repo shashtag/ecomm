@@ -13,12 +13,14 @@ import {
   ListItem,
   Divider,
 } from "@material-ui/core";
+import { PersonOutline } from "@material-ui/icons";
+
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import facebook from "../../assets/socialIcons/facebook.png";
 import instagram from "../../assets/socialIcons/instagram.png";
 import linkedIn from "../../assets/socialIcons/linkedIn.png";
 import twitter from "../../assets/socialIcons/twitter.png";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import BallotOutlinedIcon from "@material-ui/icons/BallotOutlined";
 
 import Toolbar from "@material-ui/core/Toolbar";
@@ -172,7 +174,7 @@ export default function Header(props) {
   ) : (
     <div
       style={{ justifyContent: "flex-end" }}
-      className={[classes.sectionDesktop, classes.grow].join(" ")}>
+      className={[classes.sectionDesktop].join(" ")}>
       {/* <div
         style={{
           display: "flex",
@@ -201,7 +203,7 @@ export default function Header(props) {
           padding: theme.spacing(1.3),
         }}>
         {/* <Link to='/artist/signup'> */}
-        <img height='auto' width='auto' src={sellDes} alt='kalafax logo' />
+        <img height='auto' width='auto' src={sellDes} alt='kalafex logo' />
         {/* </Link> */}
       </Button>
       <div
@@ -219,17 +221,19 @@ export default function Header(props) {
         color='secondary'>
         <Typography variant='h6'>Login/Signup</Typography>
       </Button>
-      <IconButton
-        onClick={() => {
-          history.push("/cart");
-        }}
-        style={{ marginLeft: theme.spacing(2) }}>
-        <ShoppingCartOutlinedIcon
-          style={{
-            color: theme.palette.secondary.main,
+      {token ? (
+        <IconButton
+          onClick={() => {
+            history.push("/cart");
           }}
-        />
-      </IconButton>
+          style={{ marginLeft: theme.spacing(2) }}>
+          <ShoppingCartOutlinedIcon
+            style={{
+              color: theme.palette.secondary.main,
+            }}
+          />
+        </IconButton>
+      ) : null}
     </div>
   );
 
@@ -304,7 +308,8 @@ export default function Header(props) {
 
               <IconButton
                 component={Link}
-                to={search.length !== 0 ? `/search/${search}` : "/"}
+                onClick={search.length === 0 ? (e) => e.preventDefault() : null}
+                to={`/search/${search}`}
                 style={{
                   // height: "0.75rem",
                   // width: "20px",
@@ -375,6 +380,17 @@ export default function Header(props) {
                         </Typography>
                       </ListItem>
                     </>
+                  ) : null}
+                  {token ? (
+                    <ListItem button component={Link} to='/user/profile'>
+                      <PersonOutline
+                        style={{
+                          color: theme.palette.secondary.main,
+                          fontSize: "20px",
+                        }}
+                      />
+                      <Typography variant='h5'>Profile</Typography>
+                    </ListItem>
                   ) : null}
                   {usrBaseInfo?.is_artist ? (
                     <ListItem component={Link} to='/artist/dashboard'>

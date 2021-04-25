@@ -314,13 +314,13 @@ const Footer = () => {
       <Grid md={1} item></Grid>
       <Grid item container xs={12} md={4} className={classes.right}>
         <Grid xs={12} item style={{ margin: theme.spacing(2, 0, 2, 0) }}>
-          <Typography
+          {/* <Typography
             variant='caption'
             style={{ margin: theme.spacing(2, 0, 2, 0) }}>
             Sign up to receive exclusive offers, decor tips and features about{" "}
             <b>Kalafex artists.</b>
-          </Typography>
-          <div className={classes.search} style={{ position: "relative" }}>
+          </Typography> */}
+          {/* <div className={classes.search} style={{ position: "relative" }}>
             <InputBase
               placeholder='Enter your email'
               classes={{
@@ -343,19 +343,9 @@ const Footer = () => {
                 alignItems: "center",
               }}>
               <Typography style={{ color: "white" }}>Subscribe</Typography>
-              {/* <img
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  cursor: "pointer",
-                }}
-                src={subscribe}
-                alt='search'
-                height='100%'
-              /> */}
+              
             </Button>
-          </div>
+          </div> */}
           <Typography variant='caption' color='secondary'>
             Follow @Kalafex at
           </Typography>

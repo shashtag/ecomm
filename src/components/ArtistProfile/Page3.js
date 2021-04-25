@@ -42,10 +42,10 @@ const Page3 = (props) => {
     // payment,
     // setPayment,
   } = useContext(APContext);
-  const { setLoading } = useContext(UIContext);
+  const { setLoading, setSnackbar } = useContext(UIContext);
   const handlePageChange = () => {
     var data2 = JSON.stringify({ is_first_login: false });
-    patchUsrDetails(data2);
+    patchUsrDetails(data2, setLoading, setSnackbar);
     const data = {
       aadhar_card_no: aadhar,
       pan_card_no: PAN,

@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import Page2 from "../components/ArtistProfile/Page2";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -12,12 +13,16 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     border: "none !important",
+    overflow: "scroll",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     borderRadius: "10px",
+    maxWidth: "80vw",
+    overflow: "scroll",
+    maxHeight: "80vh",
     "&:focus-visible": {
       outline: "none !important",
     },
@@ -49,6 +54,7 @@ const NewAddress = () => {
           width: "100%",
           boxSizing: "border-box",
           cursor: "pointer",
+
           "&:hover": {
             filter: "brightness(200%)",
           },
@@ -74,9 +80,7 @@ const NewAddress = () => {
         BackdropComponent={Backdrop}>
         <Fade in={open}>
           <div className={classes.paper}>
-            <Grid container direction='column'>
-              <Grid item>Add address</Grid>
-            </Grid>
+            <Page2 usr={true} />
           </div>
         </Fade>
       </Modal>

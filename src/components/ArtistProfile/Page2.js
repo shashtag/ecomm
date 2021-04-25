@@ -6,6 +6,7 @@ import {
   useTheme,
   Button,
   TextField,
+  useMediaQuery,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { addAddress } from "../../API/Post";
@@ -19,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
   input: {
     width: "500px",
     maxWidth: "100%",
+    marginTop: "10vh",
+
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "0",
+    },
   },
 }));
 
@@ -31,6 +37,8 @@ const Page2 = (props) => {
   const [state, setState] = useState("");
   const [pinCode, setPinCode] = useState("");
   const { register, handleSubmit, errors } = useForm();
+  const md = useMediaQuery(theme.breakpoints.down("md"));
+
   const handlePageChange = () => {
     const data = {
       address_type: "Pickup",
@@ -39,14 +47,22 @@ const Page2 = (props) => {
       state: state,
       pin_code: pinCode,
     };
-    addAddress(data, setLoading, props.setPage, props.page);
+    addAddress(
+      data,
+      setLoading,
+      props.usr ? () => {} : props.setPage,
+      props.page,
+      props.usr,
+    );
   };
 
   return (
     <>
       <Grid item>
-        <Typography variant='h5' style={{ paddingTop: theme.spacing(6) }}>
-          Please enter your address for hassle free pick-up
+        <Typography
+          variant='h5'
+          style={{ paddingTop: md ? theme.spacing(6) : theme.spacing(6) }}>
+          Please add a new address
         </Typography>
       </Grid>
       <Grid container item justify='center'>
@@ -58,18 +74,12 @@ const Page2 = (props) => {
             item
             container
             justify='center'
-            spacing={4}
+            spacing={md ? 4 : 4}
             style={{
-              marginBottom: theme.spacing(4),
-              marginTop: theme.spacing(4),
+              marginBottom: md ? theme.spacing(4) : theme.spacing(4),
+              marginTop: md ? theme.spacing(4) : theme.spacing(4),
             }}>
-            <Grid
-              container
-              justify='center'
-              item
-              xs={12}
-              md={6}
-              style={{ marginTop: "10vh" }}>
+            <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
                 label='Flat/Street'
@@ -91,13 +101,7 @@ const Page2 = (props) => {
                 helperText={errors.flat?.message}
               />
             </Grid>
-            <Grid
-              container
-              justify='center'
-              item
-              xs={12}
-              md={6}
-              style={{ marginTop: "10vh" }}>
+            <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
                 label='City'
@@ -119,13 +123,7 @@ const Page2 = (props) => {
                 helperText={errors.city?.message}
               />
             </Grid>
-            <Grid
-              container
-              justify='center'
-              item
-              xs={12}
-              md={6}
-              style={{ marginTop: "10vh" }}>
+            <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
                 label='State'
@@ -147,13 +145,7 @@ const Page2 = (props) => {
                 helperText={errors.state?.message}
               />
             </Grid>
-            <Grid
-              container
-              justify='center'
-              item
-              xs={12}
-              md={6}
-              style={{ marginTop: "10vh" }}>
+            <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
                 label='Pincode'
@@ -189,7 +181,7 @@ const Page2 = (props) => {
               type='submit'
               color='secondary'
               className={classes.loginButton}>
-              <Typography variant='h5'>Next</Typography>
+              <Typography variant='h5'>Add</Typography>
             </Button>
           </Grid>
         </form>

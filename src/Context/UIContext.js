@@ -16,6 +16,7 @@ export const UIProvider = (props) => {
   const [curPass, setCurPass] = useState("");
 
   const [usrBaseInfo, setUsrBaseInfo] = useState("");
+  const [usrAdresses, setUsrAdresses] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("Token")) {
@@ -57,6 +58,8 @@ export const UIProvider = (props) => {
         setRePass,
         curPass,
         setCurPass,
+        usrAdresses,
+        setUsrAdresses,
       }}>
       {props.children}
     </UIContext.Provider>

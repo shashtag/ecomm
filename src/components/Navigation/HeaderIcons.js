@@ -49,20 +49,19 @@ const HeaderIcons = () => {
         </IconButton>
       ) : null}
 
-      <IconButton
-        onClick={() => {
-          history.push("/cart");
-        }}
-        style={{ marginLeft: theme.spacing(2) }}>
-        <ShoppingCartOutlinedIcon
-          style={{
-            color: theme.palette.secondary.main,
-          }}
-        />
-      </IconButton>
-
       {token ? (
         <>
+          <IconButton
+            onClick={() => {
+              history.push("/cart");
+            }}
+            style={{ marginLeft: theme.spacing(2) }}>
+            <ShoppingCartOutlinedIcon
+              style={{
+                color: theme.palette.secondary.main,
+              }}
+            />
+          </IconButton>
           <IconButton
             style={{ marginLeft: theme.spacing(2) }}
             onClick={() => {
