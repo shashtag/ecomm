@@ -13,7 +13,7 @@ export const ADashboardProvider = (props) => {
   const [quantity, setQuantity] = useState("");
   const [topListings, setTopListings] = useState("");
   const [insights, setInsights] = useState(false);
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState(false);
   useEffect(() => {
     if (usrBaseInfo) {
       fetchArtistProducts(usrBaseInfo.id, setTopListings, setLoading);

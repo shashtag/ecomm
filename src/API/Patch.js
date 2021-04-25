@@ -63,7 +63,8 @@ export const patchArtistDetails = (
     });
 };
 
-export const patchUsrDetails = (data) => {
+export const patchUsrDetails = (data, setLoading, setSnackbar) => {
+  setLoading(true);
   var config = {
     method: "patch",
     url: `${process.env.REACT_APP_URL}auth/users/me/`,
@@ -76,9 +77,25 @@ export const patchUsrDetails = (data) => {
 
   axios(config)
     .then(function (response) {
+      setLoading(false);
       console.log(JSON.stringify(response.data));
+      setSnackbar({
+        value: true,
+        message: "Phone number changed successfully",
+        type: "success",
+      });
     })
     .catch(function (error) {
+      setSnackbar({
+        value: true,
+        message:
+          error.response.data.email?.[0] ||
+          error.response.data.password?.[0] ||
+          error.response.data.phone_number?.[0] ||
+          error.response.data.date_of_birth?.[0] ||
+          error.response.data.full_name?.[0],
+        type: "error",
+      });
       console.log(error);
     });
 };

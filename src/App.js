@@ -14,6 +14,7 @@ import Notif from "./ui/Notif";
 import Verification from "./pages/Verification";
 import UnderConstruction from "./pages/UnderConstruction";
 import LoadingLazy from "./ui/LoadingLazy";
+import Cart from "./pages/Cart";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
@@ -24,6 +25,7 @@ const ArtistPage = lazy(() => import("./pages/ArtistPage"));
 const Search = lazy(() => import("./pages/Search"));
 const ArtistDashboard = lazy(() => import("./pages/ArtistDashboard"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const ProfileUpdate = lazy(() => import("./pages/ProfileUpdate"));
 
 function App() {
   return (
@@ -91,7 +93,7 @@ function App() {
               <Navigation noCat={false} noSub={true} />
 
               <Suspense fallback={<LoadingLazy />}>
-                <UnderConstruction />
+                <ProfileUpdate />
               </Suspense>
               <Footer />
             </>
@@ -197,7 +199,7 @@ function App() {
           render={() => (
             <>
               <Navigation noCat={false} noSub={false} />
-              <UnderConstruction />
+              <Cart />
               <Footer />
             </>
           )}

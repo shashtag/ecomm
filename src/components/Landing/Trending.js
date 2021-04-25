@@ -37,10 +37,7 @@ const Trending = () => {
       });
   }, []);
 
-  trending = trendingProducts?.results.map((product, i) => {
-    if (i > 3) {
-      return <></>;
-    }
+  trending = trendingProducts?.results.slice(0, 4).map((product, i) => {
     return (
       <Product
         name={product.name}

@@ -99,83 +99,85 @@ const UploadProduct = () => {
   //   }),
   //   [isDragActive, isDragReject, isDragAccept],
   // );
+  console.log(errors);
   return (
-    <Grid container item>
+    <Grid item>
       <Grid item xs={12} style={{ marginBottom: theme.spacing(3) }}>
         <Typography variant='h6' color='secondary'>
           Upload a Product
         </Typography>
       </Grid>
-      <form
-        // className={classes.form}
-        style={{ width: "100%" }}
-        autoComplete='off'
-        onSubmit={handleSubmit(uploadClickHandler)}>
-        <Grid item xs={12}>
-          <Autocomplete
-            options={categoryList}
-            getOptionLabel={(option) => option.title}
-            onChange={(e, value) => {
-              setCategory(value.title);
-            }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                style={{ marginTop: theme.spacing(0), width: "100%" }}
-                label='Product Category'
-                name='category'
-                color='secondary'
-                value={category}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                placeholder='Enter Product Category'
-                inputRef={register({
-                  required: "Category is required",
-                })}
-                error={Boolean(errors.category)}
-                helperText={errors.category?.message}
-                variant='outlined'
-              />
-            )}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            style={{ marginTop: theme.spacing(3), width: "100%" }}
-            label='Product Name'
-            name='name'
-            color='secondary'
-            defaultValue={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            placeholder='Enter Product Name'
-            inputRef={register({
-              required: "Name is required",
-              minLength: {
-                value: 40,
-                message: "Please add a name longer than 40 characters ",
-              },
-            })}
-            error={Boolean(errors.name)}
-            helperText={errors.name?.message}
-            variant='outlined'
-          />
-        </Grid>
-        <Grid item xs={12} style={{ marginTop: theme.spacing(3) }}>
-          <DropZone
-            name='name'
-            inputRef={register({
-              required: "Name is required",
-            })}
-            error={Boolean(errors.name)}
-            helperText={errors.name?.message}
-          />
-          {/* <section
+      <Grid item xs={12}>
+        <form
+          // className={classes.form}
+          style={{ width: "100%" }}
+          autoComplete='off'
+          onSubmit={handleSubmit(uploadClickHandler)}>
+          <Grid item xs={12}>
+            <Autocomplete
+              options={categoryList}
+              getOptionLabel={(option) => option.title}
+              onChange={(e, value) => {
+                setCategory(value.title);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  style={{ marginTop: theme.spacing(0), width: "100%" }}
+                  label='Product Category'
+                  name='category'
+                  color='secondary'
+                  value={category}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  placeholder='Enter Product Category'
+                  inputRef={register({
+                    required: "Category is required",
+                  })}
+                  error={Boolean(errors.category)}
+                  helperText={errors.category?.message}
+                  variant='outlined'
+                />
+              )}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              style={{ marginTop: theme.spacing(3), width: "100%" }}
+              label='Product Name'
+              name='name'
+              color='secondary'
+              defaultValue={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              placeholder='Enter Product Name'
+              inputRef={register({
+                required: "Name is required",
+                minLength: {
+                  value: 40,
+                  message: "Please add a name longer than 40 characters ",
+                },
+              })}
+              error={Boolean(errors.name)}
+              helperText={errors.name?.message}
+              variant='outlined'
+            />
+          </Grid>
+          <Grid item xs={12} style={{ marginTop: theme.spacing(3) }}>
+            <DropZone
+              name='dropzone'
+              // validate={register({
+              //   required: "Name is required",
+              // })}
+              // error={Boolean(errors.name)}
+              // helperText={errors.name?.message}
+            />
+            {/* <section
             className='container'
             style={{
               // background: "red",
@@ -196,7 +198,7 @@ const UploadProduct = () => {
               <Typography variant='h6'>{files}</Typography>
             </aside>
           </section> */}
-          {/* <TextField
+            {/* <TextField
             style={{ marginTop: theme.spacing(3), width: "100%" }}
             label='Product Image'
             name='img'
@@ -218,127 +220,128 @@ const UploadProduct = () => {
             error={Boolean(errors.name)}
             helperText={errors.name?.message}
           /> */}
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            style={{ marginTop: theme.spacing(3), width: "100%" }}
-            label='Product Description'
-            name='desc'
-            color='secondary'
-            defaultValue={desc}
-            onChange={(e) => {
-              setDesc(e.target.value);
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            placeholder='Enter Product Description'
-            inputRef={register({
-              required: "Description is required",
-              minLength: {
-                value: 200,
-                message: "Please add a name longer than 200 characters ",
-              },
-            })}
-            error={Boolean(errors.desc)}
-            helperText={errors.desc?.message}
-            variant='outlined'
-            multiline
-            rows={4}
-          />
-        </Grid>
-        <Grid container item xs={12} spacing={sm ? 1 : 0}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              style={{
-                marginTop: theme.spacing(3),
-                width: "100%",
-              }}
-              label='Your Price'
-              name='price'
-              color='secondary'
-              value={price}
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              placeholder='Enter Product Price'
-              inputRef={register({
-                required: "Price is required",
-              })}
-              error={Boolean(errors.price)}
-              helperText={errors.price?.message}
-              variant='outlined'
-            />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12}>
             <TextField
-              disabled
               style={{ marginTop: theme.spacing(3), width: "100%" }}
-              label='Price'
-              name='kPrice'
+              label='Product Description'
+              name='desc'
               color='secondary'
-              value={price * 1.05}
+              defaultValue={desc}
+              onChange={(e) => {
+                setDesc(e.target.value);
+              }}
               InputLabelProps={{
                 shrink: true,
               }}
-              placeholder='Kalafex Price '
+              placeholder='Enter Product Description'
+              inputRef={register({
+                required: "Description is required",
+                minLength: {
+                  value: 200,
+                  message: "Please add a name longer than 200 characters ",
+                },
+              })}
+              error={Boolean(errors.desc)}
+              helperText={errors.desc?.message}
               variant='outlined'
+              multiline
+              rows={4}
             />
           </Grid>
-        </Grid>
-        <Grid item container xs={12} spacing={1}>
-          <Grid item xs={6}>
-            <Autocomplete
-              options={quantityList}
-              getOptionLabel={(option) => option.title}
-              classes={{ inputRoot: classes.inproot }}
-              onChange={(e, value) => {
-                setQuantity(value.title);
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  style={{ marginTop: theme.spacing(1), width: "100%" }}
-                  label='Quantity'
-                  name='quantity'
-                  color='secondary'
-                  value={quantity}
-                  // InputLabelProps={{
-                  //   shrink: true,
-                  // }}
-                  placeholder=''
-                  inputRef={register({
-                    required: "Quantity is required",
-                  })}
-                  error={Boolean(errors.quantity)}
-                  helperText={errors.quantity?.message}
-                  variant='filled'
-                />
-              )}
-            />
+          <Grid container item xs={12} spacing={sm ? 1 : 0}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                style={{
+                  marginTop: theme.spacing(3),
+                  width: "100%",
+                }}
+                label='Your Price'
+                name='price'
+                color='secondary'
+                value={price}
+                onChange={(e) => {
+                  setPrice(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter Product Price'
+                inputRef={register({
+                  required: "Price is required",
+                })}
+                error={Boolean(errors.price)}
+                helperText={errors.price?.message}
+                variant='outlined'
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                disabled
+                style={{ marginTop: theme.spacing(3), width: "100%" }}
+                label='Price'
+                name='kPrice'
+                color='secondary'
+                value={price * 1.05}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Kalafex Price '
+                variant='outlined'
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            <Button
-              // component={Link}
-              // to='/artist/signup'
-              variant='contained'
-              size='large'
-              color='secondary'
-              type='submit'
-              style={{
-                ...theme.palette.background.gradient,
-                width: "100%",
-                marginTop: theme.spacing(1),
-                padding: "16px 24px",
-              }}>
-              <Typography variant='h5'>Submit</Typography>
-            </Button>
+          <Grid item container xs={12} spacing={1}>
+            <Grid item xs={6}>
+              <Autocomplete
+                options={quantityList}
+                getOptionLabel={(option) => option.title}
+                classes={{ inputRoot: classes.inproot }}
+                onChange={(e, value) => {
+                  setQuantity(value.title);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    style={{ marginTop: theme.spacing(1), width: "100%" }}
+                    label='Quantity'
+                    name='quantity'
+                    color='secondary'
+                    value={quantity}
+                    // InputLabelProps={{
+                    //   shrink: true,
+                    // }}
+                    placeholder=''
+                    inputRef={register({
+                      required: "Quantity is required",
+                    })}
+                    error={Boolean(errors.quantity)}
+                    helperText={errors.quantity?.message}
+                    variant='filled'
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                // component={Link}
+                // to='/artist/signup'
+                variant='contained'
+                size='large'
+                color='secondary'
+                type='submit'
+                style={{
+                  ...theme.palette.background.gradient,
+                  width: "100%",
+                  marginTop: theme.spacing(1),
+                  padding: "16px 24px",
+                }}>
+                <Typography variant='h5'>Submit</Typography>
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-      </form>
+        </form>
+      </Grid>
     </Grid>
   );
 };

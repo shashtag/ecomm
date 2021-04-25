@@ -19,37 +19,46 @@ const DropZone = (props) => {
 
   return (
     <div style={{ position: "relative" }}>
-      <Typography
-        style={{
-          position: "absolute",
-          background: "#FAFAFA",
-          top: "-7px",
-          zIndex: "1",
-          color: "#262626",
-          fontSize: "0.9rem",
-          left: "10px",
-          padding: theme.spacing(0, 0.5),
-        }}>
-        Product Image
-      </Typography>
+      {props.sm ? null : (
+        <Typography
+          style={{
+            position: "absolute",
+            background: "#FAFAFA",
+            top: "-7px",
+            zIndex: "1",
+            color: "#262626",
+            fontSize: "0.9rem",
+            left: "10px",
+            padding: theme.spacing(0, 0.5),
+          }}>
+          Product Image
+        </Typography>
+      )}
       <Dropzone
-        styles={{ inputLabel: { textAlign: "center" } }}
+        inputContent={props.sm ? "Add Image" : "Drag Files or Click to Browse"}
+        styles={{
+          inputLabel: { textAlign: "center" },
+          dropzone: props.sm ? { width: "100%" } : null,
+          inputLabelWithFiles: props.sm ? { padding: "0" } : null,
+        }}
         {...props}
         getUploadParams={getUploadParams}
         onChangeStatus={handleChangeStatus}
         maxFiles='1'
         // onSubmit={handleSubmit}
         accept='image/*,audio/*,video/*'></Dropzone>
-      <Typography
-        style={{
-          background: "#FAFAFA",
-          fontWeight: "400",
-          color: "#262626",
-          fontSize: "0.9rem",
-          padding: theme.spacing(0, 0.5),
-        }}>
-        ** Upload 3/4 aspect ratio images for best results
-      </Typography>
+      {props.sm ? null : (
+        <Typography
+          style={{
+            background: "#FAFAFA",
+            fontWeight: "400",
+            color: "#262626",
+            fontSize: "0.9rem",
+            padding: theme.spacing(0, 0.5),
+          }}>
+          ** Upload 3/4 aspect ratio images for best results
+        </Typography>
+      )}
     </div>
   );
 };

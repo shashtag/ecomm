@@ -25,7 +25,6 @@ const Search = (props) => {
   const [products, setProducts] = useState(null);
   const theme = useTheme();
   const { setLoading, trendingProducts } = useContext(UIContext);
-  console.log(trendingProducts);
 
   useEffect(() => {
     if (!props.trending) {
@@ -37,6 +36,7 @@ const Search = (props) => {
   if (!products && !trendingProducts) {
     return <div style={{ height: "80vh" }}></div>;
   }
+  console.log(products?.results.length);
   return (
     <Grid container className={classes.root}>
       <Grid item>
@@ -44,6 +44,19 @@ const Search = (props) => {
           {!props.trending ? query : "Trending"}
         </Typography>
       </Grid>
+      {products?.results.length === 0 ? (
+        <div
+          style={{
+            display: "grid",
+            placeItems: "center",
+            height: "100%",
+            width: "100%",
+          }}>
+          <Typography variant='h1' style={{ opacity: "0.3" }}>
+            No Items Found
+          </Typography>
+        </div>
+      ) : null}
       <Grid container item spacing={2} style={{ padding: theme.spacing(2, 0) }}>
         {props.trending ? (
           <Products data={trendingProducts?.results} />

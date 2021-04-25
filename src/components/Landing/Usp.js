@@ -62,31 +62,32 @@ const Usp = () => {
 
   return (
     <Grid container spacing={2} justify='center' className={classes.usp}>
-      <Typography
-        variant={"h2"}
-        align='center'
-        style={{
-          marginBottom: theme.spacing(2),
-          padding: theme.spacing(0, 1),
-          // background: "white",
-          fontWeight: sm ? "400" : "bold",
-        }}>
-        See what we’ve got
-      </Typography>
-      <Typography
-        variant='h6'
-        align='center'
-        style={{
-          paddingLeft: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
-          paddingRight: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
-          marginBottom: theme.spacing(4),
-          // background: "white",
-        }}>
-        Change the text to “From adding to your home's aesthetic to adding to
-        your personal versatile aesthetic, whatever it is you need, we've got
-        you covered.”
-      </Typography>
-
+      <Grid item xs={12}>
+        <Typography
+          variant={"h2"}
+          align='center'
+          style={{
+            marginBottom: theme.spacing(2),
+            padding: theme.spacing(0, 1),
+            // background: "white",
+            fontWeight: sm ? "400" : "bold",
+          }}>
+          See what we’ve got
+        </Typography>
+        <Typography
+          variant='h6'
+          align='center'
+          style={{
+            paddingLeft: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
+            paddingRight: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
+            marginBottom: theme.spacing(4),
+            // background: "white",
+          }}>
+          Change the text to “From adding to your home's aesthetic to adding to
+          your personal versatile aesthetic, whatever it is you need, we've got
+          you covered.”
+        </Typography>
+      </Grid>
       {usp.map((usp, i) => (
         <Grid
           item

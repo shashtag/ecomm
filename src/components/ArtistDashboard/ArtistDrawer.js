@@ -149,7 +149,7 @@ const ArtistDrawerIcons = () => {
         <Typography>Track products</Typography>
       </ListItem>
 
-      <ListItem button component={Link} to='/artist/dashboard/faq'>
+      {/* <ListItem button component={Link} to='/artist/dashboard/faq'>
         <QuestionAnswerIcon
           fontSize='large'
           style={{
@@ -159,7 +159,7 @@ const ArtistDrawerIcons = () => {
         />
 
         <Typography>FAQs</Typography>
-      </ListItem>
+      </ListItem> */}
       <ListItem button component={Link} to='/artist/dashboard/help'>
         <ContactSupportIcon
           fontSize='large'

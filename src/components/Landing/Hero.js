@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { Grid, makeStyles, Button, Typography } from "@material-ui/core";
@@ -9,6 +9,7 @@ import heroImage4 from "../../assets/heroImgs/heroImage4.png";
 import heroImage5 from "../../assets/heroImgs/heroImage5.png";
 import heroImage6 from "../../assets/heroImgs/heroImage6.png";
 import heroBg from "../../assets/heroBg.png";
+import { UIContext } from "../../Context/UIContext";
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Hero = () => {
   const classes = useStyles();
-
+  const { usrBaseInfo } = useContext(UIContext);
   return (
     <Grid container spacing={0} className={classes.hero}>
       <Grid xs={12} md={4} item>
@@ -94,7 +95,7 @@ const Hero = () => {
         </Typography>
         <Button
           component={Link}
-          to='/artist/signup'
+          to={usrBaseInfo?.is_artist ? "/artist/dashboard" : "/artist/signup"}
           variant='contained'
           size='large'
           color='secondary'

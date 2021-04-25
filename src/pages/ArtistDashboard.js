@@ -25,17 +25,18 @@ import UnderConstruction from "./UnderConstruction";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    maxWidth: "100vw",
   },
 
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   content: {
-    width: "100%",
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: `${theme.spacing(4)}px 15px`,
     [theme.breakpoints.up("md")]: {
-      padding: `${theme.spacing(4)}px 3.2%`,
+      padding: `${theme.spacing(4)}px 2%`,
+      width: "calc(100vw - 250px)",
     },
   },
 }));
@@ -55,7 +56,7 @@ const ArtistDashboard = (props) => {
       <div className={classes.root}>
         <CssBaseline />
         {md ? <ArtistDrawer /> : <ArtistDrawerSM />}
-        <main className={classes.content}>
+        <Grid container className={classes.content}>
           <Switch>
             <Route
               exact
@@ -107,7 +108,7 @@ const ArtistDashboard = (props) => {
               render={() => <ArtistPage artist={true} />}
             />
           </Switch>
-        </main>
+        </Grid>
       </div>
     </ADashboardProvider>
   );

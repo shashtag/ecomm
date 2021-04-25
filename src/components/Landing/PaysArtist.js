@@ -91,7 +91,7 @@ const PaysArtist = () => {
           </Typography>
           <Button
             component={Link}
-            to='/about'
+            to='/about-us'
             variant='outlined'
             style={{
               padding: theme.spacing(1.2, 4),

@@ -29,7 +29,7 @@ export const signup1 = (data, setLoading, setSnackbar, setOpen) => {
           error.response.data.phone_number?.[0] ||
           error.response.data.date_of_birth?.[0] ||
           error.response.data.full_name?.[0],
-        type: "red",
+        type: "error",
       });
     });
 };
@@ -152,6 +152,29 @@ export const addProduct = (data, setLoading) => {
     .then(function (response) {
       setLoading(false);
       window.location.reload();
+
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const AddToCart = (data, setLoading, setSnackbar) => {
+  setLoading(true);
+
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}orders/create/order_product/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
 
       console.log(JSON.stringify(response.data));
     })

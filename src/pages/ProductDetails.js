@@ -14,6 +14,7 @@ import { Button } from "@material-ui/core";
 import { UIContext } from "../Context/UIContext";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import Carousel from "react-material-ui-carousel";
+import { AddToCart } from "../API/Post";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +34,7 @@ const ProductDetails = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const { pid } = useParams();
-  const { setLoading } = useContext(UIContext);
+  const { setLoading, setSnackbar } = useContext(UIContext);
 
   const [productDetails, setProductDetails] = useState(null);
   const history = useHistory();
@@ -64,7 +65,7 @@ const ProductDetails = (props) => {
   if (!productDetails) {
     return <div style={{ height: "100vh" }}></div>;
   }
-
+  console.log(productDetails);
   return (
     <>
       <Grid
@@ -180,27 +181,26 @@ const ProductDetails = (props) => {
               including all taxes
             </Typography>
           </Grid>
-          <Grid item style={{ marginBottom: theme.spacing(3) }}>
+          {/* <Grid item style={{ marginBottom: theme.spacing(3) }}>
             <Typography variant='subtitle2'>
               Get you product delivered by 12th February 2021
             </Typography>
-          </Grid>
-          <Grid item style={{ marginBottom: theme.spacing(3) }}>
+          </Grid> */}
+          <Grid item>
             <Button
               variant='contained'
+              onClick={() => {
+                console.log({ product: productDetails.pid, quantity: 1 });
+                AddToCart(
+                  { product: productDetails.pid, quantity: "1" },
+                  setLoading,
+                  setSnackbar,
+                );
+              }}
               style={{
-                ...theme.palette.background.gradient,
-                padding: "16px 32px",
                 marginRight: theme.spacing(2.5),
-                color: "white",
-              }}>
-              <Typography variant='h5'>Buy Now</Typography>
-            </Button>
-            <Button
-              variant='contained'
-              style={{
+                marginBottom: theme.spacing(2),
                 padding: "16px 24px",
-                marginLeft: "4px",
                 background: "white",
               }}>
               <Typography variant='h5'>
@@ -208,6 +208,7 @@ const ProductDetails = (props) => {
                 <ShoppingCartOutlinedIcon
                   style={{
                     marginLeft: theme.spacing(2),
+
                     position: "relative",
                     fontSize: "20px",
                     top: "4px",
@@ -215,6 +216,16 @@ const ProductDetails = (props) => {
                   }}
                 />
               </Typography>
+            </Button>
+            <Button
+              variant='contained'
+              style={{
+                ...theme.palette.background.gradient,
+                marginBottom: theme.spacing(2),
+                padding: "16px 32px",
+                color: "white",
+              }}>
+              <Typography variant='h5'>Buy Now</Typography>
             </Button>
           </Grid>
         </Grid>

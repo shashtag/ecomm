@@ -19,6 +19,7 @@ import instagram from "../../assets/socialIcons/instagram.png";
 import linkedIn from "../../assets/socialIcons/linkedIn.png";
 import twitter from "../../assets/socialIcons/twitter.png";
 import { Link, useHistory } from "react-router-dom";
+import BallotOutlinedIcon from "@material-ui/icons/BallotOutlined";
 
 import Toolbar from "@material-ui/core/Toolbar";
 
@@ -403,6 +404,15 @@ export default function Header(props) {
                   </ListItem>
                   {token ? (
                     <>
+                      <ListItem button component={Link} to='/user/trackOrder'>
+                        <BallotOutlinedIcon
+                          style={{
+                            color: theme.palette.secondary.main,
+                            fontSize: "20px",
+                          }}
+                        />
+                        <Typography variant='h5'>Track My Order</Typography>
+                      </ListItem>
                       <ListItem
                         component={Link}
                         onClick={() => {
@@ -423,9 +433,6 @@ export default function Header(props) {
                         <Typography variant='h5' style={{ color: "#152238" }}>
                           Logout
                         </Typography>
-                      </ListItem>
-                      <ListItem button component={Link} to='/user/trackOrder'>
-                        <Typography variant='h6'>Track My Order</Typography>
                       </ListItem>
                     </>
                   ) : null}

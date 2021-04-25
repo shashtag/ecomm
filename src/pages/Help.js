@@ -9,8 +9,6 @@ const Help = (props) => {
   return (
     <Grid
       container
-      item
-      direction='column'
       style={
         props.standalone
           ? {
@@ -26,7 +24,7 @@ const Help = (props) => {
             }
           : null
       }>
-      <Grid item>
+      <Grid xs={12} item>
         <Typography
           variant={props.standalone ? "h2" : "h4"}
           style={props.standalone ? { fontWeight: "bold" } : null}>
@@ -45,7 +43,7 @@ const Help = (props) => {
         item
         container
         justify='center'
-        style={{ color: "#40567A", marginTop: theme.spacing(2) }}
+        style={{ color: "#40567A" }}
         xs='12'>
         <Typography
           component='a'

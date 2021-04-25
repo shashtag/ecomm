@@ -11,6 +11,9 @@ export const UIProvider = (props) => {
   const [snackbar, setSnackbar] = useState(false);
   const [trendingProducts, setTrendingProducts] = useState(null);
   const [search, setSearch] = useState("");
+  const [pass, setPass] = useState("");
+  const [rePass, setRePass] = useState("");
+  const [curPass, setCurPass] = useState("");
 
   const [usrBaseInfo, setUsrBaseInfo] = useState("");
 
@@ -46,9 +49,14 @@ export const UIProvider = (props) => {
         setTrendingProducts,
         usrBaseInfo,
         setUsrBaseInfo,
-
+        pass,
+        setPass,
         search,
         setSearch,
+        rePass,
+        setRePass,
+        curPass,
+        setCurPass,
       }}>
       {props.children}
     </UIContext.Provider>

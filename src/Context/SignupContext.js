@@ -1,14 +1,15 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
+import { UIContext } from "./UIContext";
 
 export const SignupContext = createContext();
 
 export const SignupProvider = (props) => {
+  const { pass, setPass, rePass, setRePass } = useContext(UIContext);
   const [selectedDate, handleDateChange] = useState(new Date(2001, 0, 1));
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [pass, setPass] = useState("");
-  const [rePass, setRePass] = useState("");
+
   return (
     <SignupContext.Provider
       value={{

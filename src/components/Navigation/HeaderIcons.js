@@ -7,6 +7,7 @@ import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import { UIContext } from "../../Context/UIContext";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../API/Post";
+import BallotOutlinedIcon from "@material-ui/icons/BallotOutlined";
 
 const HeaderIcons = () => {
   const theme = useTheme();
@@ -61,17 +62,30 @@ const HeaderIcons = () => {
       </IconButton>
 
       {token ? (
-        <IconButton
-          style={{ marginLeft: theme.spacing(2) }}
-          onClick={() => {
-            logout(setLoading, setUsrBaseInfo, setToken, history);
-          }}>
-          <ExitToAppIcon
-            style={{
-              color: theme.palette.secondary.main,
-            }}
-          />
-        </IconButton>
+        <>
+          <IconButton
+            style={{ marginLeft: theme.spacing(2) }}
+            onClick={() => {
+              history.push("/user/trackOrder");
+            }}>
+            <BallotOutlinedIcon
+              style={{
+                color: theme.palette.secondary.main,
+              }}
+            />
+          </IconButton>
+          <IconButton
+            style={{ marginLeft: theme.spacing(2) }}
+            onClick={() => {
+              logout(setLoading, setUsrBaseInfo, setToken, history);
+            }}>
+            <ExitToAppIcon
+              style={{
+                color: theme.palette.secondary.main,
+              }}
+            />
+          </IconButton>
+        </>
       ) : null}
     </div>
   );

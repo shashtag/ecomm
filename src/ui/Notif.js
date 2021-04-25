@@ -37,14 +37,16 @@ export default function Notif(props) {
       onClose={handleClose}>
       <Alert
         onClose={handleClose}
-        severity='error'
+        severity={snackbar.type}
         classes={{
           icon: classes.icon,
           message: classes.message,
           action: classes.cross,
         }}>
         <AlertTitle>
-          <Typography variant='h5'>Error</Typography>
+          <Typography variant='h5' style={{ textTransform: "capitalize" }}>
+            {snackbar.type}
+          </Typography>
         </AlertTitle>
         <Typography variant='h6'>{snackbar.message}</Typography>
       </Alert>
