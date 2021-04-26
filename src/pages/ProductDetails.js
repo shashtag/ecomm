@@ -132,7 +132,9 @@ const ProductDetails = (props) => {
                 paddingTop: theme.spacing(0.5),
                 marginBottom: theme.spacing(5),
               }}>
-              <Typography variant='h6'>{productDetails?.name}</Typography>
+              <Typography variant='h5'>
+                {productDetails?.artist?.full_name}
+              </Typography>
               <Typography variant='h6'>
                 {productDetails?.artist?.custom_url}
               </Typography>

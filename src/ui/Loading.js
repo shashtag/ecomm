@@ -15,7 +15,10 @@ const Loading = () => {
   const { loading } = useContext(UIContext);
 
   return (
-    <Backdrop className={classes.backdrop} open={loading}>
+    <Backdrop
+      style={{ zIndex: "100000000000000" }}
+      className={classes.backdrop}
+      open={loading}>
       <CircularProgress color='inherit' />
     </Backdrop>
   );

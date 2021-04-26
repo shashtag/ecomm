@@ -102,7 +102,7 @@ const ArtistPage = (props) => {
         <Typography
           variant='h3'
           style={{ position: "absolute", left: "200px" }}>
-          {aData?.[0]?.name}Name
+          {aData?.[0]?.full_name}
         </Typography>
       </Grid>
       <Grid container spacing={2} style={{ marginTop: theme.spacing(16) }} item>
