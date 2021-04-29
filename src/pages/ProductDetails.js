@@ -208,26 +208,28 @@ const ProductDetails = (props) => {
                 }
               }}
               style={{
+                ...theme.palette.background.gradient,
                 marginRight: theme.spacing(2.5),
                 marginBottom: theme.spacing(2),
                 padding: "16px 24px",
-                background: "white",
+                // background: "white",
+                color: "white",
               }}>
               <Typography variant='h5'>
                 Add to cart
                 <ShoppingCartOutlinedIcon
                   style={{
                     marginLeft: theme.spacing(2),
-
+                    color: "white",
                     position: "relative",
                     fontSize: "20px",
                     top: "4px",
-                    color: theme.palette.secondary.main,
+                    // color: theme.palette.secondary.main,
                   }}
                 />
               </Typography>
             </Button>
-            <Button
+            {/* <Button
               onClick={() => {
                 if (!token) {
                   history.push("/user/signup");
@@ -252,7 +254,7 @@ const ProductDetails = (props) => {
                 color: "white",
               }}>
               <Typography variant='h5'>Buy Now</Typography>
-            </Button>
+            </Button> */}
           </Grid>
         </Grid>
       </Grid>

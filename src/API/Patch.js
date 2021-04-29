@@ -101,3 +101,54 @@ export const patchUsrDetails = (data, setLoading, setSnackbar) => {
       // console.log(error);
     });
 };
+
+export const patchCartItem = (data, url, setLoading, setSnackbar) => {
+  setLoading(true);
+  var config = {
+    method: "patch",
+    url: `${process.env.REACT_APP_URL}orders/modify/order_product/${url}/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const patchOrderProductToOrder = (
+  data,
+  url,
+  setLoading,
+  setSnackbar,
+  setLastProductAdded,
+) => {
+  setLoading(true);
+  var config = {
+    method: "patch",
+    url: `${process.env.REACT_APP_URL}orders/modify/order_product/${url}/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      setLastProductAdded(true);
+
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

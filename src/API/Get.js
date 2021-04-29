@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const fetchTrendingProducts = (
+  page,
   setTrendingProducts,
   setLoading,
   setSnackbar,
@@ -8,7 +9,9 @@ export const fetchTrendingProducts = (
   setLoading(true);
   var config = {
     method: "get",
-    url: `${process.env.REACT_APP_URL}store/view/product/popular/`,
+    url: !page
+      ? `${process.env.REACT_APP_URL}store/view/product/popular/`
+      : `${process.env.REACT_APP_URL}store/view/product/popular/?page=${page}`,
   };
 
   axios(config)
@@ -17,12 +20,15 @@ export const fetchTrendingProducts = (
       setTrendingProducts(response.data);
     })
     .catch(function (error) {
-      console.log(error);
-      setSnackbar({
-        value: true,
-        message: "Could not load trending products",
-        type: "red",
-      });
+      setLoading(false);
+      setTrendingProducts({ results: [] });
+      if (!page) {
+        setSnackbar({
+          value: true,
+          message: "Could not load trending products",
+          type: "error",
+        });
+      }
     });
 };
 
@@ -59,11 +65,13 @@ export const fetchBaseDetailsUser = (
     });
 };
 
-export const fetchSearch = (query, setProducts, setLoading) => {
+export const fetchSearch = (query, page, setProducts, setLoading) => {
   setLoading(true);
   var config = {
     method: "get",
-    url: `${process.env.REACT_APP_URL}store/search/product/?search=${query}`,
+    url: !page
+      ? `${process.env.REACT_APP_URL}store/search/product/?search=${query}`
+      : `${process.env.REACT_APP_URL}store/search/product/?search=${query}/?page=${page}`,
   };
 
   axios(config)
@@ -136,6 +144,26 @@ export const fetchAddress = (setLoading, setUsrAdresses) => {
     })
     .catch(function (error) {
       setLoading(false);
+      console.log(error);
+    });
+};
+
+export const fetchOrderDetailsFinally = (url, setLoading) => {
+  setLoading(true);
+  var config = {
+    method: "get",
+    url: `${process.env.REACT_APP_URL}orders/view/order/${url}/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
       console.log(error);
     });
 };

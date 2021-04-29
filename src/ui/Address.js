@@ -1,12 +1,28 @@
-import { Grid, IconButton, Typography, useTheme } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  IconButton,
+  Typography,
+  useTheme,
+} from "@material-ui/core";
 import React, { useContext } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { deleteAddress } from "../API/Delete";
 import { UIContext } from "../Context/UIContext";
+import { Link } from "react-router-dom";
+import { createOrder } from "../API/Post";
+import { OrderContext } from "../Context/OrderContext";
 
 const Address = (props) => {
   const theme = useTheme();
-  const { setLoading } = useContext(UIContext);
+  const { setLoading, setSnackbar } = useContext(UIContext);
+  const { order, setOrder } = useContext(OrderContext);
+
+  const handleCreateOrder = () => {
+    const data = { shipping_address: props.id };
+    createOrder(data, setLoading, setSnackbar, setOrder);
+  };
+
   return (
     <div
       style={{
@@ -51,7 +67,28 @@ const Address = (props) => {
           <Typography variant='h5'>{props.state}</Typography>
         </Grid>
         <Grid item>
-          <Typography variant='h5'>{props.pincode}</Typography>
+          <Typography style={{ marginBottom: theme.spacing(2) }} variant='h5'>
+            {props.pincode}
+          </Typography>
+        </Grid>
+        <Grid item>
+          {props.select ? (
+            <Button
+              onClick={handleCreateOrder}
+              // component={Link}
+              // to='/selectAddress'
+              variant='contained'
+              size='large'
+              color='secondary'
+              type='submit'
+              style={{
+                // width: "100%",
+                marginTop: theme.spacing(1),
+                padding: "16px 24px",
+              }}>
+              <Typography variant='h5'>Deliver here</Typography>
+            </Button>
+          ) : null}
         </Grid>
       </Grid>
     </div>

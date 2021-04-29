@@ -185,3 +185,24 @@ export const AddToCart = (data, setLoading, setSnackbar) => {
       console.log(error);
     });
 };
+
+export const createOrder = (data, setLoading, setSnackbar, setOrder) => {
+  setLoading(true);
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}orders/create/order/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      setOrder(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

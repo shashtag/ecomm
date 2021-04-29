@@ -33,7 +33,7 @@ export const UIProvider = (props) => {
   }, [token]);
 
   useEffect(() => {
-    fetchTrendingProducts(setTrendingProducts, setLoading, setSnackbar);
+    fetchTrendingProducts(null, setTrendingProducts, setLoading, setSnackbar);
     return () => {};
   }, []);
 
