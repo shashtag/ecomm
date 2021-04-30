@@ -65,12 +65,12 @@ const Page1 = (props) => {
     <>
       <Grid container item>
         <Typography variant='h4' style={{ paddingTop: theme.spacing(4) }}>
-          Congratulations, account created successfully!
+          Congratulations, your account has been created successfully!
         </Typography>
       </Grid>
       <Grid container item>
         <Typography variant='h5' style={{ paddingTop: theme.spacing(1) }}>
-          Let us start by setting up your shop.
+          Get started by setting up your shop{" "}
         </Typography>
       </Grid>
       <Grid container item justify='center'>

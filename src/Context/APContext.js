@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { UIContext } from "./UIContext";
 import { patchArtistDetails } from "../API/Patch";
 import { postArtistDetails } from "../API/Post";
-import defaultProfilePic from "../assets/defaultProfilePic.png";
 
 export const APContext = createContext();
 
@@ -16,7 +15,7 @@ export const APProvider = (props) => {
   const [payment, setPayment] = useState("");
   const [avatar, setAvatar] = useState({
     decode: {},
-    encoded: defaultProfilePic,
+    encoded: null,
   });
 
   useEffect(() => {

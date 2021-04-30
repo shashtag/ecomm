@@ -40,7 +40,7 @@ const CartItem = (props) => {
   const theme = useTheme();
   const [quantity, setQuantity] = useState(props.quantity);
   const md = useMediaQuery(theme.breakpoints.up("md"));
-  const { selectedItems } = useContext(OrderContext);
+  const { selectedItems, setSelectedItems } = useContext(OrderContext);
 
   useEffect(() => {
     setCPrice(quantity * props.price);
@@ -49,11 +49,23 @@ const CartItem = (props) => {
   }, [quantity, props.price]);
 
   useEffect(() => {
+    let array = [...selectedItems];
+    var index = array.indexOf(props.id);
+
     if (!checked) {
-      selectedItems.current.splice(selectedItems.current.indexOf(props.id), 1);
+      if (index !== -1) {
+        array.splice(index, 1);
+        setSelectedItems(array);
+      }
+
+      //   selectedItems.current.splice(selectedItems.current.indexOf(props.id), 1);
+      //   // console.log(Boolean(selectedItems.current.length));
     }
     if (checked) {
-      selectedItems.current.push(props.id);
+      array.push(props.id);
+      setSelectedItems(array);
+      //   selectedItems.current.push(props.id);
+      //   // console.log(Boolean(selectedItems.current.length));
     }
     return () => {};
   }, [checked]);
@@ -64,7 +76,10 @@ const CartItem = (props) => {
     setQuantity(value?.title);
     patchCartItem(data, props.id, setLoading, setSnackbar);
   };
-
+  // console.log(Boolean(selectedItems.current.length));
+  for (let index = 1; index <= 100; index++) {
+    quantityList.push({ title: String(index) });
+  }
   return (
     <>
       <Grid container justify='center' alignItems='center' item xs={2} md={1}>
@@ -228,7 +243,3 @@ const CartItem = (props) => {
 export default CartItem;
 
 const quantityList = [];
-
-for (let index = 1; index <= 100; index++) {
-  quantityList.push({ title: String(index) });
-}

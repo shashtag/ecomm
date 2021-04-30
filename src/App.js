@@ -16,7 +16,7 @@ import UnderConstruction from "./pages/UnderConstruction";
 import LoadingLazy from "./ui/LoadingLazy";
 import { OrderProvider } from "./Context/OrderContext";
 import SelectAddress from "./pages/SelectAddress";
-import ReviewOrder from "./pages/ReviewOrder";
+import AllOrders from "./pages/AllOrders";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
@@ -209,7 +209,7 @@ function App() {
             render={() => (
               <>
                 <Navigation noCat={false} noSub={true} />
-                <UnderConstruction />
+                <AllOrders />
                 <Footer />
               </>
             )}
@@ -234,18 +234,6 @@ function App() {
                 <Navigation noCat={false} noSub={true} />
 
                 <SelectAddress />
-
-                <Footer />
-              </>
-            )}
-          />
-          <Route
-            path='/reviewOrder'
-            render={() => (
-              <>
-                <Navigation noCat={false} noSub={true} />
-
-                <ReviewOrder />
 
                 <Footer />
               </>

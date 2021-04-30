@@ -95,7 +95,7 @@ const Page2 = (props) => {
                 }}
                 placeholder='Enter your Street and Flat '
                 inputRef={register({
-                  required: "Flat/Street' is required",
+                  required: "Flat/Street is required",
                 })}
                 error={Boolean(errors.flat)}
                 helperText={errors.flat?.message}

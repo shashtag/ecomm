@@ -83,12 +83,13 @@ const Search = (props) => {
       trendingOnPage?.results?.length === 0 ? (
         <div
           style={{
+            minHeight: "50vh",
             display: "grid",
             placeItems: "center",
             height: "100%",
             width: "100%",
           }}>
-          <Typography variant='h1' style={{ opacity: "0.3" }}>
+          <Typography variant='h1' align='center' style={{ opacity: "0.3" }}>
             No Items Found
           </Typography>
         </div>

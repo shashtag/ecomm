@@ -119,7 +119,7 @@ export const addAddress = (data, setLoading, setPage, page, usr) => {
 export const postArtistDetails = (setLoading, func) => {
   setLoading(true);
   console.log();
-  var data = new FormData();
+  let data = new FormData();
   data.append("custom_url", uuidv4());
   var config = {
     method: "post",
@@ -201,6 +201,65 @@ export const createOrder = (data, setLoading, setSnackbar, setOrder) => {
     .then(function (response) {
       setLoading(false);
       setOrder(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const createRazorpayPayment = (
+  data,
+  setLoading,
+  setRazorPay,
+  history,
+) => {
+  setLoading(true);
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}orders/create/payment/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      setRazorPay(response.data);
+
+      const options = {
+        key: "rzp_test_Di6RK8bVcakkJ7",
+        currency: "INR",
+        order_id: response.data.razorpay_details.id,
+        handler: function (response) {
+          alert(response.razorpay_payment_id);
+          alert(response.razorpay_order_id);
+          alert(response.razorpay_signature);
+        },
+        prefill: {
+          name: response.data.razorpay_details.notes.name,
+          email: response.data.razorpay_details.notes.email,
+          contact: response.data.razorpay_details.notes.phone_number,
+        },
+        // notes: {
+        //   address: "Razorpay Corporate Office",
+        // },
+      };
+
+      var rzp1 = new window.Razorpay(options);
+      rzp1.on("payment.failed", function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+      });
+      rzp1.open();
+
+      console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
       console.log(error);

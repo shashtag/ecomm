@@ -6,12 +6,14 @@ import {
   useTheme,
   Button,
   TextField,
+  useMediaQuery,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { APContext } from "../../Context/APContext";
 import { UIContext } from "../../Context/UIContext";
 import { patchArtistDetails, patchUsrDetails } from "../../API/Patch";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -21,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
   input: {
     width: "500px",
     maxWidth: "100%",
+    marginTop: "10vh",
+
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "0",
+    },
   },
 }));
 
@@ -29,6 +36,7 @@ const Page3 = (props) => {
 
   const classes = useStyles();
   const theme = useTheme();
+  const md = useMediaQuery(theme.breakpoints.down("md"));
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -67,7 +75,9 @@ const Page3 = (props) => {
   return (
     <>
       <Grid container item>
-        <Typography variant='h5' style={{ paddingTop: theme.spacing(6) }}>
+        <Typography
+          variant='h5'
+          style={{ paddingTop: md ? theme.spacing(6) : theme.spacing(6) }}>
           Let us start by setting up your shop.
         </Typography>
       </Grid>
@@ -80,18 +90,12 @@ const Page3 = (props) => {
             item
             container
             justify='center'
-            spacing={4}
+            spacing={md ? 4 : 4}
             style={{
-              marginBottom: theme.spacing(4),
-              marginTop: theme.spacing(4),
+              marginBottom: md ? theme.spacing(4) : theme.spacing(4),
+              marginTop: md ? theme.spacing(4) : theme.spacing(4),
             }}>
-            <Grid
-              container
-              justify='center'
-              item
-              xs={12}
-              md={6}
-              style={{ marginTop: "10vh" }}>
+            <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
                 label='Aadhar card number'
@@ -113,13 +117,7 @@ const Page3 = (props) => {
                 helperText={errors.aadhar?.message}
               />
             </Grid>
-            <Grid
-              container
-              justify='center'
-              item
-              xs={12}
-              md={6}
-              style={{ marginTop: "10vh" }}>
+            <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
                 label='GST number'
@@ -141,13 +139,7 @@ const Page3 = (props) => {
                 helperText={errors.GST?.message}
               />
             </Grid>
-            <Grid
-              container
-              justify='center'
-              item
-              xs={12}
-              md={6}
-              style={{ marginTop: "10vh" }}>
+            <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
                 label='PAN Card number'
@@ -169,7 +161,7 @@ const Page3 = (props) => {
                 helperText={errors.PAN?.message}
               />
             </Grid>
-            {/* <Grid item xs={12} md={6} style={{ marginTop: "10vh" }}>
+            {/* <Grid item xs={12} md={6} >
             <TextField
               className={classes.input}
               label='Payment method'
@@ -192,7 +184,26 @@ const Page3 = (props) => {
             />
           </Grid> */}
           </Grid>
-          <Grid item container style={{}} justify='flex-end'>
+          <Grid
+            item
+            container
+            style={{}}
+            justify={md ? "flex-end" : "space-between"}>
+            <Button
+              component={Link}
+              to='artist/dashboard'
+              style={{
+                padding: "12px 80px",
+                borderRadius: "4px",
+                background: theme.palette.grey[500],
+                marginTop: theme.spacing(2),
+              }}
+              variant='contained'
+              size='large'
+              color='secondary'
+              className={classes.loginButton}>
+              <Typography variant='h5'>Skip or now</Typography>
+            </Button>
             <Button
               style={{
                 padding: "12px 80px",
