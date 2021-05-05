@@ -60,7 +60,7 @@ export const fetchBaseDetailsUser = (
       setSnackbar({
         value: true,
         message: "Could not load user details",
-        type: "red",
+        type: "error",
       });
     });
 };

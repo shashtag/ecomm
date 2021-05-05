@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Hero = () => {
   const classes = useStyles();
-  const { usrBaseInfo } = useContext(UIContext);
+  const { usrBaseInfo, token } = useContext(UIContext);
   return (
     <Grid container spacing={0} className={classes.hero}>
       <Grid xs={12} md={4} item>
@@ -95,7 +95,13 @@ const Hero = () => {
         </Typography>
         <Button
           component={Link}
-          to={usrBaseInfo?.is_artist ? "/artist/dashboard" : "/artist/signup"}
+          to={
+            token
+              ? usrBaseInfo?.is_artist
+                ? "/artist/dashboard"
+                : "/user/profile"
+              : "/artist/signup"
+          }
           variant='contained'
           size='large'
           color='secondary'

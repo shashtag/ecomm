@@ -10,7 +10,7 @@ export const ADashboardProvider = (props) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(1);
   const [topListings, setTopListings] = useState("");
   const [insights, setInsights] = useState(false);
   const [img, setImg] = useState(false);

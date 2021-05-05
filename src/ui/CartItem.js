@@ -77,14 +77,18 @@ const CartItem = (props) => {
     patchCartItem(data, props.id, setLoading, setSnackbar);
   };
   // console.log(Boolean(selectedItems.current.length));
-  for (let index = 1; index <= 100; index++) {
+
+  const quantityList = [];
+
+  for (let index = 1; index <= props.stock; index++) {
     quantityList.push({ title: String(index) });
   }
   return (
     <>
       <Grid container justify='center' alignItems='center' item xs={2} md={1}>
         <Checkbox
-          checked={checked}
+          checked={props.stock === 0 ? false : checked}
+          disabled={props.stock === 0}
           onChange={() => setChecked(!checked)}
           color='secondary'
           inputProps={{ "aria-label": "secondary checkbox" }}
@@ -241,5 +245,3 @@ const CartItem = (props) => {
 };
 
 export default CartItem;
-
-const quantityList = [];

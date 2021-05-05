@@ -53,7 +53,7 @@ const Page3 = (props) => {
   const { setLoading, setSnackbar } = useContext(UIContext);
   const handlePageChange = () => {
     var data2 = JSON.stringify({ is_first_login: false });
-    patchUsrDetails(data2, setLoading, setSnackbar);
+    patchUsrDetails(data2, setLoading, setSnackbar, history, false);
     const data = {
       aadhar_card_no: aadhar,
       pan_card_no: PAN,
@@ -190,8 +190,18 @@ const Page3 = (props) => {
             style={{}}
             justify={md ? "flex-end" : "space-between"}>
             <Button
-              component={Link}
-              to='artist/dashboard'
+              // component={Link}
+              // to='artist/dashboard'
+              onClick={() => {
+                var data2 = JSON.stringify({ is_first_login: false });
+                patchUsrDetails(
+                  data2,
+                  setLoading,
+                  setSnackbar,
+                  history,
+                  "/artist/dashboard",
+                );
+              }}
               style={{
                 padding: "12px 80px",
                 borderRadius: "4px",

@@ -118,7 +118,7 @@ const UploadProduct = () => {
               options={categoryList}
               getOptionLabel={(option) => option.title}
               onChange={(e, value) => {
-                setCategory(value.title);
+                setCategory(value?.title);
               }}
               renderInput={(params) => (
                 <TextField
@@ -294,6 +294,10 @@ const UploadProduct = () => {
           <Grid item container xs={12} spacing={1}>
             <Grid item xs={6}>
               <Autocomplete
+                getOptionSelected={(option, value) =>
+                  option.title === value.title
+                }
+                value={{ title: String(quantity) }}
                 options={quantityList}
                 getOptionLabel={(option) => option.title}
                 classes={{ inputRoot: classes.inproot }}

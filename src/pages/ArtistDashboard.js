@@ -19,6 +19,7 @@ import ArtistProfile from "./ArtistProfile";
 import Help from "./Help";
 import ArtistPage from "./ArtistPage";
 import UnderConstruction from "./UnderConstruction";
+import AllOrders from "./AllOrders";
 
 // const drawerWidth = 250;
 
@@ -95,7 +96,7 @@ const ArtistDashboard = (props) => {
               <ArtistProfile />
             </Route>
             <Route path={`${path}/track`}>
-              <UnderConstruction />
+              <AllOrders artist={true} />
             </Route>
             <Route path={`${path}/faq`}>
               <UnderConstruction />

@@ -41,7 +41,7 @@ const Page2 = (props) => {
 
   const handlePageChange = () => {
     const data = {
-      address_type: "Pickup",
+      address_type: props.type,
       street: flat,
       city: city,
       state: state,

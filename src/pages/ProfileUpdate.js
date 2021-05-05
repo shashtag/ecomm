@@ -114,24 +114,44 @@ const ProfileUpdate = () => {
   return (
     <Grid container item direction='column' className={classes.root}>
       <Grid container xs={12} item justify='space-between'>
-        <Typography
-          variant='h2'
-          style={{
-            fontWeight: "bold",
-            marginBottom: theme.spacing(0.5),
-            // color: "#40567A",
-          }}
-          color='secondary'>
-          {usrBaseInfo?.full_name}
-        </Typography>
-      </Grid>
-      <Grid item>
-        <Typography
-          variant='h5'
-          style={{ marginBottom: theme.spacing(5), opacity: "0.8" }}
-          color='secondary'>
-          Email : {usrBaseInfo?.email}
-        </Typography>
+        <Grid item>
+          <Typography
+            variant='h2'
+            style={{
+              fontWeight: "bold",
+              marginBottom: theme.spacing(0.5),
+              // color: "#40567A",
+            }}
+            color='secondary'>
+            {usrBaseInfo?.full_name}
+          </Typography>
+          <Typography
+            variant='h5'
+            style={{ marginBottom: theme.spacing(5), opacity: "0.8" }}
+            color='secondary'>
+            Email : {usrBaseInfo?.email}
+          </Typography>
+        </Grid>
+        {usrBaseInfo.is_artist ? null : (
+          <Grid item>
+            <Button
+              // component={Link}
+              // to='/artist/signup'
+              onClick={() => {}}
+              variant='contained'
+              size='large'
+              color='secondary'
+              type='submit'
+              style={{
+                ...theme.palette.background.gradient,
+
+                marginTop: theme.spacing(1),
+                padding: "1rem 1.5rem",
+              }}>
+              <Typography variant='h5'>Become an artist</Typography>
+            </Button>
+          </Grid>
+        )}
       </Grid>
       <Grid item>
         <Typography
@@ -314,6 +334,7 @@ const ProfileUpdate = () => {
                     pincode={data.pin_code}
                     state={data.state}
                     street={data.street}
+                    type={data.address_type}
                   />
                 </Grid>
               );

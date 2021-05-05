@@ -35,7 +35,7 @@ const ArtistProfile = () => {
           </Grid>
         ) : page === 2 ? (
           <Grid container item>
-            <Page2 page={page} setPage={setPage} />
+            <Page2 type={"Pickup"} page={page} setPage={setPage} />
           </Grid>
         ) : (
           <Grid container item>

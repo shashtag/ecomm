@@ -22,12 +22,12 @@ const DashboardCards = () => {
         },
         {
           head: "Total Sales",
-          value: `${insights?.details?.total_sales}.00 Rupees`,
+          value: ` ₹ ${insights?.details?.total_sales}.00`,
           color: "#FF5376",
         },
         {
           head: "Balance",
-          value: `${insights?.details?.balance} Rupees`,
+          value: `₹ ${insights?.details?.balance}`,
           color: "#FD8623",
         },
       ]);
@@ -35,7 +35,7 @@ const DashboardCards = () => {
     return () => {};
   }, [insights]);
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={1}>
       {insights
         ? insight?.map((data, i) => {
             return (

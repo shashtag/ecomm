@@ -57,6 +57,15 @@ const Address = (props) => {
             {props.name}
           </Typography>
         </Grid>
+        {props.type === "Pickup" ? (
+          <Grid item>
+            <Typography variant='h5'>Pickup From</Typography>
+          </Grid>
+        ) : (
+          <Grid item>
+            <Typography variant='h5'>Ship to</Typography>
+          </Grid>
+        )}
         <Grid item>
           <Typography variant='h5'>{props.street}</Typography>
         </Grid>

@@ -233,9 +233,7 @@ export const createRazorpayPayment = (
         currency: "INR",
         order_id: response.data.razorpay_details.id,
         handler: function (response) {
-          alert(response.razorpay_payment_id);
-          alert(response.razorpay_order_id);
-          alert(response.razorpay_signature);
+          history.push("/successOrder");
         },
         prefill: {
           name: response.data.razorpay_details.notes.name,

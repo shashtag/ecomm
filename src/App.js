@@ -17,6 +17,7 @@ import LoadingLazy from "./ui/LoadingLazy";
 import { OrderProvider } from "./Context/OrderContext";
 import SelectAddress from "./pages/SelectAddress";
 import AllOrders from "./pages/AllOrders";
+import SuccessOrder from "./pages/SuccessOrder";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
@@ -209,7 +210,7 @@ function App() {
             render={() => (
               <>
                 <Navigation noCat={false} noSub={true} />
-                <AllOrders />
+                <AllOrders artist={false} />
                 <Footer />
               </>
             )}
@@ -234,6 +235,18 @@ function App() {
                 <Navigation noCat={false} noSub={true} />
 
                 <SelectAddress />
+
+                <Footer />
+              </>
+            )}
+          />
+          <Route
+            path='/successOrder'
+            render={() => (
+              <>
+                <Navigation noCat={false} noSub={true} />
+
+                <SuccessOrder />
 
                 <Footer />
               </>

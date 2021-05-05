@@ -62,7 +62,13 @@ export const patchArtistDetails = (
     });
 };
 
-export const patchUsrDetails = (data, setLoading, setSnackbar) => {
+export const patchUsrDetails = (
+  data,
+  setLoading,
+  setSnackbar,
+  history,
+  location,
+) => {
   setLoading(true);
   var config = {
     method: "patch",
@@ -84,6 +90,9 @@ export const patchUsrDetails = (data, setLoading, setSnackbar) => {
           message: "Phone number changed successfully",
           type: "success",
         });
+      }
+      if (location) {
+        history.push(location);
       }
     })
     .catch(function (error) {

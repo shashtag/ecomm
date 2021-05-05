@@ -80,7 +80,7 @@ const NewAddress = () => {
         BackdropComponent={Backdrop}>
         <Fade in={open}>
           <div className={classes.paper}>
-            <Page2 usr={true} />
+            <Page2 usr={true} type={"Shipping"} />
           </div>
         </Fade>
       </Modal>

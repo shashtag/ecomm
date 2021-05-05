@@ -96,6 +96,7 @@ const Cart = () => {
               category={data.product.category}
               img={data.product.display_image}
               price={data.product.kalafex_price}
+              stock={data.product.stock_left}
             />
           </Grid>
         );

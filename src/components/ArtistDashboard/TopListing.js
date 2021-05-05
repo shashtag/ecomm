@@ -47,6 +47,8 @@ const TopListing = (props) => {
         });
       });
   };
+
+  const handleDelete = () => {};
   const theme = useTheme();
   return (
     <Grid
@@ -112,6 +114,20 @@ const TopListing = (props) => {
             </Button>
           </div>
         </Grid>
+        {/* <Button
+          // startIcon={<AddBoxIcon />}
+          variant='contained'
+          size='small'
+          color='primary'
+          type='submit'
+          style={{
+            marginTop: theme.spacing(1),
+            color: theme.palette.error.main,
+          }}
+          onClick={handleDelete}>
+          <Typography variant='h5'>Delete Product</Typography>
+        </Button> */}
+
         {/* <Grid item container>
           <Button
             variant='contained'
