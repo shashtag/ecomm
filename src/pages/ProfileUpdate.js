@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import { fetchAddress } from "../API/Get";
 import { patchUsrDetails } from "../API/Patch";
 import { UIContext } from "../Context/UIContext";
@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProfileUpdate = () => {
+  const history = useHistory();
   const {
     usrBaseInfo,
     setUsrBaseInfo,
@@ -137,7 +138,17 @@ const ProfileUpdate = () => {
             <Button
               // component={Link}
               // to='/artist/signup'
-              onClick={() => {}}
+              onClick={() => {
+                const data = { is_first_login: true, is_artist: true };
+                patchUsrDetails(
+                  data,
+                  setLoading,
+                  setSnackbar,
+                  history,
+                  false,
+                  true,
+                );
+              }}
               variant='contained'
               size='large'
               color='secondary'

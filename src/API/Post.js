@@ -105,7 +105,7 @@ export const addAddress = (data, setLoading, setPage, page, usr) => {
 
 export const postArtistDetails = (setLoading, func) => {
   setLoading(true);
-  console.log();
+
   let data = new FormData();
   data.append("custom_url", uuidv4());
   var config = {

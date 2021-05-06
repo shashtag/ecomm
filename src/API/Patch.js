@@ -68,6 +68,7 @@ export const patchUsrDetails = (
   setSnackbar,
   history,
   location,
+  reload,
 ) => {
   setLoading(true);
   var config = {
@@ -93,6 +94,15 @@ export const patchUsrDetails = (
       }
       if (location) {
         history.push(location);
+      }
+      if (reload) {
+        setSnackbar({
+          value: true,
+          message: "Congratulations! Artist profile created successfully",
+
+          type: "success",
+        });
+        window.location.reload();
       }
     })
     .catch(function (error) {
