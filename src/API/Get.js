@@ -54,6 +54,9 @@ export const fetchBaseDetailsUser = (
       if (response.data.is_artist && response.data.is_first_login) {
         history.push("/artist/profile");
       }
+      if (response.data.is_kalafex_admin) {
+        history.push("/admin");
+      }
     })
     .catch(function (error) {
       console.log(error);

@@ -78,14 +78,13 @@ const Usp = () => {
           variant='h6'
           align='center'
           style={{
-            paddingLeft: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
-            paddingRight: sm ? (md ? (lg ? "16%" : `12%`) : "8%") : null,
+            paddingLeft: sm ? (md ? (lg ? "20%" : `14%`) : "8%") : null,
+            paddingRight: sm ? (md ? (lg ? "20%" : `14%`) : "8%") : null,
             marginBottom: theme.spacing(4),
             // background: "white",
           }}>
-          Change the text to “From adding to your home's aesthetic to adding to
-          your personal versatile aesthetic, whatever it is you need, we've got
-          you covered.”
+          From adding to your home's aesthetic to adding to your personal
+          versatile aesthetic, whatever it is you need, we've got you covered.
         </Typography>
       </Grid>
       {usp.map((usp, i) => (
@@ -109,11 +108,9 @@ const Usp = () => {
                     marginBottom: "16px",
                   }}>
                   <img
-                    style={{
-                      marginBottom: i === 1 ? theme.spacing(1.2) : null,
-                    }}
-                    width='18%'
-                    height='18%'
+                    style={{}}
+                    width='40px'
+                    height='40px'
                     src={usp.icon}
                     alt={i}
                   />

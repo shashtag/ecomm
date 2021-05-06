@@ -161,12 +161,21 @@ const SignupArtist = (props) => {
                     variant='h6'
                     style={{ fontWeight: 500, display: "inline" }}>
                     Want to sell your art?{" "}
-                    <Button
+                    <Typography
+                      variant='h6'
                       component={Link}
                       to='/artist/signup'
-                      style={{ display: "inline" }}>
-                      <img src={registerNow} alt='register now' />
-                    </Button>
+                      style={{ display: "inline", textDecoration: "none" }}>
+                      <span
+                        style={{
+                          background:
+                            "-webkit-linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}>
+                        Register here
+                      </span>
+                    </Typography>
                   </Typography>
                 </>
               )

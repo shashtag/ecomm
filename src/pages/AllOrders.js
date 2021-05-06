@@ -1,8 +1,8 @@
 import { Grid, makeStyles, Typography, useTheme } from "@material-ui/core";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router";
-import OrderItem from "../components/OrderItem";
+import { Redirect, useHistory } from "react-router";
+import OrderItem from "../ui/OrderItem";
 import { UIContext } from "../Context/UIContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -20,16 +20,16 @@ const AllOrders = (props) => {
   const classes = useStyles();
   const history = useHistory();
   const [orders, setOrders] = useState(false);
-  const { setLoading } = useContext(UIContext);
+  const { setLoading, usrBaseInfo, token } = useContext(UIContext);
 
   useEffect(() => {
     setLoading(true);
     var config = {
       method: "get",
       url: `${process.env.REACT_APP_URL}${
-        props.artist
-          ? "orders/view/orderproducts/artist/"
-          : "orders/view/orders/"
+        props.admin
+          ? "orders/view/orders/pending/"
+          : "orders/view/previous_orders/"
       }`,
       headers: {
         Authorization: `Token ${localStorage.getItem("Token")}`,
@@ -54,12 +54,19 @@ const AllOrders = (props) => {
       return data?.payment?.paid_successfully;
     }),
   );
+  // if (!token) {
+  //   return <Redirect to='/' />;
+  // }
+
+  // if (!usrBaseInfo?.is_kalafex_admin && token) {
+  //   return <Redirect to='/' />;
+  // }
   return (
     <Grid container className={classes.root} direction='column'>
       <Grid item>
         <Typography variant='h3' style={{ marginBottom: theme.spacing(3) }}>
           {" "}
-          Your Orders
+          {usrBaseInfo?.is_kalafex_admin ? "All" : "Your"} Orders
         </Typography>
       </Grid>
       <Grid container item>

@@ -5,6 +5,7 @@ import DropZone from "../../ui/DropZone";
 import { ADashboardContext } from "../../Context/ADashboardContext";
 import axios from "axios";
 import { UIContext } from "../../Context/UIContext";
+import { deleteProduct } from "../../API/Delete";
 
 const TopListing = (props) => {
   // console.log(props);
@@ -48,7 +49,9 @@ const TopListing = (props) => {
       });
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    deleteProduct(props.pid, setLoading, setSnackbar);
+  };
   const theme = useTheme();
   return (
     <Grid
@@ -114,7 +117,7 @@ const TopListing = (props) => {
             </Button>
           </div>
         </Grid>
-        {/* <Button
+        <Button
           // startIcon={<AddBoxIcon />}
           variant='contained'
           size='small'
@@ -126,7 +129,7 @@ const TopListing = (props) => {
           }}
           onClick={handleDelete}>
           <Typography variant='h5'>Delete Product</Typography>
-        </Button> */}
+        </Button>
 
         {/* <Grid item container>
           <Button

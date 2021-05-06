@@ -22,17 +22,19 @@ const HeaderIcons = () => {
   return (
     <div style={{ margin: theme.spacing(0, "auto") }}>
       {token ? (
-        <IconButton
-          onClick={() => {
-            history.push("/user/profile");
-          }}
-          style={{}}>
-          <PersonOutline
-            style={{
-              color: theme.palette.secondary.main,
+        usrBaseInfo?.is_kalafex_admin ? null : (
+          <IconButton
+            onClick={() => {
+              history.push("/user/profile");
             }}
-          />
-        </IconButton>
+            style={{}}>
+            <PersonOutline
+              style={{
+                color: theme.palette.secondary.main,
+              }}
+            />
+          </IconButton>
+        )
       ) : null}
 
       {usrBaseInfo?.is_artist ? (
@@ -50,29 +52,7 @@ const HeaderIcons = () => {
       ) : null}
 
       {token ? (
-        <>
-          <IconButton
-            onClick={() => {
-              history.push("/cart");
-            }}
-            style={{ marginLeft: theme.spacing(2) }}>
-            <ShoppingCartOutlinedIcon
-              style={{
-                color: theme.palette.secondary.main,
-              }}
-            />
-          </IconButton>
-          <IconButton
-            style={{ marginLeft: theme.spacing(2) }}
-            onClick={() => {
-              history.push("/user/trackOrder");
-            }}>
-            <BallotOutlinedIcon
-              style={{
-                color: theme.palette.secondary.main,
-              }}
-            />
-          </IconButton>
+        usrBaseInfo?.is_kalafex_admin ? (
           <IconButton
             style={{ marginLeft: theme.spacing(2) }}
             onClick={() => {
@@ -84,7 +64,43 @@ const HeaderIcons = () => {
               }}
             />
           </IconButton>
-        </>
+        ) : (
+          <>
+            <IconButton
+              onClick={() => {
+                history.push("/cart");
+              }}
+              style={{ marginLeft: theme.spacing(2) }}>
+              <ShoppingCartOutlinedIcon
+                style={{
+                  color: theme.palette.secondary.main,
+                }}
+              />
+            </IconButton>
+            <IconButton
+              style={{ marginLeft: theme.spacing(2) }}
+              onClick={() => {
+                history.push("/user/trackOrder");
+              }}>
+              <BallotOutlinedIcon
+                style={{
+                  color: theme.palette.secondary.main,
+                }}
+              />
+            </IconButton>
+            <IconButton
+              style={{ marginLeft: theme.spacing(2) }}
+              onClick={() => {
+                logout(setLoading, setUsrBaseInfo, setToken, history);
+              }}>
+              <ExitToAppIcon
+                style={{
+                  color: theme.palette.secondary.main,
+                }}
+              />
+            </IconButton>
+          </>
+        )
       ) : null}
     </div>
   );

@@ -40,3 +40,33 @@ export const delCartItem = (url, setLoading, setSnackbar) => {
       console.log(error);
     });
 };
+
+export const deleteProduct = (pid, setLoading, setSnackbar) => {
+  setLoading(true);
+  var config = {
+    method: "delete",
+    url: `${process.env.REACT_APP_URL}store/modify/product/${pid}/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      setSnackbar({
+        value: true,
+        message: "Product successfully deleted.",
+        type: "success",
+      });
+      window.location.reload();
+    })
+    .catch(function (error) {
+      setLoading(false);
+      setSnackbar({
+        value: true,
+        message: "An error occurred. Please try again.",
+        type: "error",
+      });
+    });
+};

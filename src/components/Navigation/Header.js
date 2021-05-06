@@ -105,7 +105,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1.5, 1.25, 1, 1.25),
   },
   name: {
-    background: "linear-gradient(#FFB800, 100%, #FF4185)",
+    background: "-webkit-linear-gradient(90.04deg, #FFB800 0%, #FF4185 99.67%",
+
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   },
@@ -163,12 +164,47 @@ export default function Header(props) {
       </div>
       <Typography
         variant='h6'
-        color='secondary'
         style={{ fontWeight: "600", marginRight: theme.spacing(2) }}>
         <span style={{ fontWeight: "500" }}>Hello</span>{" "}
-        <span className={classes.name}></span>
-        {usrBaseInfo?.full_name?.split(" ")[0]}
+        <span
+          style={{
+            background:
+              "-webkit-linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>
+          {usrBaseInfo?.full_name?.split(" ")[0]}
+        </span>
       </Typography>
+      {usrBaseInfo?.is_kalafex_admin ? (
+        <>
+          <Button
+            component={Link}
+            style={{ margin: theme.spacing(0, 2) }}
+            to='/admin/orders'>
+            <Typography
+              variant='h6'
+              color='secondary'
+              noWrap
+              style={{ fontWeight: "600" }}>
+              Orders
+            </Typography>
+          </Button>
+
+          <Button
+            component={Link}
+            style={{ margin: theme.spacing(0, 2) }}
+            to='/admin/cashout'>
+            <Typography
+              variant='h6'
+              color='secondary'
+              noWrap
+              style={{ fontWeight: "600" }}>
+              Cashouts
+            </Typography>
+          </Button>
+        </>
+      ) : null}
       <HeaderIcons />
     </div>
   ) : (
@@ -292,43 +328,47 @@ export default function Header(props) {
               </div>
             </div> */}
 
-            <div className={classes.search}>
-              <InputBase
-                placeholder='Try "handmade mugs"'
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ "aria-label": "search" }}
-                value={search}
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                }}
-              />
-
-              <IconButton
-                component={Link}
-                onClick={search.length === 0 ? (e) => e.preventDefault() : null}
-                to={`/search/${search}`}
-                style={{
-                  // height: "0.75rem",
-                  // width: "20px",
-                  borderRadius: "0 4px 4px 0",
-                  background: theme.palette.secondary.main,
-                }}>
-                <SearchIcon
-                  style={{
-                    color: "white",
+            {usrBaseInfo?.is_kalafex_admin ? null : (
+              <div className={classes.search}>
+                <InputBase
+                  placeholder='Try "handmade mugs"'
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  inputProps={{ "aria-label": "search" }}
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
                   }}
                 />
-              </IconButton>
-              {/* <img
+
+                <IconButton
+                  component={Link}
+                  onClick={
+                    search.length === 0 ? (e) => e.preventDefault() : null
+                  }
+                  to={`/search/${search}`}
+                  style={{
+                    // height: "0.75rem",
+                    // width: "20px",
+                    borderRadius: "0 4px 4px 0",
+                    background: theme.palette.secondary.main,
+                  }}>
+                  <SearchIcon
+                    style={{
+                      color: "white",
+                    }}
+                  />
+                </IconButton>
+                {/* <img
                   style={{ position: "absolute", right: 0, cursor: "pointer" }}
                   src={search}
                   alt='search'
                   height='100%'
                 /> */}
-            </div>
+              </div>
+            )}
           </div>
           {/* <div className={classes.grow} /> */}
           {desktop}
@@ -382,15 +422,17 @@ export default function Header(props) {
                     </>
                   ) : null}
                   {token ? (
-                    <ListItem button component={Link} to='/user/profile'>
-                      <PersonOutline
-                        style={{
-                          color: theme.palette.secondary.main,
-                          fontSize: "20px",
-                        }}
-                      />
-                      <Typography variant='h5'>Profile</Typography>
-                    </ListItem>
+                    usrBaseInfo?.is_kalafex_admin ? null : (
+                      <ListItem button component={Link} to='/user/profile'>
+                        <PersonOutline
+                          style={{
+                            color: theme.palette.secondary.main,
+                            fontSize: "20px",
+                          }}
+                        />
+                        <Typography variant='h5'>Profile</Typography>
+                      </ListItem>
+                    )
                   ) : null}
                   {usrBaseInfo?.is_artist ? (
                     <ListItem component={Link} to='/artist/dashboard'>
@@ -406,29 +448,22 @@ export default function Header(props) {
                       </Typography>
                     </ListItem>
                   ) : null}
-                  <ListItem component={Link} to='/cart'>
-                    <ShoppingCartOutlinedIcon
-                      style={{
-                        color: theme.palette.secondary.main,
-                        fontSize: "20px",
-                      }}
-                    />
-                    {"  "}
-                    <Typography variant='h5' style={{ color: "#152238" }}>
-                      Cart
-                    </Typography>
-                  </ListItem>
+                  {usrBaseInfo?.is_kalafex_admin ? null : (
+                    <ListItem component={Link} to='/cart'>
+                      <ShoppingCartOutlinedIcon
+                        style={{
+                          color: theme.palette.secondary.main,
+                          fontSize: "20px",
+                        }}
+                      />
+                      {"  "}
+                      <Typography variant='h5' style={{ color: "#152238" }}>
+                        Cart
+                      </Typography>
+                    </ListItem>
+                  )}
                   {token ? (
-                    <>
-                      <ListItem button component={Link} to='/user/trackOrder'>
-                        <BallotOutlinedIcon
-                          style={{
-                            color: theme.palette.secondary.main,
-                            fontSize: "20px",
-                          }}
-                        />
-                        <Typography variant='h5'>Track My Order</Typography>
-                      </ListItem>
+                    usrBaseInfo?.is_kalafex_admin ? (
                       <ListItem
                         component={Link}
                         onClick={() => {
@@ -450,72 +485,114 @@ export default function Header(props) {
                           Logout
                         </Typography>
                       </ListItem>
-                    </>
+                    ) : (
+                      <>
+                        <ListItem button component={Link} to='/user/trackOrder'>
+                          <BallotOutlinedIcon
+                            style={{
+                              color: theme.palette.secondary.main,
+                              fontSize: "20px",
+                            }}
+                          />
+                          <Typography variant='h5'>Track My Order</Typography>
+                        </ListItem>
+                        <ListItem
+                          component={Link}
+                          onClick={() => {
+                            logout(
+                              setLoading,
+                              setUsrBaseInfo,
+                              setToken,
+                              props.history,
+                            );
+                          }}>
+                          <ExitToAppIcon
+                            style={{
+                              color: theme.palette.secondary.main,
+                              fontSize: "20px",
+                            }}
+                          />
+                          {"  "}
+                          <Typography variant='h5' style={{ color: "#152238" }}>
+                            Logout
+                          </Typography>
+                        </ListItem>
+                      </>
+                    )
                   ) : null}
                 </List>
 
-                <Divider style={{ height: "10px" }} />
+                {usrBaseInfo?.is_kalafex_admin ? null : (
+                  <>
+                    <Divider style={{ height: "10px" }} />
 
-                <List>
-                  <ListItem>
-                    <Typography variant='h4'>Popular Categories</Typography>
-                  </ListItem>
+                    <List>
+                      <ListItem>
+                        <Typography variant='h4'>Popular Categories</Typography>
+                      </ListItem>
 
-                  <ListItem button component={Link} to='Paintings & Artwork'>
-                    <Typography variant='h6'>Paintings & Artwork</Typography>
-                  </ListItem>
-                  <ListItem button component={Link} to='Lifestyle & Home'>
-                    <Typography variant='h6'>Lifestyle & Home</Typography>
-                  </ListItem>
-                  <ListItem
-                    button
-                    component={Link}
-                    to='Jewellery & Accessories'>
-                    <Typography variant='h6'>
-                      Jewellery & Accessories
-                    </Typography>
-                  </ListItem>
-                  <ListItem button component={Link} to='Collectibles'>
-                    <Typography variant='h6'>Collectibles</Typography>
-                  </ListItem>
-                </List>
-                <Divider style={{ height: "10px" }} />
-                <List>
-                  <ListItem button component={Link} to='about-us'>
-                    <Typography variant='h6'>About Us</Typography>
-                  </ListItem>
-                  <ListItem
-                    button
-                    component='a'
-                    href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
-                    target='_blank'>
-                    <Typography variant='h6'>Disclaimer</Typography>
-                  </ListItem>
-                  <ListItem
-                    button
-                    component='a'
-                    href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
-                    target='_blank'>
-                    <Typography variant='h6'>Terms of Use</Typography>
-                  </ListItem>
-                  <ListItem
-                    button
-                    component='a'
-                    href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
-                    target='_blank'>
-                    <Typography variant='h6'>Privacy</Typography>
-                  </ListItem>
-                  <ListItem
-                    button
-                    component='a'
-                    href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
-                    target='_blank'>
-                    <Typography variant='h6'>Returns</Typography>
-                  </ListItem>
-                  <ListItem button component={Link} to='/contact'>
-                    <Typography variant='h6'>Contact Us</Typography>
-                  </ListItem>
-                </List>
+                      <ListItem
+                        button
+                        component={Link}
+                        to='Paintings & Artwork'>
+                        <Typography variant='h6'>
+                          Paintings & Artwork
+                        </Typography>
+                      </ListItem>
+                      <ListItem button component={Link} to='Lifestyle & Home'>
+                        <Typography variant='h6'>Lifestyle & Home</Typography>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component={Link}
+                        to='Jewellery & Accessories'>
+                        <Typography variant='h6'>
+                          Jewellery & Accessories
+                        </Typography>
+                      </ListItem>
+                      <ListItem button component={Link} to='Collectibles'>
+                        <Typography variant='h6'>Collectibles</Typography>
+                      </ListItem>
+                    </List>
+                    <Divider style={{ height: "10px" }} />
+                    <List>
+                      <ListItem button component={Link} to='about-us'>
+                        <Typography variant='h6'>About Us</Typography>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component='a'
+                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
+                        target='_blank'>
+                        <Typography variant='h6'>Disclaimer</Typography>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component='a'
+                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
+                        target='_blank'>
+                        <Typography variant='h6'>Terms of Use</Typography>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component='a'
+                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
+                        target='_blank'>
+                        <Typography variant='h6'>Privacy</Typography>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component='a'
+                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
+                        target='_blank'>
+                        <Typography variant='h6'>Returns</Typography>
+                      </ListItem>
+                      <ListItem button component={Link} to='/contact'>
+                        <Typography variant='h6'>Contact Us</Typography>
+                      </ListItem>
+                    </List>
+                  </>
+                )}
                 <Divider style={{ height: "10px" }} />
                 <div
                   style={{ display: "flex", marginLeft: theme.spacing(0.75) }}>

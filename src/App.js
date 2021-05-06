@@ -18,6 +18,8 @@ import { OrderProvider } from "./Context/OrderContext";
 import SelectAddress from "./pages/SelectAddress";
 import AllOrders from "./pages/AllOrders";
 import SuccessOrder from "./pages/SuccessOrder";
+import Admin from "./pages/Admin";
+import AOrders from "./pages/AOrders";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
@@ -210,7 +212,7 @@ function App() {
             render={() => (
               <>
                 <Navigation noCat={false} noSub={true} />
-                <AllOrders artist={false} />
+                <AllOrders admin={false} />
                 <Footer />
               </>
             )}
@@ -249,6 +251,26 @@ function App() {
                 <SuccessOrder />
 
                 <Footer />
+              </>
+            )}
+          />
+          <Route
+            path='/admin/orders'
+            render={() => (
+              <>
+                <Navigation noCat={true} noSub={true} />
+
+                <AllOrders admin={true} />
+              </>
+            )}
+          />
+          <Route
+            path='/admin'
+            render={() => (
+              <>
+                <Navigation noCat={true} noSub={true} />
+
+                <Admin />
               </>
             )}
           />

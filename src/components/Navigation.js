@@ -8,9 +8,13 @@ import { DomainPropTypes } from "@material-ui/pickers/constants/prop-types";
 import { UIContext } from "../Context/UIContext";
 
 const Navigation = (props) => {
-  const { token } = useContext(UIContext);
+  const { token, usrBaseInfo } = useContext(UIContext);
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
+
+  if (!usrBaseInfo && token) {
+    return <div style={{ height: "10vh" }}></div>;
+  }
 
   return (
     <>
