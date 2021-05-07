@@ -80,7 +80,8 @@ const Search = (props) => {
         </Typography>
       </Grid>
       {products?.results?.length === 0 ||
-      trendingOnPage?.results?.length === 0 ? (
+      trendingOnPage?.results?.length === 0 ||
+      trendingProducts?.results.length === 0 ? (
         <div
           style={{
             minHeight: "50vh",

@@ -132,9 +132,9 @@ const UploadProduct = () => {
                     shrink: true,
                   }}
                   placeholder='Enter Product Category'
-                  // inputRef={register({
-                  //   required: "Category is required",
-                  // })}
+                  inputRef={register({
+                    required: "Category is required",
+                  })}
                   error={Boolean(errors.category)}
                   helperText={errors.category?.message}
                   variant='outlined'
@@ -156,13 +156,13 @@ const UploadProduct = () => {
                 shrink: true,
               }}
               placeholder='Enter Product Name'
-              // inputRef={register({
-              //   required: "Name is required",
-              //   minLength: {
-              //     value: 40,
-              //     message: "Please add a name longer than 40 characters ",
-              //   },
-              // })}
+              inputRef={register({
+                required: "Name is required",
+                minLength: {
+                  value: 40,
+                  message: "Please add a name longer than 40 characters ",
+                },
+              })}
               error={Boolean(errors.name)}
               helperText={errors.name?.message}
               variant='outlined'
@@ -171,11 +171,11 @@ const UploadProduct = () => {
           <Grid item xs={12} style={{ marginTop: theme.spacing(3) }}>
             <DropZone
               name='dropzone'
-              // validate={register({
-              //   required: "Name is required",
-              // })}
-              // error={Boolean(errors.name)}
-              // helperText={errors.name?.message}
+              validate={register({
+                required: "Name is required",
+              })}
+              error={Boolean(errors.name)}
+              helperText={errors.name?.message}
             />
             {/* <section
             className='container'
@@ -235,13 +235,13 @@ const UploadProduct = () => {
                 shrink: true,
               }}
               placeholder='Enter Product Description'
-              // inputRef={register({
-              //   required: "Description is required",
-              //   minLength: {
-              //     value: 200,
-              //     message: "Please add a name longer than 200 characters ",
-              //   },
-              // })}
+              inputRef={register({
+                required: "Description is required",
+                minLength: {
+                  value: 200,
+                  message: "Please add a name longer than 200 characters ",
+                },
+              })}
               error={Boolean(errors.desc)}
               helperText={errors.desc?.message}
               variant='outlined'
@@ -267,9 +267,9 @@ const UploadProduct = () => {
                   shrink: true,
                 }}
                 placeholder='Enter Product Price'
-                // inputRef={register({
-                //   required: "Price is required",
-                // })}
+                inputRef={register({
+                  required: "Price is required",
+                })}
                 error={Boolean(errors.price)}
                 helperText={errors.price?.message}
                 variant='outlined'
@@ -316,9 +316,9 @@ const UploadProduct = () => {
                     //   shrink: true,
                     // }}
                     placeholder=''
-                    // inputRef={register({
-                    //   required: "Quantity is required",
-                    // })}
+                    inputRef={register({
+                      required: "Quantity is required",
+                    })}
                     error={Boolean(errors.quantity)}
                     helperText={errors.quantity?.message}
                     variant='filled'
@@ -338,7 +338,7 @@ const UploadProduct = () => {
                   ...theme.palette.background.gradient,
                   width: "100%",
                   marginTop: theme.spacing(1),
-                  padding: "16px 24px",
+                  padding: "18px 24px",
                 }}>
                 <Typography variant='h5'>Submit</Typography>
               </Button>
