@@ -162,6 +162,10 @@ const UploadProduct = () => {
                   value: 40,
                   message: "Please add a name longer than 40 characters ",
                 },
+                maxLength: {
+                  value: 250,
+                  message: "Please add a name shorter than 250 characters ",
+                },
               })}
               error={Boolean(errors.name)}
               helperText={errors.name?.message}
@@ -240,6 +244,10 @@ const UploadProduct = () => {
                 minLength: {
                   value: 200,
                   message: "Please add a name longer than 200 characters ",
+                },
+                maxLength: {
+                  value: 1000,
+                  message: "Please add a name shorter than 1000 characters ",
                 },
               })}
               error={Boolean(errors.desc)}

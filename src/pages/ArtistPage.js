@@ -85,8 +85,6 @@ const ArtistPage = (props) => {
       direction='column'
       className={props.artist ? null : classes.root}>
       <div
-        item
-        container
         style={{
           background: `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/bannerImg.png) center center / cover no-repeat `,
           maxHeight: "30vh",
