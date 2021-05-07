@@ -54,8 +54,12 @@ export const fetchBaseDetailsUser = (
       if (response.data.is_artist && response.data.is_first_login) {
         history.push("/artist/profile");
       }
-      if (response.data.is_kalafex_admin) {
-        history.push("/admin");
+      if (
+        response.data.is_kalafex_admin &&
+        window.performance.navigation.type !== 1
+      ) {
+        console.log(history);
+        history.push("/admin/");
       }
     })
     .catch(function (error) {
@@ -107,7 +111,7 @@ export const fetchArtistProducts = (id, setTopListings, setLoading) => {
     });
 };
 
-export const fetchArtistProfile = (setInsights, setLoading) => {
+export const fetchArtistProfile = (setInsights, setLoading, func) => {
   setLoading(true);
   var config = {
     method: "get",
@@ -119,7 +123,7 @@ export const fetchArtistProfile = (setInsights, setLoading) => {
 
   axios(config)
     .then(function (response) {
-      setLoading(false);
+      func();
       console.log(response.data);
 
       setInsights(response.data);
@@ -167,6 +171,31 @@ export const fetchOrderDetailsFinally = (url, setLoading) => {
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const allCashoutReq = (setLoading, setCashouts, pagination) => {
+  setLoading(true);
+  var config = {
+    method: "get",
+    url:
+      pagination === 1
+        ? `${process.env.REACT_APP_URL}accounts/view/cashout_requests/`
+        : `${process.env.REACT_APP_URL}accounts/view/cashout_requests/?page=${pagination}`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      setCashouts(response.data);
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      setLoading(false);
       console.log(error);
     });
 };

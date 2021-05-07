@@ -39,7 +39,7 @@ const ArtistProfile = () => {
           </Grid>
         ) : (
           <Grid container item>
-            <Page3 page={page} setPage={setPage} />
+            <Page3 page={page} cashout={false} setPage={setPage} />
           </Grid>
         )}
       </Grid>

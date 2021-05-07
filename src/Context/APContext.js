@@ -6,12 +6,24 @@ import { postArtistDetails } from "../API/Post";
 export const APContext = createContext();
 
 export const APProvider = (props) => {
-  const { setLoading, usrBaseInfo } = useContext(UIContext);
+  const {
+    setLoading,
+    usrBaseInfo,
+
+    setAadhar,
+
+    setGST,
+
+    setPAN,
+    setAcc,
+    setIfsc,
+    setAccName,
+    setBranch,
+    setUPI,
+  } = useContext(UIContext);
 
   const [customURL, setCustomURL] = useState("");
-  const [aadhar, setAadhar] = useState("");
-  const [GST, setGST] = useState("");
-  const [PAN, setPAN] = useState("");
+
   const [payment, setPayment] = useState("");
   const [avatar, setAvatar] = useState({
     decode: {},
@@ -37,6 +49,11 @@ export const APProvider = (props) => {
         setGST,
         setPAN,
         setAvatar,
+        setAcc,
+        setIfsc,
+        setAccName,
+        setBranch,
+        setUPI,
       );
     }
     return () => {};
@@ -55,6 +72,11 @@ export const APProvider = (props) => {
           setGST,
           setPAN,
           setAvatar,
+          setAcc,
+          setIfsc,
+          setAccName,
+          setBranch,
+          setUPI,
         );
       });
     }
@@ -78,12 +100,7 @@ export const APProvider = (props) => {
       value={{
         customURL,
         setCustomURL,
-        aadhar,
-        setAadhar,
-        GST,
-        setGST,
-        PAN,
-        setPAN,
+
         payment,
         setPayment,
         avatar,

@@ -14,6 +14,14 @@ export const UIProvider = (props) => {
   const [pass, setPass] = useState("");
   const [rePass, setRePass] = useState("");
   const [curPass, setCurPass] = useState("");
+  const [aadhar, setAadhar] = useState("");
+  const [GST, setGST] = useState("");
+  const [PAN, setPAN] = useState("");
+  const [acc, setAcc] = useState("");
+  const [ifsc, setIfsc] = useState("");
+  const [accName, setAccName] = useState("");
+  const [branch, setBranch] = useState("");
+  const [UPI, setUPI] = useState("");
 
   const [usrBaseInfo, setUsrBaseInfo] = useState("");
   const [usrAdresses, setUsrAdresses] = useState(false);
@@ -60,6 +68,22 @@ export const UIProvider = (props) => {
         setCurPass,
         usrAdresses,
         setUsrAdresses,
+        aadhar,
+        setAadhar,
+        GST,
+        setGST,
+        PAN,
+        setPAN,
+        acc,
+        setAcc,
+        ifsc,
+        setIfsc,
+        accName,
+        setAccName,
+        branch,
+        setBranch,
+        UPI,
+        setUPI,
       }}>
       {props.children}
     </UIContext.Provider>

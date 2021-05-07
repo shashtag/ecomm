@@ -20,6 +20,7 @@ import Help from "./Help";
 import ArtistPage from "./ArtistPage";
 import UnderConstruction from "./UnderConstruction";
 import AllOrders from "./AllOrders";
+import CashoutBttn from "../components/ArtistDashboard/CashoutBttn";
 
 // const drawerWidth = 250;
 
@@ -85,6 +86,7 @@ const ArtistDashboard = (props) => {
                       </Grid>
                       <Grid container item xs={12} md={5}>
                         <UploadProduct />
+                        <CashoutBttn />
                       </Grid>
                     </Grid>
                   </Grid>

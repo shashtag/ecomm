@@ -20,6 +20,7 @@ import AllOrders from "./pages/AllOrders";
 import SuccessOrder from "./pages/SuccessOrder";
 import Admin from "./pages/Admin";
 import AOrders from "./pages/AOrders";
+import ACashout from "./pages/ACashout";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
@@ -255,12 +256,42 @@ function App() {
             )}
           />
           <Route
+            path='/admin/orders/:page'
+            render={() => (
+              <>
+                <Navigation noCat={true} noSub={true} />
+
+                <AllOrders admin={true} />
+              </>
+            )}
+          />
+          <Route
             path='/admin/orders'
             render={() => (
               <>
                 <Navigation noCat={true} noSub={true} />
 
                 <AllOrders admin={true} />
+              </>
+            )}
+          />
+          <Route
+            path='/admin/cashout/:page'
+            render={() => (
+              <>
+                <Navigation noCat={true} noSub={true} />
+
+                <ACashout admin={true} />
+              </>
+            )}
+          />
+          <Route
+            path='/admin/cashout'
+            render={() => (
+              <>
+                <Navigation noCat={true} noSub={true} />
+
+                <ACashout admin={true} />
               </>
             )}
           />

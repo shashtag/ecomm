@@ -23,17 +23,35 @@ const TopListings = () => {
             </Typography>
           </Grid>
           <Grid item container spacing={2}>
-            {topListings?.results?.map((data, i) => {
-              return (
-                <TopListing
-                  pid={data?.pid}
-                  img={data?.display_image}
-                  category={data.category}
-                  name={data.name}
-                  key={i}
-                />
-              );
-            })}
+            {topListings.count !== 0 ? (
+              topListings?.results?.map((data, i) => {
+                return (
+                  <TopListing
+                    pid={data?.pid}
+                    img={data?.display_image}
+                    category={data.category}
+                    name={data.name}
+                    key={i}
+                  />
+                );
+              })
+            ) : (
+              <div
+                style={{
+                  minHeight: "50vh",
+                  display: "grid",
+                  placeItems: "center",
+                  height: "100%",
+                  width: "100%",
+                }}>
+                <Typography
+                  variant='h1'
+                  align='center'
+                  style={{ opacity: "0.3" }}>
+                  No Products Found
+                </Typography>
+              </div>
+            )}
           </Grid>
         </Grid>
       </Paper>

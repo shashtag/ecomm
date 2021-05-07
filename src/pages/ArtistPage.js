@@ -37,7 +37,7 @@ const ArtistPage = (props) => {
   const { setLoading } = useContext(UIContext);
 
   const [aData, setAData] = useState(false);
-  const [products, setProducts] = useState("");
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -69,7 +69,6 @@ const ArtistPage = (props) => {
 
       axios(config)
         .then(function (response) {
-          console.log(JSON.stringify(response.data));
           setProducts(response.data);
           setLoading(false);
         })
@@ -79,20 +78,22 @@ const ArtistPage = (props) => {
     }
     return () => {};
   }, [aData]);
+
+  console.log(products);
   return (
     <Grid
       container
       direction='column'
       className={props.artist ? null : classes.root}>
-      <Grid
+      <div
         item
         container
         style={{
           background: `url(${bannerImg}) center center / cover no-repeat `,
+          maxHeight: "30vh",
+          height: "30vh",
         }}
-        xs={12}>
-        <div style={{ height: "30vh" }}></div>
-      </Grid>
+        xs={12}></div>
       <Grid container item style={{ position: "relative" }}>
         <Avatar
           alt='profile pic'
@@ -106,7 +107,22 @@ const ArtistPage = (props) => {
         </Typography>
       </Grid>
       <Grid container spacing={2} style={{ marginTop: theme.spacing(16) }} item>
-        {products ? <Products data={products?.results} /> : null}
+        {products && products.count !== 0 ? (
+          <Products data={products?.results} />
+        ) : (
+          <div
+            style={{
+              minHeight: "50vh",
+              display: "grid",
+              placeItems: "center",
+              height: "100%",
+              width: "100%",
+            }}>
+            <Typography variant='h1' align='center' style={{ opacity: "0.3" }}>
+              No Products Found
+            </Typography>
+          </div>
+        )}
       </Grid>
     </Grid>
   );

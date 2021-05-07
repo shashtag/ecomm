@@ -14,6 +14,7 @@ import { UIContext } from "../../Context/UIContext";
 import { patchArtistDetails, patchUsrDetails } from "../../API/Patch";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { cashoutRequest } from "../../API/Post";
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -41,16 +42,25 @@ const Page3 = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
   const {
+    setLoading,
+    setSnackbar,
     aadhar,
     setAadhar,
     GST,
     setGST,
     PAN,
     setPAN,
-    // payment,
-    // setPayment,
-  } = useContext(APContext);
-  const { setLoading, setSnackbar } = useContext(UIContext);
+    acc,
+    setAcc,
+    ifsc,
+    setIfsc,
+    accName,
+    setAccName,
+    branch,
+    setBranch,
+    UPI,
+    setUPI,
+  } = useContext(UIContext);
   const handlePageChange = () => {
     var data2 = JSON.stringify({ is_first_login: false });
     patchUsrDetails(data2, setLoading, setSnackbar, history, false);
@@ -58,6 +68,12 @@ const Page3 = (props) => {
       aadhar_card_no: aadhar,
       pan_card_no: PAN,
       gst_no: GST,
+      account_number: acc,
+      ifsc_code: ifsc,
+
+      beneficiary_name: accName,
+      bank_branch: branch,
+      upi_id: UPI,
     };
     patchArtistDetails(
       data,
@@ -70,7 +86,15 @@ const Page3 = (props) => {
       () => {},
       () => {},
       () => {},
+      () => {},
+      () => {},
+      () => {},
+      () => {},
+      () => {},
     );
+    if (props.cashout) {
+      cashoutRequest(setLoading, setSnackbar, props.oppFunc);
+    }
   };
   return (
     <>
@@ -78,7 +102,9 @@ const Page3 = (props) => {
         <Typography
           variant='h5'
           style={{ paddingTop: md ? theme.spacing(6) : theme.spacing(6) }}>
-          Let us start by setting up your shop.
+          {props.cashout
+            ? "Please Review your details"
+            : "Let us start by setting up your shop."}
         </Typography>
       </Grid>
       <Grid item container justify='center'>
@@ -98,7 +124,7 @@ const Page3 = (props) => {
             <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='Aadhar card number'
+                label='Aadhar Card Number'
                 name='aadhar'
                 variant='outlined'
                 color='secondary'
@@ -120,7 +146,7 @@ const Page3 = (props) => {
             <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='GST number'
+                label='GST Number'
                 name='GST'
                 variant='outlined'
                 color='secondary'
@@ -142,7 +168,7 @@ const Page3 = (props) => {
             <Grid container justify='center' item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='PAN Card number'
+                label='PAN Card Number'
                 name='PAN'
                 variant='outlined'
                 color='secondary'
@@ -159,6 +185,117 @@ const Page3 = (props) => {
                 })}
                 error={Boolean(errors.PAN)}
                 helperText={errors.PAN?.message}
+              />
+            </Grid>
+
+            <Grid container justify='center' item xs={12} md={6}>
+              <TextField
+                className={classes.input}
+                label='Account Number'
+                name='Acc'
+                variant='outlined'
+                color='secondary'
+                defaultValue={acc}
+                onChange={(e) => {
+                  setAcc(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter your bank account number'
+                inputRef={register({
+                  required: "Account number is required",
+                })}
+                error={Boolean(errors.Acc)}
+                helperText={errors.Acc?.message}
+              />
+            </Grid>
+            <Grid container justify='center' item xs={12} md={6}>
+              <TextField
+                className={classes.input}
+                label='IFSC Code '
+                name='ifsc'
+                variant='outlined'
+                color='secondary'
+                defaultValue={ifsc}
+                onChange={(e) => {
+                  setIfsc(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter your IFSC code'
+                inputRef={register({
+                  required: "IFSC code is required",
+                })}
+                error={Boolean(errors.ifsc)}
+                helperText={errors.ifsc?.message}
+              />
+            </Grid>
+            <Grid container justify='center' item xs={12} md={6}>
+              <TextField
+                className={classes.input}
+                label='Beneficiary Name'
+                name='accName'
+                variant='outlined'
+                color='secondary'
+                defaultValue={accName}
+                onChange={(e) => {
+                  setAccName(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter the beneficiary name'
+                inputRef={register({
+                  required: " Beneficiary name' is required",
+                })}
+                error={Boolean(errors.accName)}
+                helperText={errors.accName?.message}
+              />
+            </Grid>
+            <Grid container justify='center' item xs={12} md={6}>
+              <TextField
+                className={classes.input}
+                label='Bank Branch'
+                name='branch'
+                variant='outlined'
+                color='secondary'
+                defaultValue={branch}
+                onChange={(e) => {
+                  setBranch(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter your bank branch name'
+                inputRef={register({
+                  required: "Bank branch is required",
+                })}
+                error={Boolean(errors.branch)}
+                helperText={errors.branch?.message}
+              />
+            </Grid>
+            <Grid container justify='center' item xs={12} md={6}>
+              <TextField
+                className={classes.input}
+                label='UPI ID'
+                name='UPI'
+                variant='outlined'
+                color='secondary'
+                defaultValue={UPI}
+                onChange={(e) => {
+                  setUPI(e.target.value);
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder='Enter your UPI ID'
+                inputRef={register({
+                  required: "UPI ID is required",
+                })}
+                error={Boolean(errors.UPI)}
+                helperText={errors.UPI?.message}
               />
             </Grid>
             {/* <Grid item xs={12} md={6} >
@@ -184,51 +321,70 @@ const Page3 = (props) => {
             />
           </Grid> */}
           </Grid>
-          <Grid
-            item
-            container
-            style={{}}
-            justify={md ? "flex-end" : "space-between"}>
-            <Button
-              // component={Link}
-              // to='artist/dashboard'
-              onClick={() => {
-                var data2 = JSON.stringify({ is_first_login: false });
-                patchUsrDetails(
-                  data2,
-                  setLoading,
-                  setSnackbar,
-                  history,
-                  "/artist/dashboard",
-                );
-              }}
-              style={{
-                padding: "12px 80px",
-                borderRadius: "4px",
-                background: theme.palette.grey[500],
-                marginTop: theme.spacing(2),
-              }}
-              variant='contained'
-              size='large'
-              color='secondary'
-              className={classes.loginButton}>
-              <Typography variant='h5'>Skip or now</Typography>
-            </Button>
-            <Button
-              style={{
-                padding: "12px 80px",
-                borderRadius: "4px",
-                background: theme.palette.secondary.light,
-                marginTop: theme.spacing(2),
-              }}
-              variant='contained'
-              size='large'
-              type='submit'
-              color='secondary'
-              className={classes.loginButton}>
-              <Typography variant='h5'>Save</Typography>
-            </Button>
-          </Grid>
+          {!props.cashout ? (
+            <Grid
+              item
+              container
+              style={{}}
+              justify={md ? "flex-end" : "space-between"}>
+              <Button
+                // component={Link}
+                // to='artist/dashboard'
+                onClick={() => {
+                  var data2 = JSON.stringify({ is_first_login: false });
+                  patchUsrDetails(
+                    data2,
+                    setLoading,
+                    setSnackbar,
+                    history,
+                    "/artist/dashboard",
+                  );
+                }}
+                style={{
+                  padding: "12px 80px",
+                  borderRadius: "4px",
+                  background: theme.palette.grey[500],
+                  marginTop: theme.spacing(2),
+                }}
+                variant='contained'
+                size='large'
+                color='secondary'
+                className={classes.loginButton}>
+                <Typography variant='h5'>Skip or now</Typography>
+              </Button>
+              <Button
+                style={{
+                  padding: "12px 80px",
+                  borderRadius: "4px",
+                  background: theme.palette.secondary.light,
+                  marginTop: theme.spacing(2),
+                }}
+                variant='contained'
+                size='large'
+                type='submit'
+                color='secondary'
+                className={classes.loginButton}>
+                <Typography variant='h5'>Save</Typography>
+              </Button>
+            </Grid>
+          ) : (
+            <Grid item container style={{}} justify={"flex-end"}>
+              <Button
+                style={{
+                  padding: "12px 80px",
+                  borderRadius: "4px",
+                  background: theme.palette.secondary.light,
+                  marginTop: theme.spacing(2),
+                }}
+                variant='contained'
+                size='large'
+                type='submit'
+                color='secondary'
+                className={classes.loginButton}>
+                <Typography variant='h5'>Cashout</Typography>
+              </Button>
+            </Grid>
+          )}
         </form>
       </Grid>
     </>

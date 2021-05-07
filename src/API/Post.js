@@ -250,3 +250,63 @@ export const createRazorpayPayment = (
       console.log(error);
     });
 };
+
+export const cashoutRequest = (setLoading, setSnackbar, oppFunc) => {
+  setLoading(true);
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}accounts/request/cashout/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      setSnackbar({
+        value: true,
+        message: "Checkout request posted successfully",
+        type: "success",
+      });
+      oppFunc(false);
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      setSnackbar({
+        value: true,
+        message: error.response.data.details,
+        type: "error",
+      });
+      oppFunc(false);
+      console.log(error);
+    });
+};
+
+export const grantCashout = (data, setLoading, setSnackbar) => {
+  setLoading(true);
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}accounts/grant/cashout/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      setSnackbar({
+        value: true,
+        message: "Cashout granted successfully",
+        type: "success",
+      });
+      window.location.reload();
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

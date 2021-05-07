@@ -11,6 +11,11 @@ export const patchArtistDetails = (
   setGST,
   setPAN,
   setAvatar,
+  setAcc,
+  setIfsc,
+  setAccName,
+  setBranch,
+  setUPI,
 ) => {
   setLoading(true);
   var config = {
@@ -32,6 +37,11 @@ export const patchArtistDetails = (
       setGST(response.data.gst_no);
       setPAN(response.data.pan_card_no);
       setAvatar({ decode: undefined, encoded: response.data.profile_picture });
+      setAcc(response.data.account_number);
+      setIfsc(response.data.ifsc_code);
+      setAccName(response.data.beneficiary_name);
+      setBranch(response.data.bank_branch);
+      setUPI(response.data.upi_id);
 
       // const reader = new FileReader();
       // reader.onload = () => {
