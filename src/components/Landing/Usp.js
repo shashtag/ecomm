@@ -10,10 +10,6 @@ import {
   CardContent,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import one from "../../assets/uspIcons/1.svg";
-import two from "../../assets/uspIcons/2.svg";
-import three from "../../assets/uspIcons/3.svg";
-import four from "../../assets/uspIcons/4.svg";
 
 const useStyles = makeStyles((theme) => ({
   usp: {
@@ -41,14 +37,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const usp = [
-  { icon: one, text: "Get exciting offers on your first order" },
   {
-    icon: two,
+    icon: "https://kalafex-images.s3.ap-south-1.amazonaws.com/USP+Icons/1.svg",
+    text: "Get exciting offers on your first order",
+  },
+  {
+    icon: "https://kalafex-images.s3.ap-south-1.amazonaws.com/USP+Icons/2.svg",
     text: "Speedy delivery anywhere around India ",
   },
-  { icon: three, text: "Support the Made in India movement" },
   {
-    icon: four,
+    icon: "https://kalafex-images.s3.ap-south-1.amazonaws.com/USP+Icons/3.svg",
+    text: "Support the Made in India movement",
+  },
+  {
+    icon: "https://kalafex-images.s3.ap-south-1.amazonaws.com/USP+Icons/4.svg",
     text: "Quality products from quality vendors",
   },
 ];

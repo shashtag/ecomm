@@ -10,16 +10,12 @@ import {
   useMediaQuery,
   Button,
 } from "@material-ui/core";
-import signupBg from "../assets/authImgs/signupBg.png";
-import signupBg2 from "../assets/authImgs/signupBg2.png";
-import signupBg3 from "../assets/authImgs/signupBg3.png";
+
 import TimelineComp from "../components/Signup/TimelineComp";
 import Form1A from "../components/Signup/Form1A";
 import Form2 from "../components/Signup/Form2";
 import Form3 from "../components/Signup/Form3";
-import loginTxt from "../assets/authImgs/loginTxt.png";
 import { SignupProvider } from "../Context/SignupContext";
-import registerNow from "../assets/authImgs/registerNow.png";
 
 const useStyles = makeStyles((theme) => ({
   login: {
@@ -98,10 +94,10 @@ const SignupArtist = (props) => {
             background: md
               ? null
               : step === 0
-              ? `rgba(255,255,255,0.6) url(${signupBg}) center center / cover no-repeat `
+              ? `rgba(255,255,255,0.6) url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/signupBg.png) center center / cover no-repeat `
               : step === 1
-              ? `rgba(255,255,255,0.6) url(${signupBg2}) center center / cover no-repeat`
-              : ` rgba(255,255,255,0.6) url(${signupBg3}) center center / cover no-repeat`,
+              ? `rgba(255,255,255,0.6) url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/signupBg2.png) center center / cover no-repeat`
+              : ` rgba(255,255,255,0.6) url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/signupBg3.png) center center / cover no-repeat`,
           }}>
           <Grid item container direction='column' md={8}>
             <Logo />
@@ -126,11 +122,11 @@ const SignupArtist = (props) => {
                       <span
                         style={{
                           background:
-                            "-webkit-linear-gradient(45deg, #FE6B8B 20%, #FF8E53 60%)",
+                            "-webkit-linear-gradient(45deg, #FF8E53 40%,   #FE6B8B 90%)",
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
                         }}>
-                        Register here
+                        Log In
                       </span>
                     </Typography>
                   </Typography>
@@ -142,20 +138,22 @@ const SignupArtist = (props) => {
                   <Typography
                     variant='h6'
                     style={{ fontWeight: 500, display: "inline" }}>
-                    Already have an account.
-                    <Link
+                    Already have an account?{" "}
+                    <Typography
+                      variant='h6'
+                      component={Link}
                       to='/login'
-                      style={{ fontWeight: 500, display: "inline" }}>
-                      <img
+                      style={{ display: "inline", textDecoration: "none" }}>
+                      <span
                         style={{
-                          display: "inline",
-                          marginBottom: "-3px",
-                          marginLeft: "6px",
-                        }}
-                        src={loginTxt}
-                        alt='Signup Text'
-                      />
-                    </Link>
+                          background:
+                            "-webkit-linear-gradient(45deg, #FF8E53 40%,   #FE6B8B 90%)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}>
+                        Log In
+                      </span>
+                    </Typography>
                   </Typography>
                   <div
                     style={{
@@ -175,7 +173,7 @@ const SignupArtist = (props) => {
                       <span
                         style={{
                           background:
-                            "-webkit-linear-gradient(45deg, #FE6B8B 20%, #FF8E53 60%)",
+                            "-webkit-linear-gradient(45deg, #FF8E53 40%,   #FE6B8B 90%)",
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
                         }}>
@@ -227,10 +225,10 @@ const SignupArtist = (props) => {
           style={{
             background:
               step === 0
-                ? `url(${signupBg}) center center / cover no-repeat `
+                ? `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/signupBg.png) center center / cover no-repeat `
                 : step === 1
-                ? `url(${signupBg2}) center center / cover no-repeat`
-                : ` url(${signupBg3}) center center / cover no-repeat`,
+                ? `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/signupBg2.png) center center / cover no-repeat`
+                : ` url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/signupBg3.png) center center / cover no-repeat`,
             // backgroundSize: "cover",
           }}>
           <div

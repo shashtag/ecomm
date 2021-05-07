@@ -12,8 +12,6 @@ import {
   useMediaQuery,
   TextField,
 } from "@material-ui/core";
-import lgnBg from "../assets/authImgs/lgnBg.png";
-import signupTxt from "../assets/authImgs/signupTxt.png";
 import { login } from "../API/Post";
 import { UIContext } from "../Context/UIContext";
 
@@ -27,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   left: {
     padding: `${theme.spacing(4)}px 15px`,
-    background: `rgba(255,255,255,0.6) url(${lgnBg}) center center / cover no-repeat`,
+    background: `rgba(255,255,255,0.6) url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/lgnBg.png) center center / cover no-repeat`,
     backgroundBlendMode: "lighten",
 
     backgroundSize: "cover",
@@ -38,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   right: {
-    background: `url(${lgnBg}) no-repeat `,
+    background: `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/lgnBg.png) no-repeat `,
     backgroundSize: "cover",
     display: "none",
     [theme.breakpoints.up("md")]: {
@@ -150,10 +148,10 @@ const Login = (props) => {
                   }}
                   placeholder='Enter Email or Phone number'
                   inputRef={register({
-                    required: "Email/Phone number is required",
+                    required: "Email is required",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Invalid Email/Phone number ",
+                      message: "Invalid Email ID ",
                     },
                   })}
                   error={Boolean(errors.id)}
@@ -205,20 +203,22 @@ const Login = (props) => {
           <Typography
             variant='h6'
             style={{ fontWeight: 500, display: "inline" }}>
-            Don’t have an account.
-            <Link
+            Don’t have an account.{" "}
+            <Typography
+              variant='h6'
+              component={Link}
               to='/user/signup'
-              style={{ fontWeight: 500, display: "inline" }}>
-              <img
+              style={{ display: "inline", textDecoration: "none" }}>
+              <span
                 style={{
-                  display: "inline",
-                  marginBottom: "-3px",
-                  marginLeft: "6px",
-                }}
-                src={signupTxt}
-                alt='Signup Text'
-              />
-            </Link>
+                  background:
+                    "-webkit-linear-gradient(45deg, #FF8E53 40%,   #FE6B8B 90%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}>
+                Sign Up
+              </span>
+            </Typography>
           </Typography>
         </Grid>
         <Grid container item md={6} xs={12} className={classes.right}></Grid>

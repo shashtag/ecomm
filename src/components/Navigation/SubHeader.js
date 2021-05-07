@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import subhead from "../../assets/subhead.png";
 
 import {
   AppBar,
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       height: "32px",
       display: "block",
-      background: `url(${subhead})`,
+      background: `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/subhead.png)`,
       backgroundPosition: "center",
       [theme.breakpoints.down("sm")]: {
         background: `transparent`,

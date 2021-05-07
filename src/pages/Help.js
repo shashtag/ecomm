@@ -1,7 +1,6 @@
 import { Typography } from "@material-ui/core";
 import { Grid, useTheme } from "@material-ui/core";
 import React from "react";
-import helpImg from "../assets/helpImg.png";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 
 const Help = (props) => {
@@ -32,7 +31,10 @@ const Help = (props) => {
         </Typography>
       </Grid>
       <Grid item container justify='center' xs='12'>
-        <img src={helpImg} alt='contact us' />
+        <img
+          src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/helpImg.png'
+          alt='contact us'
+        />
       </Grid>
       <Grid item container justify='center' xs='12'>
         <MailOutlineIcon />

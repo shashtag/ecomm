@@ -1,6 +1,5 @@
 import { Button, makeStyles, Typography, useTheme } from "@material-ui/core";
 import React from "react";
-import successOrder from "../assets/successfulOrder.png";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +20,7 @@ const SuccessOrder = () => {
       className={classes.root}>
       <div style={{ display: "flex", alignItems: "center" }}>
         <img
-          src={successOrder}
+          src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/successfulOrder.png'
           alt='success tick'
           style={{ marginRight: theme.spacing(4) }}></img>
         <Typography variant='h3' style={{ color: "#6FCF97" }}>

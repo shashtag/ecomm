@@ -8,7 +8,6 @@ import {
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import bannerImg from "../assets/bannerImg.png";
 import Products from "../components/Products";
 import { UIContext } from "../Context/UIContext";
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +88,7 @@ const ArtistPage = (props) => {
         item
         container
         style={{
-          background: `url(${bannerImg}) center center / cover no-repeat `,
+          background: `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/bannerImg.png) center center / cover no-repeat `,
           maxHeight: "30vh",
           height: "30vh",
         }}

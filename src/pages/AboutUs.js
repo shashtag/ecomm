@@ -45,11 +45,11 @@ const AboutUs = () => {
       </Grid>
       <Grid container item className={classes.section}>
         <Grid md='6'>
-          <Typography variant='h4' className={classes.heading}>
+          <Typography variant='h4' className={classes.heading} align='justify'>
             Kalafex is a place where customers can discover and buy artwork made
             by the finest of the finest.
           </Typography>
-          <Typography variant='h5'>
+          <Typography variant='h5' align='justify'>
             We exist for the people- the consumer and the artists are the heart
             and soul of Kalafex. We connect the two and provide value and
             prosperity to the artist’s work. By creating a valuable and loyal
@@ -60,13 +60,10 @@ const AboutUs = () => {
       <Grid container item className={classes.section}>
         <Grid md='6'></Grid>
         <Grid md='6'>
-          <Typography
-            variant='h4'
-            style={{ textAlign: "right" }}
-            className={classes.heading}>
+          <Typography variant='h4' className={classes.heading} align='justify'>
             The motivation behind Kalafex
           </Typography>
-          <Typography variant='h5' style={{ textAlign: "right" }}>
+          <Typography variant='h5' align='justify'>
             We brought Kalafex into existence for the soul purpose of the youth
             & the older but spiritually still youth artists getting the
             recognition that they deserve and work towards by providing a formal
@@ -78,10 +75,10 @@ const AboutUs = () => {
       </Grid>
       <Grid container item className={classes.section}>
         <Grid md='6'>
-          <Typography variant='h4' className={classes.heading}>
+          <Typography variant='h4' className={classes.heading} align='justify'>
             We drive small businesses and other individual sellers
           </Typography>
-          <Typography variant='h5'>
+          <Typography variant='h5' align='justify'>
             Our support fully goes towards increasing the sales and engagement
             on the works of the small businesses and individual sellers that are
             registered with Kalafex. With the belief that our vendors are the
@@ -107,11 +104,11 @@ const AboutUs = () => {
           <Typography variant='h5' className={classes.title}>
             Co-Founder & Chief-Executive Officer (CEO)
           </Typography>
-          <Typography variant='h5' className={classes.para}>
+          <Typography variant='h5' className={classes.para} align='justify'>
             Aryan Khaunte is the Co-Founder of Kalafex and has served as our
             Chief Executive Officer since November 2020.
           </Typography>
-          <Typography variant='h5' className={classes.para}>
+          <Typography variant='h5' className={classes.para} align='justify'>
             Kalafex was actually a bit of a midnight decision. I can’t remember
             which day it was but somewhere in August end or early September,
             Mithil called me at around 1 AM and said he had an idea to talk, and
@@ -121,7 +118,7 @@ const AboutUs = () => {
             sustainable for us. The both of us are still in school but since it
             was online classes we had more time on our hands than ever.
           </Typography>
-          <Typography variant='h5' className={classes.para}>
+          <Typography variant='h5' className={classes.para} align='justify'>
             I’ve seen the struggle of individual sellers on social media
             platforms and how they aren’t getting the outreach and recognition
             that they deserve. The algorithm on major platforms doesn’t exactly
@@ -139,7 +136,7 @@ const AboutUs = () => {
             in my personal opinion, the Indian youth would benefit a lot from us
             by starting a business at a young age.{" "}
           </Typography>
-          <Typography variant='h5' className={classes.para}>
+          <Typography variant='h5' className={classes.para} align='justify'>
             As a teenage entrepreneur, I’ve always learnt to listen to what
             people have to say but never take it to my heart. The best advice I
             have ever received is to ‘never take criticism from someone you
@@ -162,8 +159,22 @@ const AboutUs = () => {
           <Typography variant='h5' className={classes.title}>
             Co-Founder & Senior Managing Director (S-MD)
           </Typography>
-          <Typography variant='h5' className={classes.para}>
-            Aryan is lying, HELP ME
+          <Typography variant='h5' className={classes.para} align='justify'>
+            Mithil Anup is the Co-Founder of Kalafex and has served as our
+            Co-Founder & Senior Managing Director since November 2020.
+          </Typography>
+          <Typography variant='h5' className={classes.para} align='justify'>
+            I thought of Kalafex as I was sitting in my Maths class and I
+            remember getting super excited to even get it up and running because
+            I believed that Kalafex could help artists and small business but as
+            I thought of the whole process of starting it I had lesser and
+            lesser hope that I will be able to manage it or even be able to get
+            it up and running. One day I decided to talk to Aryan and if it
+            wasn’t for him Kalafex would have never become a reality.
+          </Typography>
+          <Typography variant='h5' className={classes.para} align='justify'>
+            The idea of helping and empowering artists and businesses is at the
+            core of Kalafex.
           </Typography>
         </Grid>
       </Grid>

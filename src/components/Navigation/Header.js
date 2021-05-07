@@ -29,7 +29,8 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { Menu } from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
 import logoMain from "../../assets/logoMain.png";
-import sellDes from "../../assets/sellDes.png";
+// import logoMain1 from "../../assets/logoMain1.png";
+// import logoSm from "../../assets/logoSm.png";
 import { UIContext } from "../../Context/UIContext";
 import HeaderIcons from "./HeaderIcons";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
@@ -169,7 +170,7 @@ export default function Header(props) {
         <span
           style={{
             background:
-              "-webkit-linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+              "-webkit-linear-gradient(45deg,#FF8E53 40%,   #FE6B8B 90%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}>
@@ -235,11 +236,21 @@ export default function Header(props) {
         component={Link}
         to='/artist/signup'
         style={{
-          marginRight: theme.spacing(0.5),
+          marginRight: theme.spacing(1.5),
           padding: theme.spacing(1.3),
         }}>
         {/* <Link to='/artist/signup'> */}
-        <img height='auto' width='auto' src={sellDes} alt='kalafex logo' />
+
+        <span
+          style={{
+            background:
+              "-webkit-linear-gradient(45deg, #FF8E53 40%,   #FE6B8B 90%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>
+          Start selling your designs
+        </span>
+
         {/* </Link> */}
       </Button>
       <div
@@ -277,7 +288,7 @@ export default function Header(props) {
     <>
       <AppBar
         position='static'
-        elevation={1}
+        elevation={0}
         style={{
           paddingTop: "8px",
           borderBottom: `0.5px solid ${theme.palette.grey[300]}`,
@@ -287,12 +298,18 @@ export default function Header(props) {
             <Link to='/'>
               <img
                 height='50px'
-                width='81.71px'
+                width={
+                  // md ?
+                  "81.71px"
+                  // : "66.67"
+                }
+                width='81.7122787495px'
                 src={
                   // md ?
                   logoMain
-                  // : logoMainSm
+                  //  : logoSm
                 }
+                // src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Mask+Group.svg'
                 alt='kalafax logo'
               />
             </Link>
@@ -604,7 +621,7 @@ export default function Header(props) {
                       <img
                         width='31px'
                         height='31px'
-                        src={instagram}
+                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/instagram.png'
                         alt='instagram icon'
                       />
                     </a>
@@ -617,7 +634,7 @@ export default function Header(props) {
                       <img
                         width='31px'
                         height='31px'
-                        src={facebook}
+                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/facebook.png'
                         alt='facebook icon'
                       />
                     </a>
@@ -630,7 +647,7 @@ export default function Header(props) {
                       <img
                         width='31px'
                         height='31px'
-                        src={twitter}
+                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/twitter.png'
                         alt='twitter icon'
                       />
                     </a>
@@ -644,7 +661,7 @@ export default function Header(props) {
                       <img
                         width='31px'
                         height='31px'
-                        src={linkedIn}
+                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/linkedIn.png'
                         alt='linkedIn icon'
                       />
                     </a>

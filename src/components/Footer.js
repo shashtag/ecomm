@@ -8,10 +8,7 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
-import facebook from "../assets/socialIcons/facebook.png";
-import instagram from "../assets/socialIcons/instagram.png";
-import linkedIn from "../assets/socialIcons/linkedIn.png";
-import twitter from "../assets/socialIcons/twitter.png";
+
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -358,7 +355,7 @@ const Footer = () => {
                 <img
                   width='31px'
                   height='31px'
-                  src={instagram}
+                  src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/instagram.png'
                   alt='instagram icon'
                 />
               </a>
@@ -371,7 +368,7 @@ const Footer = () => {
                 <img
                   width='31px'
                   height='31px'
-                  src={facebook}
+                  src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/facebook.png'
                   alt='facebook icon'
                 />
               </a>
@@ -384,7 +381,7 @@ const Footer = () => {
                 <img
                   width='31px'
                   height='31px'
-                  src={twitter}
+                  src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/twitter.png'
                   alt='twitter icon'
                 />
               </a>
@@ -398,7 +395,7 @@ const Footer = () => {
                 <img
                   width='31px'
                   height='31px'
-                  src={linkedIn}
+                  src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/linkedIn.png'
                   alt='linkedIn icon'
                 />
               </a>

@@ -31,7 +31,10 @@ const Product = (props) => {
 
   return (
     <Grid item md={3} sm={6} xs={12}>
-      <Card className={classes.root} onClick={cardClickHandler}>
+      <Card
+        className={classes.root}
+        onClick={cardClickHandler}
+        style={{ cursor: "pointer" }}>
         <CardMedia
           component='img'
           loading='lazy'

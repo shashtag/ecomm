@@ -2,18 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { Grid, makeStyles, Button, Typography } from "@material-ui/core";
-import heroImage1 from "../../assets/heroImgs/heroImage1.png";
-import heroImage2 from "../../assets/heroImgs/heroImage2.png";
-import heroImage3 from "../../assets/heroImgs/heroImage3.png";
-import heroImage4 from "../../assets/heroImgs/heroImage4.png";
-import heroImage5 from "../../assets/heroImgs/heroImage5.png";
-import heroImage6 from "../../assets/heroImgs/heroImage6.png";
-import heroBg from "../../assets/heroBg.png";
+
 import { UIContext } from "../../Context/UIContext";
 
 const useStyles = makeStyles((theme) => ({
   hero: {
-    background: `url(${heroBg}) no-repeat right 50px`,
+    background: `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroBg.png) no-repeat right 50px`,
     backgroundSize: "280px",
     padding: "0 15px",
     paddingBottom: theme.spacing(20),
@@ -113,7 +107,7 @@ const Hero = () => {
       <Grid md={8} item style={{ position: "relative" }}>
         <div className={[classes.heroImgs, classes.img1].join(" ")}>
           <img
-            src={heroImage1}
+            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroImage1.png'
             loading='lazy'
             alt='hero image1'
             width='100%'
@@ -122,7 +116,7 @@ const Hero = () => {
         </div>
         <div className={[classes.heroImgs, classes.img2].join(" ")}>
           <img
-            src={heroImage2}
+            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroImage2.png'
             loading='lazy'
             alt='hero image2'
             width='100%'
@@ -130,11 +124,16 @@ const Hero = () => {
           />
         </div>
         <div className={[classes.heroImgs, classes.img3].join(" ")}>
-          <img src={heroImage3} alt='hero image3' width='100%' height='100%' />
+          <img
+            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroImage2.png'
+            alt='hero image3'
+            width='100%'
+            height='100%'
+          />
         </div>
         <div className={[classes.heroImgs, classes.img4].join(" ")}>
           <img
-            src={heroImage4}
+            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroImage4.png'
             loading='lazy'
             alt='hero image4'
             width='100%'
@@ -143,7 +142,7 @@ const Hero = () => {
         </div>
         <div className={[classes.heroImgs, classes.img5].join(" ")}>
           <img
-            src={heroImage5}
+            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroImage5.png'
             loading='lazy'
             alt='hero image5'
             width='100%'
@@ -152,7 +151,7 @@ const Hero = () => {
         </div>
         <div className={[classes.heroImgs, classes.img6].join(" ")}>
           <img
-            src={heroImage6}
+            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroImage6.png'
             loading='lazy'
             alt='hero image6'
             width='100%'
