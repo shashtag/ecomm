@@ -16,10 +16,7 @@ import {
 import { PersonOutline } from "@material-ui/icons";
 
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
-import facebook from "../../assets/socialIcons/facebook.png";
-import instagram from "../../assets/socialIcons/instagram.png";
-import linkedIn from "../../assets/socialIcons/linkedIn.png";
-import twitter from "../../assets/socialIcons/twitter.png";
+
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import BallotOutlinedIcon from "@material-ui/icons/BallotOutlined";
 
