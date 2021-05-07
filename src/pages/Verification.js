@@ -27,17 +27,18 @@ const Verification = (props) => {
       .then(function (response) {
         setLoading(false);
         history.push("/login");
-        // setSnackbar({
-        //   value: true,
-        //   message: "Not verified please try again",
-        //   type: "green",
-        // });
+        setSnackbar({
+          value: true,
+          message:
+            "Congratulation! your account has been successfully verified",
+          type: "success",
+        });
       })
       .catch(function (error) {
         setSnackbar({
           value: true,
           message: "Not verified please try again",
-          type: "red",
+          type: "error",
         });
       });
 

@@ -177,7 +177,7 @@ function App() {
             )}
           />
           <Route
-            path='/activate/:id/:code'
+            path='/activate/:id/:code/'
             render={() => (
               <>
                 <Verification />

@@ -112,21 +112,27 @@ const SignupArtist = (props) => {
                   <Form1A setStep={setStep} step={step} />
                   <Typography
                     variant='h6'
-                    style={{ fontWeight: 500, display: "inline" }}>
-                    Already have an account?
-                    <Link
+                    style={{
+                      fontWeight: 500,
+                      display: "inline",
+                      textDecoration: "none",
+                    }}>
+                    Already have an account?{" "}
+                    <Typography
+                      variant='h6'
+                      component={Link}
                       to='/login'
-                      style={{ fontWeight: 500, display: "inline" }}>
-                      <img
+                      style={{ display: "inline", textDecoration: "none" }}>
+                      <span
                         style={{
-                          display: "inline",
-                          marginBottom: "-3px",
-                          marginLeft: "6px",
-                        }}
-                        src={loginTxt}
-                        alt='Signup Text'
-                      />
-                    </Link>
+                          background:
+                            "-webkit-linear-gradient(45deg, #FE6B8B 20%, #FF8E53 60%)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}>
+                        Register here
+                      </span>
+                    </Typography>
                   </Typography>
                 </>
               ) : (
@@ -169,7 +175,7 @@ const SignupArtist = (props) => {
                       <span
                         style={{
                           background:
-                            "-webkit-linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+                            "-webkit-linear-gradient(45deg, #FE6B8B 20%, #FF8E53 60%)",
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
                         }}>
