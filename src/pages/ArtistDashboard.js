@@ -21,6 +21,8 @@ import ArtistPage from "./ArtistPage";
 import UnderConstruction from "./UnderConstruction";
 import AllOrders from "./AllOrders";
 import CashoutBttn from "../components/ArtistDashboard/CashoutBttn";
+import artistTrackOrder from "./ArtistTrackOrder";
+import ArtistTrackOrder from "./ArtistTrackOrder";
 
 // const drawerWidth = 250;
 
@@ -102,7 +104,7 @@ const ArtistDashboard = (props) => {
               <ArtistProfile />
             </Route>
             <Route path={`${path}/track`}>
-              <AllOrders artist={true} />
+              <ArtistTrackOrder />
             </Route>
             <Route path={`${path}/faq`}>
               <UnderConstruction />

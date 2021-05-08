@@ -166,6 +166,7 @@ export default function Header(props) {
         <span style={{ fontWeight: "500" }}>Hello</span>{" "}
         <span
           style={{
+            textTransform: "capitalize",
             background:
               "-webkit-linear-gradient(45deg,#FF8E53 40%,   #FE6B8B 90%)",
             WebkitBackgroundClip: "text",

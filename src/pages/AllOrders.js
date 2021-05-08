@@ -122,7 +122,10 @@ const AllOrders = (props) => {
         {orders?.results?.length !== 0 && orders?.results ? (
           orders?.results
             ?.filter((data) => {
-              return data?.payment?.paid_successfully;
+              return (
+                data?.payment?.paid_successfully &&
+                data?.orderproduct_set.length !== 0
+              );
             })
             .map((data, i) => (
               <OrderItem
