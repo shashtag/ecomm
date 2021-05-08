@@ -175,11 +175,11 @@ const UploadProduct = () => {
           <Grid item xs={12} style={{ marginTop: theme.spacing(3) }}>
             <DropZone
               name='dropzone'
-              validate={register({
-                required: "Name is required",
-              })}
-              error={Boolean(errors.name)}
-              helperText={errors.name?.message}
+              // validate={register({
+              //   required: "Name is required",
+              // })}
+              // error={Boolean(errors.name)}
+              // helperText={errors.name?.message}
             />
             {/* <section
             className='container'
