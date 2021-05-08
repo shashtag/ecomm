@@ -85,7 +85,8 @@ const Hero = () => {
           </Typography>
         </div>
         <Typography variant='h5' color='secondary'>
-          Create your own brand identity and reach a broader audience today
+          Appreciating craftsmanship through a community marketplace where you
+          can buy physical pieces of creativity anywhere, anytime.{" "}
         </Typography>
         <Button
           component={Link}

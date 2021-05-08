@@ -26,7 +26,7 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { Menu } from "@material-ui/icons";
 import InputBase from "@material-ui/core/InputBase";
 import logoMain from "../../assets/logoMain.png";
-// import logoMain1 from "../../assets/logoMain1.png";
+import logoMain1 from "../../assets/logoMain1.png";
 // import logoSm from "../../assets/logoSm.png";
 import { UIContext } from "../../Context/UIContext";
 import HeaderIcons from "./HeaderIcons";
@@ -295,15 +295,15 @@ export default function Header(props) {
             <Link to='/'>
               <img
                 height='50px'
-                width={
-                  // md ?
-                  "81.71px"
-                  // : "66.67"
-                }
+                // width={
+                //   // md ?
+                //   "81.71px"
+                //   // : "66.67"
+                // }
                 width='81.7122787495px'
                 src={
                   // md ?
-                  logoMain
+                  logoMain1
                   //  : logoSm
                 }
                 // src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Mask+Group.svg'

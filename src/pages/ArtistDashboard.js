@@ -85,8 +85,12 @@ const ArtistDashboard = (props) => {
                         <TopListings />
                       </Grid>
                       <Grid container item xs={12} md={5}>
-                        <UploadProduct />
-                        <CashoutBttn />
+                        <Grid item xs={12}>
+                          <UploadProduct />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <CashoutBttn />
+                        </Grid>
                       </Grid>
                     </Grid>
                   </Grid>
