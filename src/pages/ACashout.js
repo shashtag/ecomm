@@ -96,7 +96,7 @@ const ACashout = () => {
         <Pagination
           style={{ marginTop: theme.spacing(4) }}
           size='large'
-          count={10}
+          count={cashouts?.total_pages}
           page={Number(pagination)}
           onChange={handlePageChange}
           variant='outlined'

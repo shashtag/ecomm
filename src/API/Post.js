@@ -331,18 +331,19 @@ export const orderProductStatus = (data) => {
     });
 };
 
-export const setDeliveryRecieved = (data) => {
+export const setDeliveryReceived = (data) => {
   var config = {
     method: "post",
-    url: "http://127.0.0.1:8000/orders/set_delivery_status/",
+    url: `${process.env.REACT_APP_URL}orders/set_delivery_status/`,
     headers: {
-      Authorization: "Token 56d05e880a51096fddcb8a3ff665b909b09d9ed3",
+      Authorization: `Token ${localStorage.getItem("Token")}`,
     },
     data: data,
   };
 
   axios(config)
     .then(function (response) {
+      window.location.reload();
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {

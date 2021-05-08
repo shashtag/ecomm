@@ -17,7 +17,7 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Link } from "react-router-dom";
 import { UIContext } from "../Context/UIContext";
-import { orderProductStatus } from "../API/Post";
+import { orderProductStatus, setDeliveryReceived } from "../API/Post";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -107,6 +107,34 @@ const OrderItem = (props) => {
               </Grid>
             </Grid>
 
+            {usrBaseInfo.is_kalafex_admin ? (
+              <Grid
+                item
+                container
+                alignItems='center'
+                justify='flex-end'
+                xs={12}>
+                <Typography variant='h6' color='initial'>
+                  Delivered
+                </Typography>
+
+                <Checkbox
+                  checked={!props.beingDelivered}
+                  disabled={!props.beingDelivered}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  onChange={() => {
+                    let raw = {
+                      order: props.id,
+                    };
+                    setDeliveryReceived(raw);
+                  }}
+                  inputProps={{ "aria-label": "primary checkbox" }}
+                />
+              </Grid>
+            ) : null}
+
             {/* <Grid container justify='flex-end'>
               <Button
                 // component={Link}
@@ -149,7 +177,7 @@ const OrderItem = (props) => {
                         title='Paella dish'
                       />
                     </Grid>
-                    <Grid item md={6}>
+                    <Grid item md={10}>
                       <Grid item xs={12}>
                         <Typography
                           variant='h3'
@@ -158,7 +186,7 @@ const OrderItem = (props) => {
                         </Typography>
                       </Grid>
                       <Grid container spacing={1}>
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={3}>
                           <Typography
                             variant='h6'
                             align={md ? "center" : "left"}
@@ -166,7 +194,7 @@ const OrderItem = (props) => {
                             {data.product.category}
                           </Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={3}>
                           <Typography
                             variant='h6'
                             align={md ? "center" : "left"}>
@@ -178,7 +206,7 @@ const OrderItem = (props) => {
                             {data.quantity}
                           </Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={3}>
                           <Typography
                             variant='h6'
                             align={md ? "center" : "left"}>
@@ -190,46 +218,70 @@ const OrderItem = (props) => {
                             {data.product.kalafex_price}
                           </Typography>
                         </Grid>
+                        <Grid item xs={12} md={3}>
+                          <Typography
+                            variant='h6'
+                            align={md ? "center" : "left"}>
+                            Status
+                          </Typography>
+                          <Typography
+                            variant='h6'
+                            align={md ? "center" : "left"}
+                            style={{
+                              // fontSize: 20,
+                              background: !data.handed_over
+                                ? "-webkit-linear-gradient(90.04deg, #FFB800 0%, #FF4185 99.67%"
+                                : "#6FCF97",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                            }}>
+                            {data.handed_over
+                              ? "Product recieved"
+                              : "Collecting product"}
+                          </Typography>
+                        </Grid>
                       </Grid>
                     </Grid>
-                    <Grid item container md={4}>
-                      {" "}
-                      {usrBaseInfo.is_kalafex_admin ? (
-                        <Grid item container alignItems='center'>
-                          <Typography variant='h6' color='initial'>
-                            Handed Over
-                          </Typography>
+                    {usrBaseInfo.is_kalafex_admin ? (
+                      <Grid
+                        item
+                        container
+                        alignItems='center'
+                        justify='flex-end'
+                        xs={12}>
+                        <Typography variant='h6' color='initial'>
+                          Handed Over
+                        </Typography>
 
-                          <Checkbox
-                            checked={data.handed_over}
-                            disabled={data.handed_over}
-                            onChange={() => {
-                              let raw = {
-                                order_product: data.op_id,
-                              };
-                              orderProductStatus(raw);
-                            }}
-                            inputProps={{ "aria-label": "primary checkbox" }}
-                          />
-                        </Grid>
-                      ) : (
-                        <Button
-                          component={Link}
-                          to={`/product/${data.product.pid}`}
-                          variant='contained'
-                          size='large'
-                          color='secondary'
-                          type='submit'
-                          style={{
-                            width: "100%",
-                            marginTop: theme.spacing(1),
-                            padding: "16px 24px",
-                          }}>
-                          <Typography variant='h5'>
-                            Go to product page
-                          </Typography>
-                        </Button>
-                      )}
+                        <Checkbox
+                          checked={data.handed_over}
+                          disabled={data.handed_over}
+                          onChange={() => {
+                            let raw = {
+                              order_product: data.op_id,
+                            };
+                            orderProductStatus(raw);
+                          }}
+                          inputProps={{ "aria-label": "primary checkbox" }}
+                        />
+                      </Grid>
+                    ) : null}
+                    <Grid item container xs={12}>
+                      {" "}
+                      <Button
+                        component={Link}
+                        to={`/product/${data.product.pid}`}
+                        variant='contained'
+                        size='large'
+                        color='secondary'
+                        type='submit'
+                        style={{
+                          width: "100%",
+                          marginTop: theme.spacing(1),
+                          padding: "16px 24px",
+                        }}>
+                        <Typography variant='h5'>Go to product page</Typography>
+                      </Button>
                     </Grid>
                   </Grid>
                 </Card>
