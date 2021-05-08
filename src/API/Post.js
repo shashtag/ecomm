@@ -165,10 +165,21 @@ export const AddToCart = (data, setLoading, setSnackbar) => {
   axios(config)
     .then(function (response) {
       setLoading(false);
+      setSnackbar({
+        value: true,
+        message: "Product added to cart successfully",
+        type: "success",
+      });
 
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
+      setSnackbar({
+        value: true,
+        message: error.response.data.details,
+        type: "error",
+      });
       console.log(error);
     });
 };

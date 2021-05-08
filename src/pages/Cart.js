@@ -71,24 +71,25 @@ const Cart = () => {
           Your cart
         </Typography>
       </Grid>
-      {cartItem?.length === 0 ? (
-        <div
-          style={{
-            minHeight: "50vh",
-            display: "grid",
-            placeItems: "center",
-            height: "100%",
-            width: "100%",
-          }}>
-          <Typography variant='h1' align='center' style={{ opacity: "0.3" }}>
-            No Items Found
-          </Typography>
-        </div>
-      ) : null}
-      {cartItem.map((data, i) => {
-        return (
-          <Grid key={i} container item direction='row'>
+      <Grid container item direction='row'>
+        {cartItem?.length === 0 ? (
+          <div
+            style={{
+              minHeight: "50vh",
+              display: "grid",
+              placeItems: "center",
+              height: "100%",
+              width: "100%",
+            }}>
+            <Typography variant='h1' align='center' style={{ opacity: "0.3" }}>
+              No Items Found
+            </Typography>
+          </div>
+        ) : null}
+        {cartItem.map((data, i) => {
+          return (
             <CartItem
+              key={i}
               id={data.op_id}
               name={data.product.name}
               pid={data.pid}
@@ -98,9 +99,9 @@ const Cart = () => {
               price={data.product.kalafex_price}
               stock={data.product.stock_left}
             />
-          </Grid>
-        );
-      })}
+          );
+        })}
+      </Grid>
       {cartItem.length !== 0 ? (
         <Grid container item>
           <Grid item xs={2} md={1}></Grid>

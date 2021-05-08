@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+  carousel: {
+    filter: "drop-shadow(2px 7px 25px rgba(58, 58, 58, 0.1))",
+  },
 }));
 
 const ProductDetails = (props) => {
@@ -71,7 +74,6 @@ const ProductDetails = (props) => {
       <Grid
         container
         item
-        xs={12}
         style={{
           backgroundColor: "#F4F4F4",
         }}
@@ -88,7 +90,7 @@ const ProductDetails = (props) => {
       <Grid container className={classes.root} spacing={5}>
         <Grid container item sm={4}>
           <Grid item xs={12}>
-            <Carousel animation='slide'>
+            <Carousel animation='slide' className={classes.carousel}>
               {imgs.map((img, i) => (
                 <Paper
                   key={i}
@@ -96,7 +98,6 @@ const ProductDetails = (props) => {
                     width: "100%",
                     aspectRatio: "3/4",
 
-                    margin: theme.spacing(1),
                     background: `#ffffff url("${img}")  no-repeat  center center `,
                     backgroundSize: "contain",
                   }}></Paper>

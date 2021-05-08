@@ -146,7 +146,7 @@ const Login = (props) => {
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  placeholder='Enter Email or Phone number'
+                  placeholder='Enter Email Id'
                   inputRef={register({
                     required: "Email is required",
                     pattern: {
