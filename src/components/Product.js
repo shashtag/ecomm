@@ -42,7 +42,7 @@ const Product = (props) => {
           width='auto'
           className={classes.media}
           image={props?.img}
-          title='Paella dish'
+          // title='Paella dish'
         />
         <CardContent>
           <Typography noWrap variant='h5' color='textSecondary' component='p'>
