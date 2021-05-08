@@ -91,7 +91,7 @@ export const addAddress = (data, setLoading, setPage, page, usr) => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
       setPage(page + 1);
       setLoading(false);
       if (usr) {
@@ -99,7 +99,7 @@ export const addAddress = (data, setLoading, setPage, page, usr) => {
       }
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -119,7 +119,7 @@ export const postArtistDetails = (setLoading, func) => {
   axios(config)
     .then(function (response) {
       setLoading(false);
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
       setLoading(false);
@@ -143,10 +143,10 @@ export const addProduct = (data, setLoading) => {
       setLoading(false);
       window.location.reload();
 
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -171,7 +171,7 @@ export const AddToCart = (data, setLoading, setSnackbar) => {
         type: "success",
       });
 
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
       setLoading(false);
@@ -180,7 +180,7 @@ export const AddToCart = (data, setLoading, setSnackbar) => {
         message: error.response.data.details,
         type: "error",
       });
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -201,7 +201,7 @@ export const createOrder = (data, setLoading, setSnackbar, setOrder) => {
       setOrder(response.data);
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -255,10 +255,10 @@ export const createRazorpayPayment = (
       });
       rzp1.open();
 
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -281,7 +281,7 @@ export const cashoutRequest = (setLoading, setSnackbar, oppFunc) => {
         type: "success",
       });
       oppFunc(false);
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
       setSnackbar({
@@ -290,7 +290,7 @@ export const cashoutRequest = (setLoading, setSnackbar, oppFunc) => {
         type: "error",
       });
       oppFunc(false);
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -315,10 +315,10 @@ export const grantCashout = (data, setLoading, setSnackbar) => {
         type: "success",
       });
       window.location.reload();
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -335,10 +335,10 @@ export const orderProductStatus = (data) => {
   axios(config)
     .then(function (response) {
       window.location.reload();
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -355,9 +355,9 @@ export const setDeliveryReceived = (data) => {
   axios(config)
     .then(function (response) {
       window.location.reload();
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };

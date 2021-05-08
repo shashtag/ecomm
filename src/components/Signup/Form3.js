@@ -97,10 +97,10 @@ const Form3 = (props) => {
       date_of_birth: formatDate(selectedDate),
       ...type,
     };
-    console.log(data);
+    // console.log(data);
     signup1(data, setLoading, setSnackbar, setOpen);
   };
-  console.log(phone);
+  // console.log(phone);
   return (
     <>
       <Grid container item direction='column'>

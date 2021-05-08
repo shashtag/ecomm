@@ -138,6 +138,10 @@ const Page3 = (props) => {
                 placeholder='Enter your aadhar card number '
                 inputRef={register({
                   required: "Aadhar number is required",
+                  // pattern: {
+                  //   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  //   message: "Invalid Email ID ",
+                  // },
                 })}
                 error={Boolean(errors.aadhar)}
                 helperText={errors.aadhar?.message}
@@ -160,6 +164,10 @@ const Page3 = (props) => {
                 placeholder='Enter your GST number'
                 inputRef={register({
                   required: "GST number is required",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Invalid Email ID ",
+                  },
                 })}
                 error={Boolean(errors.GST)}
                 helperText={errors.GST?.message}

@@ -99,7 +99,7 @@ const UploadProduct = () => {
   //   }),
   //   [isDragActive, isDragReject, isDragAccept],
   // );
-  console.log(errors);
+  // console.log(errors);
   return (
     <Grid item>
       <Grid item xs={12} style={{ marginBottom: theme.spacing(3) }}>
@@ -159,8 +159,8 @@ const UploadProduct = () => {
               inputRef={register({
                 required: "Name is required",
                 minLength: {
-                  value: 40,
-                  message: "Please add a name longer than 40 characters ",
+                  value: 20,
+                  message: "Please add a name longer than 20 characters ",
                 },
                 maxLength: {
                   value: 250,

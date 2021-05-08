@@ -58,12 +58,12 @@ export const fetchBaseDetailsUser = (
         response.data.is_kalafex_admin &&
         window.performance.navigation.type !== 1
       ) {
-        console.log(history);
+        // console.log(history);
         history.push("/admin/");
       }
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
       setSnackbar({
         value: true,
         message: "Could not load user details",
@@ -84,11 +84,11 @@ export const fetchSearch = (query, page, setProducts, setLoading) => {
   axios(config)
     .then(function (response) {
       setProducts(response.data);
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
       setLoading(false);
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -103,11 +103,11 @@ export const fetchArtistProducts = (id, setTopListings, setLoading) => {
   axios(config)
     .then(function (response) {
       setLoading(false);
-      console.log(response.data);
+      // console.log(response.data);
       setTopListings(response.data);
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -124,12 +124,12 @@ export const fetchArtistProfile = (setInsights, setLoading, func) => {
   axios(config)
     .then(function (response) {
       func();
-      console.log(response.data);
+      // console.log(response.data);
 
       setInsights(response.data);
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -147,11 +147,11 @@ export const fetchAddress = (setLoading, setUsrAdresses) => {
     .then(function (response) {
       setLoading(false);
       setUsrAdresses(response.data);
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
       setLoading(false);
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -168,10 +168,10 @@ export const fetchOrderDetailsFinally = (url, setLoading) => {
   axios(config)
     .then(function (response) {
       setLoading(false);
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -192,11 +192,11 @@ export const allCashoutReq = (setLoading, setCashouts, pagination) => {
     .then(function (response) {
       setLoading(false);
       setCashouts(response.data);
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
       setLoading(false);
-      console.log(error);
+      // console.log(error);
     });
 };
 
@@ -214,9 +214,9 @@ export const fetchArtistOrders = (setLoading, setArtistOrder) => {
     .then(function (response) {
       setLoading(false);
       setArtistOrder(response.data);
-      console.log(JSON.stringify(response.data));
+      // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 };

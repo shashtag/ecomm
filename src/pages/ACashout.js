@@ -45,7 +45,7 @@ const ACashout = () => {
       history.push(`/admin/cashout`);
     }
   };
-  console.log(pagination);
+  // console.log(pagination);
 
   return (
     <Grid container className={classes.root} direction='column'>
@@ -57,7 +57,9 @@ const ACashout = () => {
 
       {cashouts?.results?.length !== 0 && cashouts?.results ? (
         cashouts?.results?.map((data, i) => {
-          console.log(data);
+          {
+            /* console.log(data); */
+          }
           return (
             <CashoutItem
               key={i}

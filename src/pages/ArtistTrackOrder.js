@@ -47,7 +47,9 @@ const ArtistTrackOrder = () => {
       </Grid>
       <Grid container item xs={12}>
         {artistOrder?.results?.map((data, i) => {
-          console.log(data);
+          {
+            /* console.log(data); */
+          }
           return (
             <Grid key={i} item xs={12}>
               <Card

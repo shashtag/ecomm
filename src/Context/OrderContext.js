@@ -28,7 +28,7 @@ export const OrderProvider = (props) => {
       let data;
       for (let i = 0; i < selectedItems.length; i++) {
         data = { order: order.details.o_id };
-        console.log(data);
+        // console.log(data);
         patchOrderProductToOrder(
           data,
           selectedItems[i],

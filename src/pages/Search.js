@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const Search = (props) => {
   const classes = useStyles();
   const { page } = useParams();
-  console.log(page);
+  // console.log(page);
 
   const { query } = useParams();
   const [products, setProducts] = useState(null);
@@ -73,7 +73,7 @@ const Search = (props) => {
     return <div style={{ height: "80vh" }}></div>;
   }
 
-  console.log(trendingOnPage);
+  // console.log(trendingOnPage);
   return (
     <Grid container className={classes.root}>
       <Grid item>

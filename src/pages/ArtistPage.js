@@ -49,11 +49,11 @@ const ArtistPage = (props) => {
     axios(config)
       .then(function (response) {
         setLoading(false);
-        console.log(response.data);
+        // console.log(response.data);
         setAData(response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
 
     return () => {};
@@ -72,13 +72,13 @@ const ArtistPage = (props) => {
           setLoading(false);
         })
         .catch(function (error) {
-          console.log(error);
+          // console.log(error);
         });
     }
     return () => {};
   }, [aData]);
 
-  console.log(products);
+  // console.log(products);
   return (
     <Grid
       container

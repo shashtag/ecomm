@@ -54,7 +54,7 @@ const ProductDetails = (props) => {
         setLoading(false);
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
 
     return () => {};
@@ -68,7 +68,7 @@ const ProductDetails = (props) => {
   if (!productDetails) {
     return <div style={{ height: "100vh" }}></div>;
   }
-  console.log(productDetails);
+  // console.log(productDetails);
   return (
     <>
       <Grid

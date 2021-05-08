@@ -53,7 +53,7 @@ const SelectAddress = (props) => {
   if (selectedItems.length === 0) {
     return <Redirect to='/cart' />;
   }
-  console.log(order);
+  // console.log(order);
 
   return (
     <Grid container direction='column' className={classes.root}>

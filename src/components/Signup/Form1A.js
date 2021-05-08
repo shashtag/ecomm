@@ -60,7 +60,7 @@ const Form1 = (props) => {
   // const [email, setEmail] = useState("");
   const sendOtpClickHandler = () => {
     props.setStep(props.step + 1);
-    console.log("sssw");
+    // console.log("sssw");
   };
 
   return (

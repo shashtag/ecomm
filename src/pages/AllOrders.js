@@ -50,7 +50,7 @@ const AllOrders = (props) => {
       })
       .catch(function (error) {
         setLoading(false);
-        console.log(error);
+        // console.log(error);
       });
 
     return () => {};
@@ -81,17 +81,17 @@ const AllOrders = (props) => {
       })
       .catch(function (error) {
         setLoading(false);
-        console.log(error);
+        // console.log(error);
       });
     return () => {};
   }, []);
 
-  console.log(orders);
-  console.log(
-    orders?.results?.filter((data) => {
-      return data?.payment?.paid_successfully;
-    }),
-  );
+  // console.log(orders);
+  // console.log(
+  //   orders?.results?.filter((data) => {
+  //     return data?.payment?.paid_successfully;
+  //   }),
+  // );
   // if (!token) {
   //   return <Redirect to='/' />;
   // }

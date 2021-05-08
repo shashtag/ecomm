@@ -47,7 +47,7 @@ const OrderItem = (props) => {
 
   const handleDelivery = () => {};
 
-  console.log(props.prods);
+  // console.log(props.prods);
 
   return (
     // <Grid item container style={{ margin: theme.spacing(2) }}>
@@ -155,7 +155,9 @@ const OrderItem = (props) => {
       <AccordionDetails>
         <Grid container direction='column' spacing={2}>
           {props?.prods?.map((data, i) => {
-            console.log(data);
+            {
+              /* console.log(data); */
+            }
             return (
               <Grid container key={i} item xs={12}>
                 <Card

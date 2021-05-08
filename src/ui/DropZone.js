@@ -13,7 +13,7 @@ const DropZone = (props) => {
 
   // called every time a file's `status` changes
   const handleChangeStatus = ({ meta, file }, status) => {
-    console.log(status, meta, file);
+    // console.log(status, meta, file);
     setImg(file);
   };
 
@@ -45,6 +45,7 @@ const DropZone = (props) => {
         getUploadParams={getUploadParams}
         onChangeStatus={handleChangeStatus}
         maxFiles='1'
+        maxSizeBytes={104857600}
         // onSubmit={handleSubmit}
         accept='image/*,audio/*,video/*'></Dropzone>
       {props.sm ? null : (

@@ -94,7 +94,7 @@ const SubHeader = () => {
   const [close, setClose] = useState(false);
 
   // const theme = useTheme();
-  console.log(close);
+  // console.log(close);
 
   const handleClose = () => {
     setClose(true);

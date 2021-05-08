@@ -2,7 +2,7 @@ import React from "react";
 import Product from "./Product";
 
 const Products = (props) => {
-  console.log(props);
+  // console.log(props);
   return props.data.map((data, i) => (
     <Product
       name={data.name}
