@@ -5,16 +5,19 @@ import {
   Button,
   Card,
   CardMedia,
+  Checkbox,
   Grid,
   makeStyles,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Link } from "react-router-dom";
+import { UIContext } from "../Context/UIContext";
+import { orderProductStatus } from "../API/Post";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -34,10 +37,15 @@ const OrderItem = (props) => {
   const classes = useStyles();
   const [expand, setExpand] = useState(false);
   const md = useMediaQuery(theme.breakpoints.up("md"));
+  const { usrBaseInfo } = useContext(UIContext);
 
   const handleChange = () => {
     setExpand(!expand);
   };
+
+  const handleChecked = () => {};
+
+  const handleDelivery = () => {};
 
   console.log(props.prods);
 
@@ -72,8 +80,9 @@ const OrderItem = (props) => {
               </Grid>
               <Grid item xs={12} md={4}>
                 <Typography variant='h6' align={md ? "center" : "left"}>
-                  Status
+                  {usrBaseInfo.is_kalafex_admin ? "Deliverd" : "Status"}
                 </Typography>
+
                 <Typography
                   variant='h6'
                   align={md ? "center" : "left"}
@@ -98,7 +107,7 @@ const OrderItem = (props) => {
               </Grid>
             </Grid>
 
-            <Grid container justify='flex-end'>
+            {/* <Grid container justify='flex-end'>
               <Button
                 // component={Link}
                 // to='/artist/signup'
@@ -111,7 +120,7 @@ const OrderItem = (props) => {
                 }}>
                 <Typography variant='h5'>Request refund</Typography>
               </Button>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </AccordionSummary>
@@ -185,20 +194,42 @@ const OrderItem = (props) => {
                     </Grid>
                     <Grid item container md={4}>
                       {" "}
-                      <Button
-                        component={Link}
-                        to={`/product/${data.product.pid}`}
-                        variant='contained'
-                        size='large'
-                        color='secondary'
-                        type='submit'
-                        style={{
-                          width: "100%",
-                          marginTop: theme.spacing(1),
-                          padding: "16px 24px",
-                        }}>
-                        <Typography variant='h5'>Go to product page</Typography>
-                      </Button>
+                      {usrBaseInfo.is_kalafex_admin ? (
+                        <Grid item container alignItems='center'>
+                          <Typography variant='h6' color='initial'>
+                            Handed Over
+                          </Typography>
+
+                          <Checkbox
+                            checked={data.handed_over}
+                            disabled={data.handed_over}
+                            onChange={() => {
+                              let raw = {
+                                order_product: data.op_id,
+                              };
+                              orderProductStatus(raw);
+                            }}
+                            inputProps={{ "aria-label": "primary checkbox" }}
+                          />
+                        </Grid>
+                      ) : (
+                        <Button
+                          component={Link}
+                          to={`/product/${data.product.pid}`}
+                          variant='contained'
+                          size='large'
+                          color='secondary'
+                          type='submit'
+                          style={{
+                            width: "100%",
+                            marginTop: theme.spacing(1),
+                            padding: "16px 24px",
+                          }}>
+                          <Typography variant='h5'>
+                            Go to product page
+                          </Typography>
+                        </Button>
+                      )}
                     </Grid>
                   </Grid>
                 </Card>

@@ -155,7 +155,7 @@ const AllOrders = (props) => {
         <Pagination
           style={{ marginTop: theme.spacing(4) }}
           size='large'
-          count={10}
+          count={orders?.total_pages}
           page={Number(pagination)}
           onChange={handlePageChange}
           variant='outlined'

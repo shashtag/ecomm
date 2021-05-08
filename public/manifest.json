@@ -1,9 +1,9 @@
 {
-  "name": "Kalafex - An Art E-commerce Site",
+  "name": "Kalafex - Appreciating Craftsmanship",
   "short_name": "Kalafex",
   "theme_color": "#152238",
   "background_color": "#ffffff",
-  "description":"An art e-commerce site",
+  "description":"A community marketplace for creativity",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",

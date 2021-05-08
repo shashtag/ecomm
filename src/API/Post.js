@@ -310,3 +310,42 @@ export const grantCashout = (data, setLoading, setSnackbar) => {
       console.log(error);
     });
 };
+
+export const orderProductStatus = (data) => {
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}orders/set_handover_status/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      window.location.reload();
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
+
+export const setDeliveryRecieved = (data) => {
+  var config = {
+    method: "post",
+    url: "http://127.0.0.1:8000/orders/set_delivery_status/",
+    headers: {
+      Authorization: "Token 56d05e880a51096fddcb8a3ff665b909b09d9ed3",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

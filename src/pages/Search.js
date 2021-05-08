@@ -72,6 +72,8 @@ const Search = (props) => {
   if (!products && !trendingProducts && !trendingOnPage) {
     return <div style={{ height: "80vh" }}></div>;
   }
+
+  console.log(trendingOnPage);
   return (
     <Grid container className={classes.root}>
       <Grid item>
@@ -110,7 +112,11 @@ const Search = (props) => {
         <Pagination
           style={{ marginTop: theme.spacing(4) }}
           size='large'
-          count={10}
+          count={
+            trendingOnPage?.total_pages ||
+            products?.total_pages ||
+            trendingProducts?.total_pages
+          }
           page={Number(pagination)}
           onChange={handlePageChange}
           variant='outlined'
