@@ -15,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     aspectRatio: "3/4",
+    position: "absolute",
+    top: "0",
+    left: "0",
+    bottom: "0",
+    right: "0",
 
     // height: "70%",
     backgroundSize: "contain",
@@ -35,15 +40,42 @@ const Product = (props) => {
         className={classes.root}
         onClick={cardClickHandler}
         style={{ cursor: "pointer" }}>
-        <CardMedia
-          component='img'
-          loading='lazy'
-          height='auto'
-          width='auto'
-          className={classes.media}
-          image={props?.img}
-          // title='Paella dish'
-        />
+        <div
+          style={{
+            width: "100%",
+            paddingTop: "133.333333%",
+            position: "relative",
+          }}>
+          <div
+            style={{
+              aspectRatio: "3/4",
+              position: "absolute",
+              top: "0",
+              left: "0",
+              bottom: "0",
+              right: "0",
+              // backgroundSize: "contain",
+              background: `url("${props.img}") no-repeat center center / cover `,
+
+              // height: "70%",
+            }}>
+            {/* <div
+              style={{
+                height: "100%",
+                width: "100%",
+                
+              }}></div> */}
+          </div>
+          {/* <CardMedia
+            component='img'
+            loading='lazy'
+            height='auto'
+            width='auto'
+            className={classes.media}
+            image={props?.img}
+            // title='Paella dish'
+          /> */}
+        </div>
         <CardContent>
           <Typography noWrap variant='h5' color='textSecondary' component='p'>
             {props?.name}

@@ -100,7 +100,37 @@ const ProductDetails = (props) => {
 
                     background: `#ffffff url("${img}")  no-repeat  center center `,
                     backgroundSize: "contain",
-                  }}></Paper>
+                  }}>
+                  <Paper
+                    style={{
+                      width: "100%",
+                      paddingTop: "133.333333%",
+                      position: "relative",
+                    }}>
+                    <Paper
+                      style={{
+                        aspectRatio: "3/4",
+                        position: "absolute",
+                        top: "0",
+                        left: "0",
+                        bottom: "0",
+                        right: "0",
+                        backgroundSize: "cover",
+
+                        background: `#ffffff url("${img}")  no-repeat  center center / cover `,
+                        // height: "70%",
+                      }}></Paper>
+                    {/* <CardMedia
+            component='img'
+            loading='lazy'
+            height='auto'
+            width='auto'
+            className={classes.media}
+            image={props?.img}
+            // title='Paella dish'
+          /> */}
+                  </Paper>
+                </Paper>
               ))}
             </Carousel>
           </Grid>

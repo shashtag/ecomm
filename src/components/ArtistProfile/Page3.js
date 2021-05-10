@@ -9,11 +9,9 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-import { APContext } from "../../Context/APContext";
 import { UIContext } from "../../Context/UIContext";
 import { patchArtistDetails, patchUsrDetails } from "../../API/Patch";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { cashoutRequest } from "../../API/Post";
 
 const useStyles = makeStyles((theme) => ({
