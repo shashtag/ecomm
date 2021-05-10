@@ -126,7 +126,7 @@ const Hero = () => {
         </div>
         <div className={[classes.heroImgs, classes.img3].join(" ")}>
           <img
-            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroImage2.png'
+            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Hero+Images/heroImage3.png'
             alt='hero image3'
             width='100%'
             height='100%'

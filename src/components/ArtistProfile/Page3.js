@@ -138,10 +138,10 @@ const Page3 = (props) => {
                 placeholder='Enter your aadhar card number '
                 inputRef={register({
                   required: "Aadhar number is required",
-                  // pattern: {
-                  //   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  //   message: "Invalid Email ID ",
-                  // },
+                  pattern: {
+                    value: /^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$/,
+                    message: "Invalid Aadhar number ",
+                  },
                 })}
                 error={Boolean(errors.aadhar)}
                 helperText={errors.aadhar?.message}
@@ -165,8 +165,8 @@ const Page3 = (props) => {
                 inputRef={register({
                   required: "GST number is required",
                   pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid Email ID ",
+                    value: /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/,
+                    message: "Invalid GST number",
                   },
                 })}
                 error={Boolean(errors.GST)}
@@ -190,6 +190,10 @@ const Page3 = (props) => {
                 placeholder='Enter your PAN card number'
                 inputRef={register({
                   required: "PAN is required",
+                  pattern: {
+                    value: /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/,
+                    message: "Invalid PAN number",
+                  },
                 })}
                 error={Boolean(errors.PAN)}
                 helperText={errors.PAN?.message}
@@ -213,6 +217,10 @@ const Page3 = (props) => {
                 placeholder='Enter your bank account number'
                 inputRef={register({
                   required: "Account number is required",
+                  pattern: {
+                    value: /^[0-9]{9,18}$/,
+                    message: "Invalid Account number",
+                  },
                 })}
                 error={Boolean(errors.Acc)}
                 helperText={errors.Acc?.message}
@@ -235,6 +243,10 @@ const Page3 = (props) => {
                 placeholder='Enter your IFSC code'
                 inputRef={register({
                   required: "IFSC code is required",
+                  pattern: {
+                    value: /^[A-Z]{4}0[A-Z0-9]{6}$/,
+                    message: "Invalid IFSC code",
+                  },
                 })}
                 error={Boolean(errors.ifsc)}
                 helperText={errors.ifsc?.message}
@@ -301,6 +313,10 @@ const Page3 = (props) => {
                 placeholder='Enter your UPI ID'
                 inputRef={register({
                   required: "UPI ID is required",
+                  pattern: {
+                    value: /^[\w.-]+@[\w.-]+$/,
+                    message: "Invalid UPI ID",
+                  },
                 })}
                 error={Boolean(errors.UPI)}
                 helperText={errors.UPI?.message}

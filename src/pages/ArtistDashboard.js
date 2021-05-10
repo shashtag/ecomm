@@ -74,7 +74,7 @@ const ArtistDashboard = (props) => {
                       style={{ marginBottom: theme.spacing(3) }}>
                       <Typography variant='body1' style={{}}>
                         <span style={{ fontWeight: "400" }}>
-                          Welcome aborad
+                          Welcome aboard
                         </span>{" "}
                         <span style={{ textTransform: "capitalize" }}>
                           {usrBaseInfo?.full_name?.split(" ")[0]},
