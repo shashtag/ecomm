@@ -22,12 +22,20 @@ const DashboardCards = () => {
         },
         {
           head: "Total Sales",
-          value: ` ₹ ${insights?.details?.total_sales}.00`,
+          value: `${insights?.details?.total_sales.toLocaleString("en-IN", {
+            maximumFractionDigits: 2,
+            style: "currency",
+            currency: "INR",
+          })}`,
           color: "#FF5376",
         },
         {
           head: "Balance",
-          value: `₹ ${insights?.details?.balance}`,
+          value: `${Number(insights?.details?.balance).toLocaleString("en-IN", {
+            maximumFractionDigits: 2,
+            style: "currency",
+            currency: "INR",
+          })}`,
           color: "#FD8623",
         },
       ]);
