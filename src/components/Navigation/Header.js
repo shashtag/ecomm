@@ -116,13 +116,8 @@ export default function Header(props) {
   const theme = useTheme();
   const md = useMediaQuery(theme.breakpoints.up("md"));
   const [drawer, setDrawer] = useState(false);
-  const {
-    setLoading,
-    setUsrBaseInfo,
-    setToken,
-    search,
-    setSearch,
-  } = useContext(UIContext);
+  const { setLoading, setUsrBaseInfo, setToken, search, setSearch } =
+    useContext(UIContext);
 
   useEffect(() => {
     if (md) {
@@ -344,7 +339,16 @@ export default function Header(props) {
             </div> */}
 
             {usrBaseInfo?.is_kalafex_admin ? null : (
-              <div className={classes.search}>
+              <form
+                className={classes.search}
+                onSubmit={
+                  search.length === 0
+                    ? (e) => e.preventDefault()
+                    : (e) => {
+                        e.preventDefault();
+                        history.push(`/search/${search}`);
+                      }
+                }>
                 <InputBase
                   placeholder='Try "handmade mugs"'
                   classes={{
@@ -359,11 +363,10 @@ export default function Header(props) {
                 />
 
                 <IconButton
-                  component={Link}
-                  onClick={
-                    search.length === 0 ? (e) => e.preventDefault() : null
-                  }
-                  to={`/search/${search}`}
+                  type='submit'
+                  // component={Link}
+
+                  // to={`/search/${search}`}
                   style={{
                     // height: "0.75rem",
                     // width: "20px",
@@ -382,7 +385,7 @@ export default function Header(props) {
                   alt='search'
                   height='100%'
                 /> */}
-              </div>
+              </form>
             )}
           </div>
           {/* <div className={classes.grow} /> */}
@@ -549,24 +552,33 @@ export default function Header(props) {
                       <ListItem
                         button
                         component={Link}
-                        to='Paintings & Artwork'>
+                        to='search/Paintings & Artwork'>
                         <Typography variant='h6'>
                           Paintings & Artwork
                         </Typography>
                       </ListItem>
-                      <ListItem button component={Link} to='Lifestyle & Home'>
+                      <ListItem button component={Link} to='search/Clothing'>
+                        <Typography variant='h6'>Clothing</Typography>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component={Link}
+                        to='search/Lifestyle & Home'>
                         <Typography variant='h6'>Lifestyle & Home</Typography>
                       </ListItem>
                       <ListItem
                         button
                         component={Link}
-                        to='Jewellery & Accessories'>
+                        to='search/Collectibles'>
+                        <Typography variant='h6'>Collectibles</Typography>
+                      </ListItem>
+                      <ListItem
+                        button
+                        component={Link}
+                        to='search/Jewellery & Accessories'>
                         <Typography variant='h6'>
                           Jewellery & Accessories
                         </Typography>
-                      </ListItem>
-                      <ListItem button component={Link} to='Collectibles'>
-                        <Typography variant='h6'>Collectibles</Typography>
                       </ListItem>
                     </List>
                     <Divider style={{ height: "10px" }} />

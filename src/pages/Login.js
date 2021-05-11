@@ -141,7 +141,7 @@ const Login = (props) => {
                   color='secondary'
                   defaultValue={email}
                   onChange={(e) => {
-                    setEmail(e.target.value);
+                    setEmail(e.target.value.toLowerCase());
                   }}
                   InputLabelProps={{
                     shrink: true,

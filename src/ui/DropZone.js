@@ -40,6 +40,10 @@ const DropZone = (props) => {
           inputLabel: { textAlign: "center" },
           dropzone: props.sm ? { width: "100%" } : null,
           inputLabelWithFiles: props.sm ? { padding: "0" } : null,
+          dropzoneReject: {
+            border: "red",
+            background: theme.palette.error.main,
+          },
         }}
         {...props}
         getUploadParams={getUploadParams}
@@ -47,7 +51,7 @@ const DropZone = (props) => {
         maxFiles='1'
         maxSizeBytes={104857600}
         // onSubmit={handleSubmit}
-        accept='image/*,audio/*,video/*'></Dropzone>
+        accept='image/x-png,image/gif,image/jpeg'></Dropzone>
       {props.sm ? null : (
         <Typography
           style={{
@@ -57,7 +61,7 @@ const DropZone = (props) => {
             fontSize: "0.9rem",
             padding: theme.spacing(0, 0.5),
           }}>
-          ** Upload 3/4 aspect ratio images for best results
+          ** Upload 3/4 aspect ratio PNG/JPEG images for best results
         </Typography>
       )}
     </div>
