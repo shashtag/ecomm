@@ -203,7 +203,7 @@ const Login = (props) => {
           <Typography
             variant='h6'
             style={{ fontWeight: 500, display: "inline" }}>
-            Don’t have an account.{" "}
+            Don’t have an account?{" "}
             <Typography
               variant='h6'
               component={Link}

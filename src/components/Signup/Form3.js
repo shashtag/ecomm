@@ -189,7 +189,7 @@ const Form3 = (props) => {
                 rel='noreferrer'
                 href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
                 target={`_blank`}>
-                Kalafex Terms and Conditions
+                Kalafex Terms of Use
               </a>
             </Typography>
             <Checkbox
@@ -206,7 +206,10 @@ const Form3 = (props) => {
             container
             alignItems='center'
             item
-            style={{ marginBottom: theme.spacing(4) }}>
+            style={{
+              marginBottom: theme.spacing(4),
+              marginTop: theme.spacing(-1.5),
+            }}>
             <Typography variant='h6'>
               I accept the{" "}
               <a

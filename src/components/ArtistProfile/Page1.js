@@ -145,7 +145,10 @@ const Page1 = (props) => {
                 required: "Please add a custom URl",
               })}
               error={Boolean(errors.curl)}
-              helperText={errors.curl?.message}
+              helperText={
+                errors.curl?.message ||
+                "** This url is final and cannot be reversed"
+              }
             />
           </Grid>
           <Grid item container style={{}} justify='flex-end'>

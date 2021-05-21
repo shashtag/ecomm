@@ -152,6 +152,7 @@ const ProductDetails = (props) => {
                 // to={`/artist/${productDetails?.artist?.custom_url}`}
                 src={productDetails?.artist?.profile_picture}
                 style={{
+                  marginTop: "4px",
                   width: "60px",
                   height: "60px",
                 }}

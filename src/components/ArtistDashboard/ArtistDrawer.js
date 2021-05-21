@@ -28,13 +28,13 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
     // top: "73px",
-    backgroundColor: "#40567A",
+    backgroundColor: "#152238",
     minHeight: "100vh",
 
     position: "static",
   },
   drawerPaperSM: {
-    backgroundColor: "#40567A",
+    backgroundColor: "#152238",
   },
 }));
 
@@ -112,7 +112,7 @@ const ArtistDrawerIcons = () => {
 
         <Typography> Dashboard</Typography>
       </ListItem>
-      <ListItem button component={Link} to='/artist/dashboard/profile'>
+      {/* <ListItem button component={Link} to='/artist/dashboard/profile'>
         <PersonIcon
           fontSize='large'
           style={{
@@ -122,7 +122,7 @@ const ArtistDrawerIcons = () => {
         />
 
         <Typography> MY Profile</Typography>
-      </ListItem>
+      </ListItem> */}
       <ListItem
         button
         component={Link}

@@ -52,7 +52,7 @@ const SignupArtist = (props) => {
           fontWeight: 400,
         }}
         color='secondary'>
-        Sign up as Artist
+        Sign up as an Artist
       </Typography>
     </Grid>
   );
@@ -62,7 +62,7 @@ const SignupArtist = (props) => {
         variant='h3'
         component='div'
         style={{
-          marginTop: "2vh",
+          marginTop: "8vh",
           marginBottom: theme.spacing(1),
           fontWeight: 400,
         }}

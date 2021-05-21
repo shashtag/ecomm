@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   fade,
   makeStyles,
   Typography,
   useTheme,
-  InputBase,
   Grid,
-  Button,
 } from "@material-ui/core";
 
 import { Link } from "react-router-dom";
+import { UIContext } from "../Context/UIContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,10 +63,12 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const { usrBaseInfo, token } = useContext(UIContext);
+
   return (
     <Grid container className={classes.root}>
-      <Grid container item xs={12} md={7} spacing={0} className={classes.left}>
-        <Grid item xs={5} sm={6} md={3} container direction='column'>
+      <Grid container item xs={12} md={9} spacing={0} className={classes.left}>
+        <Grid item xs={5} sm={6} md={2} container direction='column'>
           <Grid item>
             <Typography
               variant='h6'
@@ -86,28 +87,24 @@ const Footer = () => {
               About Us
             </Typography>
           </Grid>
-          <Grid item>
+
+          {/* <Grid item>
             <Typography
-              component='a'
-              rel='noreferrer'
-              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
-              target='_blank'
+              component='div'
               variant='caption'
               noWrap
               className={classes.link}>
-              Disclaimer
+              Newsletter
             </Typography>
-          </Grid>
+          </Grid> */}
+        </Grid>
+        <Grid item xs={6} md={2} container direction='column'>
           <Grid item>
             <Typography
-              component='a'
-              rel='noreferrer'
-              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
-              target='_blank'
-              variant='caption'
-              noWrap
-              className={classes.link}>
-              Terms of Use
+              variant='h6'
+              color='secondary'
+              style={{ margin: theme.spacing(2, 0, 2, 0) }}>
+              Policy
             </Typography>
           </Grid>
           <Grid item>
@@ -126,25 +123,41 @@ const Footer = () => {
             <Typography
               component='a'
               rel='noreferrer'
+              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
+              target='_blank'
+              variant='caption'
+              noWrap
+              className={classes.link}>
+              Terms of Use
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Grid item>
+              <Typography
+                component='a'
+                rel='noreferrer'
+                href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
+                target='_blank'
+                variant='caption'
+                noWrap
+                className={classes.link}>
+                Disclaimer
+              </Typography>
+            </Grid>
+
+            <Typography
+              component='a'
+              rel='noreferrer'
               href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
               target='_blank'
               variant='caption'
               noWrap
               className={classes.link}>
-              Returns
+              Cancellation
             </Typography>
           </Grid>
-          {/* <Grid item>
-            <Typography
-              component='div'
-              variant='caption'
-              noWrap
-              className={classes.link}>
-              Newsletter
-            </Typography>
-          </Grid> */}
         </Grid>
-        <Grid item xs={6} md={3} container direction='column'>
+        <Grid item xs={5} sm={6} md={2} container direction='column'>
           <Grid item>
             <Typography
               variant='h6'
@@ -183,7 +196,13 @@ const Footer = () => {
           <Grid item>
             <Typography
               component={Link}
-              to='/artist/signup'
+              to={
+                token
+                  ? usrBaseInfo?.is_artist
+                    ? "/artist/dashboard"
+                    : "/user/profile"
+                  : "/artist/signup"
+              }
               variant='caption'
               noWrap
               className={classes.link}>
@@ -200,7 +219,7 @@ const Footer = () => {
             </Typography> */}
           </Grid>
         </Grid>
-        <Grid item xs={5} sm={6} md={3} container direction='column'>
+        <Grid item xs={5} sm={6} md={2} container direction='column'>
           <Grid item>
             <Typography
               variant='h6'
@@ -248,7 +267,7 @@ const Footer = () => {
             </Typography>
           </Grid> */}
         </Grid>
-        <Grid item xs={6} md={3} container direction='column'>
+        <Grid item xs={6} md={2} container direction='column'>
           <Grid item>
             <Typography
               variant='h6'
@@ -308,8 +327,7 @@ const Footer = () => {
           </Grid> */}
         </Grid>
       </Grid>
-      <Grid md={1} item></Grid>
-      <Grid item container xs={12} md={4} className={classes.right}>
+      <Grid item container xs={12} md={3} className={classes.right}>
         <Grid xs={12} item style={{ margin: theme.spacing(2, 0, 2, 0) }}>
           {/* <Typography
             variant='caption'

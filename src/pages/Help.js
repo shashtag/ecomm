@@ -8,6 +8,7 @@ const Help = (props) => {
   return (
     <Grid
       container
+      item
       style={
         props.standalone
           ? {
@@ -32,27 +33,37 @@ const Help = (props) => {
       </Grid>
       <Grid item container justify='center' xs='12'>
         <img
+          height='100%'
+          width='auto'
           src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/helpImg.png'
           alt='contact us'
         />
-      </Grid>
-      <Grid item container justify='center' xs='12'>
-        <MailOutlineIcon />
-
-        <Typography variant='h4'>Feel free to reach out to us at</Typography>
       </Grid>
       <Grid
         item
         container
         justify='center'
-        style={{ color: "#40567A" }}
-        xs='12'>
-        <Typography
-          component='a'
-          href='mailto:support@kalafex.com'
-          variant='h4'>
-          support@kalafex.com
-        </Typography>
+        xs='12'
+        // style={{ marginBottom: theme.spacing(1) }}
+      >
+        <Grid item container xs={12} justify='center'>
+          <MailOutlineIcon style={{ marginRight: theme.spacing(1) }} />
+
+          <Typography variant='h4'>Feel free to reach out to us at</Typography>
+        </Grid>
+        <Grid
+          container
+          item
+          justify='center'
+          style={{ color: "#40567A" }}
+          xs='12'>
+          <Typography
+            component='a'
+            href='mailto:support@kalafex.com'
+            variant='h4'>
+            support@kalafex.com
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );

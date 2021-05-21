@@ -31,7 +31,7 @@ const DropZone = (props) => {
             left: "10px",
             padding: theme.spacing(0, 0.5),
           }}>
-          Product Image
+          Cover Image
         </Typography>
       )}
       <Dropzone
@@ -61,7 +61,7 @@ const DropZone = (props) => {
             fontSize: "0.9rem",
             padding: theme.spacing(0, 0.5),
           }}>
-          ** Upload 3/4 aspect ratio PNG/JPEG images for best results
+          ** For best results, upload 3:4 aspect ratio images
         </Typography>
       )}
     </div>

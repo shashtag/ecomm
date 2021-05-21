@@ -310,7 +310,9 @@ const UploadProduct = () => {
                 getOptionLabel={(option) => option.title}
                 classes={{ inputRoot: classes.inproot }}
                 onChange={(e, value) => {
-                  setQuantity(value.title);
+                  if (value) {
+                    setQuantity(value.title);
+                  }
                 }}
                 renderInput={(params) => (
                   <TextField
@@ -368,7 +370,7 @@ const categoryList = [
 ];
 const quantityList = [];
 
-for (let index = 1; index <= 100; index++) {
+for (let index = 1; index <= 10000; index++) {
   quantityList.push({ title: String(index) });
 }
 
