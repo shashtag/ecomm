@@ -1,10 +1,12 @@
 import {
   Avatar,
   Grid,
+  IconButton,
   makeStyles,
   Typography,
   useTheme,
 } from "@material-ui/core";
+import { Edit } from "@material-ui/icons";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -26,6 +28,50 @@ const useStyles = makeStyles((theme) => ({
       padding: "0vh 3.2%",
       paddingBottom: theme.spacing(20),
     },
+  },
+  img_wrapper: {
+    position: "relative",
+
+    "&:hover": {
+      cursor: "pointer",
+      "& $span": {
+        display: "table-cell",
+      },
+
+      "& $letter": {
+        display: "none",
+      },
+    },
+  },
+  letter: {},
+  span: {
+    display: "none",
+  },
+
+  img_wrapper2: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    "&:hover": {
+      cursor: "pointer",
+
+      "& $bg_image": {
+        filter: "blur(3px)",
+      },
+      "& $span2": {
+        display: "table-cell",
+      },
+    },
+  },
+
+  bg_image: {},
+
+  span2: {
+    display: "none",
+    filter: "blur(0)",
+    position: "absolute",
   },
 }));
 
@@ -82,25 +128,51 @@ const ArtistPage = (props) => {
   return (
     <Grid
       container
-      direction='column'
-      className={props.artist ? null : classes.root}>
+      direction="column"
+      className={props.artist ? null : classes.root}
+    >
       <div
-        style={{
-          background: `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/bannerImg.png) center center / cover no-repeat `,
-          maxHeight: "30vh",
-          height: "30vh",
-        }}
-        xs={12}></div>
+        className={classes.img_wrapper2}
+        style={{ maxHeight: "30vh", height: "30vh" }}
+      >
+        <div
+          style={{
+            background: `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/bannerImg.png) center center / cover no-repeat `,
+            width: "100%",
+            height: "100%",
+            transition: "0.1s ease-in-out all",
+          }}
+          xs={12}
+          className={classes.bg_image}
+        ></div>
+        <span className={classes.span2}>
+          <IconButton>
+            <Edit style={{ fill: "white" }} />
+          </IconButton>
+        </span>
+      </div>
       <Grid container item style={{ position: "relative" }}>
         <Avatar
-          alt='profile pic'
+          alt="profile pic"
           src={aData?.[0]?.profile_picture}
-          className={classes.large}
-        />
+          className={[classes.large, classes.img_wrapper].join(" ")}
+        >
+          <span className={classes.letter}>{aData?.[0]?.full_name[0]}</span>
+          <span className={classes.span}>
+            <IconButton>
+              <Edit style={{ fill: "white" }} />
+            </IconButton>
+          </span>
+        </Avatar>
+
         <Typography
-          variant='h3'
-          style={{ position: "absolute", left: "200px" }}>
+          variant="h3"
+          style={{ position: "absolute", left: "200px" }}
+        >
           {aData?.[0]?.full_name}
+          {/* <IconButton>
+            <Edit style={{ fill: "#777" }} fontSize="small" />
+          </IconButton> */}
         </Typography>
       </Grid>
       <Grid container spacing={2} style={{ marginTop: theme.spacing(16) }} item>
@@ -114,8 +186,9 @@ const ArtistPage = (props) => {
               placeItems: "center",
               height: "100%",
               width: "100%",
-            }}>
-            <Typography variant='h1' align='center' style={{ opacity: "0.3" }}>
+            }}
+          >
+            <Typography variant="h1" align="center" style={{ opacity: "0.3" }}>
               No Products Found
             </Typography>
           </div>

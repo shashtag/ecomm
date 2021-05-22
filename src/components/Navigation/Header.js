@@ -12,6 +12,7 @@ import {
   List,
   ListItem,
   Divider,
+  Tooltip,
 } from "@material-ui/core";
 import { PersonOutline } from "@material-ui/icons";
 
@@ -134,13 +135,15 @@ export default function Header(props) {
   const desktop = token ? (
     <div
       style={{ justifyContent: "flex-end" }}
-      className={[classes.sectionDesktop].join(" ")}>
+      className={[classes.sectionDesktop].join(" ")}
+    >
       <div
         style={{
           display: "flex",
           justifyContent: "center",
         }}
-        className={classes.grow}>
+        className={classes.grow}
+      >
         {/* <Button component={Link} to='/'>
           <Typography
             variant='h6'
@@ -156,8 +159,9 @@ export default function Header(props) {
         </Button> */}
       </div>
       <Typography
-        variant='h6'
-        style={{ fontWeight: "600", marginRight: theme.spacing(2) }}>
+        variant="h6"
+        style={{ fontWeight: "600", marginRight: theme.spacing(2) }}
+      >
         <span style={{ fontWeight: "500" }}>Hello</span>{" "}
         <span
           style={{
@@ -166,7 +170,8 @@ export default function Header(props) {
               "-webkit-linear-gradient(45deg,#FF8E53 40%,   #FE6B8B 90%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-          }}>
+          }}
+        >
           {usrBaseInfo?.full_name?.split(" ")[0]}
         </span>
       </Typography>
@@ -175,12 +180,14 @@ export default function Header(props) {
           <Button
             component={Link}
             style={{ margin: theme.spacing(0, 2) }}
-            to='/admin/orders'>
+            to="/admin/orders"
+          >
             <Typography
-              variant='h6'
-              color='secondary'
+              variant="h6"
+              color="secondary"
               noWrap
-              style={{ fontWeight: "600" }}>
+              style={{ fontWeight: "600" }}
+            >
               Orders
             </Typography>
           </Button>
@@ -188,12 +195,14 @@ export default function Header(props) {
           <Button
             component={Link}
             style={{ margin: theme.spacing(0, 2) }}
-            to='/admin/cashout'>
+            to="/admin/cashout"
+          >
             <Typography
-              variant='h6'
-              color='secondary'
+              variant="h6"
+              color="secondary"
               noWrap
-              style={{ fontWeight: "600" }}>
+              style={{ fontWeight: "600" }}
+            >
               Cashouts
             </Typography>
           </Button>
@@ -204,7 +213,8 @@ export default function Header(props) {
   ) : (
     <div
       style={{ justifyContent: "flex-end" }}
-      className={[classes.sectionDesktop].join(" ")}>
+      className={[classes.sectionDesktop].join(" ")}
+    >
       {/* <div
         style={{
           display: "flex",
@@ -227,11 +237,12 @@ export default function Header(props) {
       </div> */}
       <Button
         component={Link}
-        to='/artist/signup'
+        to="/artist/signup"
         style={{
           marginRight: theme.spacing(1.5),
           padding: theme.spacing(1.3),
-        }}>
+        }}
+      >
         {/* <Link to='/artist/signup'> */}
 
         <span
@@ -240,7 +251,8 @@ export default function Header(props) {
               "-webkit-linear-gradient(45deg, #FF8E53 40%,   #FE6B8B 90%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-          }}>
+          }}
+        >
           Start selling your designs
         </span>
 
@@ -255,18 +267,20 @@ export default function Header(props) {
       />
       <Button
         component={Link}
-        to='/login'
-        variant='contained'
-        size='large'
-        color='secondary'>
-        <Typography variant='h6'>Login/Signup</Typography>
+        to="/login"
+        variant="contained"
+        size="large"
+        color="secondary"
+      >
+        <Typography variant="h6">Login/Signup</Typography>
       </Button>
       {token ? (
         <IconButton
           onClick={() => {
             history.push("/cart");
           }}
-          style={{ marginLeft: theme.spacing(2) }}>
+          style={{ marginLeft: theme.spacing(2) }}
+        >
           <ShoppingCartOutlinedIcon
             style={{
               color: theme.palette.secondary.main,
@@ -280,30 +294,31 @@ export default function Header(props) {
   return (
     <>
       <AppBar
-        position='static'
+        position="static"
         elevation={0}
         style={{
           paddingTop: "8px",
           borderBottom: `0.5px solid ${theme.palette.grey[300]}`,
-        }}>
+        }}
+      >
         <Toolbar style={{ justifyContent: "space-between" }}>
           <div style={{ display: "flex" }} className={classes.grow2}>
-            <Link to='/'>
+            <Link to="/">
               <img
-                height='50px'
+                height="50px"
                 // width={
                 //   // md ?
                 //   "81.71px"
                 //   // : "66.67"
                 // }
-                width='81.7122787495px'
+                width="81.7122787495px"
                 src={
                   // md ?
                   logoMain1
                   //  : logoSm
                 }
                 // src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Mask+Group.svg'
-                alt='kalafax logo'
+                alt="kalafax logo"
               />
             </Link>
             {/* <div className={classes.location}>
@@ -348,7 +363,8 @@ export default function Header(props) {
                         e.preventDefault();
                         history.push(`/search/${search}`);
                       }
-                }>
+                }
+              >
                 <InputBase
                   placeholder='Try "handmade mugs"'
                   classes={{
@@ -363,7 +379,7 @@ export default function Header(props) {
                 />
 
                 <IconButton
-                  type='submit'
+                  type="submit"
                   // component={Link}
 
                   // to={`/search/${search}`}
@@ -372,7 +388,8 @@ export default function Header(props) {
                     // width: "20px",
                     borderRadius: "0 4px 4px 0",
                     background: theme.palette.secondary.main,
-                  }}>
+                  }}
+                >
                   <SearchIcon
                     style={{
                       color: "white",
@@ -392,40 +409,43 @@ export default function Header(props) {
           {desktop}
           <div className={classes.sectionMobile}>
             <IconButton
-              edge='end'
+              edge="end"
               className={classes.menuButton}
-              color='inherit'
-              aria-label='menu'
-              onClick={() => setDrawer(true)}>
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setDrawer(true)}
+            >
               <Menu />
             </IconButton>
             <Drawer
-              anchor='right'
+              anchor="right"
               open={drawer}
-              onClose={() => setDrawer(false)}>
+              onClose={() => setDrawer(false)}
+            >
               <div
                 style={{ width: "275px" }}
-                role='presentation'
+                role="presentation"
                 onClick={() => setDrawer(false)}
-                onKeyDown={() => setDrawer(false)}>
+                onKeyDown={() => setDrawer(false)}
+              >
                 <List>
                   <ListItem>
-                    <Link to='/'>
+                    <Link to="/">
                       <img
-                        height='50px'
-                        widht='81.71px'
+                        height="50px"
+                        widht="81.71px"
                         src={
                           // md ?
                           logoMain
                           // : logoMainSm
                         }
-                        alt='kalafax logo'
+                        alt="kalafax logo"
                       />
                     </Link>
                   </ListItem>
                   {!token ? (
                     <>
-                      <ListItem component={Link} to='/login'>
+                      <ListItem component={Link} to="/login">
                         <LockOpenIcon
                           style={{
                             color: theme.palette.secondary.main,
@@ -433,7 +453,7 @@ export default function Header(props) {
                           }}
                         />
                         {"  "}
-                        <Typography variant='h5' style={{ color: "#152238" }}>
+                        <Typography variant="h5" style={{ color: "#152238" }}>
                           Login/Signup
                         </Typography>
                       </ListItem>
@@ -441,19 +461,19 @@ export default function Header(props) {
                   ) : null}
                   {token ? (
                     usrBaseInfo?.is_kalafex_admin ? null : (
-                      <ListItem button component={Link} to='/user/profile'>
+                      <ListItem button component={Link} to="/user/profile">
                         <PersonOutline
                           style={{
                             color: theme.palette.secondary.main,
                             fontSize: "20px",
                           }}
                         />
-                        <Typography variant='h5'>Profile</Typography>
+                        <Typography variant="h5">Profile</Typography>
                       </ListItem>
                     )
                   ) : null}
                   {usrBaseInfo?.is_artist ? (
-                    <ListItem component={Link} to='/artist/dashboard'>
+                    <ListItem component={Link} to="/artist/dashboard">
                       <DashboardOutlinedIcon
                         style={{
                           color: theme.palette.secondary.main,
@@ -461,13 +481,13 @@ export default function Header(props) {
                         }}
                       />
                       {"  "}
-                      <Typography variant='h5' style={{ color: "#152238" }}>
+                      <Typography variant="h5" style={{ color: "#152238" }}>
                         Dashboard
                       </Typography>
                     </ListItem>
                   ) : null}
                   {usrBaseInfo?.is_kalafex_admin ? null : (
-                    <ListItem component={Link} to='/cart'>
+                    <ListItem component={Link} to="/cart">
                       <ShoppingCartOutlinedIcon
                         style={{
                           color: theme.palette.secondary.main,
@@ -475,7 +495,7 @@ export default function Header(props) {
                         }}
                       />
                       {"  "}
-                      <Typography variant='h5' style={{ color: "#152238" }}>
+                      <Typography variant="h5" style={{ color: "#152238" }}>
                         Cart
                       </Typography>
                     </ListItem>
@@ -489,9 +509,10 @@ export default function Header(props) {
                             setLoading,
                             setUsrBaseInfo,
                             setToken,
-                            props.history,
+                            props.history
                           );
-                        }}>
+                        }}
+                      >
                         <ExitToAppIcon
                           style={{
                             color: theme.palette.secondary.main,
@@ -499,20 +520,20 @@ export default function Header(props) {
                           }}
                         />
                         {"  "}
-                        <Typography variant='h5' style={{ color: "#152238" }}>
+                        <Typography variant="h5" style={{ color: "#152238" }}>
                           Logout
                         </Typography>
                       </ListItem>
                     ) : (
                       <>
-                        <ListItem button component={Link} to='/user/trackOrder'>
+                        <ListItem button component={Link} to="/user/trackOrder">
                           <BallotOutlinedIcon
                             style={{
                               color: theme.palette.secondary.main,
                               fontSize: "20px",
                             }}
                           />
-                          <Typography variant='h5'>Track My Order</Typography>
+                          <Typography variant="h5">Track My Order</Typography>
                         </ListItem>
                         <ListItem
                           component={Link}
@@ -521,9 +542,10 @@ export default function Header(props) {
                               setLoading,
                               setUsrBaseInfo,
                               setToken,
-                              props.history,
+                              props.history
                             );
-                          }}>
+                          }}
+                        >
                           <ExitToAppIcon
                             style={{
                               color: theme.palette.secondary.main,
@@ -531,7 +553,12 @@ export default function Header(props) {
                             }}
                           />
                           {"  "}
-                          <Typography variant='h5' style={{ color: "#152238" }}>
+                          <Typography
+                            variant="h5"
+                            style={{
+                              color: "#152238",
+                            }}
+                          >
                             Logout
                           </Typography>
                         </ListItem>
@@ -546,133 +573,149 @@ export default function Header(props) {
 
                     <List>
                       <ListItem>
-                        <Typography variant='h4'>Popular Categories</Typography>
+                        <Typography variant="h4">Popular Categories</Typography>
                       </ListItem>
 
                       <ListItem
                         button
                         component={Link}
-                        to='search/Paintings & Artwork'>
-                        <Typography variant='h6'>
+                        to="search/Paintings & Artwork"
+                      >
+                        <Typography variant="h6">
                           Paintings & Artwork
                         </Typography>
                       </ListItem>
-                      <ListItem button component={Link} to='search/Clothing'>
-                        <Typography variant='h6'>Clothing</Typography>
+                      <ListItem button component={Link} to="search/Clothing">
+                        <Typography variant="h6">Clothing</Typography>
                       </ListItem>
                       <ListItem
                         button
                         component={Link}
-                        to='search/Lifestyle & Home'>
-                        <Typography variant='h6'>Lifestyle & Home</Typography>
+                        to="search/Lifestyle & Home"
+                      >
+                        <Typography variant="h6">Lifestyle & Home</Typography>
                       </ListItem>
                       <ListItem
                         button
                         component={Link}
-                        to='search/Collectibles'>
-                        <Typography variant='h6'>Collectibles</Typography>
+                        to="search/Collectibles"
+                      >
+                        <Typography variant="h6">Collectibles</Typography>
                       </ListItem>
                       <ListItem
                         button
                         component={Link}
-                        to='search/Jewellery & Accessories'>
-                        <Typography variant='h6'>
+                        to="search/Jewellery & Accessories"
+                      >
+                        <Typography variant="h6">
                           Jewellery & Accessories
                         </Typography>
                       </ListItem>
                     </List>
                     <Divider style={{ height: "10px" }} />
                     <List>
-                      <ListItem button component={Link} to='about-us'>
-                        <Typography variant='h6'>About Us</Typography>
+                      <ListItem button component={Link} to="about-us">
+                        <Typography variant="h6">About Us</Typography>
                       </ListItem>
                       <ListItem
                         button
-                        component='a'
-                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
-                        target='_blank'>
-                        <Typography variant='h6'>Disclaimer</Typography>
+                        component="a"
+                        href="https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf"
+                        target="_blank"
+                      >
+                        <Typography variant="h6">Disclaimer</Typography>
                       </ListItem>
                       <ListItem
                         button
-                        component='a'
-                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
-                        target='_blank'>
-                        <Typography variant='h6'>Terms of Use</Typography>
+                        component="a"
+                        href="https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf"
+                        target="_blank"
+                      >
+                        <Typography variant="h6">Terms of Use</Typography>
                       </ListItem>
                       <ListItem
                         button
-                        component='a'
-                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
-                        target='_blank'>
-                        <Typography variant='h6'>Privacy</Typography>
+                        component="a"
+                        href="https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf"
+                        target="_blank"
+                      >
+                        <Typography variant="h6">Privacy</Typography>
                       </ListItem>
                       <ListItem
                         button
-                        component='a'
-                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
-                        target='_blank'>
-                        <Typography variant='h6'>Returns</Typography>
+                        component="a"
+                        href="https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf"
+                        target="_blank"
+                      >
+                        <Typography variant="h6">Returns</Typography>
                       </ListItem>
-                      <ListItem button component={Link} to='/contact'>
-                        <Typography variant='h6'>Contact Us</Typography>
+                      <ListItem button component={Link} to="/contact">
+                        <Typography variant="h6">Contact Us</Typography>
                       </ListItem>
                     </List>
                   </>
                 )}
                 <Divider style={{ height: "10px" }} />
                 <div
-                  style={{ display: "flex", marginLeft: theme.spacing(0.75) }}>
+                  style={{
+                    display: "flex",
+                    marginLeft: theme.spacing(0.75),
+                  }}
+                >
                   <div className={classes.icon}>
                     <a
-                      href='https://www.instagram.com/kalafex_/'
-                      rel='noreferrer'
-                      target='_blank'>
+                      href="https://www.instagram.com/kalafex_/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <img
-                        width='31px'
-                        height='31px'
-                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/instagram.png'
-                        alt='instagram icon'
+                        width="31px"
+                        height="31px"
+                        src="https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/instagram.png"
+                        alt="instagram icon"
                       />
                     </a>
                   </div>
                   <div className={classes.icon}>
                     <a
-                      href='https://www.facebook.com/kalafex/'
-                      rel='noreferrer'
-                      target='_blank'>
+                      href="https://www.facebook.com/kalafex/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <img
-                        width='31px'
-                        height='31px'
-                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/facebook.png'
-                        alt='facebook icon'
+                        width="31px"
+                        height="31px"
+                        src="https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/facebook.png"
+                        alt="facebook icon"
                       />
                     </a>
                   </div>
                   <div className={classes.icon}>
                     <a
-                      href='https://twitter.com/kalafex_'
-                      rel='noreferrer'
-                      target='_blank'>
+                      href="https://twitter.com/kalafex_"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <img
-                        width='31px'
-                        height='31px'
-                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/twitter.png'
-                        alt='twitter icon'
+                        width="31px"
+                        height="31px"
+                        src="https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/twitter.png"
+                        alt="twitter icon"
                       />
                     </a>
                   </div>
 
                   <div className={classes.icon}>
                     <a
-                      href='https://www.linkedin.com/company/kalafex/'
-                      rel='noreferrer'
-                      target='_blank'>
+                      href="https://www.linkedin.com/company/kalafex/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <img
-                        width='31px'
-                        height='31px'
-                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/linkedIn.png'
-                        alt='linkedIn icon'
+                        width="31px"
+                        height="31px"
+                        src="https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/linkedIn.png"
+                        alt="linkedIn icon"
                       />
                     </a>
                   </div>
