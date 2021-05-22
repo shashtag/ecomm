@@ -20,15 +20,13 @@ export const APProvider = (props) => {
     setAccName,
     setBranch,
     setUPI,
+    avatar,
+    setAvatar,
   } = useContext(UIContext);
 
   const [customURL, setCustomURL] = useState("");
 
   const [payment, setPayment] = useState("");
-  const [avatar, setAvatar] = useState({
-    decode: {},
-    encoded: null,
-  });
 
   useEffect(() => {
     // console.log("sss");

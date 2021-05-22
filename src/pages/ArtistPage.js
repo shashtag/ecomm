@@ -2,6 +2,7 @@ import {
   Avatar,
   Grid,
   makeStyles,
+  TextField,
   Typography,
   useTheme,
 } from "@material-ui/core";
@@ -18,6 +19,16 @@ const useStyles = makeStyles((theme) => ({
     top: "-50px",
     left: "50px",
   },
+  large1: {
+    width: "125px",
+    height: "125px",
+    position: "absolute",
+    top: "-50px",
+    left: "50px",
+    "&:hover": {
+      filter: "brightness(110%)",
+    },
+  },
   root: {
     padding: "0 15px",
     paddingBottom: theme.spacing(20),
@@ -33,7 +44,7 @@ const ArtistPage = (props) => {
   const classes = useStyles();
   let { url } = useParams();
   const theme = useTheme();
-  const { setLoading } = useContext(UIContext);
+  const { setLoading, avatar, setAvatar } = useContext(UIContext);
 
   const [aData, setAData] = useState(false);
   const [products, setProducts] = useState(null);
@@ -49,7 +60,7 @@ const ArtistPage = (props) => {
     axios(config)
       .then(function (response) {
         setLoading(false);
-        // console.log(response.data);
+        console.log(response.data);
         setAData(response.data);
       })
       .catch(function (error) {
@@ -92,11 +103,45 @@ const ArtistPage = (props) => {
         }}
         xs={12}></div>
       <Grid container item style={{ position: "relative" }}>
-        <Avatar
-          alt='profile pic'
-          src={aData?.[0]?.profile_picture}
-          className={classes.large}
-        />
+        {props.artist ? (
+          <>
+            <TextField
+              name='avatar'
+              accept='image/*'
+              className={classes.input}
+              id='contained-button-file'
+              multiple
+              type='file'
+              style={{ display: "none" }}
+              onChange={(e) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                  if (reader.readyState === 2) {
+                    setAvatar({
+                      decoded: e.target?.files?.[0],
+                      encoded: reader.result,
+                    });
+                  }
+                };
+                reader.readAsDataURL(e.target?.files?.[0]);
+                // setAvatar({ ...avatar, decoded: e.target?.files?.[0] });
+              }}
+            />
+            <label htmlFor='contained-button-file'>
+              <Avatar
+                alt='default profile pic'
+                src={avatar.encoded}
+                className={classes.large1}
+              />
+            </label>
+          </>
+        ) : (
+          <Avatar
+            src={aData?.[0]?.profile_picture}
+            // productDetails?.artist?.profile_picture
+            className={classes.large}
+          />
+        )}
         <Typography
           variant='h3'
           style={{ position: "absolute", left: "200px" }}>

@@ -25,6 +25,10 @@ export const UIProvider = (props) => {
 
   const [usrBaseInfo, setUsrBaseInfo] = useState("");
   const [usrAdresses, setUsrAdresses] = useState(false);
+  const [avatar, setAvatar] = useState({
+    decode: {},
+    encoded: null,
+  });
 
   useEffect(() => {
     if (!localStorage.getItem("Token")) {
@@ -84,6 +88,8 @@ export const UIProvider = (props) => {
         setBranch,
         UPI,
         setUPI,
+        avatar,
+        setAvatar,
       }}>
       {props.children}
     </UIContext.Provider>
