@@ -15,6 +15,7 @@ import { UIContext } from "../Context/UIContext";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import Carousel from "react-material-ui-carousel";
 import { AddToCart } from "../API/Post";
+import { APContext } from "../Context/APContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,6 +51,7 @@ const ProductDetails = (props) => {
 
     axios(config)
       .then(function (response) {
+        console.log(response.data);
         setProductDetails(response.data);
         setLoading(false);
       })
@@ -164,10 +166,20 @@ const ProductDetails = (props) => {
                 paddingTop: theme.spacing(0.5),
                 marginBottom: theme.spacing(5),
               }}>
-              <Typography variant='h5'>
+              <Typography
+                style={{ cursor: "pointer" }}
+                variant='h5'
+                onClick={() => {
+                  history.push(`/artist/${productDetails?.artist?.custom_url}`);
+                }}>
                 {productDetails?.artist?.full_name}
               </Typography>
-              <Typography variant='h6'>
+              <Typography
+                style={{ cursor: "pointer" }}
+                variant='h6'
+                onClick={() => {
+                  history.push(`/artist/${productDetails?.artist?.custom_url}`);
+                }}>
                 {productDetails?.artist?.custom_url}
               </Typography>
             </Grid>

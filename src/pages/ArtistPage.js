@@ -3,6 +3,7 @@ import {
   Grid,
   IconButton,
   makeStyles,
+  TextField,
   Typography,
   useTheme,
 } from "@material-ui/core";
@@ -20,6 +21,25 @@ const useStyles = makeStyles((theme) => ({
     top: "-50px",
     left: "50px",
   },
+  large1: {
+    position: "absolute",
+    top: "-50px",
+    left: "50px",
+    "&:hover": {
+      "& $avatar_img": {
+        filter: "brightness(50%)",
+      },
+    },
+  },
+  avatar_img: {
+    width: "125px",
+    height: "125px",
+    borderRadius: "50%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   root: {
     padding: "0 15px",
     paddingBottom: theme.spacing(20),
@@ -46,6 +66,11 @@ const useStyles = makeStyles((theme) => ({
   letter: {},
   span: {
     display: "none",
+    zIndex: 10,
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
   },
 
   img_wrapper2: {
@@ -79,10 +104,12 @@ const ArtistPage = (props) => {
   const classes = useStyles();
   let { url } = useParams();
   const theme = useTheme();
-  const { setLoading } = useContext(UIContext);
+  const { setLoading, avatar, setAvatar } = useContext(UIContext);
 
   const [aData, setAData] = useState(false);
   const [products, setProducts] = useState(null);
+
+  console.log(avatar);
 
   useEffect(() => {
     setLoading(true);
@@ -95,7 +122,7 @@ const ArtistPage = (props) => {
     axios(config)
       .then(function (response) {
         setLoading(false);
-        // console.log(response.data);
+        console.log(response.data);
         setAData(response.data);
       })
       .catch(function (error) {
@@ -132,7 +159,7 @@ const ArtistPage = (props) => {
       className={props.artist ? null : classes.root}
     >
       <div
-        className={classes.img_wrapper2}
+        className={props.artist ? classes.img_wrapper2 : null}
         style={{ maxHeight: "30vh", height: "30vh" }}
       >
         <div
@@ -152,19 +179,56 @@ const ArtistPage = (props) => {
         </span>
       </div>
       <Grid container item style={{ position: "relative" }}>
-        <Avatar
-          alt="profile pic"
-          src={aData?.[0]?.profile_picture}
-          className={[classes.large, classes.img_wrapper].join(" ")}
-        >
-          <span className={classes.letter}>{aData?.[0]?.full_name[0]}</span>
-          <span className={classes.span}>
-            <IconButton>
-              <Edit style={{ fill: "white" }} />
-            </IconButton>
-          </span>
-        </Avatar>
-
+        {props.artist ? (
+          <>
+            <TextField
+              name="avatar"
+              accept="image/*"
+              className={classes.input}
+              id="contained-button-file"
+              multiple
+              type="file"
+              style={{ display: "none" }}
+              onChange={(e) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                  if (reader.readyState === 2) {
+                    setAvatar({
+                      decoded: e.target?.files?.[0],
+                      encoded: reader.result,
+                    });
+                  }
+                };
+                reader.readAsDataURL(e.target?.files?.[0]);
+                // setAvatar({ ...avatar, decoded: e.target?.files?.[0] });
+              }}
+            />
+            <label htmlFor="contained-button-file">
+              <div className={[classes.large1, classes.img_wrapper].join(" ")}>
+                <div
+                  alt="default profile pic"
+                  style={{
+                    background: `url(${
+                      avatar.encoded || "/images/default.jpeg"
+                    }) center center / cover no-repeat `,
+                    transition: "0.1s ease-in-out all",
+                  }}
+                  // src={avatar.encoded}
+                  className={classes.avatar_img}
+                ></div>
+                <span className={classes.span}>
+                  <Edit style={{ fill: "white" }} />
+                </span>
+              </div>
+            </label>
+          </>
+        ) : (
+          <Avatar
+            src={aData?.[0]?.profile_picture}
+            // productDetails?.artist?.profile_picture
+            className={classes.large}
+          />
+        )}
         <Typography
           variant="h3"
           style={{ position: "absolute", left: "200px" }}
