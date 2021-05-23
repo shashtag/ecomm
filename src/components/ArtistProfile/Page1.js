@@ -15,18 +15,49 @@ import { APContext } from "../../Context/APContext";
 import { UIContext } from "../../Context/UIContext";
 import { useForm } from "react-hook-form";
 import { patchArtistDetails } from "../../API/Patch";
+import { Edit } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   large: {
-    width: "200px",
-    height: "200px",
     cursor: "pointer",
     "&:hover": {
-      filter: "brightness(110%)",
+      "& $avatar_img": {
+        filter: "brightness(50%)",
+      },
     },
   },
   input: {
     width: "500px",
+  },
+  img_wrapper: {
+    position: "relative",
+
+    "&:hover": {
+      cursor: "pointer",
+      "& $span": {
+        display: "table-cell",
+      },
+
+      "& $letter": {
+        display: "none",
+      },
+    },
+  },
+  span: {
+    display: "none",
+    zIndex: 50,
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  },
+  avatar_img: {
+    width: "200px",
+    height: "200px",
+    borderRadius: "50%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -63,38 +94,40 @@ const Page1 = (props) => {
       () => {},
       () => {},
       () => {},
-      () => {},
+      () => {}
     );
   };
   return (
     <>
       <Grid container item>
-        <Typography variant='h4' style={{ paddingTop: theme.spacing(4) }}>
+        <Typography variant="h4" style={{ paddingTop: theme.spacing(4) }}>
           Congratulations, your account has been created successfully!
         </Typography>
       </Grid>
       <Grid container item>
-        <Typography variant='h5' style={{ paddingTop: theme.spacing(1) }}>
+        <Typography variant="h5" style={{ paddingTop: theme.spacing(1) }}>
           Get started by setting up your shop{" "}
         </Typography>
       </Grid>
-      <Grid container item justify='center'>
+      <Grid container item justify="center">
         <form
           style={{ width: "100%" }}
-          autoComplete='off'
-          onSubmit={handleSubmit(handlePageChange)}>
+          autoComplete="off"
+          onSubmit={handleSubmit(handlePageChange)}
+        >
           <Grid
-            justify='center'
+            justify="center"
             item
             container
-            style={{ paddingTop: theme.spacing(5) }}>
+            style={{ paddingTop: theme.spacing(5) }}
+          >
             <TextField
-              name='avatar'
-              accept='image/*'
+              name="avatar"
+              accept="image/*"
               className={classes.input}
-              id='contained-button-file'
+              id="contained-button-file"
               multiple
-              type='file'
+              type="file"
               style={{ display: "none" }}
               onChange={(e) => {
                 const reader = new FileReader();
@@ -110,29 +143,46 @@ const Page1 = (props) => {
                 // setAvatar({ ...avatar, decoded: e.target?.files?.[0] });
               }}
             />
-            <label htmlFor='contained-button-file'>
-              <Avatar
-                alt='default profile pic'
+            <label htmlFor="contained-button-file">
+              <div className={[classes.large, classes.img_wrapper].join(" ")}>
+                <span className={classes.span}>
+                  <Edit style={{ fill: "white" }} />
+                </span>
+                <div
+                  alt="default profile pic"
+                  style={{
+                    background: `url(${
+                      avatar.encoded || "/images/default.jpeg"
+                    }) center center / cover no-repeat `,
+                    transition: "0.1s ease-in-out all",
+                  }}
+                  // src={avatar.encoded}
+                  className={classes.avatar_img}
+                ></div>
+              </div>
+              {/* <Avatar
+                alt="default profile pic"
                 src={avatar.encoded}
                 className={classes.large}
-              />
+              /> */}
             </label>
           </Grid>
 
           <Grid
             item
             container
-            justify='center'
+            justify="center"
             style={{
               marginBottom: theme.spacing(2),
               marginTop: theme.spacing(4),
-            }}>
+            }}
+          >
             <TextField
               className={classes.input}
-              label='Custom URL'
-              name='curl'
-              variant='outlined'
-              color='secondary'
+              label="Custom URL"
+              name="curl"
+              variant="outlined"
+              color="secondary"
               value={customURL}
               onChange={(e) => {
                 setCustomURL(e.target.value);
@@ -140,7 +190,7 @@ const Page1 = (props) => {
               InputLabelProps={{
                 shrink: true,
               }}
-              placeholder='Enter your custom URL'
+              placeholder="Enter your custom URL"
               inputRef={register({
                 required: "Please add a custom URl",
               })}
@@ -151,7 +201,7 @@ const Page1 = (props) => {
               }
             />
           </Grid>
-          <Grid item container style={{}} justify='flex-end'>
+          <Grid item container style={{}} justify="flex-end">
             <Button
               style={{
                 padding: "12px 80px",
@@ -159,12 +209,13 @@ const Page1 = (props) => {
                 background: theme.palette.secondary.light,
                 marginTop: theme.spacing(2),
               }}
-              variant='contained'
-              size='large'
-              type='submit'
-              color='secondary'
-              className={classes.loginButton}>
-              <Typography variant='h5'>Next</Typography>
+              variant="contained"
+              size="large"
+              type="submit"
+              color="secondary"
+              className={classes.loginButton}
+            >
+              <Typography variant="h5">Next</Typography>
             </Button>
           </Grid>
         </form>
