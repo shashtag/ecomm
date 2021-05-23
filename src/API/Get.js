@@ -4,7 +4,7 @@ export const fetchTrendingProducts = (
   page,
   setTrendingProducts,
   setLoading,
-  setSnackbar,
+  setSnackbar
 ) => {
   setLoading(true);
   var config = {
@@ -36,7 +36,7 @@ export const fetchBaseDetailsUser = (
   setUsrBaseInfo,
   setLoading,
   history,
-  setSnackbar,
+  setSnackbar
 ) => {
   setLoading(true);
   var config = {
@@ -217,6 +217,51 @@ export const fetchArtistOrders = (setLoading, setArtistOrder) => {
       // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      // console.log(error);
+    });
+};
+
+export const getReviewsAll = (id, setReviews) => {
+  axios
+    .get(`${process.env.REACT_APP_URL}store/reviews/noauth/${id}/`)
+    .then(function (response) {
+      setReviews(response.data);
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      // console.log(error);
+    });
+};
+
+export const getReviewsOther = (id, setReviews) => {
+  axios
+    .get(`${process.env.REACT_APP_URL}store/reviews/auth/${id}/`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("Token")}`,
+      },
+    })
+    .then(function (response) {
+      setReviews(response.data);
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      // console.log(error);
+    });
+};
+
+export const getReviewUser = (id, setReviews) => {
+  axios
+    .get(`${process.env.REACT_APP_URL}store/review/${id}/`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("Token")}`,
+      },
+    })
+    .then(function (response) {
+      setReviews(response.data);
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      setReviews({});
       // console.log(error);
     });
 };

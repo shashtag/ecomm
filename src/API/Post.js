@@ -209,7 +209,7 @@ export const createRazorpayPayment = (
   data,
   setLoading,
   setRazorPay,
-  history,
+  history
 ) => {
   setLoading(true);
   var config = {
@@ -346,6 +346,26 @@ export const setDeliveryReceived = (data) => {
   var config = {
     method: "post",
     url: `${process.env.REACT_APP_URL}orders/set_delivery_status/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      window.location.reload();
+      // console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      // console.log(error);
+    });
+};
+
+export const addReview = (pid, data) => {
+  var config = {
+    method: "post",
+    url: `${process.env.REACT_APP_URL}store/review/${pid}/`,
     headers: {
       Authorization: `Token ${localStorage.getItem("Token")}`,
     },

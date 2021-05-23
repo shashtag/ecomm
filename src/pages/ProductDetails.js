@@ -16,6 +16,9 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import Carousel from "react-material-ui-carousel";
 import { AddToCart } from "../API/Post";
 import { APContext } from "../Context/APContext";
+import ReviewSection from "../components/ReviewSection";
+import UserReviewSection from "../components/UserReviewSection";
+import OtherReviewSection from "../components/OtherReviewSection";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,12 +82,14 @@ const ProductDetails = (props) => {
         style={{
           backgroundColor: "#F4F4F4",
         }}
-        className={classes.root}>
+        className={classes.root}
+      >
         <Typography
-          variant='h6'
+          variant="h6"
           style={{
             padding: theme.spacing(0.5, 0),
-          }}>
+          }}
+        >
           Home {"> "}
           {productDetails?.category}
         </Typography>
@@ -92,7 +97,7 @@ const ProductDetails = (props) => {
       <Grid container className={classes.root} spacing={5}>
         <Grid container item sm={4}>
           <Grid item xs={12}>
-            <Carousel animation='slide' className={classes.carousel}>
+            <Carousel animation="slide" className={classes.carousel}>
               {imgs.map((img, i) => (
                 <Paper
                   key={i}
@@ -102,13 +107,15 @@ const ProductDetails = (props) => {
 
                     background: `#ffffff url("${img}")  no-repeat  center center `,
                     backgroundSize: "contain",
-                  }}>
+                  }}
+                >
                   <Paper
                     style={{
                       width: "100%",
                       paddingTop: "133.333333%",
                       position: "relative",
-                    }}>
+                    }}
+                  >
                     <Paper
                       style={{
                         aspectRatio: "3/4",
@@ -121,7 +128,8 @@ const ProductDetails = (props) => {
 
                         background: `#ffffff url("${img}")  no-repeat  center center / cover `,
                         // height: "70%",
-                      }}></Paper>
+                      }}
+                    ></Paper>
                     {/* <CardMedia
             component='img'
             loading='lazy'
@@ -137,8 +145,8 @@ const ProductDetails = (props) => {
             </Carousel>
           </Grid>
         </Grid>
-        <Grid container sm={8} item direction='column'>
-          <Grid container direction='row' item>
+        <Grid container sm={8} item direction="column">
+          <Grid container direction="row" item>
             <IconButton
               style={{
                 padding: "0",
@@ -148,7 +156,8 @@ const ProductDetails = (props) => {
               }}
               onClick={() => {
                 history.push(`/artist/${productDetails?.artist?.custom_url}`);
-              }}>
+              }}
+            >
               <Avatar
                 // component={Button}
                 // to={`/artist/${productDetails?.artist?.custom_url}`}
@@ -165,48 +174,53 @@ const ProductDetails = (props) => {
               style={{
                 paddingTop: theme.spacing(0.5),
                 marginBottom: theme.spacing(5),
-              }}>
+              }}
+            >
               <Typography
                 style={{ cursor: "pointer" }}
-                variant='h5'
+                variant="h5"
                 onClick={() => {
                   history.push(`/artist/${productDetails?.artist?.custom_url}`);
-                }}>
+                }}
+              >
                 {productDetails?.artist?.full_name}
               </Typography>
               <Typography
                 style={{ cursor: "pointer" }}
-                variant='h6'
+                variant="h6"
                 onClick={() => {
                   history.push(`/artist/${productDetails?.artist?.custom_url}`);
-                }}>
+                }}
+              >
                 {productDetails?.artist?.custom_url}
               </Typography>
             </Grid>
           </Grid>
           <Grid item>
-            <Typography variant='h3'>{productDetails?.name}</Typography>
+            <Typography variant="h3">{productDetails?.name}</Typography>
           </Grid>
           <Grid item style={{ marginBottom: theme.spacing(3) }}>
-            <Typography variant='caption' style={{ color: "#40567A" }}>
+            <Typography variant="caption" style={{ color: "#40567A" }}>
               {productDetails?.category}
             </Typography>
           </Grid>
           <Grid
             container
-            direction='column'
+            direction="column"
             item
-            style={{ marginBottom: theme.spacing(3) }}>
+            style={{ marginBottom: theme.spacing(3) }}
+          >
             {productDetails?.description?.split("\n")?.map((data, i) => (
               <Grid container item key={i}>
                 <Typography
-                  component='div'
-                  variant='caption'
+                  component="div"
+                  variant="caption"
                   style={{
                     color: "#263957",
                     width: "100%",
                     minHeight: "16px",
-                  }}>
+                  }}
+                >
                   {data}
                 </Typography>
               </Grid>
@@ -215,15 +229,17 @@ const ProductDetails = (props) => {
           <Grid
             item
             container
-            direction='row'
-            style={{ marginBottom: theme.spacing(3) }}>
-            <Typography variant='h4'>
+            direction="row"
+            style={{ marginBottom: theme.spacing(3) }}
+          >
+            <Typography variant="h4">
               ₹{productDetails?.kalafex_price}/-
             </Typography>
             {"  "}
             <Typography
-              variant='caption'
-              style={{ marginTop: theme.spacing(0.5) }}>
+              variant="caption"
+              style={{ marginTop: theme.spacing(0.5) }}
+            >
               including all taxes
             </Typography>
           </Grid>
@@ -234,7 +250,7 @@ const ProductDetails = (props) => {
           </Grid> */}
           <Grid item>
             <Button
-              variant='contained'
+              variant="contained"
               onClick={() => {
                 if (!token) {
                   history.push("/user/signup");
@@ -247,7 +263,7 @@ const ProductDetails = (props) => {
                   AddToCart(
                     { product: productDetails.pid, quantity: "1" },
                     setLoading,
-                    setSnackbar,
+                    setSnackbar
                   );
                 }
               }}
@@ -258,8 +274,9 @@ const ProductDetails = (props) => {
                 padding: "16px 24px",
                 // background: "white",
                 color: "white",
-              }}>
-              <Typography variant='h5'>
+              }}
+            >
+              <Typography variant="h5">
                 Add to cart
                 <ShoppingCartOutlinedIcon
                   style={{
@@ -300,7 +317,22 @@ const ProductDetails = (props) => {
               <Typography variant='h5'>Buy Now</Typography>
             </Button> */}
           </Grid>
+          {token && (
+            <Grid>
+              <UserReviewSection productId={pid} />
+            </Grid>
+          )}
+          {!token && (
+            <Grid>
+              <ReviewSection productId={pid} />
+            </Grid>
+          )}
         </Grid>
+        {token && (
+          <Grid>
+            <OtherReviewSection productId={pid} />
+          </Grid>
+        )}
       </Grid>
     </>
   );
