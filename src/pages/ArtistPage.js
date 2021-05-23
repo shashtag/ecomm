@@ -109,8 +109,6 @@ const ArtistPage = (props) => {
   const [aData, setAData] = useState(false);
   const [products, setProducts] = useState(null);
 
-  console.log(avatar);
-
   useEffect(() => {
     setLoading(true);
     var config = {
