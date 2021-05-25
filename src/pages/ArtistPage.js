@@ -122,12 +122,9 @@ const ArtistPage = (props) => {
     axios(config)
       .then(function (response) {
         setLoading(false);
-        console.log(response.data);
         setAData(response.data);
       })
-      .catch(function (error) {
-        // console.log(error);
-      });
+      .catch(function (error) {});
 
     return () => {};
   }, []);
@@ -144,14 +141,11 @@ const ArtistPage = (props) => {
           setProducts(response.data);
           setLoading(false);
         })
-        .catch(function (error) {
-          // console.log(error);
-        });
+        .catch(function (error) {});
     }
     return () => {};
   }, [aData]);
 
-  // console.log(products);
   return (
     <Grid
       container
@@ -185,12 +179,9 @@ const ArtistPage = (props) => {
                 .then(function (response) {
                   setLoading(false);
                   window.location.reload();
-                  console.log(JSON.stringify(response.data));
                 })
                 .catch(function (error) {
                   setLoading(false);
-
-                  console.log(error);
                 });
             }}
           />
@@ -270,12 +261,9 @@ const ArtistPage = (props) => {
                       .then(function (response) {
                         setLoading(false);
                         window.location.reload();
-                        console.log(JSON.stringify(response.data));
                       })
                       .catch(function (error) {
                         setLoading(false);
-
-                        console.log(error);
                       });
                   }
                 };

@@ -16,15 +16,12 @@ const DropZone = (props) => {
 
   const [images, setImages] = useState([]);
   const handleChangeStatus = ({ meta, file }, status) => {
-    console.log(status, meta, file);
     if (status === "removed") {
-      console.log("sss");
       if (!props.addImg) {
         props.setDisabled(true);
       }
     }
     if (status === "done") {
-      console.log("ddd");
       if (!props.addImg) {
         props.setDisabled(false);
       }
@@ -55,7 +52,6 @@ const DropZone = (props) => {
   //   fetchImg();
   //   return () => {};
   // }, []);
-  console.log(images);
   return (
     <div style={{ position: "relative" }}>
       {/* <img src={images[0]} alt='aaaaa' /> */}
