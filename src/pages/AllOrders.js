@@ -1,10 +1,17 @@
-import { Grid, makeStyles, Typography, useTheme } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  makeStyles,
+  Typography,
+  useTheme,
+} from "@material-ui/core";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect, useHistory, useParams } from "react-router";
 import OrderItem from "../ui/OrderItem";
 import { UIContext } from "../Context/UIContext";
 import { Pagination } from "@material-ui/lab";
+import { saveAs } from "file-saver";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -112,11 +119,46 @@ const AllOrders = (props) => {
 
   return (
     <Grid container className={classes.root} direction='column'>
-      <Grid item>
-        <Typography variant='h3' style={{ marginBottom: theme.spacing(3) }}>
-          {" "}
-          {usrBaseInfo?.is_kalafex_admin ? "All" : "Your"} Orders
-        </Typography>
+      <Grid item container alignItems='center'>
+        <Grid item>
+          <Typography variant='h3' style={{ margin: theme.spacing(3, 0) }}>
+            {" "}
+            {usrBaseInfo?.is_kalafex_admin ? "All" : "Your"} Orders
+          </Typography>
+        </Grid>
+        <div style={{ flexGrow: "1" }}></div>
+        {usrBaseInfo?.is_kalafex_admin ? (
+          <Grid item>
+            <Button
+              // startIcon={<AddBoxIcon />}
+              variant='contained'
+              size='small'
+              color='secondary'
+              type='submit'
+              style={{
+                padding: theme.spacing(1, 5),
+              }}
+              onClick={() => {
+                var config = {
+                  method: "get",
+                  url: `${process.env.REACT_APP_URL}orders/download/`,
+                  headers: {
+                    Authorization: `Token ${localStorage.getItem("Token")}`,
+                  },
+                };
+
+                axios(config)
+                  .then(function (response) {
+                    console.log(response.data);
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+              }}>
+              <Typography variant='h5'>Todays Orders </Typography>
+            </Button>
+          </Grid>
+        ) : null}
       </Grid>
       <Grid container item>
         {orders?.results?.length !== 0 && orders?.results ? (
