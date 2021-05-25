@@ -154,7 +154,8 @@ const AllOrders = (props) => {
                     var blob = new Blob([response.data], {
                       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                     });
-                    saveAs(blob, "fixi.xlsx");
+                    const date = new Date();
+                    saveAs(blob, `${date}.xlsx`);
                   })
                   .catch(function (error) {
                     console.log(error);
