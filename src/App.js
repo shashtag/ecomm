@@ -20,7 +20,6 @@ import SuccessOrder from "./pages/SuccessOrder";
 import Admin from "./pages/Admin";
 import ACashout from "./pages/ACashout";
 import Policy from "./pages/Policy";
-import priv from "./assets/privacy.pdf";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));

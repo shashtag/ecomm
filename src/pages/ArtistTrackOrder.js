@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ArtistTrackOrder = () => {
   const [artistOrder, setArtistOrder] = useState(null);
-  const { setLoading, usrBaseInfo } = useContext(UIContext);
+  const { setLoading } = useContext(UIContext);
   const classes = useStyles();
   const theme = useTheme();
 
@@ -47,9 +47,6 @@ const ArtistTrackOrder = () => {
       </Grid>
       <Grid container item xs={12}>
         {artistOrder?.results?.map((data, i) => {
-          {
-            /* console.log(data); */
-          }
           return (
             <Grid key={i} item xs={12}>
               <Card

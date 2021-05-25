@@ -5,7 +5,7 @@ import {
   Typography,
   Card,
   CardContent,
-  CardMedia,
+  // CardMedia,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 

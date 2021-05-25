@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Redirect, useHistory, useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import OrderItem from "../ui/OrderItem";
 import { UIContext } from "../Context/UIContext";
 import { Pagination } from "@material-ui/lab";
@@ -29,7 +29,7 @@ const AllOrders = (props) => {
   const classes = useStyles();
   const history = useHistory();
   const [orders, setOrders] = useState(false);
-  const { setLoading, usrBaseInfo, token } = useContext(UIContext);
+  const { setLoading, usrBaseInfo } = useContext(UIContext);
   const [pagination, setPagination] = useState(page ? Number(page) : 1);
 
   useEffect(() => {
@@ -140,6 +140,7 @@ const AllOrders = (props) => {
               }}
               onClick={() => {
                 var config = {
+                  responseType: "arraybuffer",
                   method: "get",
                   url: `${process.env.REACT_APP_URL}orders/download/`,
                   headers: {
@@ -149,7 +150,11 @@ const AllOrders = (props) => {
 
                 axios(config)
                   .then(function (response) {
-                    console.log(response.data);
+                    console.log(response);
+                    var blob = new Blob([response.data], {
+                      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    });
+                    saveAs(blob, "fixi.xlsx");
                   })
                   .catch(function (error) {
                     console.log(error);

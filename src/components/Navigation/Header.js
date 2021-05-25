@@ -12,13 +12,13 @@ import {
   List,
   ListItem,
   Divider,
-  Tooltip,
+  // Tooltip,
 } from "@material-ui/core";
 import { PersonOutline } from "@material-ui/icons";
 
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 
-import { Link, useHistory, useRouteMatch } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import BallotOutlinedIcon from "@material-ui/icons/BallotOutlined";
 
 import Toolbar from "@material-ui/core/Toolbar";

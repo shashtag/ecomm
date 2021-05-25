@@ -6,8 +6,8 @@ import {
   useTheme,
 } from "@material-ui/core";
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router";
+import React, { useContext, useEffect } from "react";
+import { Redirect } from "react-router";
 import { OrderContext } from "../Context/OrderContext";
 import { UIContext } from "../Context/UIContext";
 import CartItem from "../ui/CartItem";
@@ -26,11 +26,10 @@ const useStyles = makeStyles((theme) => ({
 const Cart = () => {
   const theme = useTheme();
   const classes = useStyles();
-  const history = useHistory();
+  // const history = useHistory();
   const { setLoading } = useContext(UIContext);
-  const { cartItem, selectedItems, setSelectedItems, setCartItem } = useContext(
-    OrderContext,
-  );
+  const { cartItem, selectedItems, setSelectedItems, setCartItem } =
+    useContext(OrderContext);
 
   useEffect(() => {
     setLoading(true);

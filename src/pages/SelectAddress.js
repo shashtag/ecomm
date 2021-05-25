@@ -12,7 +12,7 @@ import { OrderContext } from "../Context/OrderContext";
 import { UIContext } from "../Context/UIContext";
 import Address from "../ui/Address";
 import NewAddress from "../ui/NewAddress";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { createRazorpayPayment } from "../API/Post";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,16 +28,15 @@ const SelectAddress = (props) => {
   const theme = useTheme();
   const classes = useStyles();
   const history = useHistory();
-  const { setLoading, usrAdresses, setUsrAdresses, usrBaseInfo } = useContext(
-    UIContext,
-  );
+  const { setLoading, usrAdresses, setUsrAdresses, usrBaseInfo } =
+    useContext(UIContext);
   const {
     selectedItems,
-    setSelectedItems,
+    // setSelectedItems,
     lastProductAdded,
     setLastProductAdded,
     order,
-    razorPay,
+    // razorPay,
     setRazorPay,
   } = useContext(OrderContext);
 

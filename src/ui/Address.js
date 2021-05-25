@@ -9,14 +9,14 @@ import React, { useContext } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { deleteAddress } from "../API/Delete";
 import { UIContext } from "../Context/UIContext";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { createOrder } from "../API/Post";
 import { OrderContext } from "../Context/OrderContext";
 
 const Address = (props) => {
   const theme = useTheme();
   const { setLoading, setSnackbar } = useContext(UIContext);
-  const { order, setOrder } = useContext(OrderContext);
+  const { setOrder } = useContext(OrderContext);
 
   const handleCreateOrder = () => {
     const data = { shipping_address: props.id };

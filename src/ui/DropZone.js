@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "react-dropzone-uploader/dist/styles.css";
 import Dropzone from "react-dropzone-uploader";
 import { ADashboardContext } from "../Context/ADashboardContext";
 import { Typography, useTheme } from "@material-ui/core";
 
-import AWS from "aws-sdk";
 const DropZone = (props) => {
   const theme = useTheme();
   const { setImg } = useContext(ADashboardContext);
@@ -14,7 +13,7 @@ const DropZone = (props) => {
 
   // called every time a file's `status` changes
 
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
   const handleChangeStatus = ({ meta, file }, status) => {
     if (status === "removed") {
       if (!props.addImg) {
@@ -74,7 +73,7 @@ const DropZone = (props) => {
         inputContent={
           props.addImg ? "Add Images" : "Drag Files or Click to Browse"
         }
-        initialFiles={props.addImg ? (images.length !== 0 ? images : []) : []}
+        // initialFiles={props.addImg ? (images.length !== 0 ? images : []) : []}
         styles={{
           inputLabel: { textAlign: "center" },
           dropzone: props.addImg ? { width: "100%" } : null,

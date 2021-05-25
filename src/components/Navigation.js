@@ -4,7 +4,7 @@ import SubHeader from "./Navigation/SubHeader";
 import Header from "./Navigation/Header";
 import Categories from "./Navigation/Categories";
 import { useMediaQuery, useTheme } from "@material-ui/core";
-import { DomainPropTypes } from "@material-ui/pickers/constants/prop-types";
+// import { DomainPropTypes } from "@material-ui/pickers/constants/prop-types";
 import { UIContext } from "../Context/UIContext";
 
 const Navigation = (props) => {

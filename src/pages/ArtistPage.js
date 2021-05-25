@@ -106,7 +106,7 @@ const ArtistPage = (props) => {
   const classes = useStyles();
   let { url } = useParams();
   const theme = useTheme();
-  const { setLoading, avatar, setAvatar } = useContext(UIContext);
+  const { setLoading, setAvatar } = useContext(UIContext);
 
   const [aData, setAData] = useState(false);
   const [products, setProducts] = useState(null);

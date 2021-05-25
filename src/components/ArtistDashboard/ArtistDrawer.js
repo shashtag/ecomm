@@ -9,13 +9,13 @@ import ListItem from "@material-ui/core/ListItem";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ArtTrackIcon from "@material-ui/icons/ArtTrack";
 import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
-import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
+// import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import { makeStyles, Typography } from "@material-ui/core";
 import theme from "../../ui/Theme";
 // import { Button } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
-import PersonIcon from "@material-ui/icons/Person";
+// import PersonIcon from "@material-ui/icons/Person";
 import { ADashboardContext } from "../../Context/ADashboardContext";
 
 const drawerWidth = 250;

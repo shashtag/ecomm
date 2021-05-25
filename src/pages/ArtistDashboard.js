@@ -19,9 +19,9 @@ import ArtistProfile from "./ArtistProfile";
 import Help from "./Help";
 import ArtistPage from "./ArtistPage";
 import UnderConstruction from "./UnderConstruction";
-import AllOrders from "./AllOrders";
+// import AllOrders from "./AllOrders";
 import CashoutBttn from "../components/ArtistDashboard/CashoutBttn";
-import artistTrackOrder from "./ArtistTrackOrder";
+// import artistTrackOrder from "./ArtistTrackOrder";
 import ArtistTrackOrder from "./ArtistTrackOrder";
 
 // const drawerWidth = 250;
