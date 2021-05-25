@@ -12,6 +12,7 @@ import {
   List,
   ListItem,
   Divider,
+  Tooltip,
 } from "@material-ui/core";
 import { PersonOutline } from "@material-ui/icons";
 
@@ -531,7 +532,11 @@ export default function Header(props) {
                             }}
                           />
                           {"  "}
-                          <Typography variant='h5' style={{ color: "#152238" }}>
+                          <Typography
+                            variant='h5'
+                            style={{
+                              color: "#152238",
+                            }}>
                             Logout
                           </Typography>
                         </ListItem>
@@ -588,31 +593,39 @@ export default function Header(props) {
                       </ListItem>
                       <ListItem
                         button
-                        component='a'
-                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
-                        target='_blank'>
+                        // component="a"
+                        // href="https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf"
+                        // target="_blank"
+                        component={Link}
+                        to='disclaimer'>
                         <Typography variant='h6'>Disclaimer</Typography>
                       </ListItem>
                       <ListItem
                         button
-                        component='a'
-                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
-                        target='_blank'>
+                        // component='a'
+                        // href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
+                        // target='_blank'
+                        component={Link}
+                        to='terms'>
                         <Typography variant='h6'>Terms of Use</Typography>
                       </ListItem>
                       <ListItem
                         button
-                        component='a'
-                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
-                        target='_blank'>
+                        // component='a'
+                        // href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
+                        // target='_blank'
+                        component={Link}
+                        to='privacy'>
                         <Typography variant='h6'>Privacy</Typography>
                       </ListItem>
                       <ListItem
                         button
-                        component='a'
-                        href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
-                        target='_blank'>
-                        <Typography variant='h6'>Returns</Typography>
+                        // component='a'
+                        // href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
+                        // target='_blank'
+                        component={Link}
+                        to='cancellation'>
+                        <Typography variant='h6'>Cancellation</Typography>
                       </ListItem>
                       <ListItem button component={Link} to='/contact'>
                         <Typography variant='h6'>Contact Us</Typography>
@@ -622,7 +635,10 @@ export default function Header(props) {
                 )}
                 <Divider style={{ height: "10px" }} />
                 <div
-                  style={{ display: "flex", marginLeft: theme.spacing(0.75) }}>
+                  style={{
+                    display: "flex",
+                    marginLeft: theme.spacing(0.75),
+                  }}>
                   <div className={classes.icon}>
                     <a
                       href='https://www.instagram.com/kalafex_/'

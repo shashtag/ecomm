@@ -88,7 +88,7 @@ const Page3 = (props) => {
       () => {},
       () => {},
       () => {},
-      () => {},
+      () => {}
     );
     if (props.cashout) {
       cashoutRequest(setLoading, setSnackbar, props.oppFunc);
@@ -98,34 +98,37 @@ const Page3 = (props) => {
     <>
       <Grid container item>
         <Typography
-          variant='h5'
-          style={{ paddingTop: md ? theme.spacing(6) : theme.spacing(6) }}>
+          variant="h5"
+          style={{ paddingTop: md ? theme.spacing(6) : theme.spacing(6) }}
+        >
           {props.cashout
             ? "Please Review your details"
             : "Let us start by setting up your shop."}
         </Typography>
       </Grid>
-      <Grid item container justify='center'>
+      <Grid item container justify="center">
         <form
           style={{ width: "100%" }}
-          autoComplete='off'
-          onSubmit={handleSubmit(handlePageChange)}>
+          autoComplete="off"
+          onSubmit={handleSubmit(handlePageChange)}
+        >
           <Grid
             item
             container
-            justify='center'
+            justify="center"
             spacing={md ? 4 : 4}
             style={{
               marginBottom: md ? theme.spacing(4) : theme.spacing(4),
               marginTop: md ? theme.spacing(4) : theme.spacing(4),
-            }}>
-            <Grid container justify='center' item xs={12} md={6}>
+            }}
+          >
+            <Grid container justify="center" item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='Aadhar Card Number'
-                name='aadhar'
-                variant='outlined'
-                color='secondary'
+                label="Aadhar Card Number"
+                name="aadhar"
+                variant="outlined"
+                color="secondary"
                 defaultValue={aadhar}
                 onChange={(e) => {
                   setAadhar(e.target.value);
@@ -133,7 +136,7 @@ const Page3 = (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                placeholder='Enter your aadhar card number '
+                placeholder="Enter your aadhar card number "
                 inputRef={register({
                   required: "Aadhar number is required",
                   pattern: {
@@ -145,13 +148,13 @@ const Page3 = (props) => {
                 helperText={errors.aadhar?.message}
               />
             </Grid>
-            <Grid container justify='center' item xs={12} md={6}>
+            <Grid container justify="center" item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='GST Number'
-                name='GST'
-                variant='outlined'
-                color='secondary'
+                label="GST Number"
+                name="GST"
+                variant="outlined"
+                color="secondary"
                 defaultValue={GST}
                 onChange={(e) => {
                   setGST(e.target.value);
@@ -159,7 +162,7 @@ const Page3 = (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                placeholder='Enter your GST number'
+                placeholder="Enter your GST number"
                 inputRef={register({
                   pattern: {
                     value:
@@ -171,13 +174,13 @@ const Page3 = (props) => {
                 helperText={errors.GST?.message}
               />
             </Grid>
-            <Grid container justify='center' item xs={12} md={6}>
+            <Grid container justify="center" item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='PAN Card Number'
-                name='PAN'
-                variant='outlined'
-                color='secondary'
+                label="PAN Card Number"
+                name="PAN"
+                variant="outlined"
+                color="secondary"
                 defaultValue={PAN}
                 onChange={(e) => {
                   setPAN(e.target.value);
@@ -185,7 +188,7 @@ const Page3 = (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                placeholder='Enter your PAN card number'
+                placeholder="Enter your PAN card number"
                 inputRef={register({
                   required: "PAN is required",
                   pattern: {
@@ -198,13 +201,13 @@ const Page3 = (props) => {
               />
             </Grid>
 
-            <Grid container justify='center' item xs={12} md={6}>
+            <Grid container justify="center" item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='Account Number'
-                name='Acc'
-                variant='outlined'
-                color='secondary'
+                label="Account Number"
+                name="Acc"
+                variant="outlined"
+                color="secondary"
                 defaultValue={acc}
                 onChange={(e) => {
                   setAcc(e.target.value);
@@ -212,7 +215,7 @@ const Page3 = (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                placeholder='Enter your bank account number'
+                placeholder="Enter your bank account number"
                 inputRef={register({
                   required: "Account number is required",
                   pattern: {
@@ -224,13 +227,13 @@ const Page3 = (props) => {
                 helperText={errors.Acc?.message}
               />
             </Grid>
-            <Grid container justify='center' item xs={12} md={6}>
+            <Grid container justify="center" item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='IFSC Code '
-                name='ifsc'
-                variant='outlined'
-                color='secondary'
+                label="IFSC Code "
+                name="ifsc"
+                variant="outlined"
+                color="secondary"
                 defaultValue={ifsc}
                 onChange={(e) => {
                   setIfsc(e.target.value);
@@ -238,7 +241,7 @@ const Page3 = (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                placeholder='Enter your IFSC code'
+                placeholder="Enter your IFSC code"
                 inputRef={register({
                   required: "IFSC code is required",
                   pattern: {
@@ -250,13 +253,13 @@ const Page3 = (props) => {
                 helperText={errors.ifsc?.message}
               />
             </Grid>
-            <Grid container justify='center' item xs={12} md={6}>
+            <Grid container justify="center" item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='Beneficiary Name'
-                name='accName'
-                variant='outlined'
-                color='secondary'
+                label="Beneficiary Name"
+                name="accName"
+                variant="outlined"
+                color="secondary"
                 defaultValue={accName}
                 onChange={(e) => {
                   setAccName(e.target.value);
@@ -264,7 +267,7 @@ const Page3 = (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                placeholder='Enter the beneficiary name'
+                placeholder="Enter the beneficiary name"
                 inputRef={register({
                   required: " Beneficiary name' is required",
                 })}
@@ -272,13 +275,13 @@ const Page3 = (props) => {
                 helperText={errors.accName?.message}
               />
             </Grid>
-            <Grid container justify='center' item xs={12} md={6}>
+            <Grid container justify="center" item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='Bank Branch'
-                name='branch'
-                variant='outlined'
-                color='secondary'
+                label="Bank Branch"
+                name="branch"
+                variant="outlined"
+                color="secondary"
                 defaultValue={branch}
                 onChange={(e) => {
                   setBranch(e.target.value);
@@ -286,7 +289,7 @@ const Page3 = (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                placeholder='Enter your bank branch name'
+                placeholder="Enter your bank branch name"
                 inputRef={register({
                   required: "Bank branch is required",
                 })}
@@ -294,13 +297,13 @@ const Page3 = (props) => {
                 helperText={errors.branch?.message}
               />
             </Grid>
-            <Grid container justify='center' item xs={12} md={6}>
+            <Grid container justify="center" item xs={12} md={6}>
               <TextField
                 className={classes.input}
-                label='UPI ID'
-                name='UPI'
-                variant='outlined'
-                color='secondary'
+                label="UPI ID"
+                name="UPI"
+                variant="outlined"
+                color="secondary"
                 defaultValue={UPI}
                 onChange={(e) => {
                   setUPI(e.target.value);
@@ -308,7 +311,7 @@ const Page3 = (props) => {
                 InputLabelProps={{
                   shrink: true,
                 }}
-                placeholder='Enter your UPI ID'
+                placeholder="Enter your UPI ID"
                 inputRef={register({
                   required: "UPI ID is required",
                   pattern: {
@@ -348,7 +351,8 @@ const Page3 = (props) => {
               item
               container
               style={{}}
-              justify={md ? "flex-end" : "space-between"}>
+              justify={md ? "flex-end" : "space-between"}
+            >
               <Button
                 // component={Link}
                 // to='artist/dashboard'
@@ -359,7 +363,7 @@ const Page3 = (props) => {
                     setLoading,
                     setSnackbar,
                     history,
-                    "/artist/dashboard",
+                    "/artist/dashboard"
                   );
                 }}
                 style={{
@@ -368,11 +372,12 @@ const Page3 = (props) => {
                   background: theme.palette.grey[500],
                   marginTop: theme.spacing(2),
                 }}
-                variant='contained'
-                size='large'
-                color='secondary'
-                className={classes.loginButton}>
-                <Typography variant='h5'>Skip or now</Typography>
+                variant="contained"
+                size="large"
+                color="secondary"
+                className={classes.loginButton}
+              >
+                <Typography variant="h5">Skip for now</Typography>
               </Button>
               <Button
                 style={{
@@ -381,12 +386,13 @@ const Page3 = (props) => {
                   background: theme.palette.secondary.light,
                   marginTop: theme.spacing(2),
                 }}
-                variant='contained'
-                size='large'
-                type='submit'
-                color='secondary'
-                className={classes.loginButton}>
-                <Typography variant='h5'>Save</Typography>
+                variant="contained"
+                size="large"
+                type="submit"
+                color="secondary"
+                className={classes.loginButton}
+              >
+                <Typography variant="h5">Save</Typography>
               </Button>
             </Grid>
           ) : (
@@ -398,12 +404,13 @@ const Page3 = (props) => {
                   background: theme.palette.secondary.light,
                   marginTop: theme.spacing(2),
                 }}
-                variant='contained'
-                size='large'
-                type='submit'
-                color='secondary'
-                className={classes.loginButton}>
-                <Typography variant='h5'>Cashout</Typography>
+                variant="contained"
+                size="large"
+                type="submit"
+                color="secondary"
+                className={classes.loginButton}
+              >
+                <Typography variant="h5">Cashout</Typography>
               </Button>
             </Grid>
           )}

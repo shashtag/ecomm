@@ -19,6 +19,8 @@ import AllOrders from "./pages/AllOrders";
 import SuccessOrder from "./pages/SuccessOrder";
 import Admin from "./pages/Admin";
 import ACashout from "./pages/ACashout";
+import Policy from "./pages/Policy";
+import priv from "./assets/privacy.pdf";
 
 const Signup = lazy(() => import("./pages/Signup"));
 const ArtistProfile = lazy(() => import("./pages/ArtistProfile"));
@@ -304,6 +306,62 @@ function App() {
             )}
           />
 
+          <Route
+            path='/Cancellation'
+            render={() => (
+              <>
+                {/* <Navigation noCat={false} noSub={false} /> */}
+                <Policy
+                  data={
+                    "https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf"
+                  }
+                />
+                {/* <Footer /> */}
+              </>
+            )}
+          />
+          <Route
+            path='/disclaimer'
+            render={() => (
+              <>
+                {/* <Navigation noCat={false} noSub={false} /> */}
+                <Policy
+                  data={
+                    "https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf"
+                  }
+                />
+                {/* <Footer /> */}
+              </>
+            )}
+          />
+          <Route
+            path='/terms'
+            render={() => (
+              <>
+                {/* <Navigation noCat={false} noSub={false} /> */}
+                <Policy
+                  data={
+                    "https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf"
+                  }
+                />
+                {/* <Footer /> */}
+              </>
+            )}
+          />
+          <Route
+            path='/privacy'
+            render={() => (
+              <>
+                {/* <Navigation noCat={false} noSub={false} /> */}
+                <Policy
+                  data={
+                    "https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf"
+                  }
+                />
+                {/* <Footer /> */}
+              </>
+            )}
+          />
           <Route
             path='/'
             render={() => (

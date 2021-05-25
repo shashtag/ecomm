@@ -71,6 +71,22 @@ export const deleteProduct = (pid, setLoading, setSnackbar) => {
     });
 };
 
+export const delReview = (pid) => {
+  var config = {
+    method: "delete",
+    url: `${process.env.REACT_APP_URL}store/review/${pid}/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      window.location.reload();
+    })
+    .catch(function (error) {});
+};
+
 export const deleteProductImage = (id, setSnackbar, setLoading) => {
   setLoading(true);
   var config = {

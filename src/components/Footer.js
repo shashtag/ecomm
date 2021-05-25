@@ -109,10 +109,12 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='a'
-              rel='noreferrer'
-              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
-              target='_blank'
+              // component='a'
+              // rel='noreferrer'
+              // href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/PRIVACY+NOTICE.pdf'
+              // target='_blank'
+              component={Link}
+              to='privacy'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -121,10 +123,12 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              component='a'
-              rel='noreferrer'
-              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
-              target='_blank'
+              // component='a'
+              // rel='noreferrer'
+              // href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/Terms+of+Use.pdf'
+              // target='_blank'
+              component={Link}
+              to='terms'
               variant='caption'
               noWrap
               className={classes.link}>
@@ -134,10 +138,12 @@ const Footer = () => {
           <Grid item>
             <Grid item>
               <Typography
-                component='a'
-                rel='noreferrer'
-                href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
-                target='_blank'
+                // component='a'
+                // rel='noreferrer'
+                // href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/DISCLAIMER.pdf'
+                // target='_blank'
+                component={Link}
+                to='disclaimer'
                 variant='caption'
                 noWrap
                 className={classes.link}>
@@ -146,10 +152,12 @@ const Footer = () => {
             </Grid>
 
             <Typography
-              component='a'
-              rel='noreferrer'
-              href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
-              target='_blank'
+              // component={'a'}
+              component={Link}
+              // rel='noreferrer'
+              // href='https://kalafex-docs.s3.ap-south-1.amazonaws.com/RETURN+POLICY.pdf'
+              // target='_blank'
+              to='Cancellation'
               variant='caption'
               noWrap
               className={classes.link}>

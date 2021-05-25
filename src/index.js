@@ -11,17 +11,17 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import ScrollTop from "./ui/ScrollTop";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <ScrollTop />
-      <UIProvider>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <App />
-        </MuiPickersUtilsProvider>
-      </UIProvider>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root"),
+	<React.StrictMode>
+		<Router>
+			<ScrollTop />
+			<UIProvider>
+				<MuiPickersUtilsProvider utils={DateFnsUtils}>
+					<App />
+				</MuiPickersUtilsProvider>
+			</UIProvider>
+		</Router>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 
 serviceWorkerRegistration.unregister();

@@ -87,6 +87,8 @@ const DropZone = (props) => {
             border: "red",
             background: theme.palette.error.main,
           },
+          preview: { minHeight: "80px", padding: "30px 4%" },
+          previewImage: { maxHeight: "80px", maxWidth: "280px" },
         }}
         {...props}
         // getUploadParams={getUploadParams}
