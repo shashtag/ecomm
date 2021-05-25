@@ -70,3 +70,34 @@ export const deleteProduct = (pid, setLoading, setSnackbar) => {
       });
     });
 };
+
+export const deleteProductImage = (id, setSnackbar, setLoading) => {
+  setLoading(true);
+  var config = {
+    method: "delete",
+    url: `${process.env.REACT_APP_URL}store/delete/product/delete_image/${id}/`,
+    headers: {
+      Authorization: `Token ${localStorage.getItem("Token")}`,
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      setLoading(false);
+      setSnackbar({
+        value: true,
+        message: "Image deleted successfully.",
+        type: "success",
+      });
+      window.location.reload();
+    })
+    .catch(function (error) {
+      setLoading(false);
+      setSnackbar({
+        value: true,
+        message: "An error occurred. Please try again.",
+        type: "error",
+      });
+      window.location.reload();
+    });
+};

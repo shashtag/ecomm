@@ -20,11 +20,7 @@ export const ADashboardProvider = (props) => {
     setBranch,
     setUPI,
   } = useContext(UIContext);
-  const [category, setCategory] = useState("");
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState(1);
+
   const [topListings, setTopListings] = useState(false);
   const [insights, setInsights] = useState(false);
   const [img, setImg] = useState(false);
@@ -60,16 +56,6 @@ export const ADashboardProvider = (props) => {
   return (
     <ADashboardContext.Provider
       value={{
-        category,
-        setCategory,
-        name,
-        setName,
-        desc,
-        setDesc,
-        price,
-        setPrice,
-        quantity,
-        setQuantity,
         topListings,
         setTopListings,
         img,

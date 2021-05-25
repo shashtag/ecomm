@@ -1,13 +1,4 @@
-import axios from "axios";
-import React, {
-  createContext,
-  useEffect,
-  useContext,
-  useState,
-  useRef,
-} from "react";
-import { useHistory } from "react-router";
-import { fetchOrderDetailsFinally } from "../API/Get";
+import React, { createContext, useEffect, useContext, useState } from "react";
 import { patchOrderProductToOrder } from "../API/Patch";
 import { UIContext } from "./UIContext";
 
@@ -18,7 +9,6 @@ export const OrderProvider = (props) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [cartItem, setCartItem] = useState([]);
   const [order, setOrder] = useState(false);
-  const history = useHistory();
   const { setLoading, setSnackbar } = useContext(UIContext);
   const [lastProductAdded, setLastProductAdded] = useState(false);
   const [razorPay, setRazorPay] = useState("");

@@ -144,7 +144,15 @@ const ArtistPage = (props) => {
         )}
         <Typography
           variant='h3'
-          style={{ position: "absolute", left: "200px" }}>
+          style={{
+            position: "absolute",
+            left: "200px",
+            textTransform: "capitalize",
+            background:
+              "-webkit-linear-gradient(45deg,#FF8E53 40%,   #FE6B8B 90%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>
           {aData?.[0]?.full_name}
         </Typography>
       </Grid>

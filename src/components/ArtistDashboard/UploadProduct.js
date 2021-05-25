@@ -3,12 +3,13 @@ import { TextField, makeStyles } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ADashboardContext } from "../../Context/ADashboardContext";
 import { addProduct } from "../../API/Post";
 import { UIContext } from "../../Context/UIContext";
 import DropZone from "../../ui/DropZone";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   inproot: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 //   borderColor: "#ff1744",
 // };
 
-const UploadProduct = () => {
+const UploadProduct = (props) => {
   const classes = useStyles();
 
   const theme = useTheme();
@@ -49,6 +50,9 @@ const UploadProduct = () => {
   const { setLoading } = useContext(UIContext);
   const sm = useMediaQuery(theme.breakpoints.up("sm"));
 
+  const [disabled, setDisabled] = useState(true);
+
+  const [initial, setInitial] = useState(true);
   // const {
   //   acceptedFiles,
   //   getRootProps,
@@ -63,20 +67,26 @@ const UploadProduct = () => {
   //     {file.path} - {file.size} bytes
   //   </li>
   // ));
+  const [category, setCategory] = useState("Paintings & Artwork");
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
-  const {
-    category,
-    setCategory,
-    name,
-    setName,
-    desc,
-    setDesc,
-    price,
-    setPrice,
-    quantity,
-    setQuantity,
-    img,
-  } = useContext(ADashboardContext);
+  const { img } = useContext(ADashboardContext);
+
+  useEffect(() => {
+    if (props.edit) {
+      setPrice(props.op);
+      setCategory(props.category);
+      setDesc(props.desc);
+      setName(props.name);
+      setQuantity(props.stock);
+      setDisabled(false);
+    }
+    return () => {};
+  }, []);
+
   const uploadClickHandler = () => {
     var data = new FormData();
     data.append("name", name);
@@ -86,8 +96,31 @@ const UploadProduct = () => {
     data.append("display_image", img);
     data.append("original_price", price);
     data.append("stock_left", quantity);
+    if (props.edit) {
+      setLoading(true);
+      var config = {
+        method: "patch",
+        url: `${process.env.REACT_APP_URL}store/modify/product/${props.pid}/`,
+        headers: {
+          Authorization: `Token ${localStorage.getItem("Token")}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
 
-    addProduct(data, setLoading);
+      axios(config)
+        .then(function (response) {
+          // console.log(JSON.stringify(response.data));
+          setLoading(true);
+          window.location.reload();
+        })
+        .catch(function (error) {
+          window.location.reload();
+          // console.log(error);
+        });
+    } else {
+      addProduct(data, setLoading);
+    }
   };
 
   // const style = useMemo(
@@ -115,6 +148,10 @@ const UploadProduct = () => {
           onSubmit={handleSubmit(uploadClickHandler)}>
           <Grid item xs={12}>
             <Autocomplete
+              getOptionSelected={(option, value) =>
+                option.title === value.title
+              }
+              value={{ title: String(category) }}
               options={categoryList}
               getOptionLabel={(option) => option.title}
               onChange={(e, value) => {
@@ -148,7 +185,7 @@ const UploadProduct = () => {
               label='Product Name'
               name='name'
               color='secondary'
-              defaultValue={name}
+              value={name}
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -175,6 +212,7 @@ const UploadProduct = () => {
           <Grid item xs={12} style={{ marginTop: theme.spacing(3) }}>
             <DropZone
               name='dropzone'
+              setDisabled={setDisabled}
               // validate={register({
               //   required: "Name is required",
               // })}
@@ -231,7 +269,7 @@ const UploadProduct = () => {
               label='Product Description'
               name='desc'
               color='secondary'
-              defaultValue={desc}
+              value={desc}
               onChange={(e) => {
                 setDesc(e.target.value);
               }}
@@ -311,6 +349,9 @@ const UploadProduct = () => {
                 classes={{ inputRoot: classes.inproot }}
                 onChange={(e, value) => {
                   if (value) {
+                    if (initial) {
+                      setInitial(false);
+                    }
                     setQuantity(value.title);
                   }
                 }}
@@ -340,6 +381,7 @@ const UploadProduct = () => {
               <Button
                 // component={Link}
                 // to='/artist/signup'
+                disabled={disabled}
                 variant='contained'
                 size='large'
                 color='secondary'

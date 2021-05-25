@@ -12,14 +12,12 @@ import Footer from "./components/Footer";
 import Loading from "./ui/Loading";
 import Notif from "./ui/Notif";
 import Verification from "./pages/Verification";
-import UnderConstruction from "./pages/UnderConstruction";
 import LoadingLazy from "./ui/LoadingLazy";
 import { OrderProvider } from "./Context/OrderContext";
 import SelectAddress from "./pages/SelectAddress";
 import AllOrders from "./pages/AllOrders";
 import SuccessOrder from "./pages/SuccessOrder";
 import Admin from "./pages/Admin";
-import AOrders from "./pages/AOrders";
 import ACashout from "./pages/ACashout";
 
 const Signup = lazy(() => import("./pages/Signup"));

@@ -89,7 +89,7 @@ const ArtistDashboard = (props) => {
                       <Grid container item xs={12} md={5}>
                         <Grid item>
                           <Grid item xs={12}>
-                            <UploadProduct />
+                            <UploadProduct edit={false} />
                           </Grid>
                           <Grid item xs={12}>
                             <CashoutBttn />

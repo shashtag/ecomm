@@ -8,7 +8,7 @@ import TopListing from "./TopListing";
 const TopListings = () => {
   const theme = useTheme();
   const { topListings } = useContext(ADashboardContext);
-  // console.log(topListings);
+  console.log(topListings);
   return (
     <Grid container style={{ marginTop: theme.spacing(3) }}>
       <Paper square style={{ width: "100%", padding: theme.spacing(2) }}>
@@ -31,7 +31,12 @@ const TopListings = () => {
                     img={data?.display_image}
                     category={data.category}
                     name={data.name}
+                    desc={data.description}
+                    op={data.original_price}
+                    kp={data.kalafex_price}
+                    stock={data.stock_left}
                     key={i}
+                    imgs={data.image_list}
                   />
                 );
               })

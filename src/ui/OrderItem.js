@@ -43,14 +43,7 @@ const OrderItem = (props) => {
     setExpand(!expand);
   };
 
-  const handleChecked = () => {};
-
-  const handleDelivery = () => {};
-
-  // console.log(props.prods);
-
   return (
-    // <Grid item container style={{ margin: theme.spacing(2) }}>
     <Accordion
       expanded={expand}
       onChange={handleChange}
@@ -155,9 +148,6 @@ const OrderItem = (props) => {
       <AccordionDetails>
         <Grid container direction='column' spacing={2}>
           {props?.prods?.map((data, i) => {
-            {
-              /* console.log(data); */
-            }
             return (
               <Grid container key={i} item xs={12}>
                 <Card

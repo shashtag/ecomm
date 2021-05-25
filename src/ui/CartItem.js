@@ -1,13 +1,10 @@
 import {
-  Avatar,
   Card,
   CardContent,
   CardMedia,
   Checkbox,
   Grid,
-  IconButton,
   makeStyles,
-  Paper,
   TextField,
   Typography,
   useMediaQuery,
