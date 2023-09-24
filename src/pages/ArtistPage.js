@@ -125,7 +125,21 @@ const ArtistPage = (props) => {
         setLoading(false);
         setAData(response.data);
       })
-      .catch(function (error) {});
+      .catch(function (error) {
+        setLoading(false);
+        setAData([
+          {
+            full_name: "Normal Dude",
+            user: 2,
+            bio: "super cool bio",
+            custom_url: "normaldude1",
+            cover_picture:
+              "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y292ZXIlMjBwaG90b3xlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
+            profile_picture:
+              "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+          },
+        ]);
+      });
 
     return () => {};
   }, []);
@@ -142,7 +156,60 @@ const ArtistPage = (props) => {
           setProducts(response.data);
           setLoading(false);
         })
-        .catch(function (error) {});
+        .catch(function (error) {
+          setLoading(false);
+          setProducts({
+            count: 2,
+            next: null,
+            previous: null,
+            results: [
+              {
+                pid: "5f6b92be-ed0d-44cc-a328-560136d0e581",
+                name: "Art Piece one",
+                artist: 2,
+                category: "accessories",
+                subcategory: "bands",
+                original_price: "500.00",
+                kalafex_price: "525.00",
+                display_image:
+                  "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3145&q=80",
+              },
+              {
+                pid: "45752f8c-4e5b-4fc7-abb1-c993fb6cc235",
+                name: "Art Piece two",
+                artist: 2,
+                category: "accessories",
+                subcategory: "bands",
+                original_price: "525.00",
+                kalafex_price: "551.25",
+                display_image:
+                  "https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+              },
+              {
+                pid: "5f6b92be-ed0d-44cc-a328-560136d0e581",
+                name: "Art Piece one",
+                artist: 2,
+                category: "accessories",
+                subcategory: "bands",
+                original_price: "500.00",
+                kalafex_price: "525.00",
+                display_image:
+                  "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3145&q=80",
+              },
+              {
+                pid: "45752f8c-4e5b-4fc7-abb1-c993fb6cc235",
+                name: "Art Piece two",
+                artist: 2,
+                category: "accessories",
+                subcategory: "bands",
+                original_price: "525.00",
+                kalafex_price: "551.25",
+                display_image:
+                  "https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+              },
+            ],
+          });
+        });
     }
     return () => {};
   }, [aData]);
@@ -314,7 +381,7 @@ const ArtistPage = (props) => {
           </IconButton> */}
         </Typography>
       </Grid>
-      <Grid container spacing={2} style={{ marginTop: theme.spacing(16) }} item>
+      <Grid container spacing={2} style={{ marginTop: theme.spacing(4) }} item>
         {products && products.count !== 0 ? (
           <Products data={products?.results} />
         ) : (

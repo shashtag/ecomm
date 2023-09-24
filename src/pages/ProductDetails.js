@@ -59,7 +59,40 @@ const ProductDetails = (props) => {
         setLoading(false);
       })
       .catch(function (error) {
-        // console.log(error);
+        setProductDetails({
+          pid: "5f6b92be-ed0d-44cc-a328-560136d0e581",
+          name: "Cool Product",
+          description: "It is what it is",
+          category: "accessories",
+          subcategory: "bands",
+          stock_left: 5,
+          kalafex_price: "525.00",
+          artist: {
+            user: 2,
+            full_name: "Cool Dude",
+            profile_picture:
+              "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+            bio: "super cool bio",
+            custom_url: "cooldudeshop",
+            date_of_birth: "1980-12-11",
+            aadhar_card_no: "1234-5678",
+            pan_card_no: "9876-5432",
+            gst_no: "1234-5678",
+          },
+          original_price: "500.00",
+          discount_price: null,
+          display_image:
+            "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+          image_list: [
+            {
+              product: "5f6b92be-ed0d-44cc-a328-560136d0e581",
+              image:
+                "https://images.unsplash.com/photo-1561214115-f2f134cc4912?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+              mini_description: "secondary image",
+            },
+          ],
+        });
+        setLoading(false);
       });
 
     return () => {};

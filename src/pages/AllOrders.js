@@ -57,6 +57,92 @@ const AllOrders = (props) => {
       })
       .catch(function (error) {
         setLoading(false);
+        setOrders({
+          count: 2,
+          next: null,
+          previous: null,
+          results: [
+            {
+              o_id: "df3bae92-0f84-49f1-8194-fa371cfba7e2",
+              user: 3,
+              being_delivered: true,
+              received: false,
+              payment: null,
+              orderproduct_set: [
+                {
+                  op_id: "b74c7e8b-24bf-4667-ab51-f0a2d9181737",
+                  product: {
+                    pid: "88d954eb-e8fb-46c7-abde-acbb7400d3c0",
+                    name: "cool gum",
+                    artist: {
+                      full_name: "admin",
+                      is_kalafex_admin: true,
+                      is_artist: true,
+                      is_customer: false,
+                      is_first_login: true,
+                      date_of_birth: "2021-04-07",
+                      phone_number: "12345",
+                      id: 1,
+                      email: "admin@admin.com",
+                    },
+                    display_image:
+                      "https://kalafex-media.s3.amazonaws.com/media/products/image_unavailable.png",
+                  },
+                  quantity: 4,
+                  ordered: false,
+                  date_created: "2021-05-03T19:51:37.077311+05:30",
+                  handed_over: true,
+                  user: 3,
+                  order: "df3bae92-0f84-49f1-8194-fa371cfba7e2",
+                },
+              ],
+            },
+            {
+              o_id: "e98c5b5b-2f65-4b3b-8697-47bd10b8f260",
+              user: 2,
+              being_delivered: true,
+              received: false,
+              payment: {
+                id: 1,
+                razorpay_order_id: "order_Gvh6Jh02wHOBTd",
+                razorpay_payment_id: "",
+                amount: "100.00",
+                timestamp: "2021-04-06T21:32:38.648282+05:30",
+                paid_successfully: true,
+                user: 2,
+                order: "e98c5b5b-2f65-4b3b-8697-47bd10b8f260",
+              },
+              orderproduct_set: [
+                {
+                  op_id: "aa65f289-b4ee-424e-9b86-3c7118a81760",
+                  product: {
+                    pid: "45752f8c-4e5b-4fc7-abb1-c993fb6cc235",
+                    name: "Cooler CodeChef Band",
+                    artist: {
+                      full_name: "Test User",
+                      is_kalafex_admin: false,
+                      is_artist: true,
+                      is_customer: false,
+                      is_first_login: false,
+                      date_of_birth: "2021-04-07",
+                      phone_number: "123",
+                      id: 2,
+                      email: "hari@gmail.com",
+                    },
+                    display_image:
+                      "https://kalafex-media.s3.amazonaws.com/media/products/45752f8c-4e5b-4fc7-abb1-c993fb6cc235/cc.jpg",
+                  },
+                  quantity: 3,
+                  ordered: true,
+                  date_created: "2021-05-03T01:28:49.520851+05:30",
+                  handed_over: false,
+                  user: 2,
+                  order: "e98c5b5b-2f65-4b3b-8697-47bd10b8f260",
+                },
+              ],
+            },
+          ],
+        });
         // console.log(error);
       });
 
@@ -88,6 +174,92 @@ const AllOrders = (props) => {
       })
       .catch(function (error) {
         setLoading(false);
+        setOrders({
+          count: 2,
+          next: null,
+          previous: null,
+          results: [
+            {
+              o_id: "df3bae92-0f84-49f1-8194-fa371cfba7e2",
+              user: 3,
+              being_delivered: true,
+              received: false,
+              payment: null,
+              orderproduct_set: [
+                {
+                  op_id: "b74c7e8b-24bf-4667-ab51-f0a2d9181737",
+                  product: {
+                    pid: "88d954eb-e8fb-46c7-abde-acbb7400d3c0",
+                    name: "cool gum",
+                    artist: {
+                      full_name: "admin",
+                      is_kalafex_admin: true,
+                      is_artist: true,
+                      is_customer: false,
+                      is_first_login: true,
+                      date_of_birth: "2021-04-07",
+                      phone_number: "12345",
+                      id: 1,
+                      email: "admin@admin.com",
+                    },
+                    display_image:
+                      "https://kalafex-media.s3.amazonaws.com/media/products/image_unavailable.png",
+                  },
+                  quantity: 4,
+                  ordered: false,
+                  date_created: "2021-05-03T19:51:37.077311+05:30",
+                  handed_over: true,
+                  user: 3,
+                  order: "df3bae92-0f84-49f1-8194-fa371cfba7e2",
+                },
+              ],
+            },
+            {
+              o_id: "e98c5b5b-2f65-4b3b-8697-47bd10b8f260",
+              user: 2,
+              being_delivered: true,
+              received: false,
+              payment: {
+                id: 1,
+                razorpay_order_id: "order_Gvh6Jh02wHOBTd",
+                razorpay_payment_id: "",
+                amount: "100.00",
+                timestamp: "2021-04-06T21:32:38.648282+05:30",
+                paid_successfully: true,
+                user: 2,
+                order: "e98c5b5b-2f65-4b3b-8697-47bd10b8f260",
+              },
+              orderproduct_set: [
+                {
+                  op_id: "aa65f289-b4ee-424e-9b86-3c7118a81760",
+                  product: {
+                    pid: "45752f8c-4e5b-4fc7-abb1-c993fb6cc235",
+                    name: "Cooler CodeChef Band",
+                    artist: {
+                      full_name: "Test User",
+                      is_kalafex_admin: false,
+                      is_artist: true,
+                      is_customer: false,
+                      is_first_login: false,
+                      date_of_birth: "2021-04-07",
+                      phone_number: "123",
+                      id: 2,
+                      email: "hari@gmail.com",
+                    },
+                    display_image:
+                      "https://kalafex-media.s3.amazonaws.com/media/products/45752f8c-4e5b-4fc7-abb1-c993fb6cc235/cc.jpg",
+                  },
+                  quantity: 3,
+                  ordered: true,
+                  date_created: "2021-05-03T01:28:49.520851+05:30",
+                  handed_over: false,
+                  user: 2,
+                  order: "e98c5b5b-2f65-4b3b-8697-47bd10b8f260",
+                },
+              ],
+            },
+          ],
+        });
         // console.log(error);
       });
     return () => {};

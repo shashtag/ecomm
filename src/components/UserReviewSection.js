@@ -59,7 +59,7 @@ function UserReviewSection({ productId }) {
     <div>
       {!reviews.details && (
         <>
-          <Typography component="legend">Rating</Typography>
+          <Typography component='legend'>Rating</Typography>
           <Rating
             value={rating}
             precision={0.5}
@@ -67,18 +67,18 @@ function UserReviewSection({ productId }) {
           />
           <TextField
             className={classes.input}
-            label="Review"
-            name="review"
+            label='Review'
+            name='review'
             value={review}
             onChange={(e) => {
               setReview(e.target.value);
             }}
-            variant="outlined"
-            color="secondary"
+            variant='outlined'
+            color='secondary'
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder="Enter Your Review"
+            placeholder='Enter Your Review'
             multiline={true}
             rows={3}
           />
@@ -87,49 +87,45 @@ function UserReviewSection({ productId }) {
               display: "flex",
               justifyContent: "flex-end",
               paddingTop: 10,
-            }}
-          >
+            }}>
             <Button
               style={{ padding: "10px 10px", borderRadius: "4px" }}
-              variant="contained"
-              size="large"
-              color="secondary"
-              onClick={submitReview}
-            >
-              <Typography variant="h5">Add Review</Typography>
+              variant='contained'
+              size='large'
+              color='secondary'
+              onClick={submitReview}>
+              <Typography variant='h5'>Add Review</Typography>
             </Button>
           </div>
         </>
       )}
       {reviews.details && (
         <div style={{ padding: "20px 0" }}>
-          <Typography variant="h4">Your Review</Typography>
+          <Typography variant='h4'>Your Review</Typography>
           <Rating
             value={reviews.details.rating}
             precision={0.1}
             disabled
-            name="avg-rate"
+            name='avg-rate'
             //   style={{ display: "inline-flex" }}
           />
           <div style={{ paddingLeft: 10 }}>
-            <Typography variant="body">{reviews.details.review}</Typography>
+            <Typography variant='body'>{reviews.details.review}</Typography>
           </div>
           <div
             style={{
               paddingTop: 20,
-            }}
-          >
+            }}>
             <Button
               style={{
                 padding: "10px",
                 borderRadius: "5px",
                 backgroundColor: "#ee2222",
               }}
-              variant="contained"
-              color="secondary"
+              variant='contained'
+              color='secondary'
               onClick={deleteRev}
-              startIcon={<Delete />}
-            >
+              startIcon={<Delete />}>
               Delete Review
             </Button>
           </div>

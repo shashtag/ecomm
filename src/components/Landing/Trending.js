@@ -21,21 +21,21 @@ const Trending = () => {
   const res = ["sdsd", "sdsd", "sdsd", "sdsd"];
   let trending = res.map((key, i) => <Product key={i} />);
 
-  useEffect(() => {
-    var config = {
-      method: "get",
-      url: `${process.env.REACT_APP_URL}store/view/product/popular/`,
-    };
+  // useEffect(() => {
+  //   var config = {
+  //     method: "get",
+  //     url: `${process.env.REACT_APP_URL}store/view/product/popular/`,
+  //   };
 
-    axios(config)
-      .then(function (response) {
-        // console.log(JSON.stringify(response.data));
-        setTrendingProducts(response.data);
-      })
-      .catch(function (error) {
-        // console.log(error);
-      });
-  }, []);
+  //   axios(config)
+  //     .then(function (response) {
+  //       // console.log(JSON.stringify(response.data));
+  //       setTrendingProducts(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       // console.log(error);
+  //     });
+  // }, []);
 
   trending = trendingProducts?.results.slice(0, 4).map((product, i) => {
     return (
