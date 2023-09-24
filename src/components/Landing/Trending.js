@@ -89,7 +89,8 @@ const Trending = () => {
       });
   }, []);
 
-  trending = trendingProducts?.results?.slice(0, 4).map((product, i) => {
+  trending = trendingProducts?.results?.map((product, i) => {
+    console.log(trendingProducts);
     return (
       <Product
         name={product.name}
