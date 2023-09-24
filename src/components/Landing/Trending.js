@@ -89,22 +89,6 @@ const Trending = () => {
       });
   }, []);
 
-  trending = trendingProducts?.results?.map((product, i) => {
-    console.log(trendingProducts);
-    return (
-      <Product
-        name={product.name}
-        img={product.display_image}
-        pid={product.pid}
-        artist={product.artist}
-        category={product.category}
-        subcategory={product.subcategory}
-        price={product.kalafex_price}
-        key={i}
-      />
-    );
-  });
-
   return (
     <>
       <Grid container spacing={4} direction='column' className={classes.root}>
@@ -124,7 +108,21 @@ const Trending = () => {
           </Grid>
         </Grid>
         <Grid item container alignItems='center' spacing={2}>
-          {trending}
+          {trendingProducts?.results?.map((product, i) => {
+            console.log(trendingProducts);
+            return (
+              <Product
+                name={product.name}
+                img={product.display_image}
+                pid={product.pid}
+                artist={product.artist}
+                category={product.category}
+                subcategory={product.subcategory}
+                price={product.kalafex_price}
+                key={i}
+              />
+            );
+          })}
         </Grid>
       </Grid>
     </>
