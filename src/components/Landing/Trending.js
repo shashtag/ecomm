@@ -19,7 +19,6 @@ const Trending = () => {
   const classes = useStyles();
   const { trendingProducts, setTrendingProducts } = useContext(UIContext);
   const res = ["sdsd", "sdsd", "sdsd", "sdsd"];
-  let trending = res.map((key, i) => <Product key={i} />);
 
   useEffect(() => {
     var config = {
