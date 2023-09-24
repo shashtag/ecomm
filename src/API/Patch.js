@@ -148,6 +148,7 @@ export const patchCartItem = (data, url, setLoading, setSnackbar) => {
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -178,6 +179,7 @@ export const patchOrderProductToOrder = (
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };

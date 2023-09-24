@@ -16,6 +16,7 @@ export const deleteAddress = (url, setLoading) => {
       window.location.reload();
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -37,6 +38,7 @@ export const delCartItem = (url, setLoading, setSnackbar) => {
       // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };

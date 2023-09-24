@@ -99,6 +99,7 @@ export const addAddress = (data, setLoading, setPage, page, usr) => {
       }
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -146,6 +147,7 @@ export const addProduct = (data, setLoading) => {
       // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -201,6 +203,7 @@ export const createOrder = (data, setLoading, setSnackbar, setOrder) => {
       setOrder(response.data);
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -209,7 +212,7 @@ export const createRazorpayPayment = (
   data,
   setLoading,
   setRazorPay,
-  history
+  history,
 ) => {
   setLoading(true);
   var config = {
@@ -258,6 +261,7 @@ export const createRazorpayPayment = (
       // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -284,6 +288,7 @@ export const cashoutRequest = (setLoading, setSnackbar, oppFunc) => {
       // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       setSnackbar({
         value: true,
         message: error.response.data.details,
@@ -318,6 +323,7 @@ export const grantCashout = (data, setLoading, setSnackbar) => {
       // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };

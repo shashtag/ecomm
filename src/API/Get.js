@@ -4,7 +4,7 @@ export const fetchTrendingProducts = (
   page,
   setTrendingProducts,
   setLoading,
-  setSnackbar
+  setSnackbar,
 ) => {
   setLoading(true);
   var config = {
@@ -36,7 +36,7 @@ export const fetchBaseDetailsUser = (
   setUsrBaseInfo,
   setLoading,
   history,
-  setSnackbar
+  setSnackbar,
 ) => {
   setLoading(true);
   var config = {
@@ -64,6 +64,7 @@ export const fetchBaseDetailsUser = (
     })
     .catch(function (error) {
       // console.log(error);
+      setLoading(false);
       setSnackbar({
         value: true,
         message: "Could not load user details",
@@ -88,6 +89,7 @@ export const fetchSearch = (query, page, setProducts, setLoading) => {
       setLoading(false);
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -107,6 +109,7 @@ export const fetchArtistProducts = (id, setTopListings, setLoading) => {
       setTopListings(response.data);
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -129,6 +132,7 @@ export const fetchArtistProfile = (setInsights, setLoading, func) => {
       setInsights(response.data);
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -171,6 +175,7 @@ export const fetchOrderDetailsFinally = (url, setLoading) => {
       // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
@@ -217,6 +222,7 @@ export const fetchArtistOrders = (setLoading, setArtistOrder) => {
       // console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
+      setLoading(false);
       // console.log(error);
     });
 };
