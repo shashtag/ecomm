@@ -1,4 +1,5 @@
 import React from "react";
+import adminLogo from "../assets/adminLogo.png";
 
 const Admin = () => {
   return (
@@ -8,12 +9,7 @@ const Admin = () => {
         placeItems: "center",
         minHeight: "80vh",
       }}>
-      <img
-        height='auto'
-        width='auto'
-        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/adminLogo.png'
-        alt='kalafex Logo'
-      />
+      <img height='auto' width='auto' src={adminLogo} alt='kalafex Logo' />
     </div>
   );
 };

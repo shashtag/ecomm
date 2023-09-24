@@ -34,26 +34,24 @@ const Categories = () => {
       // ],
     },
     {
-      value: "Clothing",
-      url: "search/Clothing",
-      // subCat: [{ value: "Coasters" }],
-    },
-    {
       value: "Lifestyle & Home",
       url: "search/Lifestyle & Home",
       // subCat: [{ value: "Posters" }, { value: "Apparel " }],
-    },
-    {
-      value: "Collectibles",
-      url: "search/Collectibles",
-
-      // subCat: [{ value: "Pottery" }],
     },
     {
       value: "Jewellery & Accessories",
       url: "search/Jewellery & Accessories",
       // subCat: [{ value: "Canvas" }, { value: "Paper" }],
     },
+    {
+      value: "Collectibles",
+      url: "search/Collectibles",
+      // subCat: [{ value: "Pottery" }],
+    },
+    // {
+    //   value: "Lifestyle",
+    //   // subCat: [{ value: "Coasters" }],
+    // },
   ].map((cate, key) => (
     <div className={classes.category} key={key}>
       <Button component={Link} to={`/${cate.url}`}>

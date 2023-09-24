@@ -11,6 +11,7 @@ import { Edit } from "@material-ui/icons";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import bannerImg from "../assets/bannerImg.png";
 import Products from "../components/Products";
 import { UIContext } from "../Context/UIContext";
 

@@ -185,6 +185,7 @@ const CashoutItem = (props) => {
               variant='contained'
               size='large'
               color='secondary'
+              type='submit'
               style={{
                 marginTop: theme.spacing(1),
                 padding: "16px 24px",

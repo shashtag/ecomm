@@ -29,12 +29,17 @@ import InputBase from "@material-ui/core/InputBase";
 import logoMain from "../../assets/logoMain.png";
 import logoMain1 from "../../assets/logoMain1.png";
 // import logoSm from "../../assets/logoSm.png";
+import sellDes from "../../assets/sellDes.png";
 import { UIContext } from "../../Context/UIContext";
 import HeaderIcons from "./HeaderIcons";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { logout } from "../../API/Post";
 import SearchIcon from "@material-ui/icons/Search";
+import instagram from "../../assets/socialIcons/instagram.png";
+import facebook from "../../assets/socialIcons/facebook.png";
+import linkedIn from "../../assets/socialIcons/linkedIn.png";
+import twitter from "../../assets/socialIcons/twitter.png";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -164,7 +169,7 @@ export default function Header(props) {
           style={{
             textTransform: "capitalize",
             background:
-              "-webkit-linear-gradient(45deg,#FF8E53 40%,   #FE6B8B 90%)",
+              "-webkit-linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}>
@@ -230,21 +235,11 @@ export default function Header(props) {
         component={Link}
         to='/artist/signup'
         style={{
-          marginRight: theme.spacing(1.5),
+          marginRight: theme.spacing(0.5),
           padding: theme.spacing(1.3),
         }}>
         {/* <Link to='/artist/signup'> */}
-
-        <span
-          style={{
-            background:
-              "-webkit-linear-gradient(45deg, #FF8E53 40%,   #FE6B8B 90%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}>
-          Start selling your designs
-        </span>
-
+        <img height='auto' width='auto' src={sellDes} alt='kalafex logo' />
         {/* </Link> */}
       </Button>
       <div
@@ -282,7 +277,7 @@ export default function Header(props) {
     <>
       <AppBar
         position='static'
-        elevation={0}
+        elevation={1}
         style={{
           paddingTop: "8px",
           borderBottom: `0.5px solid ${theme.palette.grey[300]}`,
@@ -292,18 +287,12 @@ export default function Header(props) {
             <Link to='/'>
               <img
                 height='50px'
-                // width={
-                //   // md ?
-                //   "81.71px"
-                //   // : "66.67"
-                // }
-                width='81.7122787495px'
+                width='81.71px'
                 src={
                   // md ?
-                  logoMain1
-                  //  : logoSm
+                  logoMain
+                  // : logoMainSm
                 }
-                // src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Mask+Group.svg'
                 alt='kalafax logo'
               />
             </Link>
@@ -647,7 +636,7 @@ export default function Header(props) {
                       <img
                         width='31px'
                         height='31px'
-                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/instagram.png'
+                        src={instagram}
                         alt='instagram icon'
                       />
                     </a>
@@ -660,7 +649,7 @@ export default function Header(props) {
                       <img
                         width='31px'
                         height='31px'
-                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/facebook.png'
+                        src={facebook}
                         alt='facebook icon'
                       />
                     </a>
@@ -673,7 +662,7 @@ export default function Header(props) {
                       <img
                         width='31px'
                         height='31px'
-                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/twitter.png'
+                        src={twitter}
                         alt='twitter icon'
                       />
                     </a>
@@ -687,7 +676,7 @@ export default function Header(props) {
                       <img
                         width='31px'
                         height='31px'
-                        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/linkedIn.png'
+                        src={linkedIn}
                         alt='linkedIn icon'
                       />
                     </a>

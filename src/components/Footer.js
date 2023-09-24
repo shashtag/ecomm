@@ -6,7 +6,10 @@ import {
   useTheme,
   Grid,
 } from "@material-ui/core";
-
+import facebook from "../assets/socialIcons/facebook.png";
+import instagram from "../assets/socialIcons/instagram.png";
+import linkedIn from "../assets/socialIcons/linkedIn.png";
+import twitter from "../assets/socialIcons/twitter.png";
 import { Link } from "react-router-dom";
 import { UIContext } from "../Context/UIContext";
 
@@ -381,7 +384,7 @@ const Footer = () => {
                 <img
                   width='31px'
                   height='31px'
-                  src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/instagram.png'
+                  src={instagram}
                   alt='instagram icon'
                 />
               </a>
@@ -394,7 +397,7 @@ const Footer = () => {
                 <img
                   width='31px'
                   height='31px'
-                  src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/facebook.png'
+                  src={facebook}
                   alt='facebook icon'
                 />
               </a>
@@ -407,7 +410,7 @@ const Footer = () => {
                 <img
                   width='31px'
                   height='31px'
-                  src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/twitter.png'
+                  src={twitter}
                   alt='twitter icon'
                 />
               </a>
@@ -421,7 +424,7 @@ const Footer = () => {
                 <img
                   width='31px'
                   height='31px'
-                  src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Social+Icons/linkedIn.png'
+                  src={linkedIn}
                   alt='linkedIn icon'
                 />
               </a>

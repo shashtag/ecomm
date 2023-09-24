@@ -12,6 +12,8 @@ import {
   useMediaQuery,
   TextField,
 } from "@material-ui/core";
+import lgnBg from "../assets/authImgs/lgnBg.png";
+import signupTxt from "../assets/authImgs/signupTxt.png";
 import { login } from "../API/Post";
 import { UIContext } from "../Context/UIContext";
 
@@ -25,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   left: {
     padding: `${theme.spacing(4)}px 15px`,
-    background: `rgba(255,255,255,0.6) url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/lgnBg.png) center center / cover no-repeat`,
+    background: `rgba(255,255,255,0.6) url(${lgnBg}) center center / cover no-repeat`,
     backgroundBlendMode: "lighten",
 
     backgroundSize: "cover",
@@ -36,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   right: {
-    background: `url(https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/lgnBg.png) no-repeat `,
+    background: `url(${lgnBg}) no-repeat `,
     backgroundSize: "cover",
     display: "none",
     [theme.breakpoints.up("md")]: {
@@ -148,10 +150,10 @@ const Login = (props) => {
                   }}
                   placeholder='Enter Email Id'
                   inputRef={register({
-                    required: "Email is required",
+                    required: "Email/Phone number is required",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Invalid Email ID ",
+                      message: "Invalid Email/Phone number ",
                     },
                   })}
                   error={Boolean(errors.id)}
@@ -208,16 +210,16 @@ const Login = (props) => {
               variant='h6'
               component={Link}
               to='/user/signup'
-              style={{ display: "inline", textDecoration: "none" }}>
-              <span
+              style={{ fontWeight: 500, display: "inline" }}>
+              <img
                 style={{
-                  background:
-                    "-webkit-linear-gradient(45deg, #FF8E53 40%,   #FE6B8B 90%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}>
-                Sign Up
-              </span>
+                  display: "inline",
+                  marginBottom: "-3px",
+                  marginLeft: "6px",
+                }}
+                src={signupTxt}
+                alt='Signup Text'
+              />
             </Typography>
           </Typography>
         </Grid>

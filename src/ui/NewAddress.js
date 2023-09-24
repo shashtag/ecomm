@@ -52,7 +52,6 @@ const NewAddress = () => {
           border: "dashed #40567A 1px",
           padding: theme.spacing(4),
           width: "100%",
-          height: "100%",
           boxSizing: "border-box",
           cursor: "pointer",
 

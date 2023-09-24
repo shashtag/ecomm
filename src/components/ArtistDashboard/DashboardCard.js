@@ -1,6 +1,7 @@
 import { Typography, useTheme } from "@material-ui/core";
 import { Avatar, Card, Grid } from "@material-ui/core";
 import React from "react";
+import artistCardImg from "../../assets/artistCardImg.png";
 
 const DashboardCard = (props) => {
   const theme = useTheme();
@@ -19,7 +20,7 @@ const DashboardCard = (props) => {
             <Typography variant='h4'>{props.value}</Typography>
           </Grid>
           <Grid item xs={4} container justify='flex-end'>
-            <Avatar src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Utils/artistCardImg.png' />
+            <Avatar src={artistCardImg} />
           </Grid>
         </Grid>
       </Card>

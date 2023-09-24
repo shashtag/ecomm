@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+import paysArtistBg from "../../assets/paysArtistBg.png";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     background: theme.palette.secondary.light,
@@ -68,7 +70,7 @@ const PaysArtist = () => {
             width='auto'
             height='auto'
             className={classes.img}
-            src='https://kalafex-images.s3.ap-south-1.amazonaws.com/paysArtistBg.png'
+            src={paysArtistBg}
             alt='girl making a drawing'
           />
         </Grid>

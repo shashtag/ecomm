@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Grid } from "@material-ui/core";
+import logoLogin from "../assets/logoLogin.png";
 
 const Logo = () => {
   return (
     <Grid item component={Link} to='/'>
-      <img
-        src='https://kalafex-images.s3.ap-south-1.amazonaws.com/Auth+Imgs/logoLogin.png'
-        alt='kalafax logo'
-      />
+      <img src={logoLogin} alt='kalafax logo' />
     </Grid>
   );
 };
